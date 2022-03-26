@@ -1,0 +1,11 @@
+.featuredBlogImage {
+	@media screen and (max-width: 1199px) {
+		width: 100%;
+	}
+
+	@media screen and (min-width: 1200px) {
+		max-width: 50%;
+	}
+
+	aspect-ratio: 16 / 9;
+}
