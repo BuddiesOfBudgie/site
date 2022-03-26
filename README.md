@@ -2,7 +2,7 @@
 
 **Important Note: Heavy Work-in-Progress, hence issues being disabled. PRs will be rejected. Expect breakages and incomplete work. Thanks for your understanding :)**
 
-This repository houses the [Next.js](https://nextjs.org/)-based website for Buddies of Budgie, bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This repository houses the [Next.js](https://nextjs.org/)-based website for Buddies of Budgie, an open source organization building the [Budgie Desktop](https://github.com/BuddiesOfBudgie/budgie-desktop) environment. This project is bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 This website uses our [Ghost](https://ghost.org)-based [blog](https://blog.buddiesofbudgie.org) as a data source, fetching publication content for blog content and to be able to provide a more curated and integrated user experience.
 
