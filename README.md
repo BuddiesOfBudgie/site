@@ -28,18 +28,16 @@ We leverage our Ghost's read-only [Content API](https://ghost.org/docs/content-a
 
 We leverage [nvm](https://github.com/nvm-sh/nvm) (Node Volume Manager) to ensure user across all operating systems can actively contribute and avoid confusion with potentially too old of node versions. We stick to using the latest node.js LTS. To get nvm, follow [their steps](https://github.com/nvm-sh/nvm#installing-and-updating) then run `nvm use`. If you use nvm across multiple projects, you can do automatic switching in the shell following [this documentation](https://github.com/nvm-sh/nvm#deeper-shell-integration).
 
-[yarn](https://yarnpkg.com) is used to ease dependency management and upgrading, alongside its general usefulness such as executing scripts as subcommands. Be sure to run `corepack enable`.
-
-You will also need to install the upgrade-interactive to more easily upgrade dependencies: `yarn plugin import interactive-tools`
+[npm-check](https://www.npmjs.com/package/npm-check) is used to ease dependency management and upgrading, alongside its general usefulness such as executing scripts as subcommands. Be sure to run `npm install -g npm-check`. To upgrade dependencies interactively, run `npm-check -u`
 
 ### Dependency Installation
 
-To install the required dependencies, run `yarn install`
+To install the required dependencies, run `npm i`
 
 ### Running the Development Server
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser.

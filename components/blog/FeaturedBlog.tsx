@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import { PostOrPage } from "@tryghost/content-api"; // This is our type-specific package for the Ghost API
+import { PostOrPage } from "@tryghost/content-api";
 
 // Material UI Bits
 import Box from "@mui/material/Box";

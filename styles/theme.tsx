@@ -20,6 +20,7 @@ declare module '@mui/material/styles' {
 	}
 
 	interface MiscColors {
+		greyish: string;
 		lightgrey: string;
 		purple: string;
 	}
@@ -56,6 +57,7 @@ const Theme = createTheme({
 			dark: "#000000",
 		},
 		misc: {
+			greyish: "#666666",
 			lightgrey: "#eeeeee",
 			purple: "#9f7beb",
 		},
@@ -66,6 +68,6 @@ const Theme = createTheme({
 });
 
 export const SiteTheme = responsiveFontSizes(Theme, {
-		breakpoints: Theme.breakpoints.keys,
-		factor: 2
-	});
+	breakpoints: Theme.breakpoints.keys,
+	factor: 2
+});

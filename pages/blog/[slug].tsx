@@ -13,8 +13,7 @@ import Stack from "@mui/material/Stack";
 import PageBase from "../../components/PageBase";
 import { Typography } from "@mui/material";
 
-export function Post(post : PostOrPage) {
-	console.log(post);
+export const Post = (post : PostOrPage) => {
 	const author = post.authors?.at(0);
 	const postTitle = post.title ?? post.og_title ?? post.meta_title ?? "Super Secret Blog Post?";
 	const pageMeta : CustomMetaProps = {
@@ -26,12 +25,12 @@ export function Post(post : PostOrPage) {
 			<Stack>
 				<Typography variant="h1">{postTitle}</Typography>
 				{ typeof post.feature_image === "string" &&
-					<Box><Image className="featuredBlogImage" width={1920} height={1080} objectFit="scale-down" src={post.feature_image} /></Box>
+					<Box><Image alt={postTitle} className="featuredBlogImage" width={1920} height={1080} objectFit="scale-down" src={post.feature_image} /></Box>
 				}
 				<Stack direction="row">
 					{
 						typeof author?.profile_image === "string" &&
-						<Image width={60} height={60} objectFit="scale-down" src={author.profile_image} />
+						<Image alt={author.name} width={60} height={60} objectFit="scale-down" src={author.profile_image} />
 					}
 					<Typography variant="subtitle1">{author?.name}</Typography>
 					<Typography variant="subtitle2">{author?.bio?.toUpperCase()}</Typography>
