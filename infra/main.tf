@@ -39,7 +39,7 @@ resource "digitalocean_kubernetes_cluster" "galactica" {
 	node_pool {
 		name = "worker-pool"
 		size = "s-1vcpu-2gb"
-		node_count = 1
+		node_count = 2
 	}
 }
 
