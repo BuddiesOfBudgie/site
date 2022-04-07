@@ -23,7 +23,6 @@ export const AuthorshipInfo : React.FC<AuthorshipInfoParams> = (props) => {
 	const parsedDate : string = post.published_at ? DateTime.fromISO(post.published_at, { locale: "en" }).toLocaleString(DateTime.DATE_FULL) : "";
 
 	const author : Author = post.primary_author ?? post.authors?.at(0) as Author;
-	console.log("Post Name", post.title);
 
 	return (
 		<Stack direction="row" spacing={2}>
