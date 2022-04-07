@@ -15,7 +15,7 @@ type TagStripParams = {
 
 export const TagStrip : React.FC<TagStripParams> = (props) => {
 	return (
-		<Stack direction="row" flexWrap="wrap">
+		<Stack direction="row" flexWrap="wrap" spacing={1}>
 		{ props.tags.map((tag) => {
 			const tagName = tag.name ?? tag.meta_title ?? tag.og_title ?? `${tag.slug.toLocaleUpperCase(tag.slug.substring(0, 1))}${tag.slug.substring(1)}`;
 			return (
