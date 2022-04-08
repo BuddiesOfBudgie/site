@@ -1,5 +1,5 @@
 import type { NextPage } from "next"
-import { CustomMeta, CustomMetaProps } from "../components/CustomMeta";
+import { CustomMetaProps } from "../components/CustomMeta";
 
 // Material UI Bits
 import { useMediaQuery, useTheme } from "@mui/material";

@@ -1,3 +1,5 @@
+const path = require('path')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	experimental: {
@@ -10,6 +12,9 @@ const nextConfig = {
 	},
 	pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'], // Append the default value with md extensions
 	reactStrictMode: true,
+	sassOptions: {
+		includePaths: [path.join(__dirname, "styles", "scss")],
+	}
 }
 
 const withMDX = require('@next/mdx')({

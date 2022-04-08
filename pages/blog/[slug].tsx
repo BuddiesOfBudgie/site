@@ -1,4 +1,4 @@
-import { GetAllPosts, GetPostBySlug } from "../../common/ghost"
+import { GetAllPosts, GetPostBySlug, GetPostTitle } from "../../common/ghost"
 import { ParsedUrlQuery } from "querystring";
 import { PostOrPage } from "@tryghost/content-api";
 import Image from "next/image";
@@ -8,35 +8,35 @@ import {
 } from "next/types"
 import { CustomMetaProps } from "../../components/CustomMeta";
 
+// MaterialUI Bits
 import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
-import PageBase from "../../components/PageBase";
 import { Typography } from "@mui/material";
 
+// Our Components
+import PageBase from "../../components/PageBase";
+import { AuthorshipInfo } from "../../components/blog/AuthorshipInfo";
+
 export const Post = (post : PostOrPage) => {
-	const author = post.authors?.at(0);
-	const postTitle = post.title ?? post.og_title ?? post.meta_title ?? "Super Secret Blog Post?";
+	const postTitle = GetPostTitle(post);
 	const pageMeta : CustomMetaProps = {
 		Title: postTitle,
 	};
 
 	return (
 		<PageBase meta={pageMeta}>
-			<Stack>
-				<Typography variant="h1">{postTitle}</Typography>
-				{ typeof post.feature_image === "string" &&
-					<Box><Image alt={postTitle} className="featuredBlogImage" width={1920} height={1080} objectFit="scale-down" src={post.feature_image} /></Box>
-				}
-				<Stack direction="row">
-					{
-						typeof author?.profile_image === "string" &&
-						<Image alt={author.name} width={60} height={60} objectFit="scale-down" src={author.profile_image} />
+			<Container maxWidth="lg">
+				<Stack spacing={2}>
+					<Typography fontWeight="bold" variant="h3">{GetPostTitle(post)}</Typography>
+					{ post.excerpt && <Typography variant="h6">{post.excerpt}</Typography> }
+					{ typeof post.feature_image === "string" &&
+						<Box><Image alt={postTitle} className="featuredBlogImage" width={1920} height={1080} objectFit="scale-down" src={post.feature_image} /></Box>
 					}
-					<Typography variant="subtitle1">{author?.name}</Typography>
-					<Typography variant="subtitle2">{author?.bio?.toUpperCase()}</Typography>
-				</Stack>
-				<Box dangerouslySetInnerHTML={{__html : post.html ?? ""}} />
-				</Stack>
+					<AuthorshipInfo post={post} />
+					<Box className="customMarkdownStying" dangerouslySetInnerHTML={{__html : post.html ?? ""}} />
+					</Stack>
+				</Container>
 		</PageBase>
 	)
 }

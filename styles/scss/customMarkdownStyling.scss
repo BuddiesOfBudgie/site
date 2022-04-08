@@ -1,0 +1,12 @@
+@import "variables.scss";
+
+.customMarkdownStying {
+	line-height: 1.6em;
+
+	a { // All links
+		&, &:visited { // Visited or not
+			color: $primary;
+			text-decoration: none;;
+		}
+	}
+}

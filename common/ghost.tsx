@@ -43,7 +43,10 @@ export const GetAllPostsPaginated = async (page ?: number, limit ?: number, tag 
 export const GetPostBySlug = async (slug : string) => {
 	return ourAPI.posts.read(
 		{ slug },
-		{ formats: ["html"], include: "tags"}
+		{
+			formats: ["html"],
+			include: ["authors", "tags"],
+		}
 	);
 }
 
