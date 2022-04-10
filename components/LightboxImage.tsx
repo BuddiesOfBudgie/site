@@ -3,29 +3,32 @@
  */
 
 import React from "react";
-import Image from "next/image";
+import Image, { ImageProps, StaticImageData } from "next/image";
 
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 
-type LightboxImageProps = {
+export type LightboxImageProps = {
 	altImageText: string;
-	height?: string;
-	image: StaticImageData;
+	height: string | number;
+	image: StaticImageData | string;
 	sx?: Object;
+	width: string | number;
 }
 
 export const LightboxImage : React.FC<LightboxImageProps> = (props) => {
 	const [showImageFull, setShowImageFull] = React.useState(false);
+
 	return (
 		<>
-			<Box key={`lightbox-box-${props.altImageText}`} sx={props?.sx}>
+			<Box key={`lightbox-box-${props.altImageText}`} sx={props.sx}>
 				<Image
 					alt={props.altImageText}
+					height={props.height}
 					objectFit="contain"
-					onClick={() => setShowImageFull(true)}
-					height={(props.height ?? "auto")}
+					onClick={ () => setShowImageFull(true)}
 					src={props.image}
+					width={props.width}
 				/>
 			</Box>
 			<Backdrop
@@ -46,6 +49,7 @@ export const LightboxImage : React.FC<LightboxImageProps> = (props) => {
 			>
 				<Image
 					alt={props.altImageText}
+					layout="fill"
 					src={props.image}
 				/>
 			</Backdrop>

@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 
 
 import Button from "@mui/material/Button";

@@ -1,5 +1,9 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
+const InterFontFamily = {
+	fontFamily: "Inter"
+};
+
 declare module '@mui/material/styles' {
 	interface BreakpointOverrides {
 		xs: true;
@@ -64,6 +68,14 @@ const Theme = createTheme({
 		success: {
 			main: "#6BCA81"
 		}
+	},
+	typography: {
+		h1: InterFontFamily,
+		h2: InterFontFamily,
+		h3: InterFontFamily,
+		h4: InterFontFamily,
+		h5: InterFontFamily,
+		h6: InterFontFamily,
 	}
 });
 

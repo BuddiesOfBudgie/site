@@ -10,17 +10,15 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 // Our components
-import { LightboxImage } from "../LightboxImage";
+import { LightboxImage, LightboxImageProps } from "../LightboxImage";
 
 type StackDirection = "column" | "row" | "row-reverse";
 
- type ImageBannerProps = {
-	altImageText : string;
+type ImageBannerProps = {
 	body: string;
 	direction: StackDirection;
 	headline: string;
-	image: StaticImageData;
-}
+} & LightboxImageProps;
 
 export const ImageBanner : React.FC<ImageBannerProps> = (props) => {
 	const theme = useTheme();
@@ -42,6 +40,7 @@ export const ImageBanner : React.FC<ImageBannerProps> = (props) => {
 				altImageText={props.altImageText}
 				height="600px"
 				image={props.image}
+				width={props.width}
 			/>
 			<Stack
 				alignItems={justifyContentAlignment}

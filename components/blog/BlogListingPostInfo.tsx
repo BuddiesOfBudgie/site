@@ -14,7 +14,6 @@ import Typography from "@mui/material/Typography";
 import { GetPostTitle } from "../../common/ghost";
 import { AuthorshipInfo } from "./AuthorshipInfo";
 import { TagStrip } from "./TagStrip";
-import { SiteTheme } from "../../styles/theme";
 
 type BlogListingPostInfoParams = {
 	condensed?: boolean;

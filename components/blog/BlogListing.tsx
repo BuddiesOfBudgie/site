@@ -7,14 +7,13 @@ import { PostsOrPages } from "@tryghost/content-api";
 // Material UI Components
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import { Masonry } from "@mui/lab";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 
 // Our Components
 import BlogListingPostInfo from "./BlogListingPostInfo";
+import { StackDirectionColumnToRow } from "../../common/vars";
 
 type BlogListingParams = {
 	posts: PostsOrPages; // Take in an array of PostOrPage
@@ -42,13 +41,7 @@ const BlogListing : React.FC<BlogListingParams> = (props) => {
 		<Stack alignItems="center" direction="column">
 			<Typography alignSelf="start" fontWeight="bold" marginBottom={6} textAlign="start" variant="h4">Featured Blogs</Typography>
 			<Stack
-				direction={{
-					xs: "column",
-					sm: "column",
-					md: "column",
-					lg: "row",
-					xl: "row"
-				}}
+				direction={StackDirectionColumnToRow}
 				justifyContent="space-between"
 				marginBottom={6} 
 				spacing={{ xs: 6, sm: 6, md: 6 }}

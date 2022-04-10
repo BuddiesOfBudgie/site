@@ -25,7 +25,7 @@ export const TagStrip : React.FC<TagStripParams> = (props) => {
 					passHref={true}
 					prefetch={false}
 				>
-					<Button	color={"success"}variant="outlined">{tagName}</Button>
+					<Button	color={"success"} variant="outlined">{tagName}</Button>
 				</Link>
 			);
 		})
