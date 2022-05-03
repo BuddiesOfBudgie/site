@@ -32,7 +32,23 @@ spec:
         image: ghost:latest
         env:
           - name: database__client
-            value: sqlite
+            value: mysql
+          - name: database__connection__database
+            value: ghost
+          - name: database__connection__host
+            value: ghost-db-cluster-do-user-11332857-0.b.db.ondigitalocean.com
+          - name: database__connection__port
+            value: "25060"
+          - name: database__connection__user
+            valueFrom:
+              secretKeyRef:
+                name: ghost-database-creds
+                key: username
+          - name: database__connection__password
+            valueFrom:
+              secretKeyRef:
+                name: ghost-database-creds
+                key: password
           - name: url
             value: "https://blog.buddiesofbudgie.org"
         ports:
