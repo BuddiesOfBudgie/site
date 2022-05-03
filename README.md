@@ -13,7 +13,7 @@ Alongside the flagship site, this repository contains all the IaC (Infrastructur
 We leverage our Ghost's read-only [Content API](https://ghost.org/docs/content-api/) for its blog content. As it is read-only and we have absolutely no reason to keep the API token a secret, it is listed below alongside the endpoint info. It is encouraged to use this outside this project, for example if you want to build a Budgie widget that displays the latest news. Just don't abuse it and all is well.
 
 - API Endpoint: `https://blog.buddiesofbudgie.org/ghost/api/v3/`
-- Content API Key: `c89868781940adbb9627aa9674`
+- Content API Key: `a731339288014003c2846aca07`
 
 ### TODO
 
