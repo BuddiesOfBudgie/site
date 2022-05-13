@@ -1,7 +1,7 @@
 import GhostContentAPI, { PostOrPage, Tag } from "@tryghost/content-api";
 
 const ourAPI = new GhostContentAPI({
-	key: "c89868781940adbb9627aa9674",
+	key: "a731339288014003c2846aca07",
 	url: "https://blog.buddiesofbudgie.org",
 	version: "v3"
 });
