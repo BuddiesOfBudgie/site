@@ -44,7 +44,6 @@ const FlexCarousel = styled(Carousel)`
 
 export const PersonalizeBanner : React.FC = () => {
 	const theme = useTheme();
-	const [currentBgIndex, setCurrentBgIndex] = useState(0);
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [showBackdrop, setShowBackdrop] = useState(false);
 	const images : ImageInfo[] = [
@@ -93,7 +92,7 @@ export const PersonalizeBanner : React.FC = () => {
 					}
 				}}
 			>
-				<Image src={selectedImage.image} />
+				<Image alt={selectedImage.text} src={selectedImage.image} />
 			</Backdrop>
 			<Container maxWidth="md">
 				<Stack
@@ -109,10 +108,7 @@ export const PersonalizeBanner : React.FC = () => {
 						autoPlay={true}
 						emulateTouch={true}
 						infiniteLoop={true}
-						onClickItem={(index : number, item : React.ReactNode) => {
-							setCurrentBgIndex(index);
-							setShowBackdrop(true);
-						}}
+						onClickItem={() => 	setShowBackdrop(true)}
 						onChange={(index) => setCurrentIndex(index)}
 						renderArrowPrev={(clickHandler) => <IconButton onClick={clickHandler} sx={{ height: "max-content", marginBlock: "auto" }} variant="outlined"><ArrowBack /></IconButton>}
 						renderArrowNext={(clickHandler) => <IconButton onClick={clickHandler} sx={{ height: "max-content", marginBlock: "auto" }} variant="outlined"><ArrowForward /></IconButton>}

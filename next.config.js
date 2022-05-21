@@ -8,6 +8,7 @@ const nextConfig = {
 		},
 	},
 	images: {
+		dangerouslyAllowSVG: true,
 		domains: [ "blog.buddiesofbudgie.org" ]
 	},
 	pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'], // Append the default value with md extensions

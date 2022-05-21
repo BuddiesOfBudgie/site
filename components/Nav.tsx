@@ -29,7 +29,7 @@ export const Nav : React.FC<NavProps> = (props : NavProps) => {
 			<Container maxWidth="fullhd">
 				<Box sx={{ flexGrow : 1, paddingTop: "1vh", paddingBottom: "1vh" }}>
 					<AppBar position="static" color="transparent" sx={{ boxShadow: "0"}}>
-						<Toolbar sx={{ p: "0.25vh 0"}}>
+						<Toolbar disableGutters={true}>
 							<Stack alignItems="center" direction="row" sx={{ flexGrow: 1 }}>
 								<Link href="/" sx={{ alignItems: "center",display: "inline-flex", marginInlineEnd: "auto" }} underline="none">
 									<Image src={Logo} alt="Budgie Logo" height={46} width={46}/>
@@ -39,12 +39,8 @@ export const Nav : React.FC<NavProps> = (props : NavProps) => {
 								<Link href="/blog" sx={{ marginInlineEnd: "2em" }} underline="none" variant="subtitle1">Blog</Link>
 								<Link href="/docs" sx={{ marginInlineEnd: "2em" }} underline="none" variant="subtitle1">Documentation</Link>
 								<Button
-									color="success"
 									href="/get"
 									size="large"
-									sx={{
-										color: "primary.light"
-									}}
 									variant="contained"
 								>
 									Get Budgie

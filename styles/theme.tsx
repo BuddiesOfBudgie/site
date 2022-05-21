@@ -57,8 +57,8 @@ const Theme = createTheme({
 	palette: {
 		primary: {
 			light: "#f5f5f5",
-			main: "#333333",
-			dark: "#000000",
+			main: "#000000",
+			dark: "#000000"
 		},
 		misc: {
 			greyish: "#666666",

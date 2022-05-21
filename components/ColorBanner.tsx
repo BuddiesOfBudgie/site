@@ -5,10 +5,12 @@
 import React from "react";
 import { useTheme } from "@mui/material";
 
-
-import Button from "@mui/material/Button";
+// Material UI Bits
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+
+// Our components
+import Button from "./Button";
 
 type ColorBannerProps = {
 	backgroundColor: string;
@@ -47,7 +49,6 @@ export const ColorBanner : React.FC<ColorBannerProps> = (props) => {
 				{props.body}
 			</Typography>
 			<Button
-				color="inherit"
 				href={props.buttonHref}
 				sx={{
 					color: props.buttonTextColor,
@@ -55,11 +56,8 @@ export const ColorBanner : React.FC<ColorBannerProps> = (props) => {
 					marginBlockStart: "auto",
 					maxWidth: "max-content"
 				}}
-				size="large"
-				variant="contained"
-			>
-				{props.buttonText}
-			</Button>
+				text={props.buttonText}
+			/>
 		</Stack>
 	)
 }

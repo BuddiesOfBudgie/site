@@ -5,6 +5,8 @@
 import React from "react";
 import Image, { ImageProps, StaticImageData } from "next/image";
 
+// Material UI Goodies
+import { SxProps, Theme, useTheme } from "@mui/material";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 
@@ -12,27 +14,45 @@ export type LightboxImageProps = {
 	altImageText: string;
 	height: string | number;
 	image: StaticImageData | string;
-	sx?: Object;
+	sx?: SxProps<Theme>;
 	width: string | number;
 }
 
 export const LightboxImage : React.FC<LightboxImageProps> = (props) => {
+	const theme = useTheme();
 	const [showImageFull, setShowImageFull] = React.useState(false);
+	const { altImageText, height, image, sx = {}, width } = props;
+	const widthAsNum : number = (typeof width === "string") ? Number(width.replaceAll("px", "")) : width;
+
+	const boxStyling = {
+		...sx,
+		width,
+		[theme.breakpoints.down(widthAsNum)]: {
+			maxHeight: "fit-content",
+			maxWidth: "100%"
+		},
+		[theme.breakpoints.between(widthAsNum, "fullhd")]: {
+			maxHeight: height,
+		},
+		[theme.breakpoints.up("fullhd")]: {
+			height
+		}
+	};
 
 	return (
 		<>
-			<Box key={`lightbox-box-${props.altImageText}`} sx={props.sx}>
+			<Box key={`lightbox-box-${altImageText}`} sx={boxStyling}>
 				<Image
-					alt={props.altImageText}
-					height={props.height}
-					objectFit="contain"
+					alt={altImageText}
+					height={height}
+					objectFit="cover"
 					onClick={ () => setShowImageFull(true)}
-					src={props.image}
-					width={props.width}
+					src={image}
+					width={width}
 				/>
 			</Box>
 			<Backdrop
-				key={`lightbox-backdrop-${props.altImageText}`}
+				key={`lightbox-backdrop-${altImageText}`}
 				onClick={() => setShowImageFull(false)}
 				open={showImageFull}
 				sx={{
@@ -48,9 +68,9 @@ export const LightboxImage : React.FC<LightboxImageProps> = (props) => {
 				}}
 			>
 				<Image
-					alt={props.altImageText}
+					alt={altImageText}
 					layout="fill"
-					src={props.image}
+					src={image}
 				/>
 			</Backdrop>
 		</>

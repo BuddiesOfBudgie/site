@@ -29,8 +29,8 @@ const BlogIndex : NextPage = ({ posts, tag } : InferGetServerSidePropsType<typeo
 
 	return (
 		<PageBase meta={meta} NavBgColor="misc.lightgrey" UseCustomNavBg={true}>
-			<Box display="inline-flex" sx={{ backgroundColor: "misc.lightgrey"}} width="100%">
-				<Typography align="center" fontWeight="bold" height="8vh" variant="h1" width="100%">{PageTitle}</Typography>
+			<Box display="inline-flex"  sx={{ backgroundColor: "misc.lightgrey"}} width="100%">
+				<Typography align="center" fontWeight="bold" variant="h1" width="100%">{PageTitle}</Typography>
 			</Box>
 			<Container maxWidth="fullhd" sx={{ marginBlockStart: "2vh" }}>
 				<BlogListing posts={posts} />
