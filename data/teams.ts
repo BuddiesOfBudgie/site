@@ -1,7 +1,5 @@
 // This file contains our teams, description of the team, URL to further details, and list of members
 
-import { People } from "./people";
-
 export type Team = {
   Description: string;
   Members: string[];

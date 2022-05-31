@@ -17,7 +17,7 @@ import PageBase from "../../components/PageBase";
 import BlogListing from "../../components/blog/BlogListing";
 
 const BlogIndex: NextPage = ({ posts, tag }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  let PageTitle = tag.name ?? tag.og_title ?? tag.meta_title ?? tag.toUpperCase();
+  const PageTitle = tag.name ?? tag.og_title ?? tag.meta_title ?? tag.toUpperCase();
 
   const meta: CustomMetaProps = {
     Title: PageTitle,

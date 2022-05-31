@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import Image, { ImageProps, StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 // Material UI Goodies
 import { SxProps, Theme, useTheme } from "@mui/material";

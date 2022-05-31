@@ -13,7 +13,7 @@ import { Nav, NavProps } from "../components/Nav";
 
 interface PageBaseProps extends NavProps {
   meta: CustomMetaProps;
-  children: any;
+  children: JSX.Element[];
 }
 
 const PageBase: React.FC<PageBaseProps> = (props: PageBaseProps) => {

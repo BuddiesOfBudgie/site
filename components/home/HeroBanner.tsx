@@ -6,7 +6,6 @@ import React from "react";
 import Image from "next/image";
 
 // Material UI Goodies
-import { styled, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
@@ -21,13 +20,7 @@ const HeroBannerStyle = () => ({
   borderRadius: 15,
 });
 
-const LaptopImageStyle = styled(Image)({
-  maxWidth: "50%",
-});
-
 export const HeroBanner: React.FC = () => {
-  const theme = useTheme();
-
   return (
     <Stack alignItems="center" justifyContent="center" paddingY="2vh" spacing={6} sx={HeroBannerStyle}>
       <Box sx={{ maxWidth: "50%" }}>

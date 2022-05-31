@@ -55,7 +55,7 @@ const BlogListing: React.FC<BlogListingParams> = (props) => {
           More Recent Posts
         </Typography>
         <Box display="inline-flex" justifyContent="space-between" flexWrap="wrap">
-          {restOfSelection.map((post, idx) => {
+          {restOfSelection.map((post) => {
             return (
               <Box key={`Box-${keyPrefix}-${post.slug}`} marginBottom={6} width={HalvedWidthOnHighResolution}>
                 <BlogListingPostInfo condensed={false} key={`${keyPrefix}-${post.slug}`} post={post} />

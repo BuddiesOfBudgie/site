@@ -3,7 +3,6 @@
  */
 
 import { PostOrPage } from "@tryghost/content-api";
-import Image from "next/image";
 import Link from "next/link";
 
 // Material UI Components

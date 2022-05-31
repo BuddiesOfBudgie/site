@@ -7,11 +7,11 @@ import AvatarGroup from "@mui/material/AvatarGroup";
 import Button from "../Button";
 import Stack from "@mui/material/Stack";
 import Tooltip from "@mui/material/Tooltip";
-import { HalvedWidthOnHighResolution, StackDirectionColumnToRow } from "../../common/vars";
+import { HalvedWidthOnHighResolution } from "../../common/vars";
 
 // People and Teams
 import { People } from "../../data/people";
-import { Team as TeamType, Teams } from "../../data/teams";
+import { Team as TeamType } from "../../data/teams";
 
 export type TeamProps = {
   stackSpacing: number;

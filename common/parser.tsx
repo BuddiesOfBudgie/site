@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import parse, { Element, HTMLReactParserOptions, attributesToProps, domToReact } from "html-react-parser";
+import parse, { Element, HTMLReactParserOptions, domToReact } from "html-react-parser";
 
 // Our Components
 import { LightboxImage } from "../components/LightboxImage";
@@ -27,8 +27,8 @@ const Parser = (html: string): ReturnType<typeof domToReact> => {
         // Is an image, replace with our LightboxImage
         const src = attribs.src as string;
 
-        let height: number = Number(attribs.height);
-        let width: number = Number(attribs.width);
+        const height = Number(attribs.height);
+        const width = Number(attribs.width);
 
         if (!height || !width || isNaN(height) || isNaN(width)) {
           return;

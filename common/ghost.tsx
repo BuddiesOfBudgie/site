@@ -24,8 +24,7 @@ export const GetAllPosts = async () => {
  * @param tag Desired tag, if any. Defaults to just "news"
  * @returns A Promise to return our Posts
  */
-export const GetAllPostsPaginated = async (page: number = 0, limit: number = 10, tag?: string) => {
-  tag = tag ?? "news";
+export const GetAllPostsPaginated = async (page = 0, limit = 10, tag = "news") => {
   return ourAPI.posts.browse({
     filter: `page:false,published_at:-null,tag:${tag}`,
     include: ["authors", "tags"],

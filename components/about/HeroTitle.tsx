@@ -1,7 +1,7 @@
 // This file contains the logic for our Hero Title used on the About page
 
 // Material UI Bits
-import { Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Typography, useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
 export type HeroTitleProps = {
