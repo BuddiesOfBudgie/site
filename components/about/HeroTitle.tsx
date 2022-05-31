@@ -5,29 +5,31 @@ import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
 export type HeroTitleProps = {
-	maintext: string;
-	subtext?: string;
-}
+  maintext: string;
+  subtext?: string;
+};
 
-const HeroTitle : React.FC<HeroTitleProps> = (props) => {
-	const { maintext, subtext } = props;
+const HeroTitle: React.FC<HeroTitleProps> = (props) => {
+  const { maintext, subtext } = props;
 
-	const theme = useTheme();
+  const theme = useTheme();
 
-	return (
-		<Stack direction="column">
-			<Typography fontWeight={600} variant="h5">{subtext ?? "Our"}</Typography>
-			<Typography
-				color={theme.palette.success.main}
-				borderBottom={"8px solid black"}
-				fontWeight={600}
-				paddingRight={8}
-				variant="h1"
-			>
-				{maintext}
-			</Typography>
-		</Stack>
-	)
-}
+  return (
+    <Stack direction="column">
+      <Typography fontWeight={600} variant="h5">
+        {subtext ?? "Our"}
+      </Typography>
+      <Typography
+        color={theme.palette.success.main}
+        borderBottom={"8px solid black"}
+        fontWeight={600}
+        paddingRight={8}
+        variant="h1"
+      >
+        {maintext}
+      </Typography>
+    </Stack>
+  );
+};
 
 export default HeroTitle;

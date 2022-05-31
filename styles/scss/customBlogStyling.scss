@@ -1,44 +1,52 @@
 @import "variables.scss";
 
 .customMarkdownStying {
-	line-height: 1.6em;
+  line-height: 1.6em;
 
-	.kg-card + .kg-callout { // Call to Action Cards
-		width: calc(100% - 4vw);
-		padding: 2vw;
-		&.kg-callout-card-green { // Green card
-			background-color: lighten($primary, 30%);
-		}
-	}
+  .kg-card + .kg-callout {
+    // Call to Action Cards
+    width: calc(100% - 4vw);
+    padding: 2vw;
+    &.kg-callout-card-green {
+      // Green card
+      background-color: lighten($primary, 30%);
+    }
+  }
 
-	a { // All links
-		&, &:visited { // Visited or not
-			color: $primary;
-			text-decoration: none;
-		}
-	}
+  a {
+    // All links
+    &,
+    &:visited {
+      // Visited or not
+      color: $primary;
+      text-decoration: none;
+    }
+  }
 
-	figure { // Figure captions
-		margin: 0; // Disable user agent margins
-		overflow: hidden; // Prevents next images from going out of bounds
-	}
+  figure {
+    // Figure captions
+    margin: 0; // Disable user agent margins
+    overflow: hidden; // Prevents next images from going out of bounds
+  }
 
-	h2 {
-		margin-block-start: 2vh;
-	}
+  h2 {
+    margin-block-start: 2vh;
+  }
 
-	h3 {
-		margin-block-start: 2vh;
-	}
+  h3 {
+    margin-block-start: 2vh;
+  }
 
-	iframe {
-		max-width: 100%;
+  iframe {
+    max-width: 100%;
 
-		&[src^="https://www.youtube.com"] { // Is a YouTube embed
-			aspect-ratio: 16 / 9;
-			max-height: 480px;
-			min-height: 360px;
-			width: 720px;
-		}
-	}
+    &[src^="https://www.youtube.com"]
+    {
+      // Is a YouTube embed
+      aspect-ratio: 16 / 9;
+      max-height: 480px;
+      min-height: 360px;
+      width: 720px;
+    }
+  }
 }

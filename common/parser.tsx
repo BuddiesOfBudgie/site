@@ -9,43 +9,39 @@ import parse, { Element, HTMLReactParserOptions, attributesToProps, domToReact }
 // Our Components
 import { LightboxImage } from "../components/LightboxImage";
 
-const Parser = (html : string) : ReturnType<typeof domToReact> => {
-	const options : HTMLReactParserOptions = {
-		replace: (domNode) => {
-			if (domNode.type === "comment") { // Is a comment
-				return <></>; // Filter it out
-			}
+const Parser = (html: string): ReturnType<typeof domToReact> => {
+  const options: HTMLReactParserOptions = {
+    replace: (domNode) => {
+      if (domNode.type === "comment") {
+        // Is a comment
+        return <></>; // Filter it out
+      }
 
-			if (!(domNode instanceof Element)) {
-				return;
-			}
+      if (!(domNode instanceof Element)) {
+        return;
+      }
 
-			const attribs = domNode.attribs;
+      const attribs = domNode.attribs;
 
-			if (domNode.name == "img") { // Is an image, replace with our LightboxImage
-				const src = attribs.src as string;
+      if (domNode.name == "img") {
+        // Is an image, replace with our LightboxImage
+        const src = attribs.src as string;
 
-				let height : number = Number(attribs.height);
-				let width : number = Number(attribs.width);
+        let height: number = Number(attribs.height);
+        let width: number = Number(attribs.width);
 
-				if (!height || !width || isNaN(height) || isNaN(width)) {
-					return;
-				}
+        if (!height || !width || isNaN(height) || isNaN(width)) {
+          return;
+        }
 
-				return <LightboxImage
-					altImageText={attribs.alt}
-					height={height}
-					image={src}
-					width={width}
-				/>
-			}
+        return <LightboxImage altImageText={attribs.alt} height={height} image={src} width={width} />;
+      }
 
-			return;
-		},
-		
-	};
+      return;
+    },
+  };
 
-	return parse(html, options);
-}
+  return parse(html, options);
+};
 
 export default Parser;

@@ -15,41 +15,35 @@ import Typography from "@mui/material/Typography";
 import Laptop from "../../public/images/laptop.png";
 
 const HeroBannerStyle = () => ({
-	backgroundBlendMode: "darken",
-	background: `rgba(0, 0, 0, 0.5) url(/images/hero-forest.svg)`,
-	backgroundSize: "cover",
-	borderRadius: 15,
-})
-
-const LaptopImageStyle = styled(Image)({
-	maxWidth: "50%"
+  backgroundBlendMode: "darken",
+  background: `rgba(0, 0, 0, 0.5) url(/images/hero-forest.svg)`,
+  backgroundSize: "cover",
+  borderRadius: 15,
 });
 
-export const HeroBanner : React.FC = () => {
-	const theme = useTheme();
+const LaptopImageStyle = styled(Image)({
+  maxWidth: "50%",
+});
 
-	return (
-		<Stack
-			alignItems="center"
-			justifyContent="center"
-			paddingY="2vh"
-			spacing={6}
-			sx={HeroBannerStyle}
-		>
-			<Box sx={{ maxWidth: "50%"}}><Image src={Laptop} alt="Laptop" /></Box>
-			<Typography
-				align="center"
-				sx={{
-					color: "primary.light",
-					fontWeight: 500,
-					textAlign: {
-						
-					}
-				}}
-				variant="h4"
-			>
-				Budgie is a luxurious home computing experience.
-			</Typography>
-		</Stack>
-	);
-}
+export const HeroBanner: React.FC = () => {
+  const theme = useTheme();
+
+  return (
+    <Stack alignItems="center" justifyContent="center" paddingY="2vh" spacing={6} sx={HeroBannerStyle}>
+      <Box sx={{ maxWidth: "50%" }}>
+        <Image src={Laptop} alt="Laptop" />
+      </Box>
+      <Typography
+        align="center"
+        sx={{
+          color: "primary.light",
+          fontWeight: 500,
+          textAlign: {},
+        }}
+        variant="h4"
+      >
+        Budgie is a luxurious home computing experience.
+      </Typography>
+    </Stack>
+  );
+};
