@@ -31,7 +31,7 @@ export const AuthorshipInfo : React.FC<AuthorshipInfoParams> = (props) => {
 				<Image
 					alt={author.name}
 					height={60}
-					src={author.profile_image }
+					src={author.profile_image}
 					style={{borderRadius: "50%"}}
 					width={60}
 				/>

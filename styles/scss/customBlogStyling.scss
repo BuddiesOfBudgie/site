@@ -20,6 +20,7 @@
 
 	figure { // Figure captions
 		margin: 0; // Disable user agent margins
+		overflow: hidden; // Prevents next images from going out of bounds
 	}
 
 	h2 {

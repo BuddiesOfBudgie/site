@@ -42,7 +42,7 @@ export const FeaturedBlog : React.FC<FeaturedBlogProps> = (props: FeaturedBlogPr
 				[SiteTheme.breakpoints.up("lg")]: "row"
 			}}>
 				{ typeof p.feature_image === "string" &&
-					<Image className="featuredBlogImage" src={p.feature_image} />
+					<Image alt={p.feature_image_alt || ""} className="featuredBlogImage" src={p.feature_image} />
 				}
 				<Stack direction="column">
 					<Link href={`/blog/ ${encodeURIComponent(p.slug)}`}>

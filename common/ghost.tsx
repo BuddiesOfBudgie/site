@@ -65,11 +65,7 @@ export const GetPostTitle = (post : PostOrPage) : string => {
  * @returns Tag
  * @throws Error
  */
-export const GetTag = async (tag : string) : Promise<Error | Tag> => {
-	try {
-		const readTag = await ourAPI.tags.read({ slug: tag });
-		return readTag;
-	} catch (e) {
-		return e;
-	}
+export const GetTag = async (tag : string) : Promise<Tag> => {
+	const readTag = await ourAPI.tags.read({ slug: tag });
+	return readTag;
 }

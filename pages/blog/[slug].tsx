@@ -79,7 +79,7 @@ export const getStaticPaths: GetStaticPaths = async() => {
 	const slugs = allPosts.map(({ slug }) => ({ params: { slug } }));
 	return {
 		paths: slugs,
-		fallback: true
+		fallback: false
 	};
 };
 
@@ -87,7 +87,6 @@ export const getStaticPaths: GetStaticPaths = async() => {
 export const getStaticProps : GetStaticProps = async (context) => {
 	const { slug } = context.params as BlogSlugParams;
 	const props = await GetPostBySlug(slug); // Get the post for this slug
-
 	return { props };
 }
 

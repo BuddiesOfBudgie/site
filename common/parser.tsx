@@ -11,9 +11,13 @@ import { LightboxImage } from "../components/LightboxImage";
 
 const Parser = (html : string) : ReturnType<typeof domToReact> => {
 	const options : HTMLReactParserOptions = {
-		replace: (domNode : Element) => {
+		replace: (domNode) => {
 			if (domNode.type === "comment") { // Is a comment
 				return <></>; // Filter it out
+			}
+
+			if (!(domNode instanceof Element)) {
+				return;
 			}
 
 			const attribs = domNode.attribs;
