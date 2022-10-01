@@ -1,5 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+.turbo
+
+# build
+build/**
+dist/**
+**/.next/**
+
 # IaC
 infra/secrets.yaml
 .terraform*
@@ -7,7 +14,7 @@ plan*.out
 terraform.tfstate*
 
 # dependencies
-/node_modules
+**/node_modules
 /.pnp
 .pnp.*
 .yarn
@@ -16,7 +23,6 @@ terraform.tfstate*
 /coverage
 
 # next.js
-/.next/
 /out/
 
 # production
