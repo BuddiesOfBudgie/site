@@ -1,0 +1,10 @@
+{
+  "name": "@buddiesofbudgie/types",
+  "version": "1.0.0",
+  "description": "Shared Types",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "devDependencies": {
+    "typescript": "latest'"
+  }
+}

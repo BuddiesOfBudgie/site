@@ -1,9 +1,18 @@
-import type { AppProps } from "next/app";
+import { AppProps } from "next/app";
+import { AbstractIntlMessages, NextIntlProvider } from "next-intl";
 
 import "../styles/scss/main.scss";
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
-}
+type Props = AppProps & {
+  pageProps: { messages: AbstractIntlMessages };
+};
 
-export default MyApp;
+const App = ({ Component, pageProps }: Props) => {
+  return (
+    <NextIntlProvider messages={pageProps.messages}>
+      <Component {...pageProps} />
+    </NextIntlProvider>
+  );
+};
+
+export default App;

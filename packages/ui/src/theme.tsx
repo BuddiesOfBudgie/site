@@ -27,6 +27,7 @@ declare module "@mui/material/styles" {
     greyish: string;
     lightgrey: string;
     purple: string;
+    white: string;
   }
 }
 
@@ -64,6 +65,10 @@ const Theme = createTheme({
       greyish: "#666666",
       lightgrey: "#eeeeee",
       purple: "#9f7beb",
+      white: "#ffffff",
+    },
+    secondary: {
+      main: "#ffffff",
     },
     success: {
       main: "#6BCA81",

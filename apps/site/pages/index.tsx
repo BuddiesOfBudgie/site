@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import { CustomMetaProps } from "../components/CustomMeta";
 
 // Material UI Bits
@@ -140,5 +140,11 @@ const Home: NextPage = () => {
     </PageBase>
   );
 };
+
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => ({
+  props: {
+    messages: (await import(`../messages/${locale}.json`)).default,
+  },
+});
 
 export default Home;

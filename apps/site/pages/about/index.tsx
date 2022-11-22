@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
-import { CustomMetaProps } from "../components/CustomMeta";
-import { Teams } from "../data/teams";
-import { StackDirectionColumnToRow } from "../common/vars";
+import { CustomMetaProps } from "../../components/CustomMeta";
+import { Teams } from "../../data/teams";
+import { StackDirectionColumnToRow } from "../../common/vars";
 
 // Material UI Bits
 import { Typography } from "@mui/material";
@@ -10,16 +10,16 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 
 // Our components
-import HeroTitle from "../components/about/HeroTitle";
-import PageBase from "../components/PageBase";
-import Team from "../components/about/Team";
-import ValuesBanner from "../components/about/ValuesBanner";
+import HeroTitle from "../../components/about/HeroTitle";
+import PageBase from "../../components/PageBase";
+import Team from "../../components/about/Team";
+import ValuesBanner from "../../components/about/ValuesBanner";
 
 // Images
-import { GitHub, Matrix } from "../components/Vectors";
-import Independent from "../public/images/about/independence.jpg";
-import Transparency from "../public/images/about/transparency.jpg";
-import UserCentricImage from "../public/images/about/user-centric.jpg";
+import { GitHub, Matrix } from "../../components/Vectors";
+import Independent from "../../public/images/about/independence.jpg";
+import Transparency from "../../public/images/about/transparency.jpg";
+import UserCentricImage from "../../public/images/about/user-centric.jpg";
 import { Button, SiteTheme } from "@buddiesofbudgie/ui";
 
 export const meta: CustomMetaProps = {

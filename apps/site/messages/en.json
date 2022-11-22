@@ -1,0 +1,29 @@
+{
+  "Budgie10RoadmapDescription": "Budgie 10 is our current “major” release of Budgie Desktop. This major release consists of “minor” series releases that have a mix of new features, bug fixes, and architectural improvements. Although Budgie Desktop 10 is not “based” on any other desktop experience, it is built on top of many libraries and projects from the GNOME Foundation, such as the GTK 3.x graphical toolkit, Mutter window manager, GNOME Settings Daemon, and more.",
+  "MilestoneTypes": {
+    "CURRENT": "Current",
+    "UPCOMING": "Upcoming",
+    "FUTURE": "Future"
+  },
+  "ReleaseTypes": {
+    "BUG_FIX": "Bug Fix Release Series",
+    "LATEST_FEATURE": "Latest Feature Release",
+    "MAJOR_RELEASE": "Major Release Series",
+    "UPCOMING_FEATURE": "Feature Release Series"
+  },
+  "Roadmap": "Roadmap",
+  "RoadmapDescriptions": "This page contains our roadmap and current state of the various areas of our organization, technical or otherwise.\nOur roadmap will evolve alongside our organization, community, and software. This page is partially generated based on information from our Github.",
+  "RoadmapItemStatus": {
+    "UNKNOWN": "Unknown",
+    "PROPOSAL_RFC": "Proposal RFC",
+    "ACCEPTED_RFC": "Accepted RFC",
+    "TODO": "Todo",
+    "IN_PROGRESS": "In Progress",
+    "DONE": "Done"
+  },
+  "RoadmapItemType": {
+    "DRAFT_ISSUE": "Milestone Issue #{num}",
+    "ISSUE": "Issue #{num}",
+    "PULL_REQUEST": "Pull Request #{num}"
+  }
+}

@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/BuddiesOfBudgie/site#readme",
   "workspaces": [
-    "packages/*",
+    "packages/types",
+    "packages/ui",
+    "packages/utils",
     "apps/*"
   ],
   "devDependencies": {

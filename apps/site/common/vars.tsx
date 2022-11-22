@@ -23,3 +23,5 @@ export const StackDirectionColumnToRow: StackDirectionMap = {
   subfullhd: "row",
   fullhd: "row",
 };
+
+export const SHOW_ONLY_B10 = true;
