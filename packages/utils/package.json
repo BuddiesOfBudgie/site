@@ -10,6 +10,6 @@
     "graphql": "^16.6.0"
   },
   "devDependencies": {
-    "typescript": "latest'"
+    "typescript": "^4.9.3"
   }
 }
