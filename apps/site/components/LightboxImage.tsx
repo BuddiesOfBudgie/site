@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import Image, { StaticImageData } from "next/future/image";
+import Image, { StaticImageData } from "next/image";
 
 // Material UI Goodies
 import { SxProps, Theme, useTheme } from "@mui/material";
@@ -12,26 +12,25 @@ import Box from "@mui/material/Box";
 
 export type LightboxImageProps = {
   altImageText: string;
-  height: string | number;
+  height: number;
   image: StaticImageData | string;
   sx?: SxProps<Theme>;
-  width: string | number;
+  width: number;
 };
 
 export const LightboxImage: React.FC<LightboxImageProps> = (props) => {
   const theme = useTheme();
   const [showImageFull, setShowImageFull] = React.useState(false);
   const { altImageText, height, image, sx = {}, width } = props;
-  const widthAsNum: number = typeof width === "string" ? Number(width.replaceAll("px", "")) : width;
 
   const boxStyling = {
     ...sx,
     width,
-    [theme.breakpoints.down(widthAsNum)]: {
+    [theme.breakpoints.down(width)]: {
       maxHeight: "fit-content",
       maxWidth: "100%",
     },
-    [theme.breakpoints.between(widthAsNum, "fullhd")]: {
+    [theme.breakpoints.between(width, "fullhd")]: {
       maxHeight: height,
     },
     [theme.breakpoints.up("fullhd")]: {

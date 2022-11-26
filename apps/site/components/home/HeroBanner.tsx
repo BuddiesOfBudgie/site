@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import Image from "next/future/image";
+import Image from "next/image";
 
 // Material UI Goodies
 import Box from "@mui/material/Box";

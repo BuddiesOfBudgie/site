@@ -5,7 +5,7 @@
 import { DateTime } from "luxon";
 
 import { Author, PostOrPage } from "@tryghost/content-api";
-import Image from "next/future/image";
+import Image from "next/image";
 
 // Material UI
 import Stack from "@mui/material/Stack";

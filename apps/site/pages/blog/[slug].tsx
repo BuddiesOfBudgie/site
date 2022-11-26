@@ -1,7 +1,7 @@
 import { GetAllPosts, GetPostBySlug, GetPostTitle } from "../../common/ghost";
 import { ParsedUrlQuery } from "querystring";
 import { PostOrPage } from "@tryghost/content-api";
-import Image from "next/future/image";
+import Image from "next/image";
 import { GetStaticProps, GetStaticPaths } from "next/types";
 import { CustomMetaProps } from "../../components/CustomMeta";
 import Parser from "../../common/parser";

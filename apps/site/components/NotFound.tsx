@@ -2,7 +2,7 @@
  * This is our simple "Not Found" 404 message box
  */
 
-import Image from "next/future/image";
+import Image from "next/image";
 
 // Material UI Components
 import Paper from "@mui/material/Paper";

@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import { GetPostTitle } from "../../common/ghost";
 import { AuthorshipInfo } from "./AuthorshipInfo";
 import { TagStrip } from "./TagStrip";
+import { SiteTheme } from "@buddiesofbudgie/ui";
 
 type BlogListingPostInfoParams = {
   condensed?: boolean;
@@ -74,7 +75,15 @@ const BlogListingPostInfo: React.FC<BlogListingPostInfoParams> = (props) => {
       )}
       <Stack direction="column" spacing={2}>
         {post.tags && <TagStrip tags={post.tags} />}
-        <Link href={`/blog/${encodeURIComponent(post.slug)}`} prefetch={false}>
+        <Link
+          href={`/blog/${encodeURIComponent(post.slug)}`}
+          prefetch={false}
+          style={{
+            color: SiteTheme.palette.primary.dark,
+            display: "inline-flex",
+            textDecoration: "none",
+          }}
+        >
           <Typography
             sx={{
               cursor: "pointer",

@@ -28,7 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "eslint": "^8.28.0",
-    "eslint-config-next": "^12.3.4",
+    "eslint-config-next": "^13.0.5",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.2",
     "lint-staged": "^13.0.4",
@@ -39,5 +39,9 @@
     "*.js": "eslint --cache --fix",
     "*.{js,css,md}": "prettier --write"
   },
-  "packageManager": "yarn@3.3.0"
+  "packageManager": "yarn@3.3.0",
+  "dependencies": {
+    "@buddiesofbudgie/site": "workspace:^",
+    "@next/font": "^13.0.5"
+  }
 }

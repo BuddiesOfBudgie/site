@@ -57,7 +57,7 @@ export const ImageBanner: React.FC<ImageBannerProps> = (props) => {
     >
       <LightboxImage
         altImageText={altImageText}
-        height={height ?? "600px"}
+        height={height ?? 600}
         image={image}
         sx={lightboxCustomSx}
         width={width}

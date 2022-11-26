@@ -16,7 +16,7 @@ import PageBase from "../components/PageBase";
 // Images
 import BudgieMenuImage from "../public/images/budgie-menu.png";
 import RavenImage from "../public/images/raven.jpg";
-import { StaticImageData } from "next/future/image";
+import { StaticImageData } from "next/image";
 
 type HomepageImageBannerContent = {
   AltImageText: string;

@@ -8,7 +8,7 @@ import { PostOrPage } from "@tryghost/content-api";
 // Material UI Bits
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";

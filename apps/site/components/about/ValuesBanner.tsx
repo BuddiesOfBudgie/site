@@ -1,6 +1,6 @@
 // This file contains our values banner component for the About page
 
-import { StaticImageData } from "next/future/image";
+import { StaticImageData } from "next/image";
 
 // Material UI Bits
 import { Typography, useTheme } from "@mui/material";
@@ -22,10 +22,10 @@ const ValuesBanner = ({ description, image, value }: ValuesBannerProps) => {
     <ImageBanner
       altImageText={value}
       direction="row"
-      height="600px"
+      height={600}
       image={image}
       justifyContent="space-between"
-      width="900px"
+      width={900}
     >
       <Stack
         marginLeft={{

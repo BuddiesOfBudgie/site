@@ -9,7 +9,6 @@ import { Avatar, SiteTheme } from "@buddiesofbudgie/ui";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import Color from "color";
-import LinkIcon from "@mui/icons-material/Link";
 import { GoIssueOpened } from "react-icons/go";
 import { TbGitPullRequest, TbFlag } from "react-icons/tb";
 
@@ -42,30 +41,29 @@ export const RoadmapItem = ({ item }: RoadmapItemProps) => {
             {t(`RoadmapItemType.${type}`, { num })}
           </Typography>
         </Stack>
-        <Link href={url} passHref>
-          <a
-            target="_blank"
-            style={{
-              color: SiteTheme.palette.primary.dark,
-              display: "inline-flex",
-              textDecoration: "underline",
-              textDecorationColor: SiteTheme.palette.success.main,
-              textDecorationThickness: 3,
+        <Link
+          href={url}
+          style={{
+            color: SiteTheme.palette.primary.dark,
+            display: "inline-flex",
+            textDecoration: "underline",
+            textDecorationColor: SiteTheme.palette.success.main,
+            textDecorationThickness: 3,
+          }}
+          target="_blank"
+        >
+          <Typography
+            fontWeight="bold"
+            minHeight="3rem"
+            sx={{
+              cursor: "pointer",
+              lineHeight: "1.5rem",
+              lineClamp: 2,
             }}
+            variant="h6"
           >
-            <Typography
-              fontWeight="bold"
-              minHeight="3rem"
-              sx={{
-                cursor: "pointer",
-                lineHeight: "1.5rem",
-                lineClamp: 2,
-              }}
-              variant="h6"
-            >
-              {title}
-            </Typography>
-          </a>
+            {title}
+          </Typography>
         </Link>
         {labels.length > 0 && (
           <Stack direction="row" gap={1}>
@@ -86,18 +84,16 @@ export const RoadmapItem = ({ item }: RoadmapItemProps) => {
           </Stack>
         )}
         {assignee && (
-          <Link key={`${key}-Assignee-Link`} href={assignee.url} passHref>
-            <a target={assignee.url ? "_blank" : "_self"}>
-              <Avatar
-                alt={assignee.name || ""}
-                showTooltip
-                size={60}
-                src={assignee.avatarUrl}
-                sx={{
-                  border: `4px solid ${SiteTheme.palette.misc.lightgrey}`,
-                }}
-              />
-            </a>
+          <Link href={assignee.url} key={`${key}-Assignee-Link`} target={assignee.url ? "_blank" : "_self"}>
+            <Avatar
+              alt={assignee.name || ""}
+              showTooltip
+              size={60}
+              src={assignee.avatarUrl}
+              sx={{
+                border: `4px solid ${SiteTheme.palette.misc.lightgrey}`,
+              }}
+            />
           </Link>
         )}
       </Stack>
