@@ -11,9 +11,9 @@
   "author": "BuddiesOfBudgie",
   "license": "Apache-2.0",
   "dependencies": {
+    "@apollo/server": "^4.2.1",
     "@octokit/graphql": "^5.0.4",
     "@octokit/graphql-schema": "^12.31.0",
-    "apollo-server": "^3.11.1",
     "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
     "lodash": "^4.17.21",
