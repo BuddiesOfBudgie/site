@@ -9,7 +9,10 @@ declare global {
 
 export interface NexusGenInputs {}
 
-export interface NexusGenEnums {}
+export interface NexusGenEnums {
+  ProjectItemStatus: "ACCEPTED_RFC" | "DONE" | "IN_PROGRESS" | "PROPOSAL_RFC" | "TODO" | "UNKNOWN";
+  ProjectType: "DRAFT_ISSUE" | "ISSUE" | "PULL_REQUEST" | "REDACTED";
+}
 
 export interface NexusGenScalars {
   String: string;
@@ -30,15 +33,21 @@ export interface NexusGenObjects {
     // root type
     closed: boolean; // Boolean!
     closedAt?: string | null; // String
-    description: string; // String!
+    description?: string | null; // String
     title: string; // String!
     url: string; // String!
-    version?: string | null; // String
+    version: string; // String!
   };
   Milestones: {
     // root type
     milestones: Array<NexusGenRootTypes["Milestone"] | null>; // [Milestone]!
-    summary: NexusGenRootTypes["Summary"]; // Summary!
+    summary: NexusGenRootTypes["MilestonesSummary"]; // MilestonesSummary!
+  };
+  MilestonesSummary: {
+    // root type
+    current: string; // String!
+    future?: string | null; // String
+    upcoming?: string | null; // String
   };
   Project: {
     // root type
@@ -58,8 +67,8 @@ export interface NexusGenObjects {
     content?: NexusGenRootTypes["ProjectContent"] | null; // ProjectContent
     isArchived: boolean; // Boolean!
     labels: Array<NexusGenRootTypes["ProjectItemLabel"] | null>; // [ProjectItemLabel]!
-    status: string; // String!
-    type: string; // String!
+    status: NexusGenEnums["ProjectItemStatus"]; // ProjectItemStatus!
+    type: NexusGenEnums["ProjectType"]; // ProjectType!
   };
   ProjectItemLabel: {
     // root type
@@ -67,12 +76,6 @@ export interface NexusGenObjects {
     name: string; // String!
   };
   Query: {};
-  Summary: {
-    // root type
-    current?: string | null; // String
-    future?: string | null; // String
-    upcoming?: string | null; // String
-  };
 }
 
 export interface NexusGenInterfaces {}
@@ -81,7 +84,7 @@ export interface NexusGenUnions {}
 
 export type NexusGenRootTypes = NexusGenObjects;
 
-export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars;
+export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums;
 
 export interface NexusGenFieldTypes {
   Assignee: {
@@ -94,15 +97,21 @@ export interface NexusGenFieldTypes {
     // field return type
     closed: boolean; // Boolean!
     closedAt: string | null; // String
-    description: string; // String!
+    description: string | null; // String
     title: string; // String!
     url: string; // String!
-    version: string | null; // String
+    version: string; // String!
   };
   Milestones: {
     // field return type
     milestones: Array<NexusGenRootTypes["Milestone"] | null>; // [Milestone]!
-    summary: NexusGenRootTypes["Summary"]; // Summary!
+    summary: NexusGenRootTypes["MilestonesSummary"]; // MilestonesSummary!
+  };
+  MilestonesSummary: {
+    // field return type
+    current: string; // String!
+    future: string | null; // String
+    upcoming: string | null; // String
   };
   Project: {
     // field return type
@@ -122,8 +131,8 @@ export interface NexusGenFieldTypes {
     content: NexusGenRootTypes["ProjectContent"] | null; // ProjectContent
     isArchived: boolean; // Boolean!
     labels: Array<NexusGenRootTypes["ProjectItemLabel"] | null>; // [ProjectItemLabel]!
-    status: string; // String!
-    type: string; // String!
+    status: NexusGenEnums["ProjectItemStatus"]; // ProjectItemStatus!
+    type: NexusGenEnums["ProjectType"]; // ProjectType!
   };
   ProjectItemLabel: {
     // field return type
@@ -134,12 +143,6 @@ export interface NexusGenFieldTypes {
     // field return type
     Milestones: NexusGenRootTypes["Milestones"] | null; // Milestones
     Projects: Array<NexusGenRootTypes["Project"] | null> | null; // [Project]
-  };
-  Summary: {
-    // field return type
-    current: string | null; // String
-    future: string | null; // String
-    upcoming: string | null; // String
   };
 }
 
@@ -162,7 +165,13 @@ export interface NexusGenFieldTypeNames {
   Milestones: {
     // field return type name
     milestones: "Milestone";
-    summary: "Summary";
+    summary: "MilestonesSummary";
+  };
+  MilestonesSummary: {
+    // field return type name
+    current: "String";
+    future: "String";
+    upcoming: "String";
   };
   Project: {
     // field return type name
@@ -182,8 +191,8 @@ export interface NexusGenFieldTypeNames {
     content: "ProjectContent";
     isArchived: "Boolean";
     labels: "ProjectItemLabel";
-    status: "String";
-    type: "String";
+    status: "ProjectItemStatus";
+    type: "ProjectType";
   };
   ProjectItemLabel: {
     // field return type name
@@ -194,12 +203,6 @@ export interface NexusGenFieldTypeNames {
     // field return type name
     Milestones: "Milestones";
     Projects: "Project";
-  };
-  Summary: {
-    // field return type name
-    current: "String";
-    future: "String";
-    upcoming: "String";
   };
 }
 
@@ -213,7 +216,7 @@ export type NexusGenObjectNames = keyof NexusGenObjects;
 
 export type NexusGenInputNames = never;
 
-export type NexusGenEnumNames = never;
+export type NexusGenEnumNames = keyof NexusGenEnums;
 
 export type NexusGenInterfaceNames = never;
 

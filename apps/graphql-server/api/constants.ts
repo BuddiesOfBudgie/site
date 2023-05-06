@@ -1,1 +1,0 @@
-export const FALLBACK_BUDGIE_VERSION = "10.6.4";
