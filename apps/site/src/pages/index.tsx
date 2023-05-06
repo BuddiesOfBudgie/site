@@ -13,8 +13,8 @@ import { AutoCenteredOnSmall } from "../components/ImageBanner";
 import { PersonalizeBanner } from "../components/home/PersonalizeBanner";
 import PageBase from "../components/PageBase";
 
-import BudgieMenuImage from "../public/images/BudgieMenu.png";
-import RavenImage from "../public/images/Raven-WidgetView.jpg";
+import BudgieMenuImage from "../../public/images/BudgieMenu.png";
+import RavenImage from "../../public/images/Raven-WidgetView.jpg";
 
 import { StaticImageData } from "next/image";
 import { useTranslations } from "next-intl";

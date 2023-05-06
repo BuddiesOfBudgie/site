@@ -334,7 +334,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@buddiesofbudgie/server@*, @buddiesofbudgie/server@workspace:apps/server":
+"@buddiesofbudgie/server@workspace:^, @buddiesofbudgie/server@workspace:apps/server":
   version: 0.0.0-use.local
   resolution: "@buddiesofbudgie/server@workspace:apps/server"
   dependencies:
@@ -343,7 +343,6 @@ __metadata:
     "@octokit/graphql-schema": ^12.41.1
     "@types/lodash": ^4.14.194
     "@types/semver": ^7.3.13
-    dotenv: ^16.0.3
     esbuild: ^0.17.18
     graphql: ^16.6.0
     lodash: ^4.17.21
@@ -359,9 +358,8 @@ __metadata:
   resolution: "@buddiesofbudgie/site@workspace:apps/site"
   dependencies:
     "@apollo/client": ^3.7.14
-    "@buddiesofbudgie/server": "*"
+    "@buddiesofbudgie/server": "workspace:^"
     "@buddiesofbudgie/ui": "*"
-    "@buddiesofbudgie/utils": "*"
     "@emotion/react": ^11.11.0
     "@emotion/styled": ^11.11.0
     "@mdx-js/loader": ^2.3.0
@@ -413,16 +411,6 @@ __metadata:
     "@mui/styled-engine": ^5.12.3
     react: ^18.2.0
     react-dom: ^18.2.0
-    typescript: ^5.0.4
-  languageName: unknown
-  linkType: soft
-
-"@buddiesofbudgie/utils@*, @buddiesofbudgie/utils@workspace:packages/utils":
-  version: 0.0.0-use.local
-  resolution: "@buddiesofbudgie/utils@workspace:packages/utils"
-  dependencies:
-    "@apollo/client": ^3.7.14
-    graphql: ^16.6.0
     typescript: ^5.0.4
   languageName: unknown
   linkType: soft
@@ -3213,13 +3201,6 @@ __metadata:
     domelementtype: ^2.3.0
     domhandler: ^5.0.1
   checksum: 23aa7a840572d395220e173cb6263b0d028596e3950100520870a125af33ff819e6f609e1606d6f7d73bd9e7feb03bb404286e57a39063b5384c62b724d987b3
-  languageName: node
-  linkType: hard
-
-"dotenv@npm:^16.0.3":
-  version: 16.0.3
-  resolution: "dotenv@npm:16.0.3"
-  checksum: afcf03f373d7a6d62c7e9afea6328e62851d627a4e73f2e12d0a8deae1cd375892004f3021883f8aec85932cd2834b091f568ced92b4774625b321db83b827f8
   languageName: node
   linkType: hard
 

@@ -10,7 +10,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 // Images
-import Laptop from "../../public/images/laptop.png";
+import Laptop from "../../../public/images/laptop.png";
 import { useTranslations } from "next-intl";
 import { Button } from "@buddiesofbudgie/ui";
 import { Uris } from "../../constants";

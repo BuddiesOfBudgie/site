@@ -10,7 +10,7 @@ import Stack from "@mui/material/Stack";
 import { Typography } from "@mui/material";
 
 // Assets
-import ThrowAwayComputer from "../public/images/throw-away-computer.gif";
+import ThrowAwayComputer from "../../public/images/throw-away-computer.gif";
 
 const NotFound = () => {
   return (

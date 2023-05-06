@@ -1,7 +1,7 @@
-import { client } from "@buddiesofbudgie/utils";
 import { gql } from "@apollo/client";
 
 import type { Milestones } from "@buddiesofbudgie/server";
+import { client } from "./client";
 
 export const getMilestones = async (): Promise<Milestones> => {
   const {

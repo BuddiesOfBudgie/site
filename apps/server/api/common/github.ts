@@ -1,8 +1,3 @@
-import * as dotenv from "dotenv";
-import { join } from "path";
-const rootPath = join(__dirname, "..", "..", "..", "..", ".env");
-dotenv.config({ path: rootPath });
-
 import { graphql } from "@octokit/graphql";
 import { Milestone, Organization, ProjectV2 } from "@octokit/graphql-schema";
 import { compact, toArray } from "lodash";

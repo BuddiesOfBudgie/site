@@ -21,9 +21,9 @@ import Typography from "@mui/material/Typography";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 
 // Personalize Images
-import MacLike from "../../public/images/personalize/macLike.jpg";
-import Traditional from "../../public/images/personalize/traditional.jpg";
-import UnityLike from "../../public/images/personalize/unityLike.jpg";
+import MacLike from "../../../public/images/personalize/macLike.jpg";
+import Traditional from "../../../public/images/personalize/traditional.jpg";
+import UnityLike from "../../../public/images/personalize/unityLike.jpg";
 import { useTranslations } from "next-intl";
 
 interface ImageInfo {

@@ -20,10 +20,10 @@ export type PersonSocial = {
 };
 
 // Avatars
-import AvatarCampbellJones from "../public/images/avatars/CampbellJones.png";
-import AvatarDavidMohammed from "../public/images/avatars/DavidMohammed.png";
-import AvatarEvanMaddock from "../public/images/avatars/EvanMaddock.png";
-import AvatarJoshuaStrobl from "../public/images/avatars/JoshuaStrobl.jpg";
+import AvatarCampbellJones from "../../public/images/avatars/CampbellJones.png";
+import AvatarDavidMohammed from "../../public/images/avatars/DavidMohammed.png";
+import AvatarEvanMaddock from "../../public/images/avatars/EvanMaddock.png";
+import AvatarJoshuaStrobl from "../../public/images/avatars/JoshuaStrobl.jpg";
 
 // People
 export const People: Record<string, Person> = {

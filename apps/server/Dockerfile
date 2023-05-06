@@ -18,9 +18,6 @@ FROM base AS runner
 WORKDIR /app
 COPY --from=builder /app/apps/server/dist /app/apps/server/*.graphql ./dist/
 COPY --from=builder /app/apps/server/package.json ./package.json
-RUN ls
-RUN ls /app/
-RUN ls /app/dist/
 
 ENV PORT 4000
 # This is off to allow for instrospection.
