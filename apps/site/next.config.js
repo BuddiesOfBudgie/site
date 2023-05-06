@@ -3,6 +3,9 @@ const withTM = require("next-transpile-modules")(["@buddiesofbudgie/ui"]);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    outputFileTracingRoot: path.join(__dirname, "../../"),
+  },
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
@@ -12,6 +15,7 @@ const nextConfig = {
     domains: ["avatars.githubusercontent.com", "blog.buddiesofbudgie.org"],
   },
   optimizeFonts: false, // Breaks Google Web Font loading
+  output: "standalone",
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"], // Append the default value with md extensions
   reactStrictMode: true,
   sassOptions: {
