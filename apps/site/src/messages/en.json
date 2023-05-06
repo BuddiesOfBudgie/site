@@ -1,0 +1,83 @@
+{
+  "About": {
+    "Generic": "About",
+    "FoundedText": "Buddies of Budgie was founded to provide a home for the Budgie Desktop, an open source modern desktop environment built to provide you immediate access to the things you need.",
+    "Roadmap": "Roadmap",
+    "Organization": "Organization",
+    "Values": {
+      "Generic": "Our values are central to our decision-making and how we collaborate, communicate, design and work. These values were shaped by our community from the start to ensure a diverse, healthy, and welcoming community.",
+      "Independence": {
+        "Description": "Independence is a crucial value to how we operate as an organization. All organizations and projects are equal stakeholders in the future of the organization and most importantly, the future of the Budgie Desktop platform. No singular for-profit or non-profit entity has the sole influence over our direction.",
+        "Value": "Independence"
+      },
+      "Transparency": {
+        "Description": "Transparency has been central to how we function from the start. We want to ensure that everyone is able to understand how the organization and Budgie itself works currently and the intended direction going into the future.",
+        "Value": "Transparency"
+      },
+      "UserCentric": {
+        "Description": "Buddies of Budgie and the Budgie desktop itself is built for its users. Users are seen as stakeholders in development and day-to-day operations, with a fundamental part of our consensus model for making changes to the organization and our platform being how do our decisions positively impact the end user’s experience.\nPeople should feel encouraged to get involved directly, promoting fairness in our ways of working.",
+        "Value": "User-centric"
+      }
+    }
+  },
+  "Blog": "Blog",
+  "Budgie10RoadmapDescription": "Budgie 10 is our current “major” release of Budgie Desktop. This major release consists of “minor” series releases that have a mix of new features, bug fixes, and architectural improvements. Although Budgie Desktop 10 is not “based” on any other desktop experience, it is built on top of many libraries and projects from the GNOME Foundation, such as the GTK 3.x graphical toolkit, Mutter window manager, GNOME Settings Daemon, and more.",
+  "Documentation": "Documentation",
+  "Get Budgie": "Get Budgie",
+  "Home": {
+    "ColorBanner": {
+      "Built": {
+        "Button": "Learn More",
+        "Header": "Built By The Community",
+        "Text": "Budgie is built by the community, with volunteers from around the world, all contributing to make Budgie a better experience for everyone! Whether it is design work, software engineering, or translations, it is this community that makes it happen."
+      },
+      "Get": {
+        "Header": "Getting Budgie",
+        "Text": "Budgie is available on a wide variety of operating systems, from Arch Linux to Ubuntu, and everything in between. Try it out today on the flavor of Linux of your choosing."
+      }
+    },
+    "HeroBanner": "Budgie is a luxurious home computing experience.",
+    "Personalize": {
+      "Header": "Make Budgie Your Own",
+      "Description": "With our Budgie Desktop Settings application, you can make Budgie feel like home.Whether you want a dock or multiple panels, you can do it with just a few clicks.",
+      "macOS": "macOS inspired",
+      "Traditional": "Traditional",
+      "Unity": "Unity inspired"
+    },
+    "Tabs": {
+      "MenuHeader": "Launch right into your favorite apps",
+      "MenuTabText": "Application launcher",
+      "MenuText": "Budgie Menu shows you all your installed applications, neatly organized into categories to improve discoverability, and with lightning fast application searching! No more diving into sub-menus to find the app you need.",
+      "RavenHeader": "Control at your fingertips.",
+      "RavenTabText": "Widget & Notification Center",
+      "RavenText": "Raven is an all-in-one center for accessing your calendar, controlling sound output and input (including per-app volume control), media playback and more.\nRaven also enables you to access missed notifications, with the ability to clear away individual notifications, grouped notifications, and all notifications."
+    }
+  },
+  "MilestoneTypes": {
+    "CURRENT": "Current",
+    "UPCOMING": "Upcoming",
+    "FUTURE": "Future"
+  },
+  "ReleaseTypes": {
+    "BUG_FIX": "Bug Fix Release Series",
+    "LATEST_FEATURE": "Latest Feature Release",
+    "MAJOR_RELEASE": "Major Release Series",
+    "UPCOMING_FEATURE": "Feature Release Series"
+  },
+  "Roadmap": "Roadmap",
+  "RoadmapDescriptions": "This page contains our roadmap and current state of the various areas of our organization, technical or otherwise.\nOur roadmap will evolve alongside our organization, community, and software. This page is partially generated based on information from our Github.",
+  "RoadmapItemStatus": {
+    "UNKNOWN": "Unknown",
+    "PROPOSAL_RFC": "Proposal RFC",
+    "ACCEPTED_RFC": "Accepted RFC",
+    "TODO": "Todo",
+    "IN_PROGRESS": "In Progress",
+    "DONE": "Done"
+  },
+  "RoadmapItemType": {
+    "REDACTED": "Withdrawn",
+    "DRAFT_ISSUE": "Milestone Issue #{num}",
+    "ISSUE": "Issue #{num}",
+    "PULL_REQUEST": "Pull Request #{num}"
+  }
+}
