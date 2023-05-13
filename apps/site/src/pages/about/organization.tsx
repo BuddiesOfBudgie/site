@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { CustomMetaProps } from "../../components/CustomMeta";
+import type { CustomMetaProps } from "../../components/CustomMeta";
 import { Teams } from "../../data/teams";
 import { StackDirectionColumnToRow } from "../../common/vars";
 
@@ -19,6 +19,7 @@ import ValuesBanner from "../../components/about/ValuesBanner";
 import { GitHub, Matrix } from "../../components/Vectors";
 import { Button, SiteTheme } from "@buddiesofbudgie/ui";
 import { useTranslations } from "next-intl";
+import NextLink from "../../components/Link";
 
 export const meta: CustomMetaProps = {
   title: "About",
@@ -27,34 +28,34 @@ export const meta: CustomMetaProps = {
 const AboutPageSpacing = 8;
 
 type CollaborateData = {
-  Alt: string;
-  ButtonHref: string;
-  ButtonText?: string;
-  Description: string;
-  Image: JSX.Element;
+  alt: string;
+  buttonHref: string;
+  buttonText?: string;
+  description: string;
+  image: JSX.Element;
 };
-
-const CollaborateInfo: CollaborateData[] = [
-  {
-    Alt: "GitHub",
-    ButtonHref: "https://github.com/BuddiesOfBudgie",
-    ButtonText: "Source Code",
-    Description:
-      "Budgie Desktop and all of our organization’s source code (including this site!) is entirely open source and developed on GitHub. We leverage GitHub for tracking issues and desired improvements in our software or our organization, as well as GitHub’s discussion forums for long-form public discussions.",
-    Image: GitHub(),
-  },
-  {
-    Alt: "Matrix",
-    ButtonHref: "https://matrix.to/#/#buddies-of-budgie:matrix.org",
-    ButtonText: "Join Our Matrix Space",
-    Description:
-      "The vast majority of our collaboration, support, and general discussions happen on our public Matrix Space. Matrix is an open standard for interoperable, decentralised, and real-time communication, with Spaces being a way to group rooms and people together. You can use free, open source software like Element get involved with the project.",
-    Image: Matrix(),
-  },
-];
 
 const About: NextPage = () => {
   const t = useTranslations();
+
+  const collaborateInfo: CollaborateData[] = [
+    {
+      alt: "GitHub",
+      buttonHref: "https://github.com/BuddiesOfBudgie",
+      buttonText: "Source Code",
+      description:
+        "Budgie Desktop and all of our organization’s source code (including this site!) is entirely open source and developed on GitHub. We leverage GitHub for tracking issues and desired improvements in our software or our organization, as well as GitHub’s discussion forums for long-form public discussions.",
+      image: GitHub(),
+    },
+    {
+      alt: "Matrix",
+      buttonHref: "https://matrix.to/#/#buddies-of-budgie:matrix.org",
+      buttonText: "Join Our Matrix Space",
+      description:
+        "The vast majority of our collaboration, support, and general discussions happen on our public Matrix Space. Matrix is an open standard for interoperable, decentralised, and real-time communication, with Spaces being a way to group rooms and people together. You can use free, open source software like Element get involved with the project.",
+      image: Matrix(),
+    },
+  ];
 
   return (
     <PageBase meta={meta}>
@@ -68,24 +69,16 @@ const About: NextPage = () => {
             {t("About.Values.Generic")}
           </Typography>
           <ValuesBanner
-            description={`
-            Independence is a crucial value to how we operate as an organization. All organizations and projects are equal stakeholders in the future of the organization and most importantly, the future of the Budgie Desktop platform. No singular for-profit or non-profit entity has the sole influence over our direction. 
-            `}
-            value="Independence"
+            description={t("About.Values.Independence.Description")}
+            value={t("About.Values.Independence.Value")}
           />
           <ValuesBanner
-            description={`
-							Transparency has been central to how we function from the start. We want to ensure that everyone is able to understand how the organization and Budgie itself works currently and the intended direction going into the future.
-						`}
-            value="Transparency"
+            description={t("About.Values.Transparency.Description")}
+            value={t("About.Values.Transparency.Value")}
           />
           <ValuesBanner
-            description={`
-							Buddies of Budgie and the Budgie desktop itself is built for its users. Users are seen as stakeholders in development and day-to-day operations, with a fundamental part of our consensus model for making changes to the organization and our platform being how do our decisions positively impact the end user’s experience. 
-
-							People should feel encouraged to get involved directly, promoting fairness in our ways of working.
-						`}
-            value="User-centric"
+            description={t("About.Values.UserCentric.Description")}
+            value={t("About.Values.UserCentric.Value")}
           />
           <HeroTitle maintext="Organize" subtext="How We" />
           <Typography fontWeight={400} variant="h6">
@@ -103,11 +96,11 @@ const About: NextPage = () => {
           </Box>
           <HeroTitle maintext="Collaborate" subtext="How We" />
           <Stack direction="column" spacing={AboutPageSpacing} width="100%">
-            {CollaborateInfo.map((info) => {
-              const { Alt, ButtonHref, ButtonText, Description, Image } = info;
+            {collaborateInfo.map((info) => {
+              const { alt, buttonHref, buttonText, description, image } = info;
 
               return (
-                <Stack alignItems="flex-start" direction={StackDirectionColumnToRow} key={`Collaborate-${Alt}`}>
+                <Stack alignItems="flex-start" direction={StackDirectionColumnToRow} key={`Collaborate-${alt}`}>
                   <Box
                     alignItems="top"
                     display="inline-flex"
@@ -116,7 +109,7 @@ const About: NextPage = () => {
                     minWidth={200}
                     width={200}
                   >
-                    {Image}
+                    {image}
                   </Box>
                   <Stack
                     alignItems="flex-start"
@@ -132,8 +125,10 @@ const About: NextPage = () => {
                       },
                     }}
                   >
-                    <Typography variant="h6">{Description}</Typography>
-                    <Button href={ButtonHref} text={ButtonText ?? "Learn More"} />
+                    <Typography variant="h6">{description}</Typography>
+                    <NextLink href={buttonHref}>
+                      <Button>{buttonText ?? t("LearnMore")}</Button>
+                    </NextLink>
                   </Stack>
                 </Stack>
               );
@@ -145,7 +140,7 @@ const About: NextPage = () => {
   );
 };
 
-export const getStaticProps = async ({ locale }) => ({
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
   props: {
     messages: (await import(`../../messages/${locale}.json`)).default,
   },

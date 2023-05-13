@@ -2,8 +2,7 @@
  * This is our post info component for blog posts to display on blog listings. This post info comes in two sizes, "compressed" and "expanded".
  */
 
-import { PostOrPage } from "@tryghost/content-api";
-import Link from "next/link";
+import type { PostOrPage } from "@tryghost/content-api";
 
 // Material UI Components
 import Box from "@mui/material/Box";
@@ -15,6 +14,7 @@ import { AuthorshipInfo } from "./AuthorshipInfo";
 import { TagStrip } from "./TagStrip";
 import { SiteTheme } from "@buddiesofbudgie/ui";
 import { useMediaQuery, useTheme } from "@mui/material";
+import NextLink from "../Link";
 
 type BlogListingPostInfoParams = {
   condensed?: boolean;
@@ -47,7 +47,7 @@ const BlogListingPostInfo = ({ condensed = false, post }: BlogListingPostInfoPar
       spacing={2}
     >
       {post.feature_image && (
-        <Link
+        <NextLink
           href={`/blog/${encodeURIComponent(post.slug)}`}
           prefetch={false}
           style={{
@@ -65,11 +65,11 @@ const BlogListingPostInfo = ({ condensed = false, post }: BlogListingPostInfoPar
               objectFit: "contain",
             }}
           />
-        </Link>
+        </NextLink>
       )}
       <Stack direction="column" spacing={2}>
         {post.tags && <TagStrip tags={post.tags} />}
-        <Link
+        <NextLink
           href={`/blog/${encodeURIComponent(post.slug)}`}
           prefetch={false}
           style={{
@@ -87,7 +87,7 @@ const BlogListingPostInfo = ({ condensed = false, post }: BlogListingPostInfoPar
           >
             {postTitle}
           </Typography>
-        </Link>
+        </NextLink>
         <Stack display={showOnSmallView} spacing={2}>
           {post.excerpt && <Typography variant="h6">{post.excerpt}</Typography>}
           <AuthorshipInfo post={post} />

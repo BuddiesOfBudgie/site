@@ -4,6 +4,7 @@ const withTM = require("next-transpile-modules")(["@buddiesofbudgie/ui"]);
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
+    largePageDataBytes: 512 * 1000,
     outputFileTracingRoot: path.join(__dirname, "../../"),
   },
   i18n: {

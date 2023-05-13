@@ -40,7 +40,7 @@ export interface NexusGenObjects {
   };
   Milestones: {
     // root type
-    milestones: Array<NexusGenRootTypes["Milestone"] | null>; // [Milestone]!
+    milestones: NexusGenRootTypes["Milestone"][]; // [Milestone!]!
     summary: NexusGenRootTypes["MilestonesSummary"]; // MilestonesSummary!
   };
   MilestonesSummary: {
@@ -51,9 +51,9 @@ export interface NexusGenObjects {
   };
   Project: {
     // root type
-    items: Array<NexusGenRootTypes["ProjectItem"] | null>; // [ProjectItem]!
+    items: NexusGenRootTypes["ProjectItem"][]; // [ProjectItem!]!
     title: string; // String!
-    url?: string | null; // String
+    url: string; // String!
   };
   ProjectContent: {
     // root type
@@ -64,9 +64,9 @@ export interface NexusGenObjects {
   };
   ProjectItem: {
     // root type
-    content?: NexusGenRootTypes["ProjectContent"] | null; // ProjectContent
+    content: NexusGenRootTypes["ProjectContent"]; // ProjectContent!
     isArchived: boolean; // Boolean!
-    labels: Array<NexusGenRootTypes["ProjectItemLabel"] | null>; // [ProjectItemLabel]!
+    labels: NexusGenRootTypes["ProjectItemLabel"][]; // [ProjectItemLabel!]!
     status: NexusGenEnums["ProjectItemStatus"]; // ProjectItemStatus!
     type: NexusGenEnums["ProjectType"]; // ProjectType!
   };
@@ -104,7 +104,7 @@ export interface NexusGenFieldTypes {
   };
   Milestones: {
     // field return type
-    milestones: Array<NexusGenRootTypes["Milestone"] | null>; // [Milestone]!
+    milestones: NexusGenRootTypes["Milestone"][]; // [Milestone!]!
     summary: NexusGenRootTypes["MilestonesSummary"]; // MilestonesSummary!
   };
   MilestonesSummary: {
@@ -115,9 +115,9 @@ export interface NexusGenFieldTypes {
   };
   Project: {
     // field return type
-    items: Array<NexusGenRootTypes["ProjectItem"] | null>; // [ProjectItem]!
+    items: NexusGenRootTypes["ProjectItem"][]; // [ProjectItem!]!
     title: string; // String!
-    url: string | null; // String
+    url: string; // String!
   };
   ProjectContent: {
     // field return type
@@ -128,9 +128,9 @@ export interface NexusGenFieldTypes {
   };
   ProjectItem: {
     // field return type
-    content: NexusGenRootTypes["ProjectContent"] | null; // ProjectContent
+    content: NexusGenRootTypes["ProjectContent"]; // ProjectContent!
     isArchived: boolean; // Boolean!
-    labels: Array<NexusGenRootTypes["ProjectItemLabel"] | null>; // [ProjectItemLabel]!
+    labels: NexusGenRootTypes["ProjectItemLabel"][]; // [ProjectItemLabel!]!
     status: NexusGenEnums["ProjectItemStatus"]; // ProjectItemStatus!
     type: NexusGenEnums["ProjectType"]; // ProjectType!
   };

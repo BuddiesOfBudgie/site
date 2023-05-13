@@ -16,7 +16,7 @@ export const Milestones = objectType({
   name: "Milestones",
   definition(t) {
     t.nonNull.field("summary", { type: MilestonesSummary });
-    t.nonNull.list.field("milestones", { type: Milestone });
+    t.nonNull.list.nonNull.field("milestones", { type: Milestone });
   },
 });
 

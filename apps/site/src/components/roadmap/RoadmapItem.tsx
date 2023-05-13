@@ -5,12 +5,12 @@ import Stack from "@mui/material/Stack";
 import { camelCase } from "lodash";
 import { Chip, Typography } from "@mui/material";
 import { Avatar, SiteTheme } from "@buddiesofbudgie/ui";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 import Color from "color";
 import { GoIssueOpened } from "react-icons/go";
 import { TbGitPullRequest, TbFlag } from "react-icons/tb";
 import type { ProjectItem } from "@buddiesofbudgie/server";
+import NextLink from "../Link";
 
 type RoadmapItemProps = {
   item: ProjectItem;
@@ -41,30 +41,32 @@ export const RoadmapItem = ({ item }: RoadmapItemProps) => {
             {t(`RoadmapItemType.${type}`, { num })}
           </Typography>
         </Stack>
-        <Link
-          href={url}
-          style={{
-            color: SiteTheme.palette.primary.dark,
-            display: "inline-flex",
-            textDecoration: "underline",
-            textDecorationColor: SiteTheme.palette.success.main,
-            textDecorationThickness: 3,
-          }}
-          target="_blank"
-        >
-          <Typography
-            fontWeight="bold"
-            minHeight="3rem"
-            sx={{
-              cursor: "pointer",
-              lineHeight: "1.5rem",
-              lineClamp: 2,
+        {url && (
+          <NextLink
+            href={url}
+            style={{
+              color: SiteTheme.palette.primary.dark,
+              display: "inline-flex",
+              textDecoration: "underline",
+              textDecorationColor: SiteTheme.palette.success.main,
+              textDecorationThickness: 3,
             }}
-            variant="h6"
+            target="_blank"
           >
-            {title}
-          </Typography>
-        </Link>
+            <Typography
+              fontWeight="bold"
+              minHeight="3rem"
+              sx={{
+                cursor: "pointer",
+                lineHeight: "1.5rem",
+                lineClamp: 2,
+              }}
+              variant="h6"
+            >
+              {title}
+            </Typography>
+          </NextLink>
+        )}
         {labels.length > 0 && (
           <Stack direction="row" gap={1}>
             {labels.map((label) => (
@@ -83,10 +85,10 @@ export const RoadmapItem = ({ item }: RoadmapItemProps) => {
             ))}
           </Stack>
         )}
-        {assignee && (
-          <Link href={assignee.url} key={`${key}-Assignee-Link`} target={assignee.url ? "_blank" : "_self"}>
+        {!!assignee?.avatarUrl && !!assignee?.url && (
+          <NextLink href={assignee.url} key={`${key}-Assignee-Link`} target={assignee.url ? "_blank" : "_self"}>
             <Avatar
-              alt={assignee.name || ""}
+              alt={assignee.name ?? ""}
               showTooltip
               size={60}
               src={assignee.avatarUrl}
@@ -94,7 +96,7 @@ export const RoadmapItem = ({ item }: RoadmapItemProps) => {
                 border: `4px solid ${SiteTheme.palette.misc.lightgrey}`,
               }}
             />
-          </Link>
+          </NextLink>
         )}
       </Stack>
     </Paper>

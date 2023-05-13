@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { CustomMetaProps } from "../components/CustomMeta";
+import type { CustomMetaProps } from "../components/CustomMeta";
 
 // Material UI Bits
 import { Box, Tab, Tabs, Typography, useMediaQuery, useTheme } from "@mui/material";
@@ -16,7 +16,7 @@ import PageBase from "../components/PageBase";
 import BudgieMenuImage from "../../public/images/BudgieMenu.png";
 import RavenImage from "../../public/images/Raven-WidgetView.jpg";
 
-import { StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
 import { useTranslations } from "next-intl";
 import { Uris } from "../constants";
 import { useState } from "react";
@@ -80,6 +80,9 @@ const Home: NextPage = () => {
                 key={`HomeTabs-Tab-${data.TabText}`}
                 label={data.TabText}
                 sx={{
+                  fontFamily: "Poppins",
+                  fontSize: "1.2em",
+                  textTransform: "none",
                   ["&.Mui-selected"]: {
                     color: SiteTheme.palette.success.main,
                   },
@@ -122,7 +125,7 @@ const Home: NextPage = () => {
                       },
                     }}
                   >
-                    <Typography color={theme.palette.success.main} variant="h5">
+                    <Typography color={theme.palette.success.main} fontFamily="Poppins" variant="h5">
                       {Headline}
                     </Typography>
                     <Typography
@@ -158,7 +161,7 @@ const Home: NextPage = () => {
             backgroundColor="linear-gradient(to right, #9f7beb, #7b83eb)"
             body={t("Home.ColorBanner.Built.Text")}
             buttonHref="/about"
-            buttonText={t("Home.ColorBanner.Built.Button")}
+            buttonText={t("LearnMore")}
             buttonTextColor="#9E7BEB"
             header={t("Home.ColorBanner.Built.Header")}
           />
@@ -176,7 +179,7 @@ const Home: NextPage = () => {
   );
 };
 
-export const getStaticProps = async ({ locale }) => ({
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
   props: {
     messages: (await import(`../messages/${locale}.json`)).default,
   },

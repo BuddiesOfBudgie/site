@@ -3,10 +3,12 @@
  */
 
 import React from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
 
 // Material UI Goodies
-import { SxProps, Theme, useTheme } from "@mui/material";
+import type { SxProps, Theme } from "@mui/material";
+import { useTheme } from "@mui/material";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 

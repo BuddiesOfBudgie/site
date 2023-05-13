@@ -1,6 +1,6 @@
 // This contains misc. variables useful in various components
 
-import { ResponsiveStyleValue } from "@mui/system";
+import type { ResponsiveStyleValue } from "@mui/system";
 
 type StackDirectionMap = ResponsiveStyleValue<"column" | "row" | "row-reverse" | "column-reverse">;
 

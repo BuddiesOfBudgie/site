@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { CustomMetaProps } from "../components/CustomMeta";
+import type { CustomMetaProps } from "../components/CustomMeta";
 
 // Material UI Bits
 import Container from "@mui/material/Container";
@@ -23,7 +23,7 @@ const Custom404: NextPage = () => {
 
 // Needs to be statically compiled
 // https://nextjs.org/docs/messages/404-get-initial-props
-export const getStaticProps = async ({ locale }) => ({
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
   props: {
     messages: (await import(`../messages/${locale}.json`)).default,
   },

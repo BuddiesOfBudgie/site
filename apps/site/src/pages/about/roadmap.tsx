@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { GetServerSideProps, NextPage } from "next/types";
-import { CustomMetaProps } from "../../components/CustomMeta";
+import type { InferGetServerSidePropsType } from "next/types";
+import type { CustomMetaProps } from "../../components/CustomMeta";
 import PageBase from "../../components/PageBase";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
-import type { Milestones, Project, ProjectItemStatus } from "@buddiesofbudgie/server";
+import type { ProjectItemStatus } from "@buddiesofbudgie/server";
 import { SHOW_ONLY_B10 } from "../../common/vars";
 import Stack from "@mui/material/Stack";
 import { Button, SiteTheme } from "@buddiesofbudgie/ui";
@@ -14,11 +14,17 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import { ItemStatusSelector } from "../../components/roadmap/ItemStatusSelector";
 import { Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { MilestoneItem, RequiredMilestoneSummaryItems } from "../../components/roadmap/MilestoneItem";
+import type { RequiredMilestoneSummaryItems } from "../../components/roadmap/MilestoneItem";
+import { MilestoneItem } from "../../components/roadmap/MilestoneItem";
 import { getProjects } from "../../common/getProjects";
 import { getMilestones } from "../../common/getMilestones";
+import NextLink from "../../components/Link";
 
-const Roadmap: NextPage = ({ milestones, projects }: { milestones: Milestones; projects: Project[] }) => {
+type fubarProps = {
+  className: InferGetServerSidePropsType<typeof getServerSideProps>;
+};
+
+const Roadmap = ({ className: { milestones, projects } }: fubarProps) => {
   const t = useTranslations();
   const [itemStatus, setItemStatus] = useState<ProjectItemStatus>("IN_PROGRESS");
   const meta: CustomMetaProps = {
@@ -26,7 +32,7 @@ const Roadmap: NextPage = ({ milestones, projects }: { milestones: Milestones; p
   };
 
   const summaryVersion = Object.values(milestones.summary);
-  const filteredMilestones = milestones.milestones.filter((m) => summaryVersion.indexOf(m.version) !== -1);
+  const filteredMilestones = milestones.milestones.filter((m) => summaryVersion.includes(m.version));
 
   if (!!milestones.summary.future && !filteredMilestones.find((m) => m.version === milestones.summary.future)) {
     filteredMilestones.push({
@@ -122,18 +128,21 @@ const Roadmap: NextPage = ({ milestones, projects }: { milestones: Milestones; p
                       );
                     })}
                 </Grid2>
-                <Button
-                  color="success"
-                  href={p.url}
-                  size="xl"
-                  sx={{
-                    color: SiteTheme.palette.primary.light,
-                    fontWeight: "bold",
-                    marginInlineEnd: "auto",
-                    minWidth: "180px",
-                  }}
-                  text="See More"
-                />
+                <NextLink href={p.url}>
+                  <Button
+                    color="success"
+                    sx={{
+                      borderRadius: "60px",
+                      color: SiteTheme.palette.primary.light,
+                      fontWeight: "bold",
+                      height: "60px",
+                      marginInlineEnd: "auto",
+                      minWidth: "180px",
+                    }}
+                  >
+                    {t("SeeMore")}
+                  </Button>
+                </NextLink>
               </Stack>
             </Paper>
           ))}
@@ -143,7 +152,7 @@ const Roadmap: NextPage = ({ milestones, projects }: { milestones: Milestones; p
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+export const getServerSideProps = async ({ locale }: { locale: string }) => {
   const milestones = await getMilestones();
   const projects = await getProjects();
   const filteredProjects = SHOW_ONLY_B10 ? projects.filter((p) => p.title === "Budgie 10") : projects;

@@ -1,7 +1,7 @@
 import { GetAllPosts, GetPostBySlug, GetPostTitle } from "../../common/ghost";
 import Image from "next/image";
-import { GetStaticPaths, NextPage, GetStaticProps, InferGetStaticPropsType } from "next/types";
-import { CustomMetaProps } from "../../components/CustomMeta";
+import type { InferGetServerSidePropsType } from "next/types";
+import type { CustomMetaProps } from "../../components/CustomMeta";
 import Parser from "../../common/parser";
 
 // MaterialUI Bits
@@ -15,9 +15,15 @@ import PageBase from "../../components/PageBase";
 import { AuthorshipInfo } from "../../components/blog/AuthorshipInfo";
 import { TagStrip } from "../../components/blog/TagStrip";
 import { SiteTheme } from "@buddiesofbudgie/ui";
-import { isArray } from "lodash";
+import type { ParsedUrlQuery } from "querystring";
 
-const Post: NextPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
+type fubarProps = {
+  className: InferGetServerSidePropsType<typeof getServerSideProps>;
+};
+
+const Post = ({ className: { post } }: fubarProps) => {
+  console.log("post", post);
+
   const postTitle = GetPostTitle(post);
   const pageMeta: CustomMetaProps = {
     title: postTitle,
@@ -86,26 +92,26 @@ const Post: NextPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>
   );
 };
 
-// getStaticPaths will define all the paths to content that should be statically generated
-export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await GetAllPosts(); // Get all the posts from
-  const slugs = allPosts.map(({ slug }) => ({ params: { slug } }));
-  return {
-    paths: slugs,
-    fallback: false,
-  };
-};
+interface IParams extends ParsedUrlQuery {
+  slug: string;
+}
 
-// getStaticProps will fetch the data of the blog post provided by the slug and return its properties
-export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
+// getServerSideProps will fetch the data of the blog post provided by the slug and return its properties
+export const getServerSideProps = async ({ locale, params }: { locale: string; params: IParams }) => {
   const { slug } = params;
-  const post = await GetPostBySlug(isArray(slug) ? slug[0] : slug); // Get the post for this slug
-  return {
-    props: {
-      messages: (await import(`../../messages/${locale}.json`)).default as IntlMessages,
-      post,
-    },
-  };
+  try {
+    const post = await GetPostBySlug(slug); // Get the post for this slug
+    return {
+      props: {
+        messages: (await import(`../../messages/${locale}.json`)).default as IntlMessages,
+        post,
+      },
+    };
+  } catch (e) {
+    return {
+      notFound: true,
+    };
+  }
 };
 
 export default Post;

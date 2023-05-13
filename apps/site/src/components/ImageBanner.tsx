@@ -5,11 +5,13 @@
 import React from "react";
 
 // Material UI Goodies
-import { SxProps, Theme, useMediaQuery, useTheme } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
+import type { SxProps, Theme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
 // Our components
-import { LightboxImage, LightboxImageProps } from "./LightboxImage";
+import type { LightboxImageProps } from "./LightboxImage";
+import { LightboxImage } from "./LightboxImage";
 
 type StackDirection = "column" | "row" | "row-reverse";
 type StackJustifyContent = "center" | "flex-start" | "flex-end" | "space-between" | "space-evenly";

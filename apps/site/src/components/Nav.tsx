@@ -7,10 +7,8 @@ import Image from "next/image";
 
 // Material UI Bits
 import AppBar from "@mui/material/AppBar";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
 import { Drawer, IconButton, Menu, MenuItem, Typography } from "@mui/material";
@@ -20,6 +18,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../../public/images/logo.svg";
 import { useTranslations } from "next-intl";
 import { Uris } from "../constants";
+import { Button } from "@buddiesofbudgie/ui";
+import NextLink from "./Link";
 
 export type NavProps = {
   navBgColor?: string;
@@ -87,14 +87,11 @@ export const Nav = ({ navBgColor }: NavProps) => {
               {
                 <Stack rowGap={4} sx={{ paddingBlockStart: 2, paddingInlineStart: 2, paddingInlineEnd: 12 }}>
                   {navItems.map(({ title, url }) => (
-                    <Link
-                      key={`DrawerNav-Links-${title}`}
-                      href={url}
-                      target={url?.startsWith("http") ? "_blank" : undefined}
-                      underline="none"
-                    >
-                      <Typography fontSize="1.2em">{title}</Typography>
-                    </Link>
+                    <NextLink key={`DrawerNav-Links-${title}`} href={url ?? "#"}>
+                      <Typography fontSize="1.2em" sx={{ textDecoration: "underline" }}>
+                        {title}
+                      </Typography>
+                    </NextLink>
                   ))}
                 </Stack>
               }
@@ -117,16 +114,16 @@ export const Nav = ({ navBgColor }: NavProps) => {
                 >
                   <MenuIcon />
                 </IconButton>
-                <Link
-                  href="/"
-                  sx={{ alignItems: "center", display: "inline-flex", marginInlineEnd: "auto" }}
-                  underline="none"
-                >
-                  <Image src={Logo} alt="Budgie Logo" height={46} width={46} />
-                  <Typography sx={{ marginInlineStart: "1em" }} variant="h6">
-                    Buddies of Budgie
-                  </Typography>
-                </Link>
+                <Box sx={{ marginInlineEnd: "auto" }}>
+                  <NextLink href="/">
+                    <Box sx={{ alignItems: "center", display: "inline-flex" }}>
+                      <Image src={Logo} alt="Budgie Logo" height={46} width={46} />
+                      <Typography fontFamily="Poppins" sx={{ marginInlineStart: "1em" }} variant="h6">
+                        Buddies of Budgie
+                      </Typography>
+                    </Box>
+                  </NextLink>
+                </Box>
                 <Stack
                   alignItems="center"
                   columnGap={6}
@@ -140,15 +137,16 @@ export const Nav = ({ navBgColor }: NavProps) => {
                   {navItems.map(({ isButton = false, subMenu, title, url }) => {
                     if (isButton)
                       return (
-                        <Button
-                          key={`PrimaryNav-Links-${title}`}
-                          href={url}
-                          size="large"
-                          target="_blank"
-                          variant="contained"
-                        >
-                          {title}
-                        </Button>
+                        <NextLink href={url ?? "#"}>
+                          <Button
+                            key={`PrimaryNav-Links-${title}`}
+                            size="large"
+                            sx={{ fontFamily: "Poppins" }}
+                            variant="contained"
+                          >
+                            {title}
+                          </Button>
+                        </NextLink>
                       );
 
                     if (subMenu)
@@ -163,9 +161,11 @@ export const Nav = ({ navBgColor }: NavProps) => {
                             onClick={(e) => setAnchorEl(e.currentTarget)}
                             sx={{
                               fontSize: "1rem",
+                              fontFamily: "Poppins",
                               fontWeight: 400,
                               textTransform: "none",
                             }}
+                            variant="text"
                           >
                             {title}
                           </Button>
@@ -189,9 +189,11 @@ export const Nav = ({ navBgColor }: NavProps) => {
                       );
 
                     return (
-                      <Link key={`PrimaryNav-Links-${title}`} href={url} underline="none" variant="subtitle1">
-                        {title}
-                      </Link>
+                      <NextLink key={`PrimaryNav-Links-${title}`} href={url ?? "#"} passHref>
+                        <Typography fontFamily="Poppins" sx={{ textTransform: "none" }} variant="subtitle1">
+                          {title}
+                        </Typography>
+                      </NextLink>
                     );
                   })}
                 </Stack>

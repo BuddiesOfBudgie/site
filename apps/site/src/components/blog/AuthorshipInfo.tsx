@@ -4,7 +4,7 @@
 
 import { DateTime } from "luxon";
 
-import { Author, PostOrPage } from "@tryghost/content-api";
+import type { Author, PostOrPage } from "@tryghost/content-api";
 import Image from "next/image";
 
 // Material UI
@@ -26,7 +26,13 @@ export const AuthorshipInfo = ({ post }: AuthorshipInfoParams) => {
   return (
     <Stack direction="row" spacing={2}>
       {author.profile_image && (
-        <Image alt={author.name} height={60} src={author.profile_image} style={{ borderRadius: "50%" }} width={60} />
+        <Image
+          alt={author.name ?? ""}
+          height={60}
+          src={author.profile_image}
+          style={{ borderRadius: "50%" }}
+          width={60}
+        />
       )}
       <Stack alignSelf="center" direction="column">
         {author.name && <Typography variant="h6">{author.name}</Typography>}

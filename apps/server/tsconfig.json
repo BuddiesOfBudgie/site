@@ -1,12 +1,10 @@
 {
+  "extends": "../../configs/base",
   "compilerOptions": {
-    "target": "ES2022",
     "module": "commonjs",
     "lib": ["esnext"],
-    "strict": true,
     "rootDir": ".",
     "outDir": "dist",
-    "sourceMap": true,
-    "esModuleInterop": true
+    "sourceMap": true
   }
 }

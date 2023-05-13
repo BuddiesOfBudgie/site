@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 
-import { RequiredBy } from "@buddiesofbudgie/types";
+import type { RequiredBy } from "@buddiesofbudgie/types";
 import Paper from "@mui/material/Paper";
 import { SiteTheme } from "@buddiesofbudgie/ui";
 import Stack from "@mui/material/Stack";

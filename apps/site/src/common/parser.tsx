@@ -4,7 +4,8 @@
  */
 
 import React from "react";
-import parse, { Element, HTMLReactParserOptions, domToReact } from "html-react-parser";
+import parse, { Element } from "html-react-parser";
+import type { HTMLReactParserOptions, domToReact } from "html-react-parser";
 
 // Our Components
 import { LightboxImage } from "../components/LightboxImage";

@@ -1,4 +1,5 @@
-import React, { Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
+import React from "react";
 
 import type { ProjectItemStatus } from "@buddiesofbudgie/server";
 import { Button, SiteTheme } from "@buddiesofbudgie/ui";
@@ -29,9 +30,10 @@ export const ItemStatusSelector = ({ currentStatus, statuses, setStatus }: ItemS
                 }
               : undefined
           }
-          text={t(`RoadmapItemStatus.${status}`)}
           variant={currentStatus === status ? "contained" : "outlined"}
-        />
+        >
+          {t(`RoadmapItemStatus.${status}`)}
+        </Button>
       ))}
     </Stack>
   );

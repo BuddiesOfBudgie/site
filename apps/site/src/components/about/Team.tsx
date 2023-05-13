@@ -11,7 +11,9 @@ import { HalvedWidthOnHighResolution } from "../../common/vars";
 
 // People and Teams
 import { People } from "../../data/people";
-import { Team as TeamType } from "../../data/teams";
+import type { Team as TeamType } from "../../data/teams";
+import { useTranslations } from "next-intl";
+import NextLink from "../Link";
 
 export type TeamProps = {
   stackSpacing: number;
@@ -19,6 +21,7 @@ export type TeamProps = {
 };
 
 const Team: React.FC<TeamProps> = ({ stackSpacing, team }: TeamProps) => {
+  const t = useTranslations();
   const theme = useTheme();
   const stackSpacingDynamic = useMediaQuery(theme.breakpoints.up("lg")) ? stackSpacing : stackSpacing / 2;
 
@@ -63,7 +66,9 @@ const Team: React.FC<TeamProps> = ({ stackSpacing, team }: TeamProps) => {
           },
         }}
       >
-        <Button href={team.URL} text="Learn More" />
+        <NextLink href={team.URL}>
+          <Button href={team.URL}>{t("LearnMore")}</Button>
+        </NextLink>
         <AvatarGroup
           sx={{
             [theme.breakpoints.down("lg")]: {

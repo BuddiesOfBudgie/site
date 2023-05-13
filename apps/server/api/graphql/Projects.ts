@@ -1,10 +1,10 @@
 import { list, queryField } from "nexus";
 import { getPublicProjects } from "../common/github";
 
-import { Issue, ProjectItemType, ProjectV2Item, PullRequest } from "@octokit/graphql-schema";
+import type { Issue, ProjectItemType, ProjectV2Item, PullRequest } from "@octokit/graphql-schema";
 import { chain, compact, defaultTo, snakeCase, toUpper } from "lodash";
 import { Project } from "./types/Project";
-import { ProjectItem, ProjectItemStatus } from "../../exports";
+import type { ProjectItem, ProjectItemStatus } from "../../exports";
 
 type ItemWithUrl = Issue | PullRequest;
 
@@ -20,7 +20,7 @@ export const ProjectsQuery = queryField("Projects", {
   async resolve() {
     const projects = await getPublicProjects();
     return projects.map((p) => {
-      const items: ProjectItem[] = compact(p.items.nodes || []).map((i) => {
+      const items: ProjectItem[] = compact(p.items.nodes ?? []).map((i) => {
         const eI: ExtendedProjectV2Item = i as ExtendedProjectV2Item;
 
         const status = toUpper(snakeCase(defaultTo(eI.status?.name, "unknown")));
@@ -34,7 +34,7 @@ export const ProjectsQuery = queryField("Projects", {
 
         const num = chain(url).split("/").last().toNumber().value();
 
-        const user = chain(eI.content?.assignees?.nodes || [])
+        const user = chain(eI.content?.assignees?.nodes ?? [])
           .compact()
           .head()
           .value();

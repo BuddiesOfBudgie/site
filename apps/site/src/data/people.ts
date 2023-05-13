@@ -1,6 +1,6 @@
 // This file contains our type and listings of various people, more specifically team members.
 
-import { StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
 
 export type Person = {
   Names: PersonName;

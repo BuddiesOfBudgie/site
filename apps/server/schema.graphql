@@ -17,7 +17,7 @@ type Milestone {
 }
 
 type Milestones {
-  milestones: [Milestone]!
+  milestones: [Milestone!]!
   summary: MilestonesSummary!
 }
 
@@ -28,9 +28,9 @@ type MilestonesSummary {
 }
 
 type Project {
-  items: [ProjectItem]!
+  items: [ProjectItem!]!
   title: String!
-  url: String
+  url: String!
 }
 
 type ProjectContent {
@@ -41,9 +41,9 @@ type ProjectContent {
 }
 
 type ProjectItem {
-  content: ProjectContent
+  content: ProjectContent!
   isArchived: Boolean!
-  labels: [ProjectItemLabel]!
+  labels: [ProjectItemLabel!]!
   status: ProjectItemStatus!
   type: ProjectType!
 }

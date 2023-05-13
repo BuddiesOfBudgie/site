@@ -27,7 +27,6 @@
   "Home": {
     "ColorBanner": {
       "Built": {
-        "Button": "Learn More",
         "Header": "Built By The Community",
         "Text": "Budgie is built by the community, with volunteers from around the world, all contributing to make Budgie a better experience for everyone! Whether it is design work, software engineering, or translations, it is this community that makes it happen."
       },
@@ -36,10 +35,10 @@
         "Text": "Budgie is available on a wide variety of operating systems, from Arch Linux to Ubuntu, and everything in between. Try it out today on the flavor of Linux of your choosing."
       }
     },
-    "HeroBanner": "Budgie is a luxurious home computing experience.",
+    "HeroBanner": "A luxurious home computing experience.",
     "Personalize": {
       "Header": "Make Budgie Your Own",
-      "Description": "With our Budgie Desktop Settings application, you can make Budgie feel like home.Whether you want a dock or multiple panels, you can do it with just a few clicks.",
+      "Description": "With our Budgie Desktop Settings application, you can make Budgie feel like home. Whether you want a dock or multiple panels, you can do it with just a few clicks.",
       "macOS": "macOS inspired",
       "Traditional": "Traditional",
       "Unity": "Unity inspired"
@@ -50,9 +49,10 @@
       "MenuText": "Budgie Menu shows you all your installed applications, neatly organized into categories to improve discoverability, and with lightning fast application searching! No more diving into sub-menus to find the app you need.",
       "RavenHeader": "Control at your fingertips.",
       "RavenTabText": "Widget & Notification Center",
-      "RavenText": "Raven is an all-in-one center for accessing your calendar, controlling sound output and input (including per-app volume control), media playback and more.\nRaven also enables you to access missed notifications, with the ability to clear away individual notifications, grouped notifications, and all notifications."
+      "RavenText": "Raven is an all-in-one center for accessing your calendar, controlling sound output and input (including per-app volume control), media playback and more.\n\nRaven also enables you to access missed notifications, with the ability to clear away individual notifications, grouped notifications, and all notifications."
     }
   },
+  "LearnMore": "Learn More",
   "MilestoneTypes": {
     "CURRENT": "Current",
     "UPCOMING": "Upcoming",
@@ -79,5 +79,6 @@
     "DRAFT_ISSUE": "Milestone Issue #{num}",
     "ISSUE": "Issue #{num}",
     "PULL_REQUEST": "Pull Request #{num}"
-  }
+  },
+  "SeeMore": "See More"
 }

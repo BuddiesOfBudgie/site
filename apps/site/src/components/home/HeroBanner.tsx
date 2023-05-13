@@ -14,65 +14,56 @@ import Laptop from "../../../public/images/laptop.png";
 import { useTranslations } from "next-intl";
 import { Button } from "@buddiesofbudgie/ui";
 import { Uris } from "../../constants";
+import { grey } from "@mui/material/colors";
+import NextLink from "../Link";
 
 export const HeroBanner = () => {
   const t = useTranslations();
 
   return (
-    <Stack
-      alignItems="center"
-      justifyContent="center"
-      spacing={6}
-      sx={{
-        //backgroundBlendMode: "darken",
-        background: `rgba(0, 0, 0, 0.5) url(/images/geo-forest.jpg)`,
-        //backgroundColor: theme.palette.success.main,
-        backgroundSize: "cover",
-        borderRadius: 12,
-        marginBlockEnd: 24,
-        paddingBlockStart: 4,
-        paddingBlockEnd: 8,
-        position: "relative",
-      }}
-    >
-      <Image
-        alt="Laptop"
-        src={Laptop}
-        style={{
-          height: "auto",
-          maxWidth: "80vw",
-          objectFit: "scale-down",
-          marginBlockEnd: 100,
-        }}
-      />
-      <Stack
-        alignItems="center"
-        gap={4}
-        sx={{
-          backgroundColor: "primary.light",
-          borderRadius: 6,
-          padding: 6,
-          position: "absolute",
-          bottom: -100,
-        }}
-      >
+    <Stack alignItems="center" justifyContent="center" my={6} spacing={6}>
+      <Stack alignItems="center" gap={4}>
         <Typography
           align="center"
           sx={{
-            color: "primary.dark",
-            fontWeight: 500,
+            color: grey[800],
+            fontWeight: "bold",
+            maxWidth: "22ch",
             textAlign: {},
           }}
-          variant="h5"
+          variant="h2"
         >
           {t("Home.HeroBanner")}
         </Typography>
-        <Button
-          color="success"
-          externalURL
-          href={Uris.GET_BUDGIE}
-          sx={{ fontWeight: 600, maxWidth: "max-content" }}
-          text={t("Get Budgie")}
+        <NextLink href={Uris.GET_BUDGIE}>
+          <Button color="success" sx={{ color: "white", fontWeight: 600, maxWidth: "max-content" }}>
+            {t("Get Budgie")}
+          </Button>
+        </NextLink>
+      </Stack>
+      <Stack
+        alignItems="center"
+        justifyContent="center"
+        py={8}
+        sx={{
+          backgroundBlendMode: "darken",
+          background: `rgba(0, 0, 0, 0.5) url(/images/geo-forest.jpg)`,
+          //backgroundColor: theme.palette.success.main,
+          backgroundSize: "cover",
+          borderRadius: 12,
+          position: "relative",
+        }}
+        width={1}
+      >
+        <Image
+          alt="Laptop"
+          unoptimized
+          src={Laptop}
+          style={{
+            height: "auto",
+            maxWidth: "80vw",
+            objectFit: "scale-down",
+          }}
         />
       </Stack>
     </Stack>

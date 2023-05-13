@@ -8,8 +8,10 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { SiteTheme } from "@buddiesofbudgie/ui";
 
 // Our Components
-import { CustomMeta, CustomMetaProps } from "../components/CustomMeta";
-import { Nav, NavProps } from "../components/Nav";
+import type { CustomMetaProps } from "../components/CustomMeta";
+import { CustomMeta } from "../components/CustomMeta";
+import type { NavProps } from "../components/Nav";
+import { Nav } from "../components/Nav";
 
 interface PageBaseProps extends NavProps {
   children: JSX.Element | JSX.Element[];

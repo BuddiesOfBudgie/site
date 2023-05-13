@@ -9,6 +9,7 @@ import { useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Button } from "@buddiesofbudgie/ui";
+import NextLink from "./Link";
 
 // Our components
 
@@ -57,16 +58,18 @@ export const ColorBanner = ({
       >
         {body}
       </Typography>
-      <Button
-        href={buttonHref}
-        sx={{
-          color: buttonTextColor,
-          backgroundColor: theme.palette.primary.light,
-          marginBlockStart: "auto",
-          maxWidth: "max-content",
-        }}
-        text={buttonText}
-      />
+      <NextLink href={buttonHref}>
+        <Button
+          sx={{
+            color: buttonTextColor,
+            backgroundColor: theme.palette.primary.light,
+            marginBlockStart: "auto",
+            maxWidth: "max-content",
+          }}
+        >
+          {buttonText}
+        </Button>
+      </NextLink>
     </Stack>
   );
 };

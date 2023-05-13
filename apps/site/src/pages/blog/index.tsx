@@ -4,7 +4,7 @@
 
 import React from "react";
 import { GetAllPostsPaginated, GetTag } from "../../common/ghost";
-import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next/types";
+import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next/types";
 
 // Material UI Components
 import Box from "@mui/material/Box";
@@ -12,12 +12,18 @@ import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
 
 // Our Components
-import { CustomMetaProps } from "../../components/CustomMeta";
+import type { CustomMetaProps } from "../../components/CustomMeta";
 import PageBase from "../../components/PageBase";
 import BlogListing from "../../components/blog/BlogListing";
+import type { ParsedUrlQuery } from "querystring";
+import { grey } from "@mui/material/colors";
 
-const BlogIndex: NextPage = ({ posts, tag = "new" }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const PageTitle = tag.name ?? tag.og_title ?? tag.meta_title ?? tag.toUpperCase();
+type fubarProps = {
+  className: InferGetServerSidePropsType<typeof getServerSideProps>;
+};
+
+const BlogIndex = ({ className: { posts, tag } }: fubarProps) => {
+  const PageTitle = tag.name ?? tag.og_title ?? tag.meta_title ?? "";
 
   const meta: CustomMetaProps = {
     title: PageTitle,
@@ -25,11 +31,18 @@ const BlogIndex: NextPage = ({ posts, tag = "new" }: InferGetServerSidePropsType
 
   return (
     <PageBase meta={meta} navBgColor="misc.lightgrey">
-      <Box display="inline-flex" sx={{ backgroundColor: "misc.lightgrey" }} width="100%">
-        <Typography align="center" fontWeight="bold" variant="h1" width="100%">
-          {PageTitle}
-        </Typography>
-      </Box>
+      <Typography
+        align="center"
+        sx={{
+          color: grey[800],
+          fontWeight: "bold",
+          marginBlockStart: "2vh",
+          textAlign: {},
+        }}
+        variant="h2"
+      >
+        {PageTitle}
+      </Typography>
       <Container maxWidth="fullhd" sx={{ marginBlockStart: "2vh" }}>
         <BlogListing posts={posts} />
       </Container>
@@ -37,7 +50,7 @@ const BlogIndex: NextPage = ({ posts, tag = "new" }: InferGetServerSidePropsType
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ locale, query }) => {
+export const getServerSideProps = async ({ locale, query }: { locale: string; query: ParsedUrlQuery }) => {
   const { tag, page } = query;
 
   let tagDetermined = Array.isArray(tag) ? tag[0] : tag;
@@ -66,7 +79,9 @@ export const getServerSideProps: GetServerSideProps = async ({ locale, query }) 
     };
   }
 
-  const posts = await GetAllPostsPaginated(pageNum, 10, tagDetermined);
+  console.log("tagOrErr", tagOrErr);
+
+  const posts = await GetAllPostsPaginated(pageNum, 10, tagOrErr);
 
   return {
     props: {

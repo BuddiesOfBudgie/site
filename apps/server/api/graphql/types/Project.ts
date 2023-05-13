@@ -14,19 +14,19 @@ export const ProjectType = enumType({
 export const Project = objectType({
   name: "Project",
   definition(t) {
-    t.nonNull.list.field("items", { type: ProjectItem });
+    t.nonNull.list.nonNull.field("items", { type: ProjectItem });
     t.nonNull.string("title");
-    t.string("url");
+    t.nonNull.string("url");
   },
 });
 
 export const ProjectItem = objectType({
   name: "ProjectItem",
   definition(t) {
-    t.field("content", { type: ProjectItemContent });
+    t.nonNull.field("content", { type: ProjectItemContent });
     t.nonNull.boolean("isArchived");
     t.nonNull.field("status", { type: ProjectItemStatus });
-    t.nonNull.list.field("labels", { type: ProjectItemLabel });
+    t.nonNull.list.nonNull.field("labels", { type: ProjectItemLabel });
     t.nonNull.field("type", { type: ProjectType });
   },
 });

@@ -1,5 +1,11 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
+import { grey } from "@mui/material/colors";
+
+const PoppinsFontFamily = {
+  fontFamily: "Poppins",
+};
+
 const InterFontFamily = {
   fontFamily: "Inter",
 };
@@ -57,13 +63,13 @@ const Theme = createTheme({
   },
   palette: {
     primary: {
-      light: "#f5f5f5",
-      main: "#000000",
-      dark: "#000000",
+      light: grey[100],
+      main: grey[900],
+      dark: grey[900],
     },
     misc: {
       greyish: "#666666",
-      lightgrey: "#eeeeee",
+      lightgrey: grey[200],
       purple: "#9f7beb",
       white: "#ffffff",
     },
@@ -75,10 +81,10 @@ const Theme = createTheme({
     },
   },
   typography: {
-    h1: InterFontFamily,
-    h2: InterFontFamily,
-    h3: InterFontFamily,
-    h4: InterFontFamily,
+    h1: PoppinsFontFamily,
+    h2: PoppinsFontFamily,
+    h3: PoppinsFontFamily,
+    h4: PoppinsFontFamily,
     h5: InterFontFamily,
     h6: InterFontFamily,
   },

@@ -1,9 +1,10 @@
 import { extendType } from "nexus";
 import { toString } from "lodash";
-import { SemVer, coerce, compare, parse, gt } from "semver";
+import type { SemVer } from "semver";
+import { coerce, compare, parse, gt } from "semver";
 import { FALLBACK_BUDGIE_VERSION } from "../constants";
 import { Milestones } from "./types/Milestone";
-import { Milestone } from "../../exports";
+import type { Milestone } from "../../exports";
 import { getMilestones } from "../common/github";
 
 export const MilestonesQuery = extendType({

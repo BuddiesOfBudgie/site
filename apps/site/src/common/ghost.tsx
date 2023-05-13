@@ -1,4 +1,5 @@
-import GhostContentAPI, { PostOrPage, Tag } from "@tryghost/content-api";
+import GhostContentAPI from "@tryghost/content-api";
+import type { PostOrPage, Tag } from "@tryghost/content-api";
 
 const ourAPI = new GhostContentAPI({
   key: "a731339288014003c2846aca07",
@@ -6,10 +7,6 @@ const ourAPI = new GhostContentAPI({
   version: "v5.0",
 });
 
-/**
- * GetAllPosts will get all the posts we have published
- * @returns A Promise to provide all of our Posts
- */
 export const GetAllPosts = async () => {
   return ourAPI.posts.browse({
     filter: "published_at:-null", // Don't include pages
@@ -17,16 +14,9 @@ export const GetAllPosts = async () => {
   });
 };
 
-/**
- * GetAllPostsPaginated will get all the published posts paginated by the requested page
- * @param page Desired page for pagination. If not defined, default to 0
- * @param limit Limit of posts. Defaults to 5 if not specified
- * @param tag Desired tag, if any. Defaults to just "news"
- * @returns A Promise to return our Posts
- */
-export const GetAllPostsPaginated = async (page = 0, limit = 10, tag = "news") => {
+export const GetAllPostsPaginated = async (page = 0, limit = 10, tag: Tag) => {
   return ourAPI.posts.browse({
-    filter: `published_at:-null,tag:${tag}`,
+    filter: `published_at:-null+tag:${tag.slug}`,
     include: ["authors", "tags"],
     limit: limit,
     page: page,
@@ -34,11 +24,6 @@ export const GetAllPostsPaginated = async (page = 0, limit = 10, tag = "news") =
   });
 };
 
-/**
- * GetPostBySlug will get the post by the specified slug
- * @param slug Slug of the post
- * @returns A Promise to return the Post
- */
 export const GetPostBySlug = async (slug: string) => {
   return ourAPI.posts.read(
     { slug },
@@ -49,21 +34,10 @@ export const GetPostBySlug = async (slug: string) => {
   );
 };
 
-/**
- * GetPostTitle will attempt to get the tile of a post or page
- * @param post Post or Page
- * @returns A string of the post title, or "No title defined"
- */
 export const GetPostTitle = (post: PostOrPage): string => {
   return post.title ?? post.og_title ?? post.meta_title ?? "No title defined";
 };
 
-/**
- * GetTag will get the tag based on a name
- * @param tag Tag slug name
- * @returns Tag
- * @throws Error
- */
 export const GetTag = async (tag: string): Promise<Tag> => {
   const readTag = await ourAPI.tags.read({ slug: tag });
   return readTag;

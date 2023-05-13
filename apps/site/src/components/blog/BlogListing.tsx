@@ -2,7 +2,7 @@
  * This is our listing component for blog posts to promote re-use across our main blog listing and tag-related listings
  */
 
-import { PostsOrPages } from "@tryghost/content-api";
+import type { PostsOrPages } from "@tryghost/content-api";
 
 // Material UI Components
 import Container from "@mui/material/Container";

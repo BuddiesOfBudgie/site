@@ -1,5 +1,5 @@
 import { graphql } from "@octokit/graphql";
-import { Milestone, Organization, ProjectV2 } from "@octokit/graphql-schema";
+import type { Milestone, Organization, ProjectV2 } from "@octokit/graphql-schema";
 import { compact, toArray } from "lodash";
 
 const client = graphql.defaults({
@@ -112,8 +112,5 @@ export const getPublicProjects = async (): Promise<ProjectV2[]> => {
           `
   );
 
-  return (organization.projectsV2?.nodes || []).reduce<ProjectV2[]>(
-    (list, p) => (p && p.public ? [...list, p] : list),
-    []
-  );
+  return (organization.projectsV2?.nodes ?? []).reduce<ProjectV2[]>((list, p) => (p?.public ? [...list, p] : list), []);
 };

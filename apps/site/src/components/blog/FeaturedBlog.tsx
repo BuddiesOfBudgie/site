@@ -3,19 +3,19 @@
  */
 
 import React from "react";
-import { PostOrPage } from "@tryghost/content-api";
+import type { PostOrPage } from "@tryghost/content-api";
 
 // Material UI Bits
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Image from "next/image";
-import Link from "next/link";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { Typography } from "@mui/material";
 
 import "./FeaturedBlog.scss";
 import { SiteTheme } from "@buddiesofbudgie/ui";
+import NextLink from "../Link";
 
 export type FeaturedBlogProps = {
   post: PostOrPage;
@@ -40,12 +40,12 @@ export const FeaturedBlog = ({ post: p }: FeaturedBlogProps) => {
             }}
           >
             {typeof p.feature_image === "string" && (
-              <Image alt={p.feature_image_alt || ""} className="featuredBlogImage" src={p.feature_image} />
+              <Image alt={p.feature_image_alt ?? ""} className="featuredBlogImage" src={p.feature_image} />
             )}
             <Stack direction="column">
-              <Link href={`/blog/ ${encodeURIComponent(p.slug)}`}>
+              <NextLink href={`/blog/ ${encodeURIComponent(p.slug)}`}>
                 <Typography variant="h2">{p.title ?? p.og_title ?? p.meta_title}</Typography>
-              </Link>
+              </NextLink>
               <Typography variant="subtitle1">{p.meta_description ?? p.plaintext?.substring(0, 280)}</Typography>
             </Stack>
           </Stack>
