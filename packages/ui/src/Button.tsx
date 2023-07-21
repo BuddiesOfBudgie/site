@@ -5,7 +5,11 @@ import React from "react";
 import type { ButtonProps } from "@mui/material";
 import { Button, useTheme } from "@mui/material";
 
-export const BWButton = ({ sx, ...rest }: ButtonProps) => {
+type BWButtonProps = {
+  inverse?: boolean;
+} & ButtonProps;
+
+export const BWButton = ({ inverse = false, sx, ...rest }: BWButtonProps) => {
   const theme = useTheme();
 
   return (
@@ -13,8 +17,8 @@ export const BWButton = ({ sx, ...rest }: ButtonProps) => {
       {...rest}
       sx={{
         ...sx,
-        color: theme.palette.common.white,
-        backgroundColor: theme.palette.primary.main,
+        color: inverse ? theme.palette.primary.main : theme.palette.common.white,
+        backgroundColor: inverse ? theme.palette.common.white : theme.palette.primary.main,
       }}
     />
   );
