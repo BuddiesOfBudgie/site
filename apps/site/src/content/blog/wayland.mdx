@@ -39,7 +39,7 @@ While it is likely that Plasma will continue to have X11 support for the foresee
 
 X.org Server has been [deprecated](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/9.0_release_notes/deprecated_functionality?ref=buddiesofbudgie.org#JIRA-RHELPLAN-121048) in Red Hat Enterprise Linux (RHEL) since 9.0 in May of last year. As shown in the image below, Red Hat has a full support and maintenance support cycle for these releases which lasts a total of 10 years.
 
-![](/images/blog/2023/06/image.png)
+![](/images/blog/2023/07/image.png)
 
 Understandably it does not make financial sense for Red Hat to continue investing engineering resources into maintenance of X11 support, when Wayland support is likely already in a sufficient position for many Red Hat customers, and when Red Hat is almost certainly under market pressures that would encourage divesting in X11 and re-allocating those engineering resources.
 
@@ -65,7 +65,10 @@ This work has been spearheaded by David Mohammed from the [Ubuntu Budgie](https:
 
 Taking a longer term view, yet still within the scope of our desired Budgie 10 series changes reflecting the evolving landscape of the Linux desktop, we will implement a replacement Wayland compositor that is built on top of [wlroots](https://gitlab.freedesktop.org/wlroots/wlroots/?ref=buddiesofbudgie.org), which will see its first stable release as "Magpie 1.0"
 
-**At such point in time as Magpie 1.0 is released, Budgie 10 will no longer support X11. Budgie 11 will not support X11**.
+<Alert icon={false} severity="error">
+  **At such point in time as Magpie 1.0 is released, Budgie 10 will no longer support X11. Budgie 11 will not support
+  X11.**
+</Alert>
 
 wlroots was an obvious choice for us as it is the most vendor-neutral compositing library and really lives up to its marketing of "_about 60,000 lines of code you were going to write anyway_". While Mutter's excellent Wayland compositor could be viewed as sufficient for the short-term of Budgie 10 series, Budgie 11 will result in a separation from the GNOME stack, and therefore to avoid duplicate effort or further complicating our existing soft fork, we decided to immediately invest time into building a compositor leveraging wlroots.
 
