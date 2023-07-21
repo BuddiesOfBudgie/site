@@ -1,9 +1,0 @@
-.github/
-.yarn/cache
-.yarn/install-state.gz
-.editorconfig
-.eslintrc.json
-.prettier*
-LICENSE
-deployment.yml
-README.md

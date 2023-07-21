@@ -1,0 +1,41 @@
+---
+title: Budgie 10.6.4 Released
+author: JoshuaStrobl
+publishDate: "2022-08-30T17:18:06.000+00:00"
+featuredImage: /images/blog/2022/08/Budgie-10.6.4-Featured.jpg
+excerpt: >-
+  Budgie 10.6.4 is the fourth minor release in the 10.6 series of our Budgie
+  Desktop environment. This release contains bug fixes and build system
+  improvements.
+tags:
+  - news
+  - releases
+---
+
+[Budgie 10.6.4](https://github.com/BuddiesOfBudgie/budgie-desktop/releases/tag/v10.6.4?ref=buddiesofbudgie.org) is the fourth minor release in the 10.6 series of our Budgie Desktop environment. This release contains bug fixes and build system improvements.
+
+These changes are backported from our in-progress 10.7 series, which will feature major upgrades to Budgie Menu, our internal theming, and more. This development process allows us to focus longer-term on features and larger overhauls while still being able to address issues [raised on our issue tracker](https://github.com/BuddiesOfBudgie/budgie-desktop/issues?ref=buddiesofbudgie.org) in a timely manner.
+
+## Changelog
+
+- Clock Applet: Update timezone if no custom timezone set. [#92](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/92?ref=buddiesofbudgie.org)
+- Workspace Applet: Fixed a regression in Timeout / interval. [#187](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/187?ref=buddiesofbudgie.org)
+  - Fixes drag & drop. [#182](https://github.com/BuddiesOfBudgie/budgie-desktop/issues/182?ref=buddiesofbudgie.org)
+  - Fixes right-click menu persistence. [#184](https://github.com/BuddiesOfBudgie/budgie-desktop/issues/184?ref=buddiesofbudgie.org)
+  - Fixes some icon flickering. [#183](https://github.com/BuddiesOfBudgie/budgie-desktop/issues/183?ref=buddiesofbudgie.org)
+- build: Fix missing gio-unix-2.0 dependencies in meson.build files, preventing build under NixOS. [#185](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/185?ref=buddiesofbudgie.org)
+
+## Contributor List
+
+Budgie Desktop is developed by Buddies of Budgie and contributors from around the world. Here is a list of all the contributors that made this release possible:
+
+- [Campbell Jones](https://github.com/serebit?ref=buddiesofbudgie.org)
+- [Federico Schonborn](https://github.com/FedericoSchonborn?ref=buddiesofbudgie.org)
+- [Joshua Strobl](https://github.com/JoshStrobl?ref=buddiesofbudgie.org)
+- [Thomas Staudinger](https://github.com/Staudey?ref=buddiesofbudgie.org)
+
+## Source Code
+
+You can get the source code for this release [here](https://github.com/BuddiesOfBudgie/budgie-desktop/releases/tag/v10.6.4?ref=buddiesofbudgie.org).
+
+<OCCallout />

@@ -1,0 +1,184 @@
+---
+title: "State of the Budgie: 2022 In Review and Goals for 2023"
+author: JoshuaStrobl
+publishDate: "2023-01-01T23:50:18.000+00:00"
+featuredImage: /images/blog/2023/01/StateOfTheBudgieY22.png
+excerpt: >-
+  2022 was an incredible year for the Budgie Desktop and the Buddies of Budgie
+  organization, with 2023 set to be even better. Let us dive into it in this
+  special State of the Budgie to recap the happenings of 2022 and the goals for
+  2023.
+tags:
+  - state-of-the-budgie
+  - news
+---
+
+# 2022
+
+The new life of a Phoenix comes from the ashes of its predecessors. Budgie Desktop is similar in this regard, with its new life and new organization coming from its separation from the Solus project almost exactly one year ago.
+
+This "rebirth" provided the opportunity to:
+
+1.  Shift our ways of thinking from being product-oriented with development and integration that was more aligned with that of Solus, to one which is platform-oriented and is aligned with our desired adoption of open standards and extensibility for all consumers of Budgie Desktop.
+2.  Onboard more contributors from a diverse set of organizations, from Ubuntu Budgie to Arch, EndeavourOS, Ultramarine, and more.
+3.  Define as an organization our objectives for 10.x and 11.x, as well as what an "end" for 10.x would look like.
+4.  Build on points 2 & 3 by defining our "Core Values" and ways of working as an organization that guide us on the right path for our community and to achieving our goals. These Core Values being: Independence, Transparency, User-centric.
+
+Although there are always improvements to be made, such as around community engagement and communication, 2022 has really been the year of foundation building for our community and organization. It has been rewarding to see it grow over the course of the year, with new people chatting away in our Matrix space*,* folks dropping in during our regular development "stand-ups", and endless amounts of feedback in our development room on various features and functionality that has either influenced the work gone into 10.7 or providing more for us to be mindful of going into 11 and beyond. Budgie Desktop development is never been more diverse and full of optimism.
+
+## A Wealth of Releases
+
+### Budgie Desktop
+
+Within the span of 2022, Budgie Desktop has received **five** new releases, starting with the 10.6 series release and four "patch" releases. For context, the five releases before 10.6 happened over the timespan of **2017 to 2021**. Most of those releases were done simultaneously to those of Solus or around the time of GNOME stack upgrades in Solus, so moving away from that effectively being the release cadence to one which is not associated with the release of any specific operating system or its upgrades has been beneficial to the Budgie community as a whole.
+
+While there are too many bug fixes in the 10.6 series to list, I would like to highlight some of the major improvements Budgie 10.6 series has seen through 2022.
+
+##### Budgie Panel
+
+Budgie Panel and many of its applets saw:
+
+- Rewrite initial applet layout to prevent position desync.
+- Reset IconTasklist buttons if group updated while pinned. This fixes an issue where pinned LibreOffice buttons would no longer appear when launching its instance.
+- Fix math for calculating right panel strut. This fixes an issue where a right-positioned panel could overlap with windows.
+- Removed delay when opening apps in IconTasklist. This was introduced in our application tracking system in an attempt to fix Chrome profile manager closing sequence but ended up breaking some other apps (such as Steam) closing sequence.
+- Increase size and density of workspaces in workspace applet.
+- [Introduced support](https://youtu.be/ezOXzmuo8v8?ref=buddiesofbudgie.org) for setting the item size multiplier in the Workspace Applet, providing users more flexibility on the size of the applet and how many desired items appear for each Workspace at once.
+- Fix crash in Clock Applet when attempting to set a custom timezone.
+
+##### Internal Theme and Panel Refinements
+
+Budgie Desktop 10.6 saw improvements to its current internal theming and panels. Some aspects included:
+
+- Border radiuses on most dialogs, Raven Widgets, Panel Popover content.
+- Unified color scheme for widgets within the panel.
+- Removing of "stylized end regions" due to inconsistencies across GTK themes and internal theme.
+- Precise battery levels icons are now used when supported by the icon theme. This means the icon will get updated on 10% intervals.
+- Updated the default panel configuration to reflect the one that was used in Solus via its Budgie Desktop Branding package. This change better communicates our expectation for the default Budgie experience. Prior to this change, there were large inconsistencies such as panel location and widgets, between distributors such as Arch Linux and other consumers like Solus.
+
+##### Notification System Rewrite
+
+Our Notification Server saw a rewrite and move out of Raven, enabling it to be utilized in other Budgie components, as well as providing the opportunity to fix long-standing issues and improvements in the popups themselves. Some highlights:
+
+- We now use the GTK.Stack for Notification popup bodies, providing a better way to reflect notification body content.
+- We now properly utilize the Notification's appinfo, fixing issues where Notification Groups could present the wrong name (such as with Evolution and its calendar events).
+- Clicking on a Notification Popup will now trigger the default action instead of adding a button for the default action.
+
+### Budgie Control Center
+
+This year saw the forking of GNOME Control Center into Budgie Control Center, which offers various value-add such as:
+
+- Raven keybind support
+- Improved fractional scaling support when supported by the operating system (requires the use of a patched Mutter with xrandr functionality)
+- A re-organization of functionality and removal of GNOME Shell-specific functions
+- Support for distribution logos so operating systems would not be required to patch our control center like they do with GNOME Control Center in order to display their branding instead of the GNOME logo. We also have special handling for light / dark theme variants for logos.
+- Updated details with Budgie Desktop versioning
+
+This work has been spearheaded by David Mohammed aka fossfreedom, from the Ubuntu Budgie team, with five releases of Budgie Control Center throughout the year.
+
+### Budgie Screensaver
+
+[Budgie Screensaver](https://github.com/BuddiesOfBudgie/budgie-screensaver?ref=buddiesofbudgie.org) development picked up steam thanks to Campbell Jones, with four new releases in 2022. Budgie Screensaver is a **very old fork** of GNOME Screensaver, originally intended to be a drop-in replacement with most patches backported from Ubuntu, so it is great to see quality of life improvments being made and standards being improved. Budgie Screensaver has been:
+
+- Ported over to Meson
+- Received fixes for compiling under musl, system language changing, and input grabbing (now using GdkSeat)
+- Had much needed cleanup around compiler warnings
+
+### Budgie Desktop View
+
+[Budgie Desktop View](https://github.com/BuddiesOfBudgie/budgie-desktop-view?ref=buddiesofbudgie.org) saw its 1.2 bug fix release this year as well. This fixed launching with some file types, updated to our menu option to open "System Settings" (now Budgie Control Center), as well as a renaming of our settings schemas to use the reverse DNS naming for Buddies of Budgie instead of Solus.
+
+## Budgie 10.7 Development
+
+Development of Budgie 10.7 has been underway and while it was originally the goal to release it within 2022, the extra time huddled in its nest has provided room for more features and polish to make its way into what will be another big release for Budgie 10. While I could not possibly touch on all the great work that has been done on this upcoming release, here are some highlights of what we know is getting into the release already.
+
+### Budgie Menu Design and Architecture Improvements
+
+![](/images/blog/2023/01/StateOfTheBudgie_July2022.jpg)
+
+Budgie Menu has been improved for Budgie 10.7. I covered some of this in a past State of the Budgie, but I'll recap some of it. With the new Budgie Menu, you will have:
+
+1.  Access to a personal user menu which has quick XDG directory access. This feature enables you to open up a file manager (or technically whatever your inode/directory handler is) directly to folders like Home, Documents, Music, etc. This follows the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html?ref=buddiesofbudgie.org)_._
+2.  Access to a power menu with all the options you would come to expect such as suspend, hibernate, logout, and power off. This may change by the time Budgie 10.7 is released as there is more work being done on improving the UX across Budgie Desktop for power menus.
+3.  Capability for an application to launch on a specific GPU if [switcheroo-control](https://gitlab.freedesktop.org/hadess/switcheroo-control/?ref=buddiesofbudgie.org) is installed when PrefersNonDefaultGPU is set to true for a given desktop file. This is handy for hybrid graphics / dual GPU scenarios.
+4.  Quick access to Budgie Control Center and Budgie Desktop Settings.
+5.  An option via the Budgie Menu settings in Budgie Desktop Settings to show Budgie Control Center settings items (such as bluetooth, sound, power) in the applications list. You will always be able to search for these items regardless of the option being enabled though, so you can have less clutter in your menu while still having quick access to various settings panels.
+
+### Run Dialog Refactor and Improvements
+
+![](/images/blog/2023/01/BudgieRunDialog.jpg)
+
+Budgie Run Dialog has received considerable improvements for 10.7.
+
+- Budgie Run Dialog now leverages our new application indexer that is used for Budgie Menu to find and sort applications. This provides a predictable fuzzy search experience across both of them and enables the same setting of GPU profiles during application launching.
+- Improvements around run dialog sizing so it's calculated on the workarea of the monitor it is launching on.
+- Improvements centered on styling such as label for name and application descriptions being split in launcher buttons.
+
+### New Screenshot Functionality
+
+![](/images/blog/2023/01/BudgieScreenshot.png)
+
+Budgie Desktop 10.7 will introduce a new Budgie Screenshot application, with support for the screen, window and selection capture! You will no longer need a separate screenshot application such as gnome-screenshot for screenshotting under Budgie Desktop, with the keybinds now defaulting to invoking our screenshot functionality instead.
+
+## New Or Improved In More Places
+
+Since the separation of Budgie Desktop from Solus, more attention has been put into Budgie Desktop's availability and the quality of its availability across various operating systems.
+
+- Campbell Jones aka serebit is now an Arch Linux Trusted User, officially maintaining Budgie Desktop and its components under Arch Linux.
+- Budgie Desktop under EndeavourOS has seen polishing by its team and we are fortunate to have them in our community.
+- Budgie Desktop made its way into the official repository of Fedora with the release of Fedora 37. I have also proposed the creation of a [Fedora Budgie Spin](https://fedoraproject.org/wiki/Changes/FedoraBudgie?ref=buddiesofbudgie.org), providing another way of getting an out-of-the-box Budgie experience.
+- We have seen recent community efforts on Budgie Desktop under nixOS as well as OpenBSD. Hopefully those will evolve in 2023!
+
+## 2023
+
+While 2022's theme has turned out to be an exercise in our "Independence" value, with a bigger focus on tackling various parts of the foundation of Budgie and developing a consistent and predictable set of components around it, it is my goal for Buddies of Budgie and Budgie Desktop for 2023 to be its exercise in **both** our "User-centric" value from work done on 10.x and "Transparency" through more communication and work on 11 (_spoilers_).
+
+Putting aside the usual caveat of these items being: none of it is finalized, everything is subject to change based on discoveries throughout the development / iteration process, collaboration and feedback from team members, and no accounting for any surprises 2023 might have in store for us – you get the point – here are _my_ initial thoughts on what we should _strive for_ in 2023.
+
+## Q1
+
+For Q1 of 2023, the goals at minimum should be:
+
+- Release of Budgie 10.7 and at the very least a 10.7.1 for bug fixes.
+- Release of new budgie-backgrounds, providing a rich set of backgrounds for Budgie users to choose from alongside any from their OS of choice, whether that be: modern architecture, scenery, space, abstract digital art, or of course pictures of cute animals. Gotta have cute animals.
+- Release of Buddies of Budgie site and Docusaurus for documentation, continued improvements on both fronts. These properties will help to define Budgie Desktop and our organization, communicate our organization values, detail our current roadmap, document developer APIs and creation of panel and Raven widgets, document user features, and more.
+- Beginning development of 10.8, with current slated items being around a new StatusNotifier-oriented system tray, streamlining theme selection, a new network indicator, and improvements around the "legacy" tasklist.
+- Producing a unified and up-to-date schedule of the upcoming freeze and release dates of non-rolling release operating systems that ship Budgie Desktop in their repositories, to help guide the organization in its iteration of Budgie Desktop and maximize the chance of new features and fixes being shipped in them. That leads to a better experience for us developing and maintaining Budgie Desktop but more importantly a better experience for all of our users.
+
+## Q2
+
+For Q2 of 2023, the goals at minimum should be:
+
+- Release of Budgie 10.8
+- Review of defined project items for 10.x that should make its way into a 10.9 release
+
+Alongside those two items, I will be starting work on speccing out the ["Protocol buffers"](https://developers.google.com/protocol-buffers/docs/overview?ref=buddiesofbudgie.org) for the Budgie 11.x Daemon and creating POCs (proof of concept) in Rust for review as RFCs (request for comment). These POCs will serve to influence the architectural design or be the foundational work for Budgie 11.
+
+## Q3
+
+For Q3 of 2023, the goals at minimum should be:
+
+- Release of at least one Budgie 10.8 "patch" release e.g. 10.8.1
+- Work on 10.9 items such as improved Bluetooth support and new Raven widgets using the new Raven APIs coming in 10.7.
+- Active experimenting with wlroots and smithay to determine the most optimal path for Budgie 11 (e.g. wlroots + C or smithay for Rust)
+- Start implementation of at least Bluetooth (bluez) and power management (upower) in new 11.x budgie-daemon.
+
+### Q4
+
+For Q4 of 2023, the goals at minimum should be:
+
+- Finish Bluetooth (bluez) and power management (upower) implementations in new daemon.
+- RFC Budgie Configuration (TOML file-based serializing, deserializing, setting migrations, per-panel / per-applet configuration, etc.)
+- Continue our experiments with Wayland compositors and protocols, informing us on how we want to spec out the separation of concerns for Budgie WM, Budgie Daemon, and responsibilities of various graphical components.
+
+---
+
+Realistically based on the current bandwidth and size of the team, I believe the above items are achievable, many of them involve lots of tinkering and maybe some late night cups of coffee or tea. There are some items not touched on for specific quarters that might be nice to see, such as an EFL or iced port of Budgie Desktop View, or abstracting out application tracking into a Rust-based library around the timeframe of Q3 / Q4 that can be used in both current Budgie 10 and future 11.
+
+# Summary
+
+I hope this State of the Budgie provided a good summary of the work that the Buddies of Budgie organization and broader Budgie community has invested in 2022 and goals for 2023. At the very least, it should serve as a good foundation to build on and provide a clear picture on where Budgie Desktop is going this year: Budgie 10.x will receive new features, QoL improvements, and fixes. Budgie 11 development will be underway.
+
+On a personal level, it has been heartwarming to see the community growth and evolution of Budgie Desktop over the last year. Forking a well-known project into a completely separate organization is not always easy but I believe that we have done well to not only start it off on the right footing, but also instill confidence in our community that Budgie Desktop has a brighter future because of it. I look forward to what we all can accomplish together in 2023 together. ❤️
+
+<OCCallout />

@@ -1,0 +1,54 @@
+---
+title: Budgie 10.6.3 Released
+author: JoshuaStrobl
+publishDate: "2022-08-21T13:30:03.000+00:00"
+featuredImage: /images/blog/2022/08/Budgie-10.6.3-Featured.jpg
+excerpt: >-
+  Budgie 10.6.3 is the third minor release in the 10.6 series of our Budgie
+  Desktop environment, introducing improvements to our Workspace Applet and
+  initial support for GNOME 43!
+tags:
+  - news
+  - releases
+---
+
+[Budgie 10.6.3](https://github.com/BuddiesOfBudgie/budgie-desktop/releases/tag/v10.6.3?ref=buddiesofbudgie.org) is the third minor release in the 10.6 series of our Budgie Desktop environment, introducing improvements to our Workspace Applet and initial support for GNOME 43!
+
+These changes are backported from our in-progress 10.7 series, which will feature major upgrades to Budgie Menu, our internal theming, and more. This development process allows us to focus longer-term on features and larger overhauls while still being able to address issues [raised on our issue tracker](https://github.com/BuddiesOfBudgie/budgie-desktop/issues?ref=buddiesofbudgie.org) in a timely manner.
+
+## Workspace Applet Improvements
+
+<iframe
+  src="https://www.youtube.com/embed/ezOXzmuo8v8?feature=oembed"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen=""
+  title="Budgie 10.6.3 Workspace Applet Scaling"
+></iframe>
+
+Budgie 10.6.3 [introduces support](https://github.com/BuddiesOfBudgie/budgie-desktop/issues/163?ref=buddiesofbudgie.org) for setting the item size multiplier in the Workspace Applet, providing users more flexibility on the size of the applet and how many desired items appear for each Workspace at once.
+
+## GNOME 43 Support
+
+Budgie 10.6.3 introduces our initial support for the upcoming GNOME 43 stack with support for the Mutter 11 API. This support unblocks inclusion of Budgie Desktop in Fedora rawhide and makes it easier for maintainers across a wide range of operating systems to deliver Budgie without needing to do the manual work of backporting patches.
+
+## Other Improvements And Fixes
+
+- Improve scaling change message to request further user action ([#120](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/120?ref=buddiesofbudgie.org))
+  - When changing display scaling, we will inform the user that they should restart their session to allow the desktop to refresh & resize properly.
+- Fix crash in Clock Applet when attempting to set a custom timezone. ([#164](https://github.com/BuddiesOfBudgie/budgie-desktop/issues/164?ref=buddiesofbudgie.org))
+- Internal Theme: Dim labels in menu when submenus are revealed
+
+## Contributor List
+
+Budgie Desktop is developed by Buddies of Budgie and contributors from around the world. Here is a list of all the contributors that made this release possible:
+
+- [Campbell Jones](https://github.com/serebit?ref=buddiesofbudgie.org)
+- [David Mohammed](https://github.com/fossfreedom?ref=buddiesofbudgie.org)
+- [Joshua Strobl](https://github.com/JoshStrobl?ref=buddiesofbudgie.org)
+
+## Source Code
+
+You can get the source code for this release [here](https://github.com/BuddiesOfBudgie/budgie-desktop/releases/tag/v10.6.3?ref=buddiesofbudgie.org).
+
+<OCCallout />

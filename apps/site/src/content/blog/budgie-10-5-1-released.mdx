@@ -1,0 +1,83 @@
+---
+title: Budgie 10.5.1 Released
+author: JoshuaStrobl
+publishDate: "2019-10-03T14:55:00.000+00:00"
+featuredImage: /images/blog/2022/03/budgie-desktop.jpg
+excerpt: >-
+  Budgie 10.5.1 is the first minor release of the Budgie 10.5 series,
+  introducing a multitude of quality-of-life changes, bug fixes, and support for
+  new GNOME Stacks.
+tags:
+  - news
+  - releases
+---
+
+Budgie 10.5.1 is the first minor release of the Budgie 10.5 series, introducing a multitude of quality-of-life changes, bug fixes, and support for new GNOME Stacks. This Budgie 10.5 series release also brings new and updated translations thanks to our amazing community!
+
+## Bug Fixes
+
+Bug fixes are the cornerstone of Budgie 10.5 series releases, ensuring existing Budgie user experiences are smoother than ever.
+
+Budgie 10.5.1 introduces some bug fixes around Budgie Menu artifacting, notifications, improving window raise performance, and more. Let's break down the big items that were addressed!
+
+- Budgie Menu
+  - Menu artificating (such as window borders still showing in some cases) is now fixed.
+  - Menu items are now sorted using [locale linguist rules](https://github.com/solus-project/budgie-desktop/issues/1546?ref=buddiesofbudgie.org).
+- IconTasklist
+  - Fixed instances of window tracking in multi-window scenarios by invalidating our window on close in our AbominationRunningApp and picking another window of the same WM_CLASS.
+  - Fixed the ability to move non-favorited running applications / windows in IconTasklist across grouping and non-grouping modes. These are now allowed to intermingle with your favorited applications without concern for a panel crash. We're doing this by more heavily leveraging our AbominationRunningApp to provide more consistent window-specific IDs.
+- Raven
+  - Notification body alignment is now properly justified.
+  - Notifications will now properly wrap using `WORD_CHAR`, so we'll be more aggressive on wrapping on words when possible, but fallback to characters for longer running strings like URLs.
+  - Application controls in the Sound applet will now handle Gvc ChannelMap changes. This is useful since some applications do not provide accurate GvcStream volume immediately when creating their stream, such as Firefox when starting a video. We'll now ensure we're updating those values and ensuring applications like Firefox more accurately reflect muted states over Gvc.
+- Polkit: We now correctly handle user dismissing authentication dialogs
+- WM: We now enforce an instant auto raise of windows when the focus-mode is set to mouse over / mouse focus and 250ms on click, resulting in speedy window raising.
+
+## Quality of Life
+
+### Budgie Desktop Settings
+
+![](/images/blog/2022/03/budgie-desktop-settings-fonts.jpg)
+
+Budgie 10.5.1 introduces hinting and anti-aliasing settings in our Fonts section of Budgie Desktop Settings, allowing you even more flexibility with how document, interface, monospace, and window title fonts render:
+
+- For [font hinting](https://en.wikipedia.org/wiki/Font_hinting?ref=buddiesofbudgie.org), you can choose between a range of options ranging from no font hinting to full font hinting.
+- For antialiasing, you can choose between subpixel antialiasing, standard grayscale, and no antialiasing.
+
+### GNOME Stack Support
+
+Budgie 10.5.1 provides support for several GNOME stack releases, allowing for an ever growing amount of Budgie users to get the latest updates! Budgie supports GNOME 3.30, 3.32, and now 3.34, including recent changes in GNOME Settings Daemon.
+
+Thanks to the folks over at Ubuntu Budgie for their patches, it's greatly appreciated!
+
+### Icon Tasklist
+
+![](/images/blog/2022/03/budgie-desktop-icon-tasklist-hover.jpg)
+
+If you have a single window open for a given IconButton in the Icon Tasklist, we will now update the tooltip when you hover over.
+
+### Workspaces
+
+![](/images/blog/2022/03/budgie-desktop-settings-desktop.jpg)
+
+Budgie 10.5.1 introduces the ability to have persistent workspaces created at the launch of Budgie, with a configurable amount of default workspaces.
+
+Under the Desktop section of Budgie Desktop Settings, you'll find a new option called "Number of virtual desktops", where you can go from just having one workspace up to eight! A perfect opportunity to hide away all those Electron apps you're ashamed to be running!
+
+If you want more workspaces dynamically, you can still use our Workspace Applet to add more as you need them.
+
+### Styling
+
+Budgie 10.5.1 introduces a multitude of new CSS classes to ease Budgie Desktop theme development:
+
+- Icon Popover: Now has the `icon-popover` class
+- Night Light Applet: The container for the Night Light applet popover now uses the `night-light-indicator` class
+- Raven
+  - MPRIS widget now has an `mpris-widget` class
+  - MPRIS widget controls now have a `raven-mpris-controls` class
+  - Notifications View now has the `raven-notifications-view` class
+  - Internal to the Notifications View, we now provide the `raven-header` class, as well as dedicated classes for the Do Not Disturb (`do-not-disturb`) and Clear All Notifications (`clear-all-notifications`) buttons
+  - Groups of Notifications (per app) now have the `raven-notifications-group` class, with the header being `raven-notifications-group-header` and the individual Notifications having `notification-clone` classes.
+  - When no album art is provided for the MPRIS widget, we set the `no-album-art` class
+
+<OCCallout />

@@ -11,25 +11,19 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
-import { Drawer, IconButton, Menu, MenuItem, Typography } from "@mui/material";
+import { Button, Drawer, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 // Our assets
 import Logo from "../../public/images/logo.svg";
 import { useTranslations } from "next-intl";
 import { Uris } from "../constants";
-import { Button } from "@buddiesofbudgie/ui";
+import { BWButton } from "@buddiesofbudgie/ui";
 import NextLink from "./Link";
+import type { NavLink } from "../types";
 
 export type NavProps = {
   navBgColor?: string;
-};
-
-type NavLink = {
-  isButton?: boolean;
-  subMenu?: NavLink[];
-  title: string;
-  url?: string;
 };
 
 export const Nav = ({ navBgColor }: NavProps) => {
@@ -137,31 +131,30 @@ export const Nav = ({ navBgColor }: NavProps) => {
                   {navItems.map(({ isButton = false, subMenu, title, url }) => {
                     if (isButton)
                       return (
-                        <NextLink href={url ?? "#"}>
-                          <Button
-                            key={`PrimaryNav-Links-${title}`}
-                            size="large"
-                            sx={{ fontFamily: "Poppins" }}
-                            variant="contained"
-                          >
+                        <NextLink key={`PrimaryNav-Links-NextLink-${title}`} href={url ?? "#"} target="_blank">
+                          <BWButton key={`PrimaryNav-Links-${title}`} size="large">
                             {title}
-                          </Button>
+                          </BWButton>
                         </NextLink>
                       );
 
                     if (subMenu)
                       return (
-                        <>
+                        <Box key={`PrimaryNav-AttachedMenuButton-${title}`}>
                           <Button
                             aria-controls={anchorEl ? `NavMenu-${title}` : undefined}
                             aria-expanded={anchorEl ? "true" : undefined}
+                            aria-label={`NavMenuButton-${title}`}
                             aria-haspopup="true"
+                            disableElevation
+                            disableRipple
                             id={`NavMenuButton-${title}`}
                             key={`NavMenuButton-${title}`}
-                            onClick={(e) => setAnchorEl(e.currentTarget)}
+                            onClick={(e: { currentTarget: React.SetStateAction<HTMLElement | null> }) =>
+                              setAnchorEl(e.currentTarget)
+                            }
                             sx={{
                               fontSize: "1rem",
-                              fontFamily: "Poppins",
                               fontWeight: 400,
                               textTransform: "none",
                             }}
@@ -185,11 +178,16 @@ export const Nav = ({ navBgColor }: NavProps) => {
                               </MenuItem>
                             ))}
                           </Menu>
-                        </>
+                        </Box>
                       );
 
                     return (
-                      <NextLink key={`PrimaryNav-Links-${title}`} href={url ?? "#"} passHref>
+                      <NextLink
+                        key={`PrimaryNav-Links-${title}`}
+                        href={url ?? "#"}
+                        passHref
+                        target={url?.startsWith("http") ? "_blank" : "_self"}
+                      >
                         <Typography fontFamily="Poppins" sx={{ textTransform: "none" }} variant="subtitle1">
                           {title}
                         </Typography>

@@ -7,12 +7,6 @@
 **/dist/**
 **/.next/**
 
-# IaC
-infra/secrets.yaml
-.terraform*
-plan*.out
-terraform.tfstate*
-
 # dependencies
 **/node_modules
 /.pnp
@@ -40,10 +34,8 @@ yarn-error.log*
 
 # local env files
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.development
+.env.production
 
 # vercel
 .vercel

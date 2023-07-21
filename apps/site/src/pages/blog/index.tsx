@@ -2,14 +2,12 @@
  * This is our index page used for all blog listings, including tags (like Releases)
  */
 
-import React from "react";
-import { GetAllPostsPaginated, GetTag } from "../../common/ghost";
-import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next/types";
+import React, { useMemo } from "react";
+import type { InferGetServerSidePropsType } from "next/types";
 
 // Material UI Components
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
+import { Pagination, Stack, Typography } from "@mui/material";
 
 // Our Components
 import type { CustomMetaProps } from "../../components/CustomMeta";
@@ -17,13 +15,32 @@ import PageBase from "../../components/PageBase";
 import BlogListing from "../../components/blog/BlogListing";
 import type { ParsedUrlQuery } from "querystring";
 import { grey } from "@mui/material/colors";
+import { getPosts, getPostsByTags } from "../../common/getPosts";
+import { A, F, G, N, S, pipe } from "@mobily/ts-belt";
+import type { BlogTagInfo } from "../../types";
+
+type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 type fubarProps = {
-  className: InferGetServerSidePropsType<typeof getServerSideProps>;
+  className: PageProps;
 };
 
-const BlogIndex = ({ className: { posts, tag } }: fubarProps) => {
-  const PageTitle = tag.name ?? tag.og_title ?? tag.meta_title ?? "";
+const BlogIndex = ({ className: { page, pagesLength, posts, tag } }: fubarProps) => {
+  const location = useMemo(() => {
+    try {
+      const url = new URL(document.location as unknown as string);
+      return url;
+    } catch (_) {
+      return null;
+    }
+  }, []);
+  const searchParams = useMemo(() => (location ? location.searchParams : null), [location]);
+  const PageTitle = pipe(
+    tag,
+    S.split("-"),
+    A.map((s: string) => `${s.charAt(0).toUpperCase()}${s.slice(1)}`),
+    A.join(" ")
+  );
 
   const meta: CustomMetaProps = {
     title: PageTitle,
@@ -43,51 +60,68 @@ const BlogIndex = ({ className: { posts, tag } }: fubarProps) => {
       >
         {PageTitle}
       </Typography>
-      <Container maxWidth="fullhd" sx={{ marginBlockStart: "2vh" }}>
-        <BlogListing posts={posts} />
+      <Container maxWidth="fullhd" sx={{ marginBlock: "2vh" }}>
+        <Stack alignItems="center" rowGap={2}>
+          <BlogListing page={page} posts={posts} />
+          {pagesLength > 1 && (
+            <Pagination
+              count={pagesLength}
+              page={page}
+              onChange={(_, navPage) => {
+                if (!location || !searchParams) return;
+                if (page === navPage) return;
+                if (navPage === 1) {
+                  searchParams.delete("page");
+                } else {
+                  searchParams.set("page", navPage.toString());
+                }
+                document.location.search = searchParams.toString();
+              }}
+              size="large"
+            />
+          )}
+        </Stack>
       </Container>
     </PageBase>
   );
 };
 
 export const getServerSideProps = async ({ locale, query }: { locale: string; query: ParsedUrlQuery }) => {
-  const { tag, page } = query;
+  const { tag: tagInQuery, page: pageInQuery } = query;
 
-  let tagDetermined = Array.isArray(tag) ? tag[0] : tag;
-  tagDetermined = tagDetermined ?? "news";
+  type QueryP = typeof tagInQuery;
+  const convArr = (v: QueryP, d: string) =>
+    pipe(v, F.defaultTo<QueryP, NonNullable<QueryP>>(d), (a) => (G.isArray(a) ? a[0] : a));
 
-  let pageAsString = Array.isArray(page) ? page[0] : page;
-  pageAsString = pageAsString ?? "0";
+  const tag = convArr(tagInQuery, "news");
+  const page = pipe(convArr(pageInQuery, "1"), Number, N.clamp(1, Infinity));
 
-  const pageNum = Number(pageAsString); // Convert to a Number
+  const posts = getPosts();
+  const postsByTags = getPostsByTags(posts);
+  const postsByTag: BlogTagInfo | undefined = postsByTags[tag];
 
-  if (isNaN(pageNum) || pageNum < 0) {
-    // No page found or requested page is an invalid list
-    return {
-      messages: (await import(`../../messages/${locale}.json`)).default,
-      notFound: true,
-    };
-  }
-
-  const tagOrErr = await GetTag(tagDetermined); // Attempt to get it from Ghost so we know it is actually valid
-
-  if (tagOrErr instanceof Error) {
+  if (!postsByTag) {
     // Failed to get the tag
     return {
-      messages: (await import(`../../messages/${locale}.json`)).default,
       notFound: true,
     };
   }
 
-  console.log("tagOrErr", tagOrErr);
+  const paginatedPosts = postsByTag.posts.slice((page - 1) * 10, page * 10);
 
-  const posts = await GetAllPostsPaginated(pageNum, 10, tagOrErr);
+  if (!paginatedPosts.length) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
       messages: (await import(`../../messages/${locale}.json`)).default,
-      posts,
-      tag: tagOrErr,
+      page,
+      pagesLength: postsByTag.pages,
+      posts: paginatedPosts,
+      tag,
     },
   };
 };

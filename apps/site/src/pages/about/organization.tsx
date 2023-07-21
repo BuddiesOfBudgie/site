@@ -1,10 +1,9 @@
 import type { NextPage } from "next";
 import type { CustomMetaProps } from "../../components/CustomMeta";
 import { Teams } from "../../data/teams";
-import { StackDirectionColumnToRow } from "../../common/vars";
 
 // Material UI Bits
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
@@ -17,9 +16,10 @@ import ValuesBanner from "../../components/about/ValuesBanner";
 
 // Images
 import { GitHub, Matrix } from "../../components/Vectors";
-import { Button, SiteTheme } from "@buddiesofbudgie/ui";
+import { SiteTheme } from "@buddiesofbudgie/ui";
 import { useTranslations } from "next-intl";
 import NextLink from "../../components/Link";
+import { StackDirectionColumnToRow } from "../../constants";
 
 export const meta: CustomMetaProps = {
   title: "About",

@@ -2,23 +2,21 @@
  * This is our post info component for blog posts to display on blog listings. This post info comes in two sizes, "compressed" and "expanded".
  */
 
-import type { PostOrPage } from "@tryghost/content-api";
-
 // Material UI Components
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import { GetPostTitle } from "../../common/ghost";
 import { AuthorshipInfo } from "./AuthorshipInfo";
 import { TagStrip } from "./TagStrip";
 import { SiteTheme } from "@buddiesofbudgie/ui";
 import { useMediaQuery, useTheme } from "@mui/material";
 import NextLink from "../Link";
+import type { BlogPost } from "../../types";
 
 type BlogListingPostInfoParams = {
   condensed?: boolean;
-  post: PostOrPage;
+  post: BlogPost;
 };
 
 const BlogListingPostInfo = ({ condensed = false, post }: BlogListingPostInfoParams) => {
@@ -29,8 +27,6 @@ const BlogListingPostInfo = ({ condensed = false, post }: BlogListingPostInfoPar
 
   const showOnSmallView = largeBreakpointAndCondensed ? "none" : "inline-flex";
   const imageSize = largeBreakpointAndCondensed ? "40%" : "auto";
-
-  const postTitle = GetPostTitle(post);
 
   return (
     <Stack
@@ -43,12 +39,12 @@ const BlogListingPostInfo = ({ condensed = false, post }: BlogListingPostInfoPar
         xl: stackDirection,
       }}
       height="max-content"
-      key={`BlogListingPostInfo-${post.slug}`}
+      key={`BlogListingPostInfo-${post.id}`}
       spacing={2}
     >
-      {post.feature_image && (
+      {post.featuredImage && (
         <NextLink
-          href={`/blog/${encodeURIComponent(post.slug)}`}
+          href={`/blog/${encodeURIComponent(post.id)}`}
           prefetch={false}
           style={{
             minWidth: imageSize,
@@ -57,7 +53,7 @@ const BlogListingPostInfo = ({ condensed = false, post }: BlogListingPostInfoPar
           <Box
             sx={{
               aspectRatio: "16/9",
-              backgroundImage: `url(${post.feature_image})`,
+              backgroundImage: `url(${post.featuredImage})`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "100%",
               borderRadius: "25px",
@@ -70,7 +66,7 @@ const BlogListingPostInfo = ({ condensed = false, post }: BlogListingPostInfoPar
       <Stack direction="column" spacing={2}>
         {post.tags && <TagStrip tags={post.tags} />}
         <NextLink
-          href={`/blog/${encodeURIComponent(post.slug)}`}
+          href={`/blog/${encodeURIComponent(post.id)}`}
           prefetch={false}
           style={{
             color: SiteTheme.palette.primary.dark,
@@ -85,7 +81,7 @@ const BlogListingPostInfo = ({ condensed = false, post }: BlogListingPostInfoPar
             }}
             variant={condensed ? "h5" : "h4"}
           >
-            {postTitle}
+            {post.title}
           </Typography>
         </NextLink>
         <Stack display={showOnSmallView} spacing={2}>

@@ -6,9 +6,9 @@ import { SiteTheme } from "@buddiesofbudgie/ui";
 import Stack from "@mui/material/Stack";
 import { Chip, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import type { MilestonesSummary } from "@buddiesofbudgie/server";
+import type { GitHubMilestonesSummary } from "../../types";
 
-export type RequiredMilestoneSummaryItems = RequiredBy<MilestonesSummary, "current" | "upcoming">;
+export type RequiredMilestoneSummaryItems = RequiredBy<GitHubMilestonesSummary, "current" | "upcoming">;
 
 type MilestoneItemProps = {
   summary: RequiredMilestoneSummaryItems;

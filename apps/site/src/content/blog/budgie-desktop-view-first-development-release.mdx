@@ -1,0 +1,36 @@
+---
+title: "Budgie Desktop View: First Development Release!"
+author: JoshuaStrobl
+publishDate: "2020-11-26T12:02:00.000+00:00"
+featuredImage: /images/blog/2022/03/budgie-desktop-settings-with-view.jpg
+excerpt: >-
+  Today we are thrilled to announce the first generally public development
+  release of Budgie Desktop View!
+tags:
+  - news
+  - releases
+---
+
+Since the early days of Budgie, we have been using Nautilus' (now legacy) desktop icons implementation to provide desktop icon support. While some other desktop environments have strayed away from providing this functionality over the years, some going so far as to remove it entirely and require you to jump through hoops to enable it, we have always recognized that for many it is a cornerstone of their desktop experience, and as such it has remained a priority for us to retain that aspect of the Budgie experience.
+
+Of course, we recognized that requiring some downstreams to stick with an old version of Nautilus was not going to be sustainable. We want to enable all of our downstreams to ship Budgie without potentially compromising on functionality.
+
+To facilitate this, our goal from the start for Budgie 10.5.2 was to introduce a new, separate project that could be iterated on independently from Budgie Desktop itelf. This project needed to be rigorously focused and developed with an understanding of the scope and intent of the project, not trying to be a file manager but rather a method of quickly accessing the content and applications you consider most important.
+
+Today we are thrilled to announce the [first generally public development release of Budgie Desktop View]((https://github.com/BuddiesOfBudgie/budgie-desktop-view)! This release focuses on providing the essentials to a desktop icons experience:
+
+1.  Access to "special" folders as your home directory and trash.
+2.  Showing active drive / volume mounts (including mounted removable media).
+3.  An ordered list of Desktop directory contents, prioritizing folders before files while maintaining order of content that respects locales, as well as generating thumbnails for images to enable you to find the content you're looking for faster.
+4.  Independently adjustable icon sizing from your file manager (Nautilus' legacy desktop icons implementation has its sizes depend on the zoom level of Nautilus).
+5.  Right-click menu options for the background canvas to quickly access Budgie Desktop and System Settings, as well right-click menu options for opening a file using the default app, or via the Terminal.
+
+This isn't the final form Budgie Desktop View will take however! We're aiming to introduce the ability to choose between single and double-click options for launching items for the big `1.0` release, and adding drag & drop support in `1.1`.
+
+Budgie has always been about striking a balance in customization and that extends to the support we provide downstreams like Ubuntu Budgie as well. That is why we have also been working hard on introducing a new vendor-oriented mechanism to enable downstreams to choose a desktop icons implementation that fits them and their users best. Out-of-the-gate alongside our own desktop icons implementation, we're providing official support in Budgie Desktop's Settings application for the configuration of alternatives as well. Depending on the choice by the downstream (or any savvy user that can look at gsettings), you will get options that align with that implementation.
+
+Initially we will provide support for [DesktopFolder](https://github.com/spheras/desktopfolder?ref=buddiesofbudgie.org), which has been validated by the Buddies of Budgie team, and we've added some preliminary functionality for Nemo, which is awaiting validation and some TLC from downstreams (as Nemo is not something some downstreams ships in their repositories).
+
+We look forward to introducing it as a "stable" release next week alongside Budgie 10.5.2!
+
+<OCCallout />

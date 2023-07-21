@@ -1,19 +1,19 @@
 // This file contains the UX for the teams on the About page
 
 // Material UI Bits
-import { Button } from "@buddiesofbudgie/ui";
+import { BWButton } from "@buddiesofbudgie/ui";
 import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import Stack from "@mui/material/Stack";
 import Tooltip from "@mui/material/Tooltip";
-import { HalvedWidthOnHighResolution } from "../../common/vars";
 
 // People and Teams
 import { People } from "../../data/people";
 import type { Team as TeamType } from "../../data/teams";
 import { useTranslations } from "next-intl";
 import NextLink from "../Link";
+import { HalvedWidthOnHighResolution } from "../../constants";
 
 export type TeamProps = {
   stackSpacing: number;
@@ -67,7 +67,7 @@ const Team: React.FC<TeamProps> = ({ stackSpacing, team }: TeamProps) => {
         }}
       >
         <NextLink href={team.URL}>
-          <Button href={team.URL}>{t("LearnMore")}</Button>
+          <BWButton href={team.URL}>{t("LearnMore")}</BWButton>
         </NextLink>
         <AvatarGroup
           sx={{

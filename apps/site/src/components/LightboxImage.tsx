@@ -14,22 +14,26 @@ import Box from "@mui/material/Box";
 
 export type LightboxImageProps = {
   altImageText: string;
-  height: number;
+  height?: number;
   image: StaticImageData | string;
+  imageSx?: SxProps<Theme>;
   previewHeight?: number;
   previewWidth?: number;
   sx?: SxProps<Theme>;
-  width: number;
+  useOnlySx?: boolean;
+  width?: number;
 };
 
 export const LightboxImage = ({
   altImageText,
-  height,
+  height = 1080,
   image,
+  imageSx = {},
   previewHeight,
   previewWidth,
   sx,
-  width,
+  useOnlySx = false,
+  width = 1920,
 }: LightboxImageProps) => {
   const theme = useTheme();
   const [showImageFull, setShowImageFull] = React.useState(false);
@@ -37,23 +41,25 @@ export const LightboxImage = ({
   const useHeight = previewHeight ?? height;
   const useWidth = previewWidth ?? width;
 
-  const boxStyling = {
-    ...sx,
-    width,
-    [theme.breakpoints.down(width)]: {
-      maxHeight: "fit-content",
-      maxWidth: "100%",
-    },
-    [theme.breakpoints.between(useWidth, "fullhd")]: {
-      height: useHeight,
-      width: useWidth,
-      maxHeight: useHeight,
-    },
-    [theme.breakpoints.up("fullhd")]: {
-      height: useHeight,
-      width: useWidth,
-    },
-  };
+  const boxStyling = !useOnlySx
+    ? {
+        ...sx,
+        width,
+        [theme.breakpoints.down(width)]: {
+          maxHeight: "fit-content",
+          maxWidth: "100%",
+        },
+        [theme.breakpoints.between(useWidth, "fullhd")]: {
+          height: useHeight,
+          width: useWidth,
+          maxHeight: useHeight,
+        },
+        [theme.breakpoints.up("fullhd")]: {
+          height: useHeight,
+          width: useWidth,
+        },
+      }
+    : sx;
 
   return (
     <>
@@ -64,9 +70,10 @@ export const LightboxImage = ({
           onClick={() => setShowImageFull(true)}
           src={image}
           style={{
-            //height: "auto",
+            height: "auto",
             maxWidth: "100%",
             objectFit: "cover",
+            ...(imageSx as Object),
           }}
           width={useWidth}
         />

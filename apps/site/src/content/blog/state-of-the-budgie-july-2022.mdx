@@ -1,0 +1,64 @@
+---
+title: "State of the Budgie: July 2022"
+author: JoshuaStrobl
+publishDate: "2022-08-01T17:23:40.000+00:00"
+featuredImage: /images/blog/2022/08/StateOfTheBudgie_July2022.jpg
+excerpt: >-
+  This is the State of the Budgie for July 2022, covering the latest happenings
+  in the month of July!
+tags:
+  - news
+  - state-of-the-budgie
+---
+
+This is the State of the Budgie for July 2022, covering the latest happenings in the month of July!
+
+## Budgie 10.6.2
+
+[Budgie 10.6.2](budgie-10-6-2-released/) was released a few weeks back, resolving issues in our daemon, panel, and panel widgets. This was the second release of the 10.6 series and the third release already with Budgie Desktop being under the Buddies of Budgie organization, so I am quite happy with the momentum thus far and it is certainly an improvement over the last few years.
+
+## Budgie 10.7 Development
+
+Budgie 10 continues to be our primary focus as we work on various re-architectures of the desktop, from moving more business logic from widgets to the daemon, to providing major quality-of-life improvements, with 10.7 being the next 10 series release.
+
+### Budgie Menu
+
+One of the items we will be shipping in Budgie 10.7 is a new Budgie Menu. This new Budgie Menu provides improvements to both its user experience as well as its architecture. Since UX improvements are more eye-catching, we will start with that first.
+
+![](/images/blog/2022/08/StateOfTheBudgie_July2022-1.jpg)
+
+As you can see in the featured image, Budgie Menu in many ways is quite similar to what it was before, with the key differences being at the bottom of the menu. With the new Budgie Menu, you will have:
+
+1.  Access to a personal user menu which has quick XDG directory access. This feature enables you to open up a file manager (or technically whatever your inode/directory handler is) directly to folders like Home, Documents, Music, etc. This follows the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html?ref=buddiesofbudgie.org), so if you have for example a different path set for Music (_or your system locale is not English_) that will be respected. Folders which do not exist will be automatically hidden, so the menu will only show items which are relevant to you.
+2.  Access to a power menu with all the options you would come to expect such as suspend, hibernate, logout, and power off. This will be the preferred default way of performing these operations going forward, centralizing this functionality where many users expect, as opposed to being put into the User Indicator widget. The User Indicator widget will still be around so various operating systems which ship Budgie Desktop can have the choice to retain the previous layouts or complement it with their own menu, but the default Budgie Desktop experience will have not have the User Indicator added by default.
+3.  Capability for an application to launch on a specific GPU if [switcheroo-control](https://gitlab.freedesktop.org/hadess/switcheroo-control/?ref=buddiesofbudgie.org) is installed when PrefersNonDefaultGPU is set to true for a given desktop file. This is handy for hybrid graphics / dual GPU scenarios.
+4.  Quick access to Budgie Control Center and Budgie Desktop Settings.
+5.  An option via the Budgie Menu settings in Budgie Desktop Settings to show Budgie Control Center settings items (such as bluetooth, sound, power) in the applications list. You will always be able to search for these items regardless of the option being enabled though, so you can have less clutter in your menu while still having quick access to various settings panels.
+
+![](/images/blog/2022/08/relevancysearch-1.jpg)
+
+This fancier user experience is powered by a more robust architecture, starting with a new application indexer in our daemon that replaces our previous use of libgnome-menus. This library tended to create some inconsistent results when it came to application indexing and a common one was apps not showing up after installation, requiring the user to restart budgie-panel or relog for it to trigger properly. Our indexer has more consistent behavior and even works with user created custom menus.
+
+Alongside this, we have a new "relevancy service" that is leveraged in Budgie Menu and is planned to be leveraged in a new Budgie Run Dialog. This relevancy service is used for search and keep track of how each application is relevant to a given search term. This code was inspired by work done on Brisk Menu and takes into account the application name, "generic name" of an app (like "text editor"), description, executable, and keywords. Finding apps should get much easier starting in Budgie 10.7!
+
+## Packaging Efforts
+
+An important part of the user journey is making it as effortless as possible to start using Budgie Desktop, no matter what Linux-based operating system the user wants to use. In the month of July, we have made headway on improving the Budgie Desktop experience across two major operating systems: Arch Linux and Fedora.
+
+### Arch Linux
+
+Budgie Desktop has been available via the Arch Linux repository for years, providing the opportunity for users to get the latest of their favorite desktop environment alongside the latest of their favorite applications. With all the changes happening in the Budgie ecosystem since the beginning of this year, we noticed that some of them were not making their way into the official Arch repositories.
+
+For example, Budgie Control Center is a mandatory component and is only available in the [AUR](https://aur.archlinux.org/packages/budgie-control-center?ref=buddiesofbudgie.org). This makes it less discoverable to Budgie users, does not get automatically pulled in as part of the installation, and as a result the user may be left wondering what control center they should use. In the past, Budgie Desktop has been able to leverage GNOME Control Center due to many similarities, however as the GNOME team has been working to expose more GNOME Shell capabilities via GNOME Control Center, this has resulted in a widening set of issues when used under Budgie. Specific panels that would attempt to get GNOME Shell settings would cause segfaults and due to panel restoration in GNOME Control Center, it would always attempt to load that segfaulting panel at next launch and require the end user to launch a specific panel from the terminal to get back into a usable GNOME Control Center.
+
+It was for this reason and the desire to streamline the control center experience that we forked GNOME Control Center into Budgie Control Center and began shipping it as part of the 10.6+ experience. As there has not been a dedicated Budgie maintainer under Arch in the recent past (rather solely being done in the spare time of various Arch contributors), these new changes under the new org, coupled with new components, did not get fully incorporated into the repos, which has resulted in a sub-optimal experience for users under Arch.
+
+Campbell Jones, aka serebit, is a multi-year contributor to Budgie Desktop, a team member in the Buddies of Budgie organization, and an avid Arch Linux users. Last month, he applied to become an Arch Trusted User, which would enable him to support Budgie Desktop on Arch Linux in an official capacity, providing our users on Arch an excellent experience, and it is our hope that he will be approved this month!
+
+### Fedora
+
+Alongside efforts to improve support in Arch Linux, we have been working to support Budgie Desktop officially in Fedora. Fedora is the only major operating system without Budgie in its official repos and as someone that really enjoys the Fedora experience as a user, developer, and server admin (having used Fedora Server for years), it made perfect sense to not only bring Budgie Desktop to Fedora but also strive to get an official spin of Fedora with Budgie as well.
+
+Currently all packages except for budgie-desktop itself (budgie-control-center, budgie-desktop-view, and budgie-screensaver) are in Fedora 37 (current rawhide) and the Budgie Desktop package is currently awaiting review. My personal goal is to get it landed in rawhide in August and begin exploring 36 backporting as well as spin creation!
+
+<OCCallout />

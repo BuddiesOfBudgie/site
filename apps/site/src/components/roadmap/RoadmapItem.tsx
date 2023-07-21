@@ -2,24 +2,23 @@ import React from "react";
 
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import { camelCase } from "lodash";
 import { Chip, Typography } from "@mui/material";
 import { Avatar, SiteTheme } from "@buddiesofbudgie/ui";
 import { useTranslations } from "next-intl";
 import Color from "color";
 import { GoIssueOpened } from "react-icons/go";
 import { TbGitPullRequest, TbFlag } from "react-icons/tb";
-import type { ProjectItem } from "@buddiesofbudgie/server";
 import NextLink from "../Link";
+import { GitHubProjectItemType, type GitHubProjectItem } from "../../types";
 
 type RoadmapItemProps = {
-  item: ProjectItem;
+  item: GitHubProjectItem;
 };
 
 export const RoadmapItem = ({ item }: RoadmapItemProps) => {
   const { content, labels, type } = item;
   const { assignee, num, title, url } = content;
-  const key = `${type}-${camelCase(content.title)}`;
+  const key = `${type}-${content.title}`;
   const t = useTranslations();
 
   return (
@@ -34,9 +33,9 @@ export const RoadmapItem = ({ item }: RoadmapItemProps) => {
     >
       <Stack direction="column" gap={2}>
         <Stack alignItems="center" direction="row" columnGap={1}>
-          {type === "DRAFT_ISSUE" && <TbFlag size={24} />}
-          {type === "ISSUE" && <GoIssueOpened />}
-          {type === "PULL_REQUEST" && <TbGitPullRequest />}
+          {type === GitHubProjectItemType.DRAFT_ISSUE && <TbFlag size={24} />}
+          {type === GitHubProjectItemType.ISSUE && <GoIssueOpened />}
+          {type === GitHubProjectItemType.PULL_REQUEST && <TbGitPullRequest />}
           <Typography sx={{ color: SiteTheme.palette.misc.greyish, fontWeight: "bold" }} variant="subtitle1">
             {t(`RoadmapItemType.${type}`, { num })}
           </Typography>

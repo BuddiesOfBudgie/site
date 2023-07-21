@@ -1,0 +1,106 @@
+---
+title: Budgie 10.6 Released
+author: JoshuaStrobl
+publishDate: "2022-03-06T16:53:00.000+00:00"
+featuredImage: /images/blog/2022/03/budgie-10-6.jpg
+excerpt: "Budgie 10.6 is the first release of Budgie under the new Buddies Of Budgie organization! \U0001F680\U0001F680\U0001F680"
+tags:
+  - releases
+  - news
+---
+
+Budgie 10.6 is the first release of Budgie under the new Buddies Of Budgie organization! 🚀🚀🚀
+
+Budgie 10.6 is not just a reflection of our organization change for the development of Budgie, it reflects an expansion on Budgie 10.x series with new features and re-architectures, applying the lessons learned from those into our next generation version of Budgie. Buddies of Budgie views Budgie Desktop as a platform rather than a product. Distributors of Budgie Desktop and users should not feel like their choice of theming, applications, or default styles should be at odds with the goals of the project.
+
+Budgie 10.6 aims to eliminate the divide between traditional "downstream" consumers of Budgie and the development organization itself, but enabling those downstreams like Ubuntu Budgie to get more intimately involved in its development.
+
+Applying one of our core pillars of being a platform rather than a product, the goal with Budgie 10.6 and future releases of Budgie is to provide a macrocosm, or a minimal set of tightly coupled components, and leave the rest of the ecosystem up to the decisions and values of downstream consumers, be that distributions or end users.
+
+This macrocosm in Budgie 10 series is currently the following:
+
+- Budgie Desktop
+- Budgie Desktop View: A dedicated desktop icons implementation.
+- Budgie Control Center: A fork of GNOME Control Center with various value-add such as Raven keybind support, improved fractional scaling support when supported by the operating system, re-organization of functionality.
+
+We expect downstream consumers of Budgie to use following:
+
+- [Budgie Desktop](https://github.com/BuddiesOfBudgie/budgie-desktop?ref=buddiesofbudgie.org) 10.6+
+- [Budgie Desktop View](https://github.com/BuddiesOfBudgie/budgie-desktop-view?ref=buddiesofbudgie.org) 1.2+
+- [Budgie Control Center](https://github.com/BuddiesOfBudgie/budgie-control-center?ref=buddiesofbudgie.org) 0.4+
+
+Budgie Desktop 10.6 introduces changes to various components which expects the aforementioned forks + versions, for example schema changes for Budgie Desktop View and opening of GNOME Control Center now opens Budgie Control Center.
+
+## Application Tracking and Icon Tasklist Improvements
+
+In Budgie 10.6, the Icon Tasklist and application tracking system saw rewrites or changes to:
+
+- Application Grouping
+- Fix exclusion of valid applications. Because a window type returned can be a list of types, we should actually check that the window has in its list a \_NET*WM_WINDOW_TYPE_NORMAL or \_NET_WM_WINDOW_TYPE_TOOLBAR. If this type is \_in* the types, then we should allow this item to be tracked, otherwise ignore. This fixes cases with some KDE applications like Spectacle and KColorChooser not showing up.
+- Fixes to applications that do not provide a WM_CLASS
+- Fixes to LibreOffice application grouping
+- Improved single-instance application tracking
+
+## Internal Theme and Panel Refinements
+
+![](/images/blog/2022/03/before-after-budgie.jpg)
+
+The primary goals with the internal theme rewrite were to address inconsistencies across all Budgie components. This has been achieved with changes to:
+
+1.  Border radiuses on most dialogs, Raven Widgets, Panel Popover content.
+2.  Spacing in the form of padding and margins, alongside minimum width for applets which promotes uniform spacing on the panel.
+3.  Unified color scheme for widgets within the panel
+4.  Reduction in semi-transparency to improve readability.
+5.  Reduction in our use of borders and shadows.
+6.  Removing of "stylized end regions" due to inconsistencies across GTK themes and internal theme.
+7.  General improvements to our support for GTK themes, such as with Budgie Menu.
+
+We didn't just improve the styling of the internal theme however! Alongside those changes, there have been improvements to the panel and its widgets:
+
+- Adjusted raven sizing to fix panel size changes, fixes an issue where Raven could overlap the Panel.
+- Precise battery levels icons are now used when supported by the icon theme. This means the icon will get updated on 10% intervals.
+- The Clock Applet text will now wrap on vertical panels.
+- Increased the default panel size to 36 pixels, which is the result of us no longer calculating in the size of the shadow.
+- Prevented a crash when somehow deleting the same applet twice.
+- Updated the default panel configuration to reflect the one that was used in Solus via its Budgie Desktop Branding package. This change better communicates our expectation for the default Budgie experience. Prior to this change, there were large inconsistencies such as panel location and widgets, between distributors such as Arch Linux and other consumers like Solus.
+
+## Notification System Rewrite
+
+In Budgie 10.6, our Notification Server saw a rewrite and move out of Raven, enabling it to be utilized in other Budgie components, for example unlocking the capability to support notification badges in Icon Tasklist in the future.
+
+When rewriting the Notification Server, we took this opportunity to fix long-standing issues as well as introduce subtle improvements to the Notification popups themselves.
+
+- We now use the GTK.Stack for Notification popup bodies, providing a better way to reflect notification body content.
+- We have improved the last Notification tracking and pausing, reducing weirdness with some edge cases like Discord and Firefox.
+- We now properly utilize the Notification's appinfo, fixing issues where Notification Groups could present the wrong name (such as with Evolution and its calendar events).
+- Fixed notification mute button sometimes starting without an image.
+- Fixed a long-standing issue with our Notification Server returning the incorrect Notification ID, which could impact notification replacement.
+- Clicking on a Notification Popup will now trigger the default action instead of adding a button for the default action.
+
+## Other Changes
+
+Here are some other changes that we made in Budgie 10.6:
+
+- Elimination of some legacy queue_layout calls in the window manager, which should reduce unnecessary redraws
+- Use of tabs instead of spaces, general reformatting of some code
+- Reintroduce support for GNOME 40, to enable Ubuntu LTS support
+- Moved from Weblate to Transifex for translations
+- Renamed Budgie Desktop View schema to support its rebrand
+- Renamed GNOME Control Center references to Budgie Control Center
+- Ensure gschema override for switch-input-source\* is formatted correctly, which fixes a gschema compilation warning.
+- Fix SEGV when input source was switched by Alt+Shift_L, caused by using a non-ibus input method.
+- Fixes to expanding Raven thumbnail causing Raven itself to resize
+
+---
+
+## Thank You
+
+I would like to thank all the amazing contributors that have made this release possible, provided feedback on our [Matrix Server](https://matrix.to/?ref=buddiesofbudgie.org#/#buddies-of-budgie:matrix.org), and supported our vision of Budgie. Special thanks go to:
+
+- @EbonJaeger
+- @fossfreedom
+- @guillotjulien
+- @kenhys
+- @serebit
+
+<OCCallout />

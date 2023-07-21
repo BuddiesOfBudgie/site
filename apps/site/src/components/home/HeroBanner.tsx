@@ -12,13 +12,14 @@ import Typography from "@mui/material/Typography";
 // Images
 import Laptop from "../../../public/images/laptop.png";
 import { useTranslations } from "next-intl";
-import { Button } from "@buddiesofbudgie/ui";
 import { Uris } from "../../constants";
 import { grey } from "@mui/material/colors";
 import NextLink from "../Link";
+import { Button, useTheme } from "@mui/material";
 
 export const HeroBanner = () => {
   const t = useTranslations();
+  const theme = useTheme();
 
   return (
     <Stack alignItems="center" justifyContent="center" my={6} spacing={6}>
@@ -36,7 +37,13 @@ export const HeroBanner = () => {
           {t("Home.HeroBanner")}
         </Typography>
         <NextLink href={Uris.GET_BUDGIE}>
-          <Button color="success" sx={{ color: "white", fontWeight: 600, maxWidth: "max-content" }}>
+          <Button
+            color="success"
+            sx={{
+              color: theme.palette.common.white,
+              maxWidth: "max-content",
+            }}
+          >
             {t("Get Budgie")}
           </Button>
         </NextLink>
@@ -48,7 +55,6 @@ export const HeroBanner = () => {
         sx={{
           backgroundBlendMode: "darken",
           background: `rgba(0, 0, 0, 0.5) url(/images/geo-forest.jpg)`,
-          //backgroundColor: theme.palette.success.main,
           backgroundSize: "cover",
           borderRadius: 12,
           position: "relative",

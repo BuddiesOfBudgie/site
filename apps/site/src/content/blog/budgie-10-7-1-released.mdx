@@ -1,0 +1,44 @@
+---
+title: Budgie 10.7.1 Released
+author: JoshuaStrobl
+publishDate: "2023-02-19T17:10:23.000+00:00"
+featuredImage: /images/blog/2023/02/Budgie_10.7.1_Featured.jpg
+excerpt: >-
+  Budgie 10.7.1 is the first minor release in the 10.7 series of our Budgie
+  Desktop environment, introducing some improvements, bug fixes, and updated
+  translations.
+tags:
+  - news
+  - releases
+---
+
+[Budgie 10.7.1](https://github.com/BuddiesOfBudgie/budgie-desktop/releases/tag/v10.7.1?ref=buddiesofbudgie.org) is the first minor release in the 10.7 series of our Budgie Desktop environment, introducing some improvements, bug fixes, and updated translations.
+
+## Improvements
+
+![](/images/blog/2023/02/BudgieDesktopSettings_EnableUndirection.jpg)
+
+- Our settings / functionality for toggling unredirection has been improved. Unredirection allows frames to bypass the compositor for fullscreen applications, reducing overhead and improving performance in scenarios such as gaming. In previous releases, the option would be for _disabling_ unredirection with the setting being _off_ by default, meaning unredirection was enabled. This was confusing for both end users as well as in the implementation of the functionality. This setting has now been updated to be `Enable unredirection`, with the option _enabled_ by default, with clearer explanation for the end user. [#300](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/300?ref=buddiesofbudgie.org)
+- Initial Mutter 12 ABI support has been added in preparation for the upcoming GNOME 44 release. [#305](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/305?ref=buddiesofbudgie.org)
+- Margins have been refined in the Budgie Desktop Settings panel settings layout to be aligned with that of the settings layout for Raven settings. [#295](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/295?ref=buddiesofbudgie.org)
+- Updated translations. Thank you to all of our amazing translators on our [Transifex](https://www.transifex.com/buddiesofbudgie/?ref=buddiesofbudgie.org) ❤️
+
+## Bug Fixes
+
+- Fix inability to capture full-screen applications with Budgie Screenshot. [#298](https://github.com/BuddiesOfBudgie/budgie-desktop/issues/298?ref=buddiesofbudgie.org)
+- Fix missing translatable strings in Budgie Screenshot. [#299](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/299?ref=buddiesofbudgie.org)
+- Fix ellipsizing overflowing text in media control widget header resulting in Raven expansion. [#302](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/302?ref=buddiesofbudgie.org)
+- Fix Budgie Menu handling of partial application name sorting and searching. [#284](https://github.com/BuddiesOfBudgie/budgie-desktop/issues/284?ref=buddiesofbudgie.org) / [#291](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/291?ref=buddiesofbudgie.org)
+- Fix plugins with ampersands (&) in description failing to render correctly. [#292](https://github.com/BuddiesOfBudgie/budgie-desktop/issues/292?ref=buddiesofbudgie.org) / [#293](https://github.com/BuddiesOfBudgie/budgie-desktop/issues/292?ref=buddiesofbudgie.org)
+
+## Contributor List
+
+Budgie Desktop is developed by Buddies of Budgie and contributors from around the world. Here is a list of all the code contributors that made this release possible:
+
+- [Campbell Jones](https://github.com/serebit?ref=buddiesofbudgie.org)
+- [David Mohammed](https://github.com/fossfreedom?ref=buddiesofbudgie.org)
+- [Eli Schwartz](https://github.com/eli-schwartz?ref=buddiesofbudgie.org)
+- [Evan Maddock](https://github.com/EbonJaeger?ref=buddiesofbudgie.org)
+- [Joshua Strobl](https://github.com/JoshStrobl?ref=buddiesofbudgie.org)
+
+<OCCallout />

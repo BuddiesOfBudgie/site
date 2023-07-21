@@ -160,7 +160,7 @@ const Home: NextPage = () => {
           <ColorBanner
             backgroundColor="linear-gradient(to right, #9f7beb, #7b83eb)"
             body={t("Home.ColorBanner.Built.Text")}
-            buttonHref="/about"
+            buttonHref="/about/organization"
             buttonText={t("LearnMore")}
             buttonTextColor="#9E7BEB"
             header={t("Home.ColorBanner.Built.Header")}

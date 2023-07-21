@@ -3,12 +3,11 @@
  */
 
 import React from "react";
-import { useTheme } from "@mui/material";
+import { Button, useTheme } from "@mui/material";
 
 // Material UI Bits
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { Button } from "@buddiesofbudgie/ui";
 import NextLink from "./Link";
 
 // Our components
@@ -58,12 +57,17 @@ export const ColorBanner = ({
       >
         {body}
       </Typography>
-      <NextLink href={buttonHref}>
+      <NextLink
+        href={buttonHref}
+        sx={{
+          marginBlockStart: "auto",
+        }}
+        target={!buttonHref.startsWith("/") ? "_target" : "_self"}
+      >
         <Button
+          color="info"
           sx={{
             color: buttonTextColor,
-            backgroundColor: theme.palette.primary.light,
-            marginBlockStart: "auto",
             maxWidth: "max-content",
           }}
         >

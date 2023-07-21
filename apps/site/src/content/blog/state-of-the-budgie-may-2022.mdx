@@ -1,0 +1,417 @@
+---
+title: "State of the Budgie: May 2022"
+author: JoshuaStrobl
+publishDate: "2022-05-22T20:12:48.000+00:00"
+featuredImage: /images/blog/2022/05/budgie-on-silverblue-3.jpg
+excerpt: >-
+  This is the State of the Budgie for May 2022, covering the latest happenings
+  this month!
+tags:
+  - news
+  - state-of-the-budgie
+---
+
+This is the State of the Budgie for May 2022, covering the latest happenings this month!
+
+# Workshops
+
+One of the biggest developments this month is that we held our first two workshops, where we talked about a wide range of topic from our Core Values, Consensus Creation, organization structure, Budgie 10 development items, Budgie 11 – and more.
+
+The goal of these workshops was to provide a transparent process for everyone to get involved and express their thoughts / opinions, whether they were brand new faces to the community, long-time contributors, or just folks dropping by in Twitch chat. These were held over Google Meet and used Miro for our collaborative whiteboard.
+
+## Workshop: Day 1
+
+The first day was centered around community and the following topics:
+
+- What are our Core Values? The intent behind describing and agreeing on these shared values is to provide as a guiding principle for how we operate as an organization as well as our focus when it comes to building Budgie 10, 11, and beyond.
+- What does our organization structure look like? In what ways do we separate responsibilities and ensure we have solid multidisciplinary teams?
+- Similarly, what services do we agree to use going into the future that can be leveraged by one or more teams within Buddies of Budgie? For example, how will password sharing occur, if needed at all? What cloud providers will be used for various use cases?
+- How do we facilitate discussion and what avenues are we going to use for it?
+- How do we organize and communicate information about the organization, Budgie, current and future developments?
+- Code of Conduct topic to promote a welcoming community.
+
+<iframe
+  src="https://www.youtube.com/embed/eIcA0VHm3fA?feature=oembed"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen=""
+></iframe>
+
+At the end, [the board](https://miro.com/app/board/uXjVO-cPzFk=/?share_link_id=531723236348&ref=blog.buddiesofbudgie.org) ended up looking a little crazy, but we will focus on the individual aspects section-by-section a bit later.
+
+![](/images/blog/2022/05/miro-day-1-board.jpg)
+
+## Workshop: Day 2
+
+The second day was centered around Budgie 10 and Budgie 11, as well as wrapping up some important topics that we did not get around to in the first day (which we time-boxed to 3 hours). Specifically, the topics were:
+
+- What ideas do we have for Budgie 10.x and which of those ideas do we want to translate into actionable goals? Which apply to Budgie 11? Are there opportunities for some to apply to both?
+- What development items in Budgie 10 need to happen for us to be satisfied with its state and shift our primary focus to Budgie 11? Note: This does not mean Budgie 11 development would not happen before that point, just provides us a clearer line where we all agree that a minimal focus would be put on 10.x.
+- What are our ideas for Budgie 11 and which of those should translate to being agreed, actionable, high level objectives?
+- What features and functionality need to exist for our Budgie 11 "MVP"? (For us it is a Minimum Viable **Platform** as opposed to a Minimum Viable Product - as we view Budgie as a platform for others)
+
+We all were so in the weeds of the workshop day 2 that we actually increased the timebox for it slightly, so we went over by about 45 minutes.
+
+![](/images/blog/2022/05/miro-day-2-board.jpg)
+
+<iframe
+  src="https://www.youtube.com/embed/avNxHogn7i4?feature=oembed"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen=""
+></iframe>
+
+---
+
+# Core Values
+
+In our workshops, we identified three Core Values that will be our guiding principles for how we operate Buddies of Budgie and focus on Budgie itself.
+
+## Independence
+
+The value of Independence is important to all of us and it can be viewed from a few angles:
+
+1.  We all learned from the history of Budgie Desktop being spearheaded by the Solus project and how that impacted the priorities that were placed into Budgie's development as well as the perception from then "downstream" consumers of Budgie. The problematic mix of priorities in development between Solus itself and Budgie meant that for long periods of time, Budgie was not receiving the focus it deserved, with occasional spurs of activity typically just before a Solus release – meaning "downstreams" were put in the awkward position of having to ship Budgie with patches to ensure it worked well against their software stack, which was not always in alignment with that of Solus. This alongside other decisions meant Budgie was never truly independent, even when I had tried to proactively engage "downstreams" and incorporate them into its development.
+2.  Budgie is viewed as a platform and encourages consumers of Budgie, such as any operating system which ships it as the option (or one of many) to make decisions which allow them to ship Budgie and their desired ecosystem in a manner that best satisfies their user base. This does not need to be "stock" Budgie, so long as an operating system or user is using Budgie, we are happy!
+3.  We have made technical decisions for Budgie 11 and beyond that focuses on a clear separation between the "data layer" that enables complex Budgie functionality, and the visual / "presentation layer". This reduces our reliance on any one given upstream for a toolkit or related libraries, allowing us to potentially explore different models for achieving the presentation layer, and even enabling other developers to build on top of Budgie's data layer with their own presentations.
+
+Of course, Budgie contributors are **encouraged** to work on their favorite operating systems – there is **no requirement** for any one given operating system or way of working – and many of their experiences and the viewpoints shaped by being a part of those communities can positively impact how Budgie is developed.
+
+## Transparency
+
+Transparency is not just a value but a way of working. It was an absolute must when I established Buddies of Budgie and would prefer to have an excess of transparency than folks have no understanding of the day-to-day functions of Budgie and its respective organization. More information available to everyone enables smarter decision-making and easier retrospectives.
+
+In practice, this has meant the following so far:
+
+- Proactive communication on plans for the organization. Initial plans for the project including the original intent to "unlock" Budgie 10.x from its prior "maintenance-only, no new feature" development hell.
+- Active engagement in the broader community, across various subreddits and forums.
+- Creation of our Matrix server and discussion forum on GitHub to foster public discussions. **No IRC, this isn't the 1990s**.
+- Workshops that are open to the public (to the point I even shared the editable Miro board in Twitch chat for viewers to join as well - surprisingly no trolling happened).
+- More recently taking into use the "Stale" bot that can more consistently communicate why an issue may be considered closed, labeled a certain way, and more - reducing user frustration.
+
+To nobody's surprise, it was agreed by everyone that this way of working and being should be a Core Value. We want to ensure that everyone is able to understand how we are organized so they know the best ways and places to get involved, and what teams may suit them best. Transparency in Budgie's development helps to build an understanding of what is currently in the works and the intended direction going into the future.
+
+Our decision-making takes this value into account as we do not make changes in the organization and project that will negatively impact one's ability to understand the organization and project.
+
+## User-centric
+
+The third, though certainly not the least valued, currently defined Core Value is "User-centric".
+
+Buddies of Budgie and the Budgie desktop itself is built for its users. Users are seen as stakeholders in development and day-to-day operations, with a fundamental part of our consensus model for making changes to the organization and our platform being how do our decisions positively impact the end user’s experience.
+
+People should feel encouraged to get involved directly, promoting fairness in our ways of working, and helps reduce the likelihood that changes are performed in a vacuum where there is no clear understanding on the user's position to a specific change. If we are unsure of the impact, our consensus model mandates that surveying / polling in some form is done so we can gather user sentiment / thoughts.
+
+# Consensus Creation
+
+Since it was just touched on in our User-centric section, let us quickly cover our initial thoughts on how we create consensus within the organization.
+
+![](/images/blog/2022/05/consensus-creation.jpg)
+
+## Surveying
+
+Surveying is not always the first step as part of our decision-making process nor may not be as complex as an in-depth survey performed through our GitHub. Surveying is looked at in a few different ways:
+
+1.  Surveying could be done ahead-of-time as part of a proposal process for a decision to reduce existing bias and enable more empirical, data-driven decisions.
+2.  Surveying can be done if the consensus during the decision-making / voting (done by "Best Buds" team – we get into the teams later) is that we do not fully understand the scope of impact for a given proposal or if a change is even desired in the first place (you know, like killing off desktop icons or system trays like some other projects).
+3.  Surveying can be done if it makes sense to table an idea for a later time and re-evaluate down the road.
+
+## Proposals
+
+We have no standardized way of proposing a change. The expectation is that the individual proposing a change or action look at it through the lens of our Core Values and come up with the most reasonable way to present their ideas. In many instances, it may be as simple as just having a public discussion in our Matrix server. In others it may be recommending to write a GitHub Discussion or Issue to centralize discussion on the topic.
+
+## Voting
+
+Voting is not intended to be an arduous process. Emojis on a message, polls in Element, or just writing in the affirmative or negative are all perfectly sufficient in achieving the outcome of understanding if there is a consensus.
+
+## Final Steps
+
+If there is no consensus, the idea can be returned to later instead of just permanently discarding the proposal. It may be that there is just a lack of understanding on the given topic or we want to explore alternative solutions to addressing an item in the proposal.
+
+If there is consensus, the proposal is turned into actionable items and we work collectively to address them.
+
+# Organization Structure
+
+As part of the workshops, I wanted to clearly define team-oriented responsibilities versus the responsibilities of the individual, with my goals being:
+
+1.  Ensure that more aspects of the organization were able to function more independently.
+2.  Promote community and prospective members to engage in teams that leverage their skills best and interest them the most.
+3.  Live our core values by promoting Independence in team functions, Transparency in leadership and roles, and being User-centric through clearer definitions of "community responsibilities" (for example, translations).
+
+While there is still plenty of work on the infrastructure side of things to ensure the teams are able to seamlessly operate, we have at the very least defined them.
+
+![](/images/blog/2022/05/org-structure.jpg)
+
+## Personal Role
+
+I am going to cover what I anticipate my role to be within Buddies of Budgie. You could call it "Project Lead" or BDFL (Benevolent Dictator for Life) or whatever label you choose to use, but the way I view my role and responsibilities is as follows:
+
+1.  Ensuring all teams get the care and resources they need. I look at this from the Scrum framework perspective as being the "Scrum Master", which is an individual that has the responsibility of removing impediments for team member and coordinating with other teams as well as externals. You could also think of this as a tradition PO / Product Owner – though in our case it would be Platform Owner.
+2.  Ensuring we maintain our Core Values as an organization and for Budgie Desktop. I look at this less as a "visionary" role (since I think that can negatively impact the willingness for people to propose changes in the project and organization) but rather ensuring that our decisions are made with our values in our minds.
+3.  Some of the boring administrative stuff like billing, review of invoices and reimbursement requests — mostly through OpenCollective. Legal assets like trademarks and copyrights may at some point fall under this as well.
+
+## Teams
+
+We have clearly defined the following teams:
+
+- Best Buds: This team is responsible for general day-to-day maintenance of our software such as: issue triaging, code reviews, and tagging new releases.
+- Community Engagement & Marketing Team: This team is responsible for active community outreach, main site content writing, release promotion, and general marketing. Not all team members will be part of "marketing" rather they may be in the team for community outreach purposes – and this typically intersects with the Distribution / Packaging Team as those members will act as an intermediary between Buddies of Budgie and that other project.
+- Distribution / Packaging Team: This team is responsible for the distribution / packaging of Budgie and its microcosm of supplemental software on various operating systems.
+- Documentation Team: This team is responsible for improving documentation of the organization and our software, including work to make available documentation in multiple languages and working with community translators to enable that.
+- Infrastructure and Web Ops Team: This team is responsible for the development and management of our web properties and infrastructure. This includes development of the main site, Docusaurus-based documentation center, management of the respective CI / CD pipelines, connecting up various services we choose / have chosen to use, management of our Kubernetes cluster and all things related to that.
+
+All members in the "Best Buds" team are in one of more other teams. A current breakdown (this is based on our Miro board and subject to change):
+
+- Best Buds: Joshua Strobl (JoshStrobl), Campbell Jones (serebit), David Mohammed (fossfreedom), Evan Maddock (EbonJaegar), Julien Guillot (guillotjulien).
+- Community Engagement & Marketing Team: Joshua Strobl (JoshStrobl), Campbell Jones (serebit), David Mohammed (fossfreedom), Evan Maddock (EbonJaegar).
+- Distribution / Packaging Team: Joshua Strobl (JoshStrobl), Campbell Jones (serebit), David Mohammed (fossfreedom), Evan Maddock (EbonJaegar). I (Joshua) will be handling Fedora packaging and maintenance. Campbell will handle AUR repos for Budgie and hopefully eventually the main repo equivalent. David handles Debian and Ubuntu packaging. Evan handles Solus packaging.
+- Documentation Team: Joshua Strobl (JoshStrobl), David Mohammed (fossfreedom), Julien Guillot (guillotjulien).
+- Infrastructure and Web Ops Team: Joshua Strobl (JoshStrobl), Julien Guillot (guillotjulien), Evan Maddock (EbonJaegar).
+
+All of this information is communicated through our main site (currently in development) and will be documented in more depth on our documentation center that we will have as well (based on [Docusaurus](https://docusaurus.io/?ref=buddiesofbudgie.org)).
+
+# Facilitating Discussions & Community Engagement
+
+A key aspect of any healthy community is ensuring there are places to gather, communicate ideas and issues, and in general promote good comradery. In our workshops, we wanted to discuss what avenues we want to provide or utilize to enable discussions without being too fragmented, empty silos, or push into boundaries previously defined by OS-specific forums and channels.
+
+The below image is a snapshot of our discussion and some of our ideas. We won't be doing all of these things, but should give you an idea what we were thinking in the first place.
+
+![](/images/blog/2022/05/facilitating-discussions.jpg)
+
+- For social networking, we are happy with our current use of Mastodon (we are on the Fosstodon instance) and Twitter. These help to promote our current activities and provides a low barrier for direct community interaction. Of course, they do have the downside of being poor tools for long-form discussions, so we will be leveraging other tools to enable those to happen.
+- We are also considering ways we could possibly inform the end user of Budgie directly, such as through a Raven widget, of the current activities of the organization. Nothing has been decided on that front yet but it is something we will be keeping in mind.
+- Engaging through existing subreddits like r/linux and existing Discord servers (Destination Linux Network and Gaming on Linux to name a couple) are sufficient for our needs on that front. No desire on our part to fragment community support and engagement by having our own Discord server or subreddit.
+- For real-time communication and collaboration, our use of Miro and Google Meet for the workshops has been quite successful. We will be keeping a close eye on Element Calls though since that would complement our existing use of Element and Matrix. For real-time text-based communication, our Matrix Space has been perfect and we have no reason to use any other solutions.
+- For longer form discussions, these can be achieved through our use of GitHub discussions, issues, and pull requests. Element Threads are also available in beta if we want to try those out too.
+
+# Services and Resource Access
+
+It should go without saying that any online, global, open source project needs to take into use various services to achieve their goals and facilitate their work: Buddies of Budgie is not special or different in that regard.
+
+![](/images/blog/2022/05/services-and-resource-access.jpg)
+
+Before these workshops, I had already given considerable thought to what services we should use, why we should use them, and how we can solve various resource access issues. I unfortunately have plenty of experience dealing with the fallout of a lack of shared resource access and wanted to go a step further beyond what Solus had / has when I left.
+
+So for Buddies of Budgie, I wanted to make sure that from the start our infrastructure setup was as transparent and self-documenting as possible, we use industry-standard providers, and weren't afraid to spend a bit extra to make management and day-to-day operations as painless as possible.
+
+Services put into use were the following...
+
+## DigitalOcean
+
+DigitalOcean was put into use for its Managed Kubernetes Cluster, load balancing, and Managed Database Service. These managed solution reduce the time investment in managing them ourselves and offer a bunch of other niceties (autoscaling nodes when needed, reducing hug of deaths from high traffic, and binary logging and backups for MySQL). Practically speaking, DigitalOcean had one of the most competitively priced Managed Kubernetes Cluster (especially compared to Amazon EKS and Google Kubernetes Engine).
+
+Infrastructure is managed through IaC (Infrastructure-as-Code) via terraform. There are still some improvements to make around secret management from an IaC perspective, not to mention documenting its use (this is planned), but happy with the [Terraform state](https://github.com/BuddiesOfBudgie/site/tree/master/infra?ref=buddiesofbudgie.org) at the moment.
+
+This is used to manage our Ghost installation, handle certificate renewal, and eventually be leveraged as part of our CI / CD pipeline for the main site, documentation, and any other services we want to self-host.
+
+We have a dedicated "team" on DigitalOcean that has access to the infrastructure, with the organization team that will manage this being the "Infrastructure and Web Ops Team".
+
+## Google Workspaces
+
+Without getting into the politics of Google or their tendency to kill off Google products and services faster than they announced and rolled them out – the reality is they have one of the most robust portfolios for collaboration, document sharing, email management & delivery, SSO (Single Sign-on) and more. Using Google for document sharing, Google Meet, and email was frankly a no-brainer. Using it for other products / services as the SSO solution also helps reduce password sharing and makes it easier to set up accounts and grant them access through IAM.
+
+Expanding on this, if we switch from DigitalOcean to Google Cloud Platform down the road, we can take advantage of the organization roles, IAM, SSO to grant finer control access to certain infrastructure.
+
+## GitHub
+
+GitHub is the world's most popular platform for developing software, open source or otherwise. It is ubiquitous in the software development industry and provides everything we need from repositories, issue tracking, CI / CD pipelines, discussion forums, and more without costing us anything. We have used GitHub for Budgie Desktop development in the past, other developers such as Ubuntu Budgie use it as well, and we simply have no compelling reason to switch away. GitHub has a massive network effect and makes software discovery easier as a result of that. So our development of Budgie Desktop will happen in through the [Buddies of Budgie GitHub organization](https://github.com/BuddiesOfBudgie?ref=buddiesofbudgie.org).
+
+## Matrix
+
+Matrix was one of those things I wanted to take into active use around the time that freenode started going sideways. At that point, the issues with Matrix bridges were mostly ironed out and even without taking into use the bridges, it simply offered a better and more straightforward user experience across devices. A significant portion of those that actively engaged in the Solus community, including myself at that point, used Matrix / Element to communicate in IRC channels – many doing so as it acted as a traditional message buffer like ZNC without any hassle with setting it up. That did not end up happening for Solus by the time I left, instead Libera Chat was adopted, however fortunately there was the opportunity to take it into use for [Buddies of Budgie](https://matrix.to/?ref=buddiesofbudgie.org#/#buddies-of-budgie:matrix.org).
+
+Matrix has undeniably exploded in its popularity and use in the open source community. The fact that it can be federated and self-hosted is enticing to many, it being open source and having open protocols even more so.
+
+Choosing Matrix was a no-brainer and it was one of the first things I set up when creating Buddies of Budgie in January. There was not really much of a need to discuss the value proposition of using it – we all had been using it at least for Buddies of Budgie for months at that point – if not in other communities for even longer.
+
+For distribution of responsibilities and capabilities, all of the Best Buds have Admin roles in the Matrix Space's rooms.
+
+## Fosstodon & Twitter
+
+There is not really much to say about either of these. Having a good social media presence is important to communicating the health and activity of the project or organization. [Twitter](https://twitter.com/BuddiesOfBudgie?ref=buddiesofbudgie.org) is used because it is one of the most popular social networks that is not universally hated (looking at you Facebook) and in the case of [Fosstodon](https://fosstodon.org/@BuddiesOfBudgie?ref=buddiesofbudgie.org), it is an excellent Mastodon instance that does an amazing job at displaying the soul of the open source community.
+
+So we are on both. Pretty simple.
+
+## Not Yet In Use: Social Media Management and Password Sharing
+
+We had some preliminary discussions in the Workshop: Day 1 on what to do, if anything, related to social media management. The premise was our Twitter at the very least could be more easily accessed by other of the "Community Engagement & Marketing Team" using a social media management service like Buffer of Hubspot – however there was not any real desire by others to communicate through the Buddies of Budgie account specifically and they have been happy with how it has worked so far. So that will be tabled for later as well.
+
+Alongside that, I discussed the possibility of password sharing (for services like Fosstodon, as an example) through [Bitwarden](https://bitwarden.com/?ref=buddiesofbudgie.org). It is likely to be something taken into use and leveraged by our Google Workspace SSO, but only when we start encountering more services that necessitate it over using the SSO directly and cannot be managed through some other mechanism.
+
+# Organizing and Communicating Information About Buddies of Budgie & Budgie Itself
+
+It is one thing to just be blasting off information into the ether through blog posts (the irony here is intentional and not lost on me), it is another to organize it all in ways that best encapsulate the subject matter and ensure we maximize "living and breathing documents" to show how we are evolving over time.
+
+## Website
+
+The website for Buddies of Budgie needs to serve at least the following purposes:
+
+1.  Act as an accurate representation of the project by collating details from multiple sources through both manual and automated processes.
+2.  Provide clear information about the organization, Budgie, and community – linking to separate or more in-depth resources when / where applicable.
+3.  Make the user experience of discovering where they can get Budgie as easy as possible.
+
+This is going to be achieved or is being achieved ([the site is a work on progress](https://github.com/BuddiesOfBudgie/site?ref=buddiesofbudgie.org) and therefore it is a bit of a mixed state) by:
+
+- Pulling in our blog content from Ghost (which will act more as a headless CMS when the main site is rolled out). In fact, the content API key for our Ghost blog is out in the open to even encourage others to leverage it in fun ways.
+- Take advantage of GitHub APIs to pull in source and project related details where possible. Concretely I would expect this to be in the form of roadmaps, popular discussions, release tags, etc. depending on the API capabilities.
+- Obvious content writing for the main site. Incorporate Documentation Center content when and where possible.
+
+As linked above, the site itself is open source. It uses Next.js, TypeScript, React, Material UI library, etc. and will enable incrementally static content generation to keep the site up-to-date with little to no manual circumvention. It is more in a source available state (technically licensed under Apache 2.0) until it reaches MVP, but after that issues can be filed and PRs opened. I stream the UX design and development of the site, such as the content embedded below, so be sure to follow my [Twitch](https://twitch.tv/joshstrobl?ref=buddiesofbudgie.org) to know when I go live.
+
+<iframe
+  src="https://www.youtube.com/embed/QJNiOQ4b0bA?feature=oembed"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen=""
+></iframe>
+
+## Documentation Center
+
+We will be using [Docusaurus](https://docusaurus.io/?ref=buddiesofbudgie.org) (what a great name) v2 beta+ for the documentation center. The documentation center will contain in-depth information about our organization, Code of Conduct, help articles, developer documentation, and more. If you can think of it and it makes sense for us to document, it should be there. Docusaurus was chosen as it provides first-class support for localization, is quite limitless in customization, and will be using the same libraries and languages as the main site.
+
+Like with the main site, our Docusaurus repository will be available for contributions.
+
+## Roadmaps and TODOs
+
+For some historical context: For a short period of time with Solus, there was a roadmap that served to communicate the immediate priorities of the teams, what was currently being worked on, and what we want to get to in the future. Unfortunately, the roadmap was not well maintained and due to some internal decisions, some details were omitted from it until eventually the roadmap was dropped entirely.
+
+With Buddies of Budgie and transparency as a core value, we want to communicate our goals for Budgie 10.x, Budgie 11.x, what is and is not going to be in the minimum viable platform, and more. This should all be done with as little effort as possible in terms of end-to-end maintenance and be simple enough to communicate to all stakeholders (consumers like operating systems, developers, media, and users) what the current status of Budgie is and our goals for the future. Most importantly, we should not be afraid or hesitant to move items or refine the roadmap more (for example, breaking up large items into smaller parts).
+
+**So we will have roadmaps**. This is likely going to be in the form of GitHub Project Boards so they may be incorporated into our issue tracking. This may end up being a part of a "meta" repo for organization-wide discussions and not relying on specific source repos (like budgie-desktop) that may go away with Budgie 11. You will be able to look at these roadmaps and understand the goals for Budgie 10.x, 11.x, MVPs, architecture, and more. They may reference the documentation center or be reference by the documentation.
+
+# Budgie 10.x
+
+It is finally time to dive into Budgie 10 series goals and most importantly what aspects of Budgie 10 need to be done before we are happy with its state that we feel comfortable putting the majority of our efforts into Budgie 11.
+
+I want to emphasize that these items are quite high-level objectives and the granular implementation details may not be fully explored or decided yet. So please keep this in mind as you ready the items. Same goes for Budgie 11.
+
+![](/images/blog/2022/05/budgie-10-ideas-and-goals.jpg)
+
+I am sure some of you will ask: "_If the goal is to eventually deprecate Budgie 10 and move onto 11, why is this much effort getting put into 10?_" Budgie 10.x was for a long time considered "feature frozen" with effort being put into maintenance and bug fixes, with only smaller changes happening in the 10.5.x series. The idea was to kick off Budgie 11 development when GTK4 was released and as a result development was mostly put on hold until that point in time. Unfortunately not only was it delayed, but other factors (technical and vision decisions by GNOME) ended up negatively impacting that willingness to go to GTK4 as well. So Budgie was frozen for even longer. Oof.
+
+When I created Buddies of Budgie, my first priority was "unlocking" Budgie 10.x so everyone from Ubuntu Budgie to GeckoLinux, myself and other independent contributors – could get it into a state we were all happy with, and that users would be even happier with. I was not happy with the state it was in and there was a lot of catching up for us to do on fixing a thousand papercuts.
+
+Beyond fixing those papercuts, many of the items we are working on or will be working on are being designed and architected in ways that allow us to treat them as tests for similar implementations for Budgie 11, therefore the effort spent pays immediate returns for current Budgie 10.x users and provides us valuable experience and information for Budgie 11. Expanding on that, some of them may in fact be used across **both** 10 and 11!
+
+![](/images/blog/2022/05/budgie-10-kanban.jpg)
+
+For Budgie 10.x, we have already done the following:
+
+- Shipped already: Refined the internal theme (not the yet-to-come redesign), separated the Notification Manager from Raven into the Budgie Daemon to leverage in other parts of the UX, Icon Tasklist icon scaling, massive changes to the Icon Tasklist grouping, forked GNOME Control Center into Budgie Control Center for 10.x, and converted Budgie Screensaver to Meson.
+- Started work on a brand new Budgie Menu and app indexing backend, System Tray applet using the StatusNotifier Specification, and a SimpleTasklist to handle non-grouping behavior (more on all of this later).
+- Defined current priorities and TODOs.
+
+## Goals
+
+![](/images/blog/2022/05/budgie-10-goals-closeup.jpg)
+
+Our currently defined goals (subject to change) for Budgie 10.x are as follows (though not in any specific order). If it starts with "REQUIRED", this will indicate that it needs to be accomplished before we shift the majority of our focus to Budgie 11.
+
+1.  **REQUIRED:** Deprecate our use of libwnck and separate our "Abomination" application tracking library into a dedicated library for use in both Budgie 10 and 11. The immediate priority will be supporting X11 directly in this library but an important objective for it for Budgie 11 is **supporting Wayland**. While it is not guaranteed to happen for Budgie 10.x, if we happen to be in a position with Budgie 10 and the library that we support both X11 and Wayland, with no other hard deps on X11, it is not _entirely_ out of the realm of possibility to have a Budgie 10 under Wayland.
+2.  **REQUIRED:** Deprecate our use of gnome-bluetooth in favor of a combined use of bluez and upower directly. We would need to move Budgie 10.x over to the new GNOME Bluetooth API at some point anyways, so best to kill two GNOMEs with one stone and move directly to bluez. At the same time, we want to make sure the Bluetooth applet / Battery applets and Raven itself expose functionality to allow for quick connect and disconnect with Bluetooth devices like headphones, monitor power levels (maybe they are over 9000?) for Bluetooth devices, and more.
+3.  Deprecate our use of libgvc (GNOME Volume Control library) in favor of pipewire and MediaSession API directly. Budgie 10 works fine with pipewire already, most of us have been using it for 6+ months, but we would like to work directly against the respective APIs instead of dealing with a not-actively-developed libgvc.
+4.  **REQUIRED:** Rewrite the Budgie Run Dialog to use our new application indexing backend, not have it needlessly destroy and recreate itself each time it is invoked.
+5.  **REQUIRED:** Use libnm and NetworkManager D-Bus APIs for a new networking applet so we are not reliant on the network-manager-applet.
+6.  **REQUIRED:** Rewritten Budgie Menu.
+7.  **REQUIRED:** Improved Power Dialog / shared power control components for use in Budgie Menu and User Indicator.
+8.  Configuration Export and Importing. I originally [wrote a Go-based libdconf](https://github.com/JoshStrobl/libdconf?ref=buddiesofbudgie.org) to export dconf-based configurations, perform manipulations, and load it back in. For Budgie 10 / 11, this will be re-implemented in Rust and using cbindgen to generate C APIs for it.
+9.  Generally better and more support for FreeDesktop standards. Some of this is already being acted on like StatusNotifier support and others such as the Dark Style Preference are planned as well.
+10. **REQUIRED:** Improved applet ID handling for more consistent panel loading in the scenario of a user uninstalling an applet from their system (common when trying out Budgie Extras).
+11. **REQUIRED:** Alongside the [Demystifying Theme Selection](https://github.com/BuddiesOfBudgie/budgie-desktop/issues/27?ref=buddiesofbudgie.org) task, EFL and Qt Theme Selection / Handling right from Budgie Desktop Settings is something that is desired. It is very common for Linux users to use applications that are built in a variety of toolkits, so we want to make sure the user can make those apps feel consistent.
+12. **REQUIRED:** Better accessibility (keyboard tab order, keyboard shortcuts, cleanup ability to focus on widgets like separator).
+
+As you can see, we still have a fair few goals in mind for Budgie 10.x.
+
+# Budgie 11
+
+During the second day workshop, we spent a considerable amount of time discussing our ideas, agreeing on goals, and determining what items need to exist for the Minimum Viable Platform for Budgie 11.
+
+I would like to emphasize that these are high-level objectives and we have not yet defined or decided on some of the smaller technical details.
+
+Before we discuss that, I would like to touch on the philosophy for Budgie 11 and how it will be architected.
+
+In Budgie 10.x, the data layer and the presentation layer have been heavily intertwined. This increases duplication of logic, risks introducing inconsistencies in behavior, makes it harder to implement alternative solutions when they have historically been deeply reliant on a particular library, etc.
+
+This has been an aspect of Budgie 10 that we have been gradually working to resolve, moving more code into our daemon and providing D-Bus servers that multiple D-Bus clients in the presentation layer can communicate with. A key example of this is our Notification Server, which was once coupled closely to Raven – however nowadays is separate to open up the possibility for notifications to be integrated into other parts of the UX, for example notification badges in Icon Tasklist.
+
+Budgie 11 will take this much further. **All data-related logic, collating, and reformatting possible will be in daemon**, allowing the presentation layer (panel, applets, Raven, and more) to be much simpler. We will likely be leveraging [protobuf](https://developers.google.com/protocol-buffers/?ref=buddiesofbudgie.org) to create more structured messages that is supported in more programming languages.. Not only that but this actually **minimizes** the impact that the toolkit choice will actually have and will even pave the way for other developers, should they choose, to leverage the data layer of Budgie and **build their own** "presentations" on top of that and in the toolkit of their choice! Budgie / its libraries / window manager will be written in a mix of Rust and C – with Rust being the choice for aspects of Budgie that are more mission critical (like the window manager, which may leverage [smithay](https://github.com/Smithay/smithay?ref=buddiesofbudgie.org)).
+
+Budgie Desktop itself will always be designed for the "desktop" metaphor.
+
+## Goals
+
+![](/images/blog/2022/05/budgie-11-objectives.jpg)
+
+Alongside our re-architecture and more data-driven approach, our initial goals for Budgie 11 are as follows:
+
+- Applet Feature Parity: We do not want to regress on functionality and are confident our new architecture for Budgie 11 will open the door to more possibilities.
+- Panel and configuration presets enabling you to switch between our default panel layout, GNOME Shell, macOS, Unity, and Windows 11 configurations. This will include dynamically changing Budgie Menu settings or enabling alternative application launching UXes, enabling expose / window spread mode, and more.
+- Better desktop icon support (rewriting our Budgie Desktop View and supporting arbitrary ordering and positioning)
+- GNOME Shell / macOS Style Window Overview mode - This UX would end up being the same component used in our new workspace switcher.
+- Advanced tiling capabilities (more horizontal / vertical window tiling capabilities, such as 2x2 and 1x3 / 3x1).
+- New workspace manager with the ability to drag windows into new workspaces, pre-configure apps to run on specific workspaces, and more.
+- Leveraging TOML instead of gsettings for settings, promoting portability and enabling more interoperability with various libraries and programming languages.
+- Multi-monitor support for panels, dynamically swapping the primary based on the current monitors plugged in.
+- Extensible Budgie Menu, icon grid view option, and alternative UXes for the menu such as the fullscreen application dash for the GNOME Shell UX preset.
+- Brand new Control Center
+- Support for RISC-V and more ARM architectures. Alongside this we want to put time into being libc-agnostic when and where possible.
+- Wayland-focused development with an X11 fallback of some sort. Budgie 11 will be developed **with Wayland in mind**, with it being the **primary** method of using Budgie 11. We will **not** be introducing functionality which is X11 only. The X11 fallback will be aimed at NVIDIA hardware, though one could be optimistic with the current change in direction of NVIDIA and hope that the X11 support won't be necessary at all. We also want to ensure our window manager has support for VRR (variable refresh rate), window tracking for disabling compositing when notifications or dialogs appear (impacts gaming), fractional scaling (excellent support in EFL), and different monitor refresh rates.
+
+## MVP
+
+Not all the items listed above are targeted for the minimum viable platform, otherwise Budgie 11 would never be released, and perfection is the enemy of good.
+
+![](/images/blog/2022/05/budgie-11-mvp.jpg)
+
+I won't break down all the items, you can use the full list I mentioned above, but to highlight a few:
+
+- Applet Feature Parity
+- Advanced tiling capabilities
+- Brand new Control Center
+- Extensible Budgie Menu
+- Leveraging TOML instead of gsettings for settings
+- Multi-monitor support for panels
+- Panel and configuration presets
+- Support for RISC-V and more ARM architectures.
+- Wayland-focused development
+
+So there you go, some of the big ticket items for Budgie 10.x and 11.
+
+# Budgie on Fedora
+
+With some really amazing support from [Neal Gompa](https://twitter.com/Det_Conan_Kudo?ref=buddiesofbudgie.org), I [recently began my packaging](https://reddit.com/r/Fedora/comments/uq3gah/budgie_desktop_has_now_been_submitted_for/?ref=buddiesofbudgie.org) of Budgie Desktop, Budgie Control Center, Budgie Desktop View, and Budgie Screensaver for inclusion in Fedora. I switched over my work laptop over to [Fedora Silverblue](https://silverblue.fedoraproject.org/?ref=buddiesofbudgie.org) and have been living Budgie under Silverblue for over a week now.
+
+![](/images/blog/2022/05/budgie-on-silverblue.jpg)
+
+Budgie Desktop View and Budgie Screensaver have already landed and Budgie Desktop and Budgie Control Center are awaiting some changes from myself. So it is coming soon!
+
+But this is not the biggest news in that regard: **I will also be working on a Fedora Budgie Spin** and assuming all things go well in that regard, rpm-ostree version akin to Silverblue as well.
+
+It would be a **very minimal spin**, with only some "opinionated defaults" (like text editor, terminal, GNOME Software as the software center, Materia GTK Theme and Papirus Icon Theme) and an otherwise stock Budgie Desktop to keep it **aligned** with our upstream offering and provide it as a baseline for users to know what an effectively stock experience would be like. It would be _unlike_ Solus and Ubuntu Budgie in that regard, which provide a non-stock experience.
+
+# Other Developments
+
+Alongside all of that, development of Budgie Desktop has continue to churn and I want to highlight some of the recent items.
+
+## Landed in the main branch
+
+- [Our Notification is more spec compliant.](https://github.com/BuddiesOfBudgie/budgie-desktop/commit/0d1d4ed3913fe885416d20a90fe9e4627d6713ec?ref=buddiesofbudgie.org)
+- [We now have a CI pipeline that leveraging GitHub Actions](https://github.com/BuddiesOfBudgie/budgie-desktop/commit/197b4e48bdba758f508759391388fa32aae9328c?ref=buddiesofbudgie.org), so builds on the master branch and pull requests are build for validation
+- [Improve scaling change message to request further user action.](https://github.com/BuddiesOfBudgie/budgie-desktop/commit/56fde8e3fd7f502514fb9ee864455eb9591e1750?ref=buddiesofbudgie.org)
+- [Drop unnecessary Comment in daemon desktop that produces warning.](https://github.com/BuddiesOfBudgie/budgie-desktop/commit/3e2fd0dd6f8235716847d4b6c1f717719ab8632a?ref=buddiesofbudgie.org)
+- [Add stale bot configuration](https://github.com/BuddiesOfBudgie/budgie-desktop/commit/2b2e563165440ef1ffc917a9aac8db90d8228ef3?ref=buddiesofbudgie.org)
+
+## In Progress
+
+- The amazing folks over at Ubuntu Budgie recently submitted a [pull request](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/124?ref=buddiesofbudgie.org) to introduce a native screenshot functionality in Budgie Desktop! You will be able to do selection, window, and full screen screenshots all without a secondary screenshot utility!
+- Campbell aka serebit recently submitted a [pull request to fix a long-standing issue](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/123?ref=buddiesofbudgie.org) with desyncing of the panel layout in some scenarios.
+- Evan aka EbonJaegar worked tirelessly on a [rearchitected Budgie Menu and new application indexing](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/110?ref=buddiesofbudgie.org). This Budgie Menu upgrade introduces power options for poweroff, suspend, logout, etc. and is currently just awaiting my contribution of shortcuts to your XDG directories (for example Documents, Music, and Pictures).
+
+Massive thanks to all of our amazing contributors
+
+---
+
+# The End
+
+Congratulations on finally making it to the end of this State of the Budgie. I am really excited about the future of Budgie Desktop and our organization and I hope you are too!
+
+<OCCallout />

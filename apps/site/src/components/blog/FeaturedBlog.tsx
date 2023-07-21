@@ -3,7 +3,6 @@
  */
 
 import React from "react";
-import type { PostOrPage } from "@tryghost/content-api";
 
 // Material UI Bits
 import Box from "@mui/material/Box";
@@ -16,9 +15,10 @@ import { Typography } from "@mui/material";
 import "./FeaturedBlog.scss";
 import { SiteTheme } from "@buddiesofbudgie/ui";
 import NextLink from "../Link";
+import type { BlogPost } from "../../types";
 
 export type FeaturedBlogProps = {
-  post: PostOrPage;
+  post: BlogPost;
 };
 
 export const FeaturedBlog = ({ post: p }: FeaturedBlogProps) => {
@@ -39,14 +39,14 @@ export const FeaturedBlog = ({ post: p }: FeaturedBlogProps) => {
               [SiteTheme.breakpoints.up("lg")]: "row",
             }}
           >
-            {typeof p.feature_image === "string" && (
-              <Image alt={p.feature_image_alt ?? ""} className="featuredBlogImage" src={p.feature_image} />
+            {typeof p.featuredImage === "string" && (
+              <Image alt={""} className="featuredBlogImage" src={p.featuredImage} />
             )}
             <Stack direction="column">
-              <NextLink href={`/blog/ ${encodeURIComponent(p.slug)}`}>
-                <Typography variant="h2">{p.title ?? p.og_title ?? p.meta_title}</Typography>
+              <NextLink href={`/blog/ ${encodeURIComponent(p.id)}`}>
+                <Typography variant="h2">{p.title}</Typography>
               </NextLink>
-              <Typography variant="subtitle1">{p.meta_description ?? p.plaintext?.substring(0, 280)}</Typography>
+              <Typography variant="subtitle1">{p.excerpt}</Typography>
             </Stack>
           </Stack>
         </Paper>

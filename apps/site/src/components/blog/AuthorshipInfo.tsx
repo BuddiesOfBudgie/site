@@ -4,38 +4,36 @@
 
 import { DateTime } from "luxon";
 
-import type { Author, PostOrPage } from "@tryghost/content-api";
 import Image from "next/image";
 
 // Material UI
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { SiteTheme } from "@buddiesofbudgie/ui";
+import type { BlogPost } from "../../types";
+import { F } from "@mobily/ts-belt";
+import type { Person } from "../../data/people";
+import { People } from "../../data/people";
 
 type AuthorshipInfoParams = {
-  post: PostOrPage;
+  post: BlogPost;
 };
 
-export const AuthorshipInfo = ({ post }: AuthorshipInfoParams) => {
-  const parsedDate: string = post.published_at
-    ? DateTime.fromISO(post.published_at, { locale: "en" }).toLocaleString(DateTime.DATE_FULL)
+export const AuthorshipInfo = ({ post: { author, publishDate } }: AuthorshipInfoParams) => {
+  const parsedDate: string = publishDate
+    ? DateTime.fromISO(publishDate, { locale: "en" }).toLocaleString(DateTime.DATE_FULL)
     : "";
 
-  const author: Author = post.primary_author ?? (post.authors?.at(0) as Author);
+  const person = F.coerce<Person>(People[author]);
+  const authorName = `${person.Names.First} ${person.Names.Last}`;
 
   return (
     <Stack direction="row" spacing={2}>
-      {author.profile_image && (
-        <Image
-          alt={author.name ?? ""}
-          height={60}
-          src={author.profile_image}
-          style={{ borderRadius: "50%" }}
-          width={60}
-        />
+      {person.Picture && (
+        <Image alt={authorName ?? ""} height={60} src={person.Picture} style={{ borderRadius: "50%" }} width={60} />
       )}
       <Stack alignSelf="center" direction="column">
-        {author.name && <Typography variant="h6">{author.name}</Typography>}
+        <Typography variant="h6">{authorName}</Typography>
         <Typography sx={{ color: SiteTheme.palette.misc.greyish }} variant="subtitle1">
           {parsedDate}
         </Typography>

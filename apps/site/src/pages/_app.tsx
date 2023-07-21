@@ -2,8 +2,6 @@ import type { AppProps } from "next/app";
 import type { AbstractIntlMessages } from "next-intl";
 import { NextIntlProvider } from "next-intl";
 
-import "../styles/scss/main.scss";
-
 type Props = AppProps & {
   pageProps: { messages: AbstractIntlMessages };
 };

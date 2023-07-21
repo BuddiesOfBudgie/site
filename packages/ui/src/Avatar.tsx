@@ -1,6 +1,6 @@
 import React from "react";
 import type { AvatarProps as MUIAvatarProps } from "@mui/material";
-import { Avatar as MUIAvatar, SxProps, Theme, Tooltip } from "@mui/material";
+import { Avatar as MUIAvatar, Tooltip } from "@mui/material";
 
 export interface AvatarProps extends MUIAvatarProps {
   showTooltip?: boolean;

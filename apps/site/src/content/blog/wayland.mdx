@@ -1,0 +1,158 @@
+---
+title: Wayland.
+author: JoshuaStrobl
+publishDate: "2023-07-07T01:02:00.000+00:00"
+featuredImage: /images/blog/2023/07/Wayland.jpg
+excerpt: >-
+  Let's talk about our plans for Wayland support for Budgie Desktop and the work
+  we are doing to make it a reality.
+tags:
+  - news
+---
+
+Budgie Desktop has improved by leaps and bounds since founding Buddies of Budgie in January 2022. We have taken Budgie Desktop through two significant "10 series" releases, which have delivered the following to our users:
+
+1.  Rewrites and re-architectures of core parts of Budgie Desktop such as our notification system, notification grouping, Budgie Daemon, a new Application Indexer, and more.
+2.  New features and improvements around Budgie Menu, new Power Dialog, new Budgie Screenshot, and Raven widgets.
+3.  New Raven API for extensibility of Raven
+4.  Numerous bug fixes, some of which were around for years.
+
+Throughout these development efforts across 2022 and 2023, we have been continuously evaluating the Linux ecosystem and desktop space, as well as our goals for Budgie 10.x and 11. We have been excited to see the maturing of Wayland protocols, Wayland compositors, as well as the broadening support by vendors such as NVIDIA on Wayland adoption (e.g. finally supporting GBM).
+
+In our [State of the Budgie blog post in May of last year](state-of-the-budgie-may-2022/), we emphasized that Budgie 11 would be Wayland-first, with initial expectations being that we would support an X11 fallback mode, as well as mentioning that "it is not **entirely** out of the realm of possibility to have a Budgie 10 under Wayland".
+
+Since that blog post, several key developments have occurred in the Wayland ecosystem.
+
+### Plasma
+
+While it is likely that Plasma will continue to have X11 support for the foreseeable future, their plan is to [default to Wayland in Plasma 6](https://invent.kde.org/plasma/plasma-workspace/-/merge_requests/2188?ref=buddiesofbudgie.org#note_676355). Meanwhile, it is proposed that Fedora KDE and Kinoite will focus entirely on the Wayland session. Neal Gompa from Fedora [cites](https://pagure.io/fedora-kde/SIG/issue/347?ref=buddiesofbudgie.org) the following reasons:
+
+> Three reasons for this removal:
+>
+> - Xorg server is deprecated since RHEL 9.0 and will be dropped in "a future major RHEL release".
+> - Graphics fallback modes are Wayland-friendly now with SimpleDRM enabled since F36.
+> - NVIDIA drivers (since v495~v515) support GBM for Wayland instead of EGLStreams. Wayland is fully supported on current NVIDIA drivers.
+>
+> This will drastically reduce our support burden and give us the ability to focus on quality for the KDE Plasma stack and continue our feature-forward nature.
+
+### RHEL 9 and beyond
+
+X.org Server has been [deprecated](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/9.0_release_notes/deprecated_functionality?ref=buddiesofbudgie.org#JIRA-RHELPLAN-121048) in Red Hat Enterprise Linux (RHEL) since 9.0 in May of last year. As shown in the image below, Red Hat has a full support and maintenance support cycle for these releases which lasts a total of 10 years.
+
+![](/images/blog/2023/06/image.png)
+
+Understandably it does not make financial sense for Red Hat to continue investing engineering resources into maintenance of X11 support, when Wayland support is likely already in a sufficient position for many Red Hat customers, and when Red Hat is almost certainly under market pressures that would encourage divesting in X11 and re-allocating those engineering resources.
+
+### Mutter
+
+Wayland support under Mutter, the window manager / Wayland compositor developed by GNOME, has continued to evolve and improve.
+
+For GNOME 44, Mutter split their X11 implementation into a separate client to facilitate their goal of eliminating their dependency on GTK3 and simplifying future work on rendering with GTK4. Unfortunately, this work has introduced some notable side effects for X11 session support, for example:
+
+- [broken server-side decoration theming](https://bugzilla.redhat.com/show_bug.cgi?id=2179566&ref=blog.buddiesofbudgie.org)
+- [application grouping regressions](https://gitlab.gnome.org/GNOME/mutter/-/issues/2800?ref=buddiesofbudgie.org)
+- [windows position regressions](https://gitlab.gnome.org/GNOME/mutter/-/issues/2787?ref=buddiesofbudgie.org)
+
+While we admire the work GNOME has done on their Wayland support, this has unfortunately impacted the desktop experience for our users, as currently Budgie 10 relies on Mutter's X11 support.
+
+## Magpie
+
+As we look to address immediate user needs as well as our goals for Budgie 11, we have decided to take a proactive approach in making Wayland support a reality within Budgie 10 series.
+
+To restore functionality expected by our users for the immediate future, we have decided to soft-fork Mutter at the state it was in for GNOME 43. This will resolve some issues that cropped up as a result of the X11 work done for GNOME 44. We want to strongly emphasize that this is a temporary fork of Mutter that is designed to be strictly consumed by Budgie Desktop with X11, and we will be keeping the versioning to < 1.0 to accurately reflect that.
+
+This work has been spearheaded by David Mohammed from the [Ubuntu Budgie](https://ubuntubudgie.org/?ref=buddiesofbudgie.org) team, within the Buddies of Budgie organization, and is expected to be adopted by all partners and distributors of Budgie Desktop when it's deemed ready for consumption. As a call-to-action, if you are an avid Budgie Desktop user with some technical skills and would like to get your hands dirty testing this soft-fork, take a look at [our documentation](https://docs.buddiesofbudgie.org/developer/lab/magpie?ref=buddiesofbudgie.org) and provide feedback!
+
+Taking a longer term view, yet still within the scope of our desired Budgie 10 series changes reflecting the evolving landscape of the Linux desktop, we will implement a replacement Wayland compositor that is built on top of [wlroots](https://gitlab.freedesktop.org/wlroots/wlroots/?ref=buddiesofbudgie.org), which will see its first stable release as "Magpie 1.0"
+
+**At such point in time as Magpie 1.0 is released, Budgie 10 will no longer support X11. Budgie 11 will not support X11**.
+
+wlroots was an obvious choice for us as it is the most vendor-neutral compositing library and really lives up to its marketing of "_about 60,000 lines of code you were going to write anyway_". While Mutter's excellent Wayland compositor could be viewed as sufficient for the short-term of Budgie 10 series, Budgie 11 will result in a separation from the GNOME stack, and therefore to avoid duplicate effort or further complicating our existing soft fork, we decided to immediately invest time into building a compositor leveraging wlroots.
+
+### Development Efforts Towards Wayland
+
+A considerable set of Budgie Desktop features and functionality has historically relied on X11, whether that be through the toolkit used in Budgie 10 (Gtk3), libraries such as Wnck, or Mutter and its support for [Extended Window Manager Hints](https://specifications.freedesktop.org/wm-spec/wm-spec-1.3.html?ref=buddiesofbudgie.org). This has been used for our application grouping / state tracking built on top of Wnck, system tray support historically using the [XEmbed Specification](https://specifications.freedesktop.org/xembed-spec/xembed-spec-latest.html?ref=buddiesofbudgie.org), focus capturing for Raven, panel intersection for auto-hiding behavior, and more – not to mention all the functionality hidden behind Mutter that Budgie has not historically needed to be concerned of.
+
+So while the efforts described below do not encompass all the work required to move to Wayland, they do push us in the right direction towards this Wayland-only future. You will see these efforts across several Budgie 10.x series releases, as we incrementally work towads supporting Wayland.
+
+#### System Tray
+
+While the system tray has been a foregone conclusion in some other desktop environments, we recognize the value it provides to our users, whether they rely on it to communicate the state of an application (e.g. unreads in a messenger, sync tools) or get quick access to functionality (Steam, OBS Studio, flameshot).
+
+A move away from XEmbed has been a long time coming, with alternative standards / implementations such as Ubuntu's AppIndicator and [Status Notifier](https://www.freedesktop.org/wiki/Specifications/StatusNotifierItem/?ref=buddiesofbudgie.org) being around for a number of years. Up until Budgie 10.5.2 in December of 2020, we had been using an \`na-tray\` implementation also seen in desktop environments such as Cinnamon for the creation and management of system tray icons. In Budgie 10.5.2, this was replaced our own "carbon tray" implementation, still leveraging the XEmbed Protocol, to tackle numerous issues such as background icons not refreshing and oddities with inconsistent hiding.
+
+Fundamentally though, this was still using XEmbed Protocol, since the goal was scoped at the time to fixing specific issues. As these embeds are X11 windows, they still have downsides.
+
+Exhibit A: Icons don't scale with panel side
+
+![](/images/blog/2023/06/bigpanel.png)
+
+Exhibit B: Scaling with high DPI relies on the application supporting DPI scaling
+
+![](/images/blog/2023/06/hidpi.png)
+
+Exhibit C: Menus are drawn by the application, meaning the styling will be inconsistent as it is dependent on the application and their theming choices.
+
+![](/images/blog/2023/06/menu-nonsense.png)
+
+During our discussions in May of last year when we were planning our initial scope for Budgie 10 series, when it should be considered as no longer being under development, development of Budgie 11, and more – we decided that a new System Tray applet leveraging the Status Notifier specification was something we absolutely needed to do. Not only does it move Budgie Desktop in the right direction with the adoption of **modern** vendor-agnostic standards, but was a requirement for the eventuality of moving to Wayland (whether that be within Budgie 10 or at the latest in Budgie 11).
+
+For Budgie 10.8, we will be shipping our Status Notifier-based system tray, which will address the above mentioned items (visual inconsistencies, X11 requirement, non-modern standard). This implementation additionally encompasses Ayatana and AppIndicator tray items! Unlike the XEMBED protocol, applications / toolkits / frameworks which support StatusNotifier send the information for their tray icon over DBus to the respective StatusNotifierHost for the implementer of the host to consume, rather than being responsible for the drawing themselves. The result of this on the Budgie Desktop side is that we can (leveraging a custom implementation of the DBusMenu protocol) draw all menus and items in a manner that is visually consistent.
+
+![](/images/blog/2023/06/hidpi-new.png)
+
+HiDPI scaling consistency. Unfortunately Discord does not provide a scalable icon.
+
+![](/images/blog/2023/06/menu-nonsense-new.png)
+
+Menu visual consistency
+
+We have been dogfooding this implementation via our main branch for a while and even though there is still some oddities from Electron applications, overall the experience is greatly improved. Going into Budgie 11, we will have a similar solution and paired with multiple panels across multiple monitors (a requirement for Budgie 11), you will even be able to have multiple tray applet instances enabled, which was not otherwise possible with the XEmbed-based solutions.
+
+### wlroots Learnings
+
+Campbell (serebit) is learning about the inner workings of wlroots as well as various Wayland protocols in his own research project called [flyaway](https://gitlab.com/serebit/flyaway?ref=buddiesofbudgie.org), with lessons learned being applied to the development of "Magpie 1.0".
+
+Here is an excerpt from his blog post:
+
+> Wayland is what happens when issues with the dominant windowing protocol have been festering for decades. It throws away everything and establishes a core set of standards that must be adhered to, along with a (very large) set of extensions that can be optionally implemented. The website [https://wayland.app/](https://wayland.app/?ref=buddiesofbudgie.org) shows all the protocols worth knowing, and a lot more on top of that. It’s kinda like Vulkan, in a sense: the core has the basics, and everything else is extensions that can be queried for by clients.
+
+> Wlroots is a library that writes all the code that I didn’t want to have to write, because it has too much math. It’s a generally unopinionated framework for building your own Wayland compositor that, while not perfect, does most of the heavy lifting for you. In writing Flyaway, most of the work so far has been figuring out how to put together the pieces that wlroots has given me; piping and such. Sadly, the documentation kinda sucks, but examples are plenty (e.g. sway and clay) and the developers have been very accessible and helpful when I’ve had questions.
+
+> Right now, I’m focused on implementing the XDG shell protocol that has all the desktop windowing functionality you expect, like maximizing/minimizing/tiling, and the wlroots-spearheaded wlr-layer-shell protocol for KDE/Budgie style panels and docks. The former is a must-have, and the latter is what I have determined is the best way for Budgie’s panel system to be ported to Wayland. The below is a small demonstration of what I’ve accomplished so far with wlr-layer-shell, using the gtk-layer-shell example binary.
+
+<iframe
+  src="https://www.youtube.com/embed/7HkvKeRf3xQ?feature=oembed"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowFullScreen=""
+  title="Campbell Flyaway Demo"
+></iframe>
+
+[![would-you-like-to-learn-more-1](/images/blog/2023/06/would-you-like-to-learn-more.jpg)](https://serebit.com/posts/wayland-is-pretty-good/?ref=buddiesofbudgie.org)
+
+**If you would like to learn more, you can [read about it here](https://serebit.com/posts/wayland-is-pretty-good/?ref=buddiesofbudgie.org).**
+
+### libxfce4windowing: Adopting a Wayland-compatible abstraction for windowing concepts
+
+Evan (EbonJaeger) is actively incorporating [libxfce4windowing](https://gitlab.xfce.org/xfce/libxfce4windowing?ref=buddiesofbudgie.org) as an effective drop-in replacement for our use of libwnck, which will eliminate a direct dependency on a library built for X11 and replace it with a solution that supports both Wayland and X11.
+
+He wrote about his experience below:
+
+> One of the aspects of Budgie that we have to change in moving to Wayland is how open windows are tracked, needed primarily for the tasklist applets, but also for notification pausing and the night light feature. This is all handled by a module affectionately named Abomination, using the Wnck API. That won’t work for Wayland, so we need a solution. Enter libxfce4windowing, a library created by the folks at XFCE for their window tracking, which supports both X11 and Wayland. Leveraging this in Budgie allows us to much more quickly implement Wayland support, while also hopefully giving an idea of how to do this ourselves for Budgie 11, if needed.
+
+> Having not had much, if any, experience with the Wnck API and Abomination before, or really any experience with tracking windows, I needed a place to start fresh. Luckily, a new Simple Tasklist applet was already in early stages of development, providing a perfect place to learn how to use libxfce4windowing! So, that’s where I started: porting Simple Tasklist from Wnck to XFCE’s windowing library. And it was… easy. Once I learned that any currently open windows are added via signals \*after\* initialization instead of being ready immediately, it Just Worked ™. The API is very similar to that provided by Wnck, which makes translating between the two much easier. This might be because they use Wnck under the hood for the X11 implementation.
+
+> One thing I discovered that was a source of annoyance at first was the lack of a \`Screen.get_active_workspace()\` method like Wnck provides. Instead, you have to get the WorkspaceManager from the Screen, then get all the WorkspaceGroups, and then find the group that actually has your workspaces in it. Luckily for X11, there is only one group. It turns out that this is all because Wayland has a concept of workspace groups, which X11, or at least Wnck, does not. That makes me feel better about having to write 6 or 7 lines of code just to get the current Workspace.
+
+> With a solid foundation for Simple Tasklist, I then turned my attention to tackling Abomination and Icon Tasklist. My goal is to come up with an API similar to Abomination, but leveraging libxfce4windowing, and simplifying its operation. Abomination does some things with window class renaming and other logic and edge-casing to determine if a window belongs to the same application as other open windows. I am hoping to be able to do away with all of that, given all the problems it has caused us in the past. XFCE’s windowing library groups windows by class group, which is what we currently do in Abomination.
+
+> This part of the journey is still very much a work in progress, and there is a lot of reworking still to do. Every step brings us closer to being Wayland-ready, and that makes it all worth it. Big shout out to the folks at XFCE for writing a great cross-windowing-system library; it has been really easy to use!
+
+## In Summary
+
+We still have a long road ahead of us in supporting Wayland, with lots of use cases that we will need to tackle and user requirements that need to be met. I know I can speak for the team when I say we are all incredibly excited at the prospect of Budgie Desktop on Wayland _finally_ being realized, and sharing with all of you our: experimentation towards Magpie 1.0, research projects, and various parts of the porting of Budgie Desktop itself!
+
+So keep a close eye on our [GitHub](https://github.com/BuddiesOfBudgie?ref=buddiesofbudgie.org), blog and our [Mastodon](https://fosstodon.org/@BuddiesOfBudgie?ref=buddiesofbudgie.org) for more info!
+
+<OCCallout />

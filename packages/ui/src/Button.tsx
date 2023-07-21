@@ -1,33 +1,23 @@
 // This file contains our generic filled Button component
+import React from "react";
 
 // Material UI Bits
-import type { ButtonProps as MUIButtonProps } from "@mui/material";
-import { Button as MUIButton, css, styled } from "@mui/material";
+import type { ButtonProps } from "@mui/material";
+import { Button, useTheme } from "@mui/material";
 
-export type ButtonProps = MUIButtonProps;
+export const BWButton = ({ sx, ...rest }: ButtonProps) => {
+  const theme = useTheme();
 
-export const Button = ({
-  children,
-  color = "primary",
-  size = "large",
-  variant = "contained",
-  ...rest
-}: ButtonProps) => {
   return (
-    <StylingButton color={color} size={size} variant={variant} {...rest}>
-      {children}
-    </StylingButton>
+    <Button
+      {...rest}
+      sx={{
+        ...sx,
+        color: theme.palette.common.white,
+        backgroundColor: theme.palette.primary.main,
+      }}
+    />
   );
 };
-
-const StylingButton = styled(MUIButton)<ButtonProps>(
-  ({ color, variant }: ButtonProps) => css`
-    &.MuiButtonBase-root:hover {
-      backgroundcolor: ${color};
-    }
-
-    ${variant === "outlined" ? `border: "2px solid;"` : undefined}
-  `
-);
 
 export default Button;

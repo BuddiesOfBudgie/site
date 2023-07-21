@@ -1,15 +1,16 @@
 import type { Dispatch, SetStateAction } from "react";
 import React from "react";
 
-import type { ProjectItemStatus } from "@buddiesofbudgie/server";
-import { Button, SiteTheme } from "@buddiesofbudgie/ui";
+import { SiteTheme } from "@buddiesofbudgie/ui";
 import Stack from "@mui/material/Stack";
 import { useTranslations } from "next-intl";
+import type { GitHubProjectItemStatus } from "../../types";
+import { Button } from "@mui/material";
 
 type ItemStatusSelectorProps = {
-  currentStatus: ProjectItemStatus;
-  statuses: ProjectItemStatus[];
-  setStatus: Dispatch<SetStateAction<ProjectItemStatus>>;
+  currentStatus: GitHubProjectItemStatus;
+  statuses: GitHubProjectItemStatus[];
+  setStatus: Dispatch<SetStateAction<GitHubProjectItemStatus>>;
 };
 
 export const ItemStatusSelector = ({ currentStatus, statuses, setStatus }: ItemStatusSelectorProps) => {
@@ -18,7 +19,6 @@ export const ItemStatusSelector = ({ currentStatus, statuses, setStatus }: ItemS
     <Stack direction="row" spacing={4}>
       {statuses.map((status) => (
         <Button
-          color="success"
           key={status}
           onClick={() => setStatus(status)}
           size="large"

@@ -1,24 +1,22 @@
 import React, { useState } from "react";
-import type { InferGetServerSidePropsType } from "next/types";
+import type { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
 import type { CustomMetaProps } from "../../components/CustomMeta";
 import PageBase from "../../components/PageBase";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
-import type { ProjectItemStatus } from "@buddiesofbudgie/server";
-import { SHOW_ONLY_B10 } from "../../common/vars";
 import Stack from "@mui/material/Stack";
-import { Button, SiteTheme } from "@buddiesofbudgie/ui";
+import { SiteTheme } from "@buddiesofbudgie/ui";
 import { RoadmapItem } from "../../components/roadmap/RoadmapItem";
-import { snakeCase } from "lodash";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { ItemStatusSelector } from "../../components/roadmap/ItemStatusSelector";
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import type { RequiredMilestoneSummaryItems } from "../../components/roadmap/MilestoneItem";
 import { MilestoneItem } from "../../components/roadmap/MilestoneItem";
-import { getProjects } from "../../common/getProjects";
-import { getMilestones } from "../../common/getMilestones";
 import NextLink from "../../components/Link";
+import { getRoadmapData } from "../../common/getRoadmapData";
+import type { GitHubMilestones, GitHubProject } from "../../types";
+import { GitHubProjectItemStatus } from "../../types";
 
 type fubarProps = {
   className: InferGetServerSidePropsType<typeof getServerSideProps>;
@@ -26,7 +24,7 @@ type fubarProps = {
 
 const Roadmap = ({ className: { milestones, projects } }: fubarProps) => {
   const t = useTranslations();
-  const [itemStatus, setItemStatus] = useState<ProjectItemStatus>("IN_PROGRESS");
+  const [itemStatus, setItemStatus] = useState<GitHubProjectItemStatus>(GitHubProjectItemStatus.IN_PROGRESS);
   const meta: CustomMetaProps = {
     title: "Roadmap",
   };
@@ -112,14 +110,18 @@ const Roadmap = ({ className: { milestones, projects } }: fubarProps) => {
               <Stack direction="column" rowGap={4}>
                 <ItemStatusSelector
                   currentStatus={itemStatus}
-                  statuses={["IN_PROGRESS", "TODO", "DONE"]}
-                  setStatus={setItemStatus}
+                  statuses={[
+                    GitHubProjectItemStatus.IN_PROGRESS,
+                    GitHubProjectItemStatus.TODO,
+                    GitHubProjectItemStatus.DONE,
+                  ]}
+                  setStatus={(status) => setItemStatus(status)}
                 />
                 <Grid2 columns={{ xs: 4, sm: 4, md: 4, lg: 12, xl: 12 }} container spacing={4}>
                   {p.items
                     .filter((i) => i.status === itemStatus)
                     .map((i) => {
-                      const keyPrefix = `${i.type}-${snakeCase(i.content.title)}`;
+                      const keyPrefix = `${i.type}-${i.content.title}`;
 
                       return (
                         <Grid2 key={keyPrefix} xs={4}>
@@ -130,10 +132,7 @@ const Roadmap = ({ className: { milestones, projects } }: fubarProps) => {
                 </Grid2>
                 <NextLink href={p.url}>
                   <Button
-                    color="success"
                     sx={{
-                      borderRadius: "60px",
-                      color: SiteTheme.palette.primary.light,
                       fontWeight: "bold",
                       height: "60px",
                       marginInlineEnd: "auto",
@@ -152,16 +151,20 @@ const Roadmap = ({ className: { milestones, projects } }: fubarProps) => {
   );
 };
 
-export const getServerSideProps = async ({ locale }: { locale: string }) => {
-  const milestones = await getMilestones();
-  const projects = await getProjects();
-  const filteredProjects = SHOW_ONLY_B10 ? projects.filter((p) => p.title === "Budgie 10") : projects;
+export const getServerSideProps: GetServerSideProps<{
+  messages: Object;
+  milestones: GitHubMilestones;
+  projects: GitHubProject[];
+}> = async ({ locale, res }) => {
+  res.setHeader("Cache-Control", "public, s-maxage=3600, stale-while-revalidate");
+
+  const { milestones, projects } = await getRoadmapData(true);
 
   return {
     props: {
       messages: (await import(`../../messages/${locale}.json`)).default,
       milestones,
-      projects: filteredProjects,
+      projects,
     },
   };
 };

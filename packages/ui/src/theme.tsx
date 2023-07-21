@@ -53,11 +53,29 @@ const Theme = createTheme({
     MuiButton: {
       defaultProps: {
         disableElevation: true,
+        disableRipple: true,
+        variant: "contained",
       },
       styleOverrides: {
-        root: {
+        root: ({ ownerState, theme }) => ({
           borderRadius: "2em",
-        },
+          fontFamily: "Poppins",
+          ...(ownerState.variant === "contained" &&
+            ownerState.color === "primary" && {
+              border: `2px solid ${theme.palette[ownerState.color].main}`,
+              "&.MuiButton-root:hover": {
+                backgroundColor: "white",
+                color: "black",
+              },
+            }),
+          ...(ownerState.variant === "contained" &&
+            ownerState.color === "info" && {
+              color: "black",
+              "&, &.MuiButton-root:hover": {
+                backgroundColor: "white",
+              },
+            }),
+        }),
       },
     },
   },
@@ -77,7 +95,8 @@ const Theme = createTheme({
       main: "#ffffff",
     },
     success: {
-      main: "#6BCA81",
+      light: "#d5ffda",
+      main: "#6bca81",
     },
   },
   typography: {

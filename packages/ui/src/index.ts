@@ -1,6 +1,5 @@
 export { Avatar } from "./Avatar";
 export type { AvatarProps } from "./Avatar";
-export { Button } from "./Button";
-export type { ButtonProps } from "./Button";
+export { BWButton } from "./Button";
 
 export { SiteTheme } from "./theme";

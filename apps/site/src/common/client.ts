@@ -1,6 +1,14 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { graphql } from "@octokit/graphql";
 
-export const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  uri: process.env.GQL_ENDPOINT,
+import dotenv from "dotenv";
+import { resolve } from "path";
+
+dotenv.config({
+  path: resolve(process.cwd(), `../../.env.${process.env.NODE_ENV ?? "development"}`),
+});
+
+export const githubClient = graphql.defaults({
+  headers: {
+    authorization: `token ${process.env.GITHUB_TOKEN}`,
+  },
 });
