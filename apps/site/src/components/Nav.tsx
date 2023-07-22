@@ -76,7 +76,11 @@ export const Nav = ({ navBgColor }: NavProps) => {
     [t]
   );
 
-  const drawerText = (title: string) => <Typography fontSize="1.2em">{title}</Typography>;
+  const drawerText = (title: string) => (
+    <Typography key={`DrawerNav-Links-Text-${title}`} fontSize="1.2em">
+      {title}
+    </Typography>
+  );
 
   const drawerLink = ({ title, url }: { title: string; url: string }) => (
     <NextLink key={`DrawerNav-Links-${title}`} href={url ?? "#"}>
@@ -102,7 +106,12 @@ export const Nav = ({ navBgColor }: NavProps) => {
                   {navItems.map(({ subMenu, title, url }) => {
                     if (subMenu)
                       return (
-                        <Accordion disableGutters square sx={{ boxShadow: "none" }}>
+                        <Accordion
+                          disableGutters
+                          key={`DrawerNav-Accordion-${title}`}
+                          square
+                          sx={{ boxShadow: "none" }}
+                        >
                           <AccordionSummary
                             expandIcon={<ExpandMore />}
                             sx={{
