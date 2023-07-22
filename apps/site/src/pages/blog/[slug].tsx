@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { InferGetServerSidePropsType } from "next/types";
+import type { InferGetStaticPropsType } from "next/types";
 import type { CustomMetaProps } from "../../components/CustomMeta";
 
 // MaterialUI Bits
@@ -11,13 +11,13 @@ import { AuthorshipInfo } from "../../components/blog/AuthorshipInfo";
 import { TagStrip } from "../../components/blog/TagStrip";
 import { SiteTheme } from "@buddiesofbudgie/ui";
 import type { ParsedUrlQuery } from "querystring";
-import { getPostBySlug } from "../../common/getPosts";
+import { getPostBySlug, getPosts } from "../../common/getPosts";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { LightboxImage } from "../../components/LightboxImage";
 import { OCCallout } from "../../components/blog/OCCallout";
 
-type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
+type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 type fubarProps = {
   className: PageProps;
@@ -142,7 +142,16 @@ interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
-export const getServerSideProps = async ({ locale, params }: { locale: string; params: IParams }) => {
+export const getStaticPaths = async () => {
+  const posts = getPosts();
+  const paths = posts.map((p) => ({
+    params: { slug: p.id },
+  }));
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps = async ({ locale, params }: { locale: string; params: IParams }) => {
   const { slug } = params;
   const post = getPostBySlug(slug);
   const messages = (await import(`../../messages/${locale}.json`)).default as IntlMessages;
