@@ -1,4 +1,17 @@
 const path = require("path");
+const fs = require("fs");
+
+const blogs = fs.readdirSync(path.join(".", "src", "content", "blog"));
+
+const redirects = blogs.map((b) => {
+  const uri = path.basename(b).replace(".mdx", "");
+
+  return {
+    source: `/${uri}`,
+    destination: `/blog/${uri}`,
+    permanent: true,
+  };
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -28,6 +41,7 @@ const nextConfig = {
   output: "standalone",
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"], // Append the default value with md extensions
   reactStrictMode: true,
+  redirects: async () => redirects,
   transpilePackages: ["@buddiesofbudgie/ui"],
 };
 
