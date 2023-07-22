@@ -52,6 +52,7 @@ const Post = (p: fubarProps) => {
               alt={post.title}
               className="featuredBlogImage"
               height={1080}
+              priority={true}
               src={post.featuredImage}
               style={{
                 height: "auto",

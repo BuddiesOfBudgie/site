@@ -14,6 +14,9 @@ import { Uris } from "../../constants";
 import { grey } from "@mui/material/colors";
 import NextLink from "../Link";
 import { Box, Button, useTheme } from "@mui/material";
+import { LightboxImage } from "../LightboxImage";
+
+import BudgieImage from "../../../public/images/Budgie.jpg";
 
 export const HeroBanner = () => {
   const t = useTranslations();
@@ -56,17 +59,19 @@ export const HeroBanner = () => {
         </NextLink>
       </Stack>
       <Box bgcolor="primary.dark" borderRadius={4} p={2} width={1}>
-        <Box
-          borderRadius={2}
-          sx={{
-            aspectRatio: 16 / 9,
-            background: "url(/images/Budgie.jpg)",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "contain",
-            position: "relative",
-          }}
-          width={1}
-        ></Box>
+        <Box borderRadius={2} width={1}>
+          <LightboxImage
+            altImageText="Budgie"
+            key={`herobanner-budgie-image`}
+            height={BudgieImage.height}
+            priority
+            image={BudgieImage}
+            imageSx={{
+              borderRadius: 6,
+            }}
+            width={BudgieImage.width}
+          />
+        </Box>
       </Box>
     </Stack>
   );

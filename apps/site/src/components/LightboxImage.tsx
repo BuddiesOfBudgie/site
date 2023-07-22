@@ -17,6 +17,7 @@ export type LightboxImageProps = {
   height?: number;
   image: StaticImageData | string;
   imageSx?: SxProps<Theme>;
+  priority?: boolean;
   previewHeight?: number;
   previewWidth?: number;
   sx?: SxProps<Theme>;
@@ -29,6 +30,7 @@ export const LightboxImage = ({
   height = 1080,
   image,
   imageSx = {},
+  priority,
   previewHeight,
   previewWidth,
   sx,
@@ -70,6 +72,8 @@ export const LightboxImage = ({
           alt={altImageText}
           height={useHeight}
           onClick={() => setShowImageFull(true)}
+          placeholder={typeof image !== "string" ? "blur" : undefined}
+          priority={priority}
           src={image}
           style={{
             height: "auto",
