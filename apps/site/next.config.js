@@ -26,6 +26,17 @@ const nextConfig = {
       return `${new Date().getTime()}`;
     }
   },
+  headers: async () => [
+    {
+      source: "/about/roadmap",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "s-maxage=3600, stale-while-revalidate=59",
+        },
+      ],
+    },
+  ],
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
