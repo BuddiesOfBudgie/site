@@ -38,7 +38,8 @@ export type NavProps = {
 };
 
 export const Nav = ({ navBgColor }: NavProps) => {
-  const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [anchorId, setAnchorId] = useState<string | null>(null);
   const [showDrawer, setShowDrawer] = useState(false);
   const t = useTranslations();
 
@@ -66,6 +67,28 @@ export const Nav = ({ navBgColor }: NavProps) => {
       {
         title: t("Documentation"),
         url: Uris.DOCUMENTATION,
+      },
+      {
+        subMenu: [
+          {
+            title: "GitHub",
+            url: "https://github.com/BuddiesOfBudgie",
+          },
+          {
+            rel: "me",
+            title: "Mastodon",
+            url: "https://fosstodon.org/@BuddiesOfBudgie",
+          },
+          {
+            title: "Matrix",
+            url: "https://matrix.to/#/#buddies-of-budgie:matrix.org",
+          },
+          {
+            title: "YouTube",
+            url: "https://www.youtube.com/@buddiesofbudgie",
+          },
+        ],
+        title: t("Nav.Other"),
       },
       {
         isButton: true,
@@ -110,7 +133,12 @@ export const Nav = ({ navBgColor }: NavProps) => {
                           disableGutters
                           key={`DrawerNav-Accordion-${title}`}
                           square
-                          sx={{ boxShadow: "none" }}
+                          sx={{
+                            boxShadow: "none",
+                            "&.MuiAccordion-root:before": {
+                              height: 0,
+                            },
+                          }}
                         >
                           <AccordionSummary
                             expandIcon={<ExpandMore />}
@@ -187,7 +215,8 @@ export const Nav = ({ navBgColor }: NavProps) => {
                         </NextLink>
                       );
 
-                    if (subMenu)
+                    if (subMenu) {
+                      const isOpen = !!anchorEl && anchorId === `NavMenuButton-${title}`;
                       return (
                         <Box key={`PrimaryNav-AttachedMenuButton-${title}`}>
                           <Button
@@ -197,15 +226,20 @@ export const Nav = ({ navBgColor }: NavProps) => {
                             aria-haspopup="true"
                             disableElevation
                             disableRipple
+                            endIcon={<ExpandMore />}
                             id={`NavMenuButton-${title}`}
                             key={`NavMenuButton-${title}`}
-                            onClick={(e: { currentTarget: React.SetStateAction<HTMLElement | null> }) =>
-                              setAnchorEl(e.currentTarget)
-                            }
+                            onClick={(e: { currentTarget: React.SetStateAction<HTMLElement | null> }) => {
+                              setAnchorEl(e.currentTarget);
+                              setAnchorId(`NavMenuButton-${title}`);
+                            }}
                             sx={{
                               fontSize: "1rem",
                               fontWeight: 400,
                               textTransform: "none",
+                              "&.MuiButton-root:hover": {
+                                backgroundColor: "transparent",
+                              },
                             }}
                             variant="text"
                           >
@@ -218,17 +252,28 @@ export const Nav = ({ navBgColor }: NavProps) => {
                             anchorEl={anchorEl}
                             id={`NavMenu-${title}`}
                             key={`NavMenu-${title}`}
-                            open={!!anchorEl}
+                            open={isOpen}
                             onClose={() => setAnchorEl(null)}
                           >
                             {subMenu.map((item) => (
-                              <MenuItem component="a" href={item.url} key={`NavMenuItem-${title}-${item.title}`}>
+                              <MenuItem
+                                component="a"
+                                href={item.url}
+                                key={`NavMenuItem-${title}-${item.title}`}
+                                rel={item.rel}
+                                sx={{
+                                  paddingBlock: 1,
+                                  paddingInline: 3,
+                                }}
+                                target={item.url?.startsWith("http") ? "_blank" : "_self"}
+                              >
                                 {item.title}
                               </MenuItem>
                             ))}
                           </Menu>
                         </Box>
                       );
+                    }
 
                     return (
                       <NextLink

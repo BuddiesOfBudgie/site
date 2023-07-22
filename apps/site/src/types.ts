@@ -39,6 +39,7 @@ export type BlogTags = Record<string, BlogTagInfo>;
 
 export type NavLink = {
   isButton?: boolean;
+  rel?: string;
   subMenu?: NavLink[];
   title: string;
   url?: string;

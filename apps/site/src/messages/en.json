@@ -58,6 +58,9 @@
     "UPCOMING": "Upcoming",
     "FUTURE": "Future"
   },
+  "Nav": {
+    "Other": "Other"
+  },
   "ReleaseTypes": {
     "BUG_FIX": "Bug Fix Release Series",
     "LATEST_FEATURE": "Latest Feature Release",
