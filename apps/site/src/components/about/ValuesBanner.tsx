@@ -3,6 +3,7 @@
 // Material UI Bits
 import { Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
+import { BodyText } from "./BodyText";
 
 type ValuesBannerProps = {
   description: string;
@@ -12,19 +13,10 @@ type ValuesBannerProps = {
 const ValuesBanner = ({ description, value }: ValuesBannerProps) => {
   return (
     <Stack>
-      <Typography fontWeight={800} margin={0} variant="h4">
+      <Typography fontWeight={800} margin={0} variant="h6">
         {value}
       </Typography>
-      <Typography
-        sx={{
-          fontWeight: "normal",
-          lineHeight: 2,
-          whiteSpace: "pre-line",
-        }}
-        variant="h6"
-      >
-        {description}
-      </Typography>
+      <BodyText>{description}</BodyText>
     </Stack>
   );
 };

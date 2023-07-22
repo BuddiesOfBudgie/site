@@ -45,6 +45,7 @@ export const HeroBanner = () => {
         <NextLink href={Uris.GET_BUDGIE}>
           <Button
             color="success"
+            size="large"
             sx={{
               color: theme.palette.common.white,
               maxWidth: "max-content",

@@ -3,7 +3,7 @@ import type { InferGetServerSidePropsType } from "next/types";
 import type { CustomMetaProps } from "../../components/CustomMeta";
 
 // MaterialUI Bits
-import { Container, Stack, Typography, css, styled } from "@mui/material";
+import { Alert, Container, Stack, Typography, css, styled } from "@mui/material";
 
 // Our Components
 import PageBase from "../../components/PageBase";
@@ -86,6 +86,7 @@ const Post = (p: fubarProps) => {
           <MDXRemote
             {...source}
             components={{
+              Alert,
               OCCallout,
               a: (props) => <a {...props} target="_blank"></a>,
               h1: (props) => (

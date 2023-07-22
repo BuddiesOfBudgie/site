@@ -3,7 +3,7 @@ import type { CustomMetaProps } from "../../components/CustomMeta";
 import { Teams } from "../../data/teams";
 
 // Material UI Bits
-import { Button, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
@@ -20,12 +20,14 @@ import { SiteTheme } from "@buddiesofbudgie/ui";
 import { useTranslations } from "next-intl";
 import NextLink from "../../components/Link";
 import { StackDirectionColumnToRow } from "../../constants";
+import Grid2 from "@mui/material/Unstable_Grid2";
+import { BodyText } from "../../components/about/BodyText";
 
 export const meta: CustomMetaProps = {
   title: "About",
 };
 
-const AboutPageSpacing = 8;
+const AboutPageSpacing = 4;
 
 type CollaborateData = {
   alt: string;
@@ -61,13 +63,9 @@ const About: NextPage = () => {
     <PageBase meta={meta}>
       <Container maxWidth="fullhd" sx={{ paddingBlock: "2em 4em" }}>
         <Stack alignItems="flex-start" rowGap={AboutPageSpacing} sx={{ pT: AboutPageSpacing }}>
-          <Typography fontWeight={400} variant="h6">
-            {t("About.FoundedText")}
-          </Typography>
+          <BodyText>{t("About.FoundedText")}</BodyText>
           <HeroTitle maintext="Values" />
-          <Typography fontWeight={400} variant="h6">
-            {t("About.Values.Generic")}
-          </Typography>
+          <BodyText>{t("About.Values.Generic")}</BodyText>
           <ValuesBanner
             description={t("About.Values.Independence.Description")}
             value={t("About.Values.Independence.Value")}
@@ -81,26 +79,49 @@ const About: NextPage = () => {
             value={t("About.Values.UserCentric.Value")}
           />
           <HeroTitle maintext="Organize" subtext="How We" />
-          <Typography fontWeight={400} variant="h6">
+          <BodyText>
             Buddies of Budgie is organized into scoped teams that helps to ensure the organization and our platform is
             able to be continuously improved while minimizing bottlenecks and maximizing the potential for involvement.
             From marketing and community engagement, to distribution of Budgie Desktop, translations and more - you can
             be sure to find a place to get involved.
-          </Typography>
-          <Box display="inline-flex" justifyContent="space-between" flexWrap="wrap">
+          </BodyText>
+          <Grid2
+            columns={{
+              xs: 6,
+              sm: 6,
+              md: 6,
+              lg: 12,
+            }}
+            container
+            columnSpacing={2}
+            margin={0}
+            rowGap={4}
+            width={1}
+          >
             {Teams.map((team) => {
-              return (
-                <Team key={`Team-${team.Name.replaceAll(" ", "-")}`} stackSpacing={AboutPageSpacing} team={team} />
-              );
+              return <Team key={`Team-${team.Name.replaceAll(" ", "-")}`} team={team} />;
             })}
-          </Box>
+          </Grid2>
           <HeroTitle maintext="Collaborate" subtext="How We" />
           <Stack direction="column" spacing={AboutPageSpacing} width="100%">
             {collaborateInfo.map((info) => {
               const { alt, buttonHref, buttonText, description, image } = info;
 
               return (
-                <Stack alignItems="flex-start" direction={StackDirectionColumnToRow} key={`Collaborate-${alt}`}>
+                <Stack
+                  alignItems="center"
+                  direction={StackDirectionColumnToRow}
+                  key={`Collaborate-${alt}`}
+                  spacing={AboutPageSpacing}
+                  sx={{
+                    [SiteTheme.breakpoints.down("lg")]: {
+                      alignItems: "flex-start",
+                    },
+                    [SiteTheme.breakpoints.up("lg")]: {
+                      alignItems: "center",
+                    },
+                  }}
+                >
                   <Box
                     alignItems="top"
                     display="inline-flex"
@@ -115,7 +136,7 @@ const About: NextPage = () => {
                     alignItems="flex-start"
                     direction="column"
                     justifyItems="space-between"
-                    spacing={AboutPageSpacing / 2}
+                    spacing={AboutPageSpacing}
                     sx={{
                       [SiteTheme.breakpoints.down("md")]: {
                         marginBlockStart: "2vh",
@@ -125,7 +146,7 @@ const About: NextPage = () => {
                       },
                     }}
                   >
-                    <Typography variant="h6">{description}</Typography>
+                    <BodyText>{description}</BodyText>
                     <NextLink href={buttonHref}>
                       <Button>{buttonText ?? t("LearnMore")}</Button>
                     </NextLink>

@@ -9,7 +9,6 @@ import Stack from "@mui/material/Stack";
 // Our components
 import { ColorBanner } from "../components/ColorBanner";
 import { HeroBanner } from "../components/home/HeroBanner";
-import { AutoCenteredOnSmall } from "../components/ImageBanner";
 import { PersonalizeBanner } from "../components/home/PersonalizeBanner";
 import PageBase from "../components/PageBase";
 
@@ -71,8 +70,15 @@ const Home: NextPage = () => {
                 background: SiteTheme.palette.success.main,
               },
             }}
+            allowScrollButtonsMobile
             centered
             onChange={(_, value: number) => setFeatureTab(value)}
+            sx={{
+              ".MuiTabs-scrollButtons.Mui-disabled": {
+                opacity: 0.3,
+              },
+            }}
+            variant="scrollable"
             value={featureTab}
           >
             {imageBannerContent.map((data) => (
@@ -106,33 +112,24 @@ const Home: NextPage = () => {
                     width={Image.width}
                   />
                   <Stack
-                    alignItems={AutoCenteredOnSmall}
+                    alignItems="flex-start"
                     spacing={2}
                     paddingTop={2}
                     paddingX={2}
                     sx={{
-                      [theme.breakpoints.down("md")]: {
-                        textAlign: "center",
-                      },
                       [theme.breakpoints.up("md")]: {
                         marginInlineStart: "2vh",
-                      },
-                      [theme.breakpoints.between("md", "lg")]: {
-                        maxWidth: "calc(90% - 400px)",
-                      },
-                      [theme.breakpoints.up("lg")]: {
-                        maxWidth: "calc(80% - 400px)",
+                        maxWidth: 800,
                       },
                     }}
                   >
-                    <Typography color={theme.palette.success.main} fontFamily="Poppins" variant="h5">
+                    <Typography color="success.main" fontFamily="Poppins" variant="h5">
                       {Headline}
                     </Typography>
                     <Typography
                       sx={{
                         fontWeight: "normal",
                         lineHeight: 1.5,
-                        whiteSpace: "pre-line",
                       }}
                       variant="h6"
                     >
