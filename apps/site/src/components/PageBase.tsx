@@ -12,6 +12,7 @@ import type { CustomMetaProps } from "../components/CustomMeta";
 import { CustomMeta } from "../components/CustomMeta";
 import type { NavProps } from "../components/Nav";
 import { Nav } from "../components/Nav";
+import { Analytics } from "@vercel/analytics/react";
 
 interface PageBaseProps extends NavProps {
   children: JSX.Element | JSX.Element[];
@@ -26,6 +27,7 @@ const PageBase = ({ children, meta, ...rest }: PageBaseProps) => {
         <CustomMeta {...meta} />
         <Nav {...rest} />
         {children}
+        <Analytics />
       </ThemeProvider>
     </React.StrictMode>
   );
