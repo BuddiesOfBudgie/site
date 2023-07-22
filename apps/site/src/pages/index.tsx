@@ -71,7 +71,6 @@ const Home: NextPage = () => {
               },
             }}
             allowScrollButtonsMobile
-            centered
             onChange={(_, value: number) => setFeatureTab(value)}
             sx={{
               ".MuiTabs-scrollButtons.Mui-disabled": {

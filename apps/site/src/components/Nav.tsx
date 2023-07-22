@@ -11,7 +11,17 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
-import { Button, Drawer, IconButton, Menu, MenuItem, Typography } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Button,
+  Drawer,
+  IconButton,
+  Menu,
+  MenuItem,
+  Typography,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 // Our assets
@@ -21,6 +31,7 @@ import { Uris } from "../constants";
 import { BWButton } from "@buddiesofbudgie/ui";
 import NextLink from "./Link";
 import type { NavLink } from "../types";
+import { ExpandMore } from "@mui/icons-material";
 
 export type NavProps = {
   navBgColor?: string;
@@ -65,6 +76,14 @@ export const Nav = ({ navBgColor }: NavProps) => {
     [t]
   );
 
+  const drawerText = (title: string) => <Typography fontSize="1.2em">{title}</Typography>;
+
+  const drawerLink = ({ title, url }: { title: string; url: string }) => (
+    <NextLink key={`DrawerNav-Links-${title}`} href={url ?? "#"}>
+      {drawerText(title)}
+    </NextLink>
+  );
+
   return (
     <Box sx={{ backgroundColor: navBgColor ?? "" }}>
       <Container maxWidth="fullhd">
@@ -79,14 +98,35 @@ export const Nav = ({ navBgColor }: NavProps) => {
               variant="temporary"
             >
               {
-                <Stack rowGap={4} sx={{ paddingBlockStart: 2, paddingInlineStart: 2, paddingInlineEnd: 12 }}>
-                  {navItems.map(({ title, url }) => (
-                    <NextLink key={`DrawerNav-Links-${title}`} href={url ?? "#"}>
-                      <Typography fontSize="1.2em" sx={{ textDecoration: "underline" }}>
-                        {title}
-                      </Typography>
-                    </NextLink>
-                  ))}
+                <Stack rowGap={4} minWidth={280} sx={{ paddingBlockStart: 2, paddingInline: 2 }}>
+                  {navItems.map(({ subMenu, title, url }) => {
+                    if (subMenu)
+                      return (
+                        <Accordion disableGutters square sx={{ boxShadow: "none" }}>
+                          <AccordionSummary
+                            expandIcon={<ExpandMore />}
+                            sx={{
+                              padding: 0,
+                              "&.MuiAccordionSummary-root.Mui-expanded": {
+                                minHeight: 48,
+                              },
+                              ".MuiAccordionSummary-content.Mui-expanded": {
+                                margin: "12px 0 !important", // I know, trust me it's needed
+                              },
+                            }}
+                          >
+                            {drawerText(title)}
+                          </AccordionSummary>
+                          <AccordionDetails>
+                            <Stack rowGap={4}>
+                              {subMenu.map((s) => drawerLink({ title: s.title, url: s.url ?? "#" }))}
+                            </Stack>
+                          </AccordionDetails>
+                        </Accordion>
+                      );
+
+                    return drawerLink({ title, url: url ?? "#" });
+                  })}
                 </Stack>
               }
             </Drawer>
