@@ -1,7 +1,5 @@
 # Buddies of Budgie Site
 
-**Important Note: Heavy Work-in-Progress, hence issues being disabled. PRs will be rejected. Expect breakages and incomplete work. Thanks for your understanding :)**
-
 This repository houses the [Next.js](https://nextjs.org/)-based website for Buddies of Budgie, an open source organization building the [Budgie Desktop](https://github.com/BuddiesOfBudgie/budgie-desktop) environment.
 
 ## Development
