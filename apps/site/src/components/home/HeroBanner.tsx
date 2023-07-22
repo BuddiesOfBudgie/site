@@ -59,7 +59,7 @@ export const HeroBanner = () => {
         </NextLink>
       </Stack>
       <Box bgcolor="primary.dark" borderRadius={4} p={2} width={1}>
-        <Box borderRadius={2} width={1}>
+        <Box borderRadius={2} height="max-content" maxWidth={1} width={1}>
           <LightboxImage
             altImageText="Budgie"
             key={`herobanner-budgie-image`}
@@ -68,6 +68,12 @@ export const HeroBanner = () => {
             image={BudgieImage}
             imageSx={{
               borderRadius: 6,
+            }}
+            sx={{
+              [theme.breakpoints.up("fullhd")]: {
+                maxWidth: "100%",
+                width: 1920,
+              },
             }}
             width={BudgieImage.width}
           />

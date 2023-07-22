@@ -45,13 +45,12 @@ export const LightboxImage = ({
 
   const boxStyling = !useOnlySx
     ? {
-        ...sx,
         [theme.breakpoints.down(width)]: {
           maxHeight: "fit-content",
           maxWidth: "100%",
         },
-        [theme.breakpoints.up(width)]: {
-          width,
+        [theme.breakpoints.up(useWidth)]: {
+          width: useWidth,
         },
         [theme.breakpoints.between(useWidth, "fullhd")]: {
           height: useHeight,
@@ -62,6 +61,7 @@ export const LightboxImage = ({
           height: useHeight,
           width: useWidth,
         },
+        ...sx,
       }
     : sx;
 
