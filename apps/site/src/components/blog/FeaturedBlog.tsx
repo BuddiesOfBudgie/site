@@ -13,9 +13,9 @@ import Stack from "@mui/material/Stack";
 import { Typography } from "@mui/material";
 
 import "./FeaturedBlog.scss";
-import { SiteTheme } from "@buddiesofbudgie/ui";
 import NextLink from "../Link";
 import type { BlogPost } from "../../types";
+import { SiteTheme } from "../../theme";
 
 export type FeaturedBlogProps = {
   post: BlogPost;

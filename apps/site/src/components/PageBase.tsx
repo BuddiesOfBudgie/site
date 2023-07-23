@@ -5,7 +5,6 @@ import { ThemeProvider } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 
 // Our Material Theme
-import { SiteTheme } from "@buddiesofbudgie/ui";
 
 // Our Components
 import type { CustomMetaProps } from "../components/CustomMeta";
@@ -13,6 +12,7 @@ import { CustomMeta } from "../components/CustomMeta";
 import type { NavProps } from "../components/Nav";
 import { Nav } from "../components/Nav";
 import { Analytics } from "@vercel/analytics/react";
+import { SiteTheme } from "../theme";
 
 interface PageBaseProps extends NavProps {
   children: JSX.Element | JSX.Element[];

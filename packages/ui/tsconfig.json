@@ -17,6 +17,6 @@
     "jsx": "preserve",
     "moduleResolution": "node"
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "../../apps/site/src/theme.tsx"],
   "exclude": ["node_modules"]
 }

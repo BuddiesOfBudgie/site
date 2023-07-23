@@ -1,6 +1,8 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 import { grey } from "@mui/material/colors";
+import { inter, poppins } from "./fonts";
+
 declare module "@mui/material/styles" {
   interface BreakpointOverrides {
     xs: true;
@@ -50,7 +52,7 @@ const Theme = createTheme({
       styleOverrides: {
         root: ({ ownerState, theme }) => ({
           borderRadius: "2em",
-          fontFamily: "Poppins",
+          fontFamily: poppins.style.fontFamily,
           ...(ownerState.variant === "contained" &&
             ownerState.color === "primary" && {
               border: `2px solid ${theme.palette[ownerState.color].main}`,
@@ -88,6 +90,41 @@ const Theme = createTheme({
     success: {
       light: "#d5ffda",
       main: "#6bca81",
+    },
+  },
+  typography: {
+    h1: {
+      fontFamily: poppins.style.fontFamily,
+    },
+    h2: {
+      fontFamily: poppins.style.fontFamily,
+    },
+    h3: {
+      fontFamily: poppins.style.fontFamily,
+    },
+    h4: {
+      fontFamily: poppins.style.fontFamily,
+    },
+    h5: {
+      fontFamily: poppins.style.fontFamily,
+    },
+    h6: {
+      fontFamily: inter.style.fontFamily,
+    },
+    subtitle1: {
+      fontFamily: inter.style.fontFamily,
+    },
+    subtitle2: {
+      fontFamily: inter.style.fontFamily,
+    },
+    body1: {
+      fontFamily: inter.style.fontFamily,
+    },
+    body2: {
+      fontFamily: inter.style.fontFamily,
+    },
+    button: {
+      fontFamily: poppins.style.fontFamily,
     },
   },
 });

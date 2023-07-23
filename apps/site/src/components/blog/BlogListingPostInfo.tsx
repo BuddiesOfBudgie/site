@@ -8,12 +8,12 @@ import Stack from "@mui/material/Stack";
 
 import { AuthorshipInfo } from "./AuthorshipInfo";
 import { TagStrip } from "./TagStrip";
-import { SiteTheme } from "@buddiesofbudgie/ui";
 import { useMediaQuery, useTheme } from "@mui/material";
 import NextLink from "../Link";
 import type { BlogPost } from "../../types";
 import { PopText } from "../pop/PopText";
 import { InterText } from "../InterText";
+import { SiteTheme } from "../../theme";
 
 type BlogListingPostInfoParams = {
   condensed?: boolean;

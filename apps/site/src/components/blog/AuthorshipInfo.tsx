@@ -8,12 +8,12 @@ import Image from "next/image";
 
 // Material UI
 import Stack from "@mui/material/Stack";
-import { SiteTheme } from "@buddiesofbudgie/ui";
 import type { BlogPost } from "../../types";
 import { F } from "@mobily/ts-belt";
 import type { Person } from "../../data/people";
 import { People } from "../../data/people";
 import { InterText } from "../InterText";
+import { SiteTheme } from "../../theme";
 
 type AuthorshipInfoParams = {
   post: BlogPost;

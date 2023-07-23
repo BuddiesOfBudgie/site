@@ -3,7 +3,7 @@ import React from "react";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { Chip } from "@mui/material";
-import { Avatar, SiteTheme } from "@buddiesofbudgie/ui";
+import { Avatar } from "@buddiesofbudgie/ui";
 import { useTranslations } from "next-intl";
 import Color from "color";
 import { GoIssueOpened } from "react-icons/go";
@@ -13,6 +13,7 @@ import { GitHubProjectItemType, type GitHubProjectItem } from "../../types";
 import { inter } from "../../fonts";
 import { PopText } from "../pop/PopText";
 import { InterText } from "../InterText";
+import { SiteTheme } from "../../theme";
 
 type RoadmapItemProps = {
   item: GitHubProjectItem;

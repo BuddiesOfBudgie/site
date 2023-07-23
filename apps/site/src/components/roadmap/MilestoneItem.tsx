@@ -2,7 +2,6 @@ import React, { useMemo } from "react";
 
 import type { RequiredBy } from "@buddiesofbudgie/types";
 import Paper from "@mui/material/Paper";
-import { SiteTheme } from "@buddiesofbudgie/ui";
 import Stack from "@mui/material/Stack";
 import { Chip } from "@mui/material";
 import { useTranslations } from "next-intl";
@@ -10,6 +9,7 @@ import type { GitHubMilestonesSummary } from "../../types";
 import { poppins } from "../../fonts";
 import { PopText } from "../pop/PopText";
 import { InterText } from "../InterText";
+import { SiteTheme } from "../../theme";
 
 export type RequiredMilestoneSummaryItems = RequiredBy<GitHubMilestonesSummary, "current" | "upcoming">;
 

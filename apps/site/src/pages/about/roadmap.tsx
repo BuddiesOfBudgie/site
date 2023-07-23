@@ -5,7 +5,6 @@ import PageBase from "../../components/PageBase";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import { SiteTheme } from "@buddiesofbudgie/ui";
 import { RoadmapItem } from "../../components/roadmap/RoadmapItem";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { ItemStatusSelector } from "../../components/roadmap/ItemStatusSelector";
@@ -19,6 +18,7 @@ import { GitHubProjectItemStatus } from "../../types";
 import { PopText } from "../../components/pop/PopText";
 import { PopButton } from "../../components/pop/PopButton";
 import { InterText } from "../../components/InterText";
+import { SiteTheme } from "../../theme";
 
 type fubarProps = {
   className: InferGetServerSidePropsType<typeof getServerSideProps>;

@@ -15,13 +15,13 @@ import ValuesBanner from "../../components/about/ValuesBanner";
 
 // Images
 import { GitHub, Matrix } from "../../components/Vectors";
-import { SiteTheme } from "@buddiesofbudgie/ui";
 import { useTranslations } from "next-intl";
 import NextLink from "../../components/Link";
 import { StackDirectionColumnToRow } from "../../constants";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { BodyText } from "../../components/about/BodyText";
 import { PopButton } from "../../components/pop/PopButton";
+import { SiteTheme } from "../../theme";
 
 export const meta: CustomMetaProps = {
   title: "About",

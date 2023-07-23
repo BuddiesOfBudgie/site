@@ -1,11 +1,11 @@
 import type { Dispatch, SetStateAction } from "react";
 import React from "react";
 
-import { SiteTheme } from "@buddiesofbudgie/ui";
 import Stack from "@mui/material/Stack";
 import { useTranslations } from "next-intl";
 import type { GitHubProjectItemStatus } from "../../types";
 import { PopButton } from "../pop/PopButton";
+import { SiteTheme } from "../../theme";
 
 type ItemStatusSelectorProps = {
   currentStatus: GitHubProjectItemStatus;

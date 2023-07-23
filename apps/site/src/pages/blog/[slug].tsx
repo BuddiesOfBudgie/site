@@ -9,7 +9,6 @@ import { Alert, Container, Stack, Typography, css, styled } from "@mui/material"
 import PageBase from "../../components/PageBase";
 import { AuthorshipInfo } from "../../components/blog/AuthorshipInfo";
 import { TagStrip } from "../../components/blog/TagStrip";
-import { SiteTheme } from "@buddiesofbudgie/ui";
 import type { ParsedUrlQuery } from "querystring";
 import { getPostBySlug, getPosts } from "../../common/getPosts";
 import { MDXRemote } from "next-mdx-remote";
@@ -19,6 +18,7 @@ import { OCCallout } from "../../components/blog/OCCallout";
 import { PopText } from "../../components/pop/PopText";
 import { inter } from "../../fonts";
 import { InterText } from "../../components/InterText";
+import { SiteTheme } from "../../theme";
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 

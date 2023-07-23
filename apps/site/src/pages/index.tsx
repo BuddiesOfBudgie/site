@@ -19,11 +19,11 @@ import type { StaticImageData } from "next/image";
 import { useTranslations } from "next-intl";
 import { Uris } from "../constants";
 import { useState } from "react";
-import { SiteTheme } from "@buddiesofbudgie/ui";
 import { LightboxImage } from "../components/LightboxImage";
 import { poppins } from "../fonts";
 import { PopText } from "../components/pop/PopText";
 import { InterText } from "../components/InterText";
+import { SiteTheme } from "../theme";
 
 type HomepageImageBannerContent = {
   AltImageText: string;
