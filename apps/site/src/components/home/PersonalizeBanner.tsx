@@ -116,7 +116,7 @@ export const PersonalizeBanner = () => {
             onChangeIndex={handleStepChange}
             enableMouseEvents
           >
-            {images.map((imageObj) => (
+            {images.map((imageObj, i) => (
               <Box
                 key={`personalize-banner-container-${imageObj.text}`}
                 position="relative"
@@ -129,6 +129,7 @@ export const PersonalizeBanner = () => {
                 <Image
                   alt={imageObj.text}
                   fill
+                  priority={i === 0}
                   onClick={() => setShowBackdrop(true)}
                   sizes="(max-width: 900px) 95vw, 708px"
                   key={`personalize-banner-${imageObj.text}`}

@@ -106,6 +106,7 @@ const Home: NextPage = () => {
                     key={`imagebanner-${AltImageText}`}
                     height={Image.height}
                     image={Image}
+                    priority={idx === 0}
                     previewHeight={506}
                     previewWidth={900}
                     width={Image.width}
