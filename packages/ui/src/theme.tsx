@@ -1,15 +1,6 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 import { grey } from "@mui/material/colors";
-
-const PoppinsFontFamily = {
-  fontFamily: "Poppins",
-};
-
-const InterFontFamily = {
-  fontFamily: "Inter",
-};
-
 declare module "@mui/material/styles" {
   interface BreakpointOverrides {
     xs: true;
@@ -98,14 +89,6 @@ const Theme = createTheme({
       light: "#d5ffda",
       main: "#6bca81",
     },
-  },
-  typography: {
-    h1: PoppinsFontFamily,
-    h2: PoppinsFontFamily,
-    h3: PoppinsFontFamily,
-    h4: PoppinsFontFamily,
-    h5: InterFontFamily,
-    h6: InterFontFamily,
   },
 });
 
