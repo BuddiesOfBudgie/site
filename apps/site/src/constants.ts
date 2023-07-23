@@ -1,4 +1,7 @@
 import type { StackDirectionMap } from "./types";
+export const DOMAIN_NO_PREFIX = "buddiesofbudgie.org";
+export const DOMAIN = `https://${DOMAIN_NO_PREFIX}`;
+export const ORG = "Buddies of Budgie";
 
 export const FALLBACK_BUDGIE_VERSION = "10.7.2";
 

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Releases | Buddies of Budgie</title>
+        <link>https://buddiesofbudgie.org</link>
+        <description>Buddies of Budgie posts in the category Releases</description>
+        <lastBuildDate>Fri, 07 Jul 2023 01:02:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <copyright>Buddies of Budgie</copyright>
+        <item>
+            <title><![CDATA[Budgie 10.7.2 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-7-2</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-7-2</guid>
+            <pubDate>Wed, 26 Apr 2023 19:56:17 GMT</pubDate>
+            <description><![CDATA[Budgie 10.7.2 is the second minor release in the 10.7 series of our Budgie Desktop environment, primarily focused on bug fixes, additional compatibility with GNOME 44 stack, and various quality-of-life improvements.]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2023/04/Budgie_10.7.2_Featured.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Budgie 10.7.1 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-7-1-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-7-1-released</guid>
+            <pubDate>Sun, 19 Feb 2023 17:10:23 GMT</pubDate>
+            <description><![CDATA[Budgie 10.7.1 is the first minor release in the 10.7 series of our Budgie Desktop environment, introducing some improvements, bug fixes, and updated translations.]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2023/02/Budgie_10.7.1_Featured.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Budgie 10.7 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-7-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-7-released</guid>
+            <pubDate>Sun, 29 Jan 2023 16:04:54 GMT</pubDate>
+            <description><![CDATA[Budgie 10.7 is a brand new release series for Budgie Desktop, featuring major re-architectures, new APIs for extensibility, and polish to the user experience.]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2023/01/MainDesktop.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Budgie 10.6.4 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-6-4-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-6-4-released</guid>
+            <pubDate>Tue, 30 Aug 2022 17:18:06 GMT</pubDate>
+            <description><![CDATA[Budgie 10.6.4 is the fourth minor release in the 10.6 series of our Budgie Desktop environment. This release contains bug fixes and build system improvements.]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2022/08/Budgie-10.6.4-Featured.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Budgie 10.6.3 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-6-3-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-6-3-released</guid>
+            <pubDate>Sun, 21 Aug 2022 13:30:03 GMT</pubDate>
+            <description><![CDATA[Budgie 10.6.3 is the third minor release in the 10.6 series of our Budgie Desktop environment, introducing improvements to our Workspace Applet and initial support for GNOME 43!]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2022/08/Budgie-10.6.3-Featured.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Budgie 10.6.2 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-6-2-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-6-2-released</guid>
+            <pubDate>Tue, 12 Jul 2022 16:00:32 GMT</pubDate>
+            <description><![CDATA[Budgie 10.6.2 is the second minor release in the 10.6 series of our Budgie Desktop environment, introducing fixes for bugs and improving code quality!]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2022/07/Budgie_10.6.2_Featured_Image.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Budgie 10.6.1 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-6-1-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-6-1-released</guid>
+            <pubDate>Sat, 02 Apr 2022 12:04:00 GMT</pubDate>
+            <description><![CDATA[Budgie 10.6.1 is the first minor release that introduces fixes for bugs in the 10.6 series of our Budgie Desktop environment.]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2022/04/Budgie_10.6.1_Featured_Image.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Budgie 10.6 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-6-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-6-released</guid>
+            <pubDate>Sun, 06 Mar 2022 16:53:00 GMT</pubDate>
+            <description><![CDATA[Budgie 10.6 is the first release of Budgie under the new Buddies Of Budgie organization! 🚀🚀🚀]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2022/03/budgie-10-6.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Budgie 10.5.3 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-5-3-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-5-3-released</guid>
+            <pubDate>Tue, 27 Apr 2021 11:42:00 GMT</pubDate>
+            <description><![CDATA[Budgie 10.5.3 is a minor release that introduces fixes for bugs, various quality-of-life improvements, and support for the GNOME 40 stack.]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2021/04/budgie-desktop-settings.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Budgie 10.5.2 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-5-2-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-5-2-released</guid>
+            <pubDate>Wed, 02 Dec 2020 11:57:00 GMT</pubDate>
+            <description><![CDATA[Budgie 10.5.2 introduces new goodies to make your Budgie experience even better!]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2020/12/Budgie-10.5.2.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Budgie Desktop View: First Development Release!]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-desktop-view-first-development-release</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-desktop-view-first-development-release</guid>
+            <pubDate>Thu, 26 Nov 2020 12:02:00 GMT</pubDate>
+            <description><![CDATA[Today we are thrilled to announce the first generally public development release of Budgie Desktop View!]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2022/03/budgie-desktop-settings-with-view.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Budgie 10.5.1 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-5-1-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-5-1-released</guid>
+            <pubDate>Thu, 03 Oct 2019 14:55:00 GMT</pubDate>
+            <description><![CDATA[Budgie 10.5.1 is the first minor release of the Budgie 10.5 series, introducing a multitude of quality-of-life changes, bug fixes, and support for new GNOME Stacks.]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2019/10/Budgie-10.5.1.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Budgie 10.5 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-5-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-5-released</guid>
+            <pubDate>Sun, 17 Mar 2019 21:06:00 GMT</pubDate>
+            <description><![CDATA[Budgie 10.5 is the first release in our series 5 updates for Budgie 10!]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2019/03/Budgie-10.5.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Budgie 10.4 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-4-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-4-released</guid>
+            <pubDate>Tue, 15 Aug 2017 20:02:00 GMT</pubDate>
+            <description><![CDATA[Budgie 10.4 is the first release in our series 4 updates for Budgie 10!]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2017/08/Budgie-10.4.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Budgie 10.3 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-3-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-3-released</guid>
+            <pubDate>Tue, 18 Apr 2017 17:41:00 GMT</pubDate>
+            <description><![CDATA[Budgie 10.3 is the first release in our series 3 updates for Budgie 10!]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2017/04/Budgie-10.3.jpg" length="0" type="image/jpg"/>
+        </item>
+    </channel>
+</rss>

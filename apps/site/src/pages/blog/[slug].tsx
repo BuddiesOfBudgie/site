@@ -23,10 +23,7 @@ type fubarProps = {
   className: PageProps;
 };
 
-const Post = (p: fubarProps) => {
-  const {
-    className: { post, source },
-  } = p;
+const Post = ({ className: { post, source } }: fubarProps) => {
   const pageMeta: CustomMetaProps = {
     title: post.title,
   };

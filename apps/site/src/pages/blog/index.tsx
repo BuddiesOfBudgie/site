@@ -16,8 +16,11 @@ import BlogListing from "../../components/blog/BlogListing";
 import type { ParsedUrlQuery } from "querystring";
 import { grey } from "@mui/material/colors";
 import { getPosts, getPostsByTags } from "../../common/getPosts";
-import { A, F, G, N, S, pipe } from "@mobily/ts-belt";
+import { F, G, N, pipe } from "@mobily/ts-belt";
 import type { BlogTagInfo } from "../../types";
+import { getPrettyTagName } from "../../common/getPrettyTagName";
+import { ORG } from "../../constants";
+import Head from "next/head";
 
 type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
@@ -35,12 +38,7 @@ const BlogIndex = ({ className: { page, pagesLength, posts, tag } }: fubarProps)
     }
   }, []);
   const searchParams = useMemo(() => (location ? location.searchParams : null), [location]);
-  const PageTitle = pipe(
-    tag,
-    S.split("-"),
-    A.map((s: string) => `${s.charAt(0).toUpperCase()}${s.slice(1)}`),
-    A.join(" ")
-  );
+  const PageTitle = getPrettyTagName(tag);
 
   const meta: CustomMetaProps = {
     title: PageTitle,
@@ -48,6 +46,20 @@ const BlogIndex = ({ className: { page, pagesLength, posts, tag } }: fubarProps)
 
   return (
     <PageBase meta={meta} navBgColor="misc.lightgrey">
+      <Head>
+        <link
+          rel="alternate"
+          type="application/atom+xml"
+          title={`Atom feed for ${PageTitle} | ${ORG}`}
+          href={`/feeds/${tag}.atom`}
+        />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={`RSS feed for ${PageTitle} | ${ORG}`}
+          href={`/feeds/${tag}.xml`}
+        />
+      </Head>
       <Typography
         align="center"
         sx={{

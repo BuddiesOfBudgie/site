@@ -23,6 +23,10 @@
   "Blog": "Blog",
   "Budgie10RoadmapDescription": "Budgie 10 is our current “major” release of Budgie Desktop. This major release consists of “minor” series releases that have a mix of new features, bug fixes, and architectural improvements. Although Budgie Desktop 10 is not “based” on any other desktop experience, it is built on top of many libraries and projects from the GNOME Foundation, such as the GTK 3.x graphical toolkit, Mutter window manager, GNOME Settings Daemon, and more.",
   "Documentation": "Documentation",
+  "Feeds": "Feeds",
+  "Feed": {
+    "CategoryOrTag": "Category / Tag"
+  },
   "Get Budgie": "Get Budgie",
   "Home": {
     "ColorBanner": {
