@@ -69,6 +69,7 @@ export const HeroBanner = () => {
           <Image
             alt="Budgie"
             fill
+            priority
             sizes="(min-width: 1921px) 1920px, (max-width: 1920px) 90vw, (max-width: 900px) 95vw, 90vw"
             src={BudgieImage}
             style={{
