@@ -5,7 +5,7 @@ import { SiteTheme } from "@buddiesofbudgie/ui";
 import Stack from "@mui/material/Stack";
 import { useTranslations } from "next-intl";
 import type { GitHubProjectItemStatus } from "../../types";
-import { Button } from "@mui/material";
+import { PopButton } from "../pop/PopButton";
 
 type ItemStatusSelectorProps = {
   currentStatus: GitHubProjectItemStatus;
@@ -18,7 +18,7 @@ export const ItemStatusSelector = ({ currentStatus, statuses, setStatus }: ItemS
   return (
     <Stack direction="row" spacing={4}>
       {statuses.map((status) => (
-        <Button
+        <PopButton
           key={status}
           onClick={() => setStatus(status)}
           size="large"
@@ -33,7 +33,7 @@ export const ItemStatusSelector = ({ currentStatus, statuses, setStatus }: ItemS
           variant={currentStatus === status ? "contained" : "outlined"}
         >
           {t(`RoadmapItemStatus.${status}`)}
-        </Button>
+        </PopButton>
       ))}
     </Stack>
   );

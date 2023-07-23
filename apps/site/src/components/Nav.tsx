@@ -11,27 +11,20 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Button,
-  Drawer,
-  IconButton,
-  Menu,
-  MenuItem,
-  Typography,
-} from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Drawer, IconButton, Menu, MenuItem } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 // Our assets
 import Logo from "../../public/images/logo.svg";
 import { useTranslations } from "next-intl";
-import { Uris } from "../constants";
-import { BWButton } from "@buddiesofbudgie/ui";
+import { ORG, Uris } from "../constants";
 import NextLink from "./Link";
 import type { NavLink } from "../types";
 import { ExpandMore } from "@mui/icons-material";
+import { poppins } from "../fonts";
+import { PopText } from "./pop/PopText";
+import { InterText } from "./InterText";
+import { PopButton } from "./pop/PopButton";
 
 export type NavProps = {
   navBgColor?: string;
@@ -100,9 +93,9 @@ export const Nav = ({ navBgColor }: NavProps) => {
   );
 
   const drawerText = (title: string) => (
-    <Typography key={`DrawerNav-Links-Text-${title}`} fontSize="1.2em">
+    <PopText key={`DrawerNav-Links-Text-${title}`} fontSize="1.2em" fontWeight="normal">
       {title}
-    </Typography>
+    </PopText>
   );
 
   const drawerLink = ({ title, url }: { title: string; url: string }) => (
@@ -189,9 +182,9 @@ export const Nav = ({ navBgColor }: NavProps) => {
                   <NextLink href="/">
                     <Box sx={{ alignItems: "center", display: "inline-flex" }}>
                       <Image src={Logo} alt="Budgie Logo" height={46} width={46} />
-                      <Typography fontFamily="Poppins" sx={{ marginInlineStart: "1em" }} variant="h6">
-                        Buddies of Budgie
-                      </Typography>
+                      <InterText sx={{ marginInlineStart: "1em" }} variant="h6">
+                        {ORG}
+                      </InterText>
                     </Box>
                   </NextLink>
                 </Box>
@@ -209,9 +202,9 @@ export const Nav = ({ navBgColor }: NavProps) => {
                     if (isButton)
                       return (
                         <NextLink key={`PrimaryNav-Links-NextLink-${title}`} href={url ?? "#"} target="_blank">
-                          <BWButton key={`PrimaryNav-Links-${title}`} size="large">
+                          <PopButton bw key={`PrimaryNav-Links-${title}`} size="large">
                             {title}
-                          </BWButton>
+                          </PopButton>
                         </NextLink>
                       );
 
@@ -219,7 +212,7 @@ export const Nav = ({ navBgColor }: NavProps) => {
                       const isOpen = !!anchorEl && anchorId === `NavMenuButton-${title}`;
                       return (
                         <Box key={`PrimaryNav-AttachedMenuButton-${title}`}>
-                          <Button
+                          <PopButton
                             aria-controls={anchorEl ? `NavMenu-${title}` : undefined}
                             aria-expanded={anchorEl ? "true" : undefined}
                             aria-label={`NavMenuButton-${title}`}
@@ -244,7 +237,7 @@ export const Nav = ({ navBgColor }: NavProps) => {
                             variant="text"
                           >
                             {title}
-                          </Button>
+                          </PopButton>
                           <Menu
                             MenuListProps={{
                               "aria-labelledby": `NavMenuButton-${title}`,
@@ -258,6 +251,7 @@ export const Nav = ({ navBgColor }: NavProps) => {
                             {subMenu.map((item) => (
                               <MenuItem
                                 component="a"
+                                className={poppins.className}
                                 href={item.url}
                                 key={`NavMenuItem-${title}-${item.title}`}
                                 rel={item.rel}
@@ -282,9 +276,9 @@ export const Nav = ({ navBgColor }: NavProps) => {
                         passHref
                         target={url?.startsWith("http") ? "_blank" : "_self"}
                       >
-                        <Typography fontFamily="Poppins" sx={{ textTransform: "none" }} variant="subtitle1">
+                        <PopText fontWeight="normal" sx={{ textTransform: "none" }} variant="subtitle1">
                           {title}
-                        </Typography>
+                        </PopText>
                       </NextLink>
                     );
                   })}

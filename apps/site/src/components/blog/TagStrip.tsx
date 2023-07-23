@@ -5,7 +5,7 @@
 // Material UI Components
 import Stack from "@mui/material/Stack";
 import NextLink from "../Link";
-import { Button } from "@mui/material";
+import { PopButton } from "../pop/PopButton";
 
 type TagStripParams = {
   tags: string[];
@@ -17,9 +17,9 @@ export const TagStrip = ({ tags }: TagStripParams) => {
       {tags.map((tag) => {
         return (
           <NextLink key={`TagStrip-Item-${tag}`} href={`/blog?tag=${encodeURIComponent(tag)}`}>
-            <Button color="success" size="medium" variant="outlined">
+            <PopButton color="success" size="medium" variant="outlined">
               {tag.replaceAll("-", " ")}
-            </Button>
+            </PopButton>
           </NextLink>
         );
       })}

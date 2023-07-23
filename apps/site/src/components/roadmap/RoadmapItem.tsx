@@ -2,7 +2,7 @@ import React from "react";
 
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import { Chip, Typography } from "@mui/material";
+import { Chip } from "@mui/material";
 import { Avatar, SiteTheme } from "@buddiesofbudgie/ui";
 import { useTranslations } from "next-intl";
 import Color from "color";
@@ -10,6 +10,9 @@ import { GoIssueOpened } from "react-icons/go";
 import { TbGitPullRequest, TbFlag } from "react-icons/tb";
 import NextLink from "../Link";
 import { GitHubProjectItemType, type GitHubProjectItem } from "../../types";
+import { inter } from "../../fonts";
+import { PopText } from "../pop/PopText";
+import { InterText } from "../InterText";
 
 type RoadmapItemProps = {
   item: GitHubProjectItem;
@@ -36,9 +39,9 @@ export const RoadmapItem = ({ item }: RoadmapItemProps) => {
           {type === GitHubProjectItemType.DRAFT_ISSUE && <TbFlag size={24} />}
           {type === GitHubProjectItemType.ISSUE && <GoIssueOpened />}
           {type === GitHubProjectItemType.PULL_REQUEST && <TbGitPullRequest />}
-          <Typography sx={{ color: SiteTheme.palette.misc.greyish, fontWeight: "bold" }} variant="subtitle1">
+          <InterText sx={{ color: SiteTheme.palette.misc.greyish, fontWeight: "bold" }} variant="subtitle1">
             {t(`RoadmapItemType.${type}`, { num })}
-          </Typography>
+          </InterText>
         </Stack>
         {url && (
           <NextLink
@@ -52,8 +55,7 @@ export const RoadmapItem = ({ item }: RoadmapItemProps) => {
             }}
             target="_blank"
           >
-            <Typography
-              fontWeight="bold"
+            <PopText
               minHeight="3rem"
               sx={{
                 cursor: "pointer",
@@ -63,13 +65,14 @@ export const RoadmapItem = ({ item }: RoadmapItemProps) => {
               variant="h6"
             >
               {title}
-            </Typography>
+            </PopText>
           </NextLink>
         )}
         {labels.length > 0 && (
           <Stack direction="row" gap={1}>
             {labels.map((label) => (
               <Chip
+                className={inter.className}
                 color="primary"
                 key={`${key}-label-${label.name}`}
                 label={label.name}

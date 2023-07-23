@@ -3,12 +3,14 @@
  */
 
 import React from "react";
-import { Button, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 
 // Material UI Bits
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 import NextLink from "./Link";
+import { PopButton } from "./pop/PopButton";
+import { PopText } from "./pop/PopText";
+import { InterText } from "./InterText";
 
 // Our components
 
@@ -43,20 +45,12 @@ export const ColorBanner = ({
         borderRadius: "2em",
       }}
     >
-      <Typography color={theme.palette.primary.light} fontWeight="bold" variant="h5">
+      <PopText color={theme.palette.primary.light} variant="h5">
         {header}
-      </Typography>
-      <Typography
-        sx={{
-          fontWeight: "normal",
-          lineHeight: 1.5,
-          padding: "2vh 0",
-          whiteSpace: "pre-line",
-        }}
-        variant="h6"
-      >
+      </PopText>
+      <InterText fontWeight="normal" lineHeight={1.6} padding="2vh 0" variant="h6" whiteSpace="pre-line">
         {body}
-      </Typography>
+      </InterText>
       <NextLink
         href={buttonHref}
         sx={{
@@ -64,7 +58,7 @@ export const ColorBanner = ({
         }}
         target={!buttonHref.startsWith("/") ? "_target" : "_self"}
       >
-        <Button
+        <PopButton
           color="info"
           sx={{
             color: buttonTextColor,
@@ -72,7 +66,7 @@ export const ColorBanner = ({
           }}
         >
           {buttonText}
-        </Button>
+        </PopButton>
       </NextLink>
     </Stack>
   );

@@ -6,12 +6,12 @@
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 
 // Our Components
 import BlogListingPostInfo from "./BlogListingPostInfo";
 import { HalvedWidthOnHighResolution, StackDirectionColumnToRow } from "../../constants";
 import type { BlogPost } from "../../types";
+import { PopText } from "../pop/PopText";
 
 type BlogListingParams = {
   page: number;
@@ -34,9 +34,9 @@ const BlogListing: React.FC<BlogListingParams> = ({ page, posts }: BlogListingPa
       <Stack alignItems="center" direction="column">
         {hasExcessOrFirstPage && (
           <>
-            <Typography alignSelf="start" fontWeight="bold" marginBottom={6} textAlign="start" variant="h4">
+            <PopText alignSelf="start" marginBottom={6} textAlign="start" variant="h4">
               Featured Blogs
-            </Typography>
+            </PopText>
             <Stack
               direction={StackDirectionColumnToRow}
               justifyContent="space-between"
@@ -58,9 +58,9 @@ const BlogListing: React.FC<BlogListingParams> = ({ page, posts }: BlogListingPa
           </>
         )}
         {hasExcessOrFirstPage && (
-          <Typography alignSelf="start" fontWeight="bold" marginBottom={6} textAlign="start" variant="h4">
+          <PopText alignSelf="start" marginBottom={6} textAlign="start" variant="h4">
             More Recent Posts
-          </Typography>
+          </PopText>
         )}
         <Box display="inline-flex" justifyContent="space-between" flexWrap="wrap">
           {restOfSelection.map((post) => {

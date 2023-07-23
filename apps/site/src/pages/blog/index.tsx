@@ -7,7 +7,7 @@ import type { InferGetServerSidePropsType } from "next/types";
 
 // Material UI Components
 import Container from "@mui/material/Container";
-import { Button, Pagination, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Pagination, Stack, useMediaQuery, useTheme } from "@mui/material";
 
 // Our Components
 import type { CustomMetaProps } from "../../components/CustomMeta";
@@ -23,6 +23,8 @@ import { ORG } from "../../constants";
 import Head from "next/head";
 import { useTranslations } from "next-intl";
 import { RssFeed } from "@mui/icons-material";
+import { PopButton } from "../../components/pop/PopButton";
+import { PopText } from "../../components/pop/PopText";
 
 type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
@@ -71,17 +73,16 @@ const BlogIndex = ({ className: { page, pagesLength, posts, tag } }: fubarProps)
         <Stack alignItems="center" rowGap={2}>
           <Container maxWidth="subfullhd">
             <Stack alignItems="center" direction="row" justifyContent="space-between" marginBottom={4} width={1}>
-              <Typography
+              <PopText
                 sx={{
                   color: grey[800],
-                  fontWeight: "bold",
                   textAlign: "start",
                 }}
                 variant="h2"
               >
                 {PageTitle}
-              </Typography>
-              <Button
+              </PopText>
+              <PopButton
                 color="success"
                 href="/feeds"
                 startIcon={!isOnMobile ? <RssFeed /> : undefined}
@@ -89,7 +90,7 @@ const BlogIndex = ({ className: { page, pagesLength, posts, tag } }: fubarProps)
               >
                 {!isOnMobile && t("Feeds")}
                 {isOnMobile && <RssFeed />}
-              </Button>
+              </PopButton>
             </Stack>
           </Container>
           <BlogListing page={page} posts={posts} />

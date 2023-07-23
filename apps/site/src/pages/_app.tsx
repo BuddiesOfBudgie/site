@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import type { AbstractIntlMessages } from "next-intl";
 import { NextIntlProvider } from "next-intl";
+import { inter } from "../fonts";
 
 type Props = AppProps & {
   pageProps: { messages: AbstractIntlMessages };
@@ -9,7 +10,12 @@ type Props = AppProps & {
 const App = ({ Component, pageProps }: Props) => {
   return (
     <NextIntlProvider messages={pageProps.messages}>
-      <Component className={...pageProps} />
+      <Component
+        className={{
+          ...inter,
+          ...pageProps,
+        }}
+      />
     </NextIntlProvider>
   );
 };

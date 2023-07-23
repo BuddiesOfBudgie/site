@@ -12,7 +12,6 @@ import Chip from "@mui/material/Chip";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 
 import MacLike from "../../../public/images/personalize/macLike.jpg";
 import Traditional from "../../../public/images/personalize/traditional.jpg";
@@ -21,6 +20,8 @@ import { useTranslations } from "next-intl";
 
 import SwipeableViews from "react-swipeable-views";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
+import { PopText } from "../pop/PopText";
+import { InterText } from "../InterText";
 
 interface ImageInfo {
   bgColor: string;
@@ -104,12 +105,12 @@ export const PersonalizeBanner = () => {
       </Backdrop>
       <Container maxWidth="md">
         <Stack alignItems="center" spacing={4}>
-          <Typography align="center" fontWeight="bold" variant="h3">
+          <PopText align="center" variant="h3">
             {t("Home.Personalize.Header")}
-          </Typography>
-          <Typography align="center" variant="h5">
+          </PopText>
+          <InterText align="center" variant="h6">
             {t("Home.Personalize.Description")}
-          </Typography>
+          </InterText>
           <SwipeableViews
             axis={theme.direction === "rtl" ? "x-reverse" : "x"}
             index={currentIndex}

@@ -4,9 +4,12 @@ import type { RequiredBy } from "@buddiesofbudgie/types";
 import Paper from "@mui/material/Paper";
 import { SiteTheme } from "@buddiesofbudgie/ui";
 import Stack from "@mui/material/Stack";
-import { Chip, Typography } from "@mui/material";
+import { Chip } from "@mui/material";
 import { useTranslations } from "next-intl";
 import type { GitHubMilestonesSummary } from "../../types";
+import { poppins } from "../../fonts";
+import { PopText } from "../pop/PopText";
+import { InterText } from "../InterText";
 
 export type RequiredMilestoneSummaryItems = RequiredBy<GitHubMilestonesSummary, "current" | "upcoming">;
 
@@ -46,21 +49,22 @@ export const MilestoneItem = ({ summary, version }: MilestoneItemProps) => {
       }}
     >
       <Stack direction="column" spacing={1}>
-        <Typography color={SiteTheme.palette.misc.greyish} fontWeight="bold" variant="subtitle1">
+        <PopText color={SiteTheme.palette.misc.greyish} variant="subtitle1">
           {t(`MilestoneTypes.${milestoneType}`)}
-        </Typography>
-        <Typography fontWeight="bold" variant="h6">
+        </PopText>
+        <InterText fontWeight="bold" variant="h6">
           {t(`ReleaseTypes.${releaseType}`)}
-        </Typography>
+        </InterText>
         <Stack direction="row" spacing={1}>
-          <Typography color={SiteTheme.palette.success.main} fontWeight="bold" variant="h2">
+          <PopText color={SiteTheme.palette.success.main} variant="h2">
             {showVersion}
-          </Typography>
+          </PopText>
           {showFullVersion && (
             <Chip
+              className={poppins.className}
               color="secondary"
               label={version}
-              sx={{ border: "1px solid ", borderColor: SiteTheme.palette.misc.greyish }}
+              sx={{ border: "1px solid ", borderColor: SiteTheme.palette.misc.greyish, fontWeight: "bold" }}
             />
           )}
         </Stack>

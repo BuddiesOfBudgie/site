@@ -5,7 +5,6 @@
 // Material UI Components
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 
 import { AuthorshipInfo } from "./AuthorshipInfo";
 import { TagStrip } from "./TagStrip";
@@ -13,6 +12,8 @@ import { SiteTheme } from "@buddiesofbudgie/ui";
 import { useMediaQuery, useTheme } from "@mui/material";
 import NextLink from "../Link";
 import type { BlogPost } from "../../types";
+import { PopText } from "../pop/PopText";
+import { InterText } from "../InterText";
 
 type BlogListingPostInfoParams = {
   condensed?: boolean;
@@ -74,18 +75,17 @@ const BlogListingPostInfo = ({ condensed = false, post }: BlogListingPostInfoPar
             textDecoration: "none",
           }}
         >
-          <Typography
+          <PopText
             sx={{
               cursor: "pointer",
-              fontWeight: "bold",
             }}
             variant={condensed ? "h5" : "h4"}
           >
             {post.title}
-          </Typography>
+          </PopText>
         </NextLink>
         <Stack display={showOnSmallView} spacing={2}>
-          {post.excerpt && <Typography variant="h6">{post.excerpt}</Typography>}
+          {post.excerpt && <InterText variant="h6">{post.excerpt}</InterText>}
           <AuthorshipInfo post={post} />
         </Stack>
       </Stack>

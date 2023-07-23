@@ -16,6 +16,9 @@ import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { LightboxImage } from "../../components/LightboxImage";
 import { OCCallout } from "../../components/blog/OCCallout";
+import { PopText } from "../../components/pop/PopText";
+import { inter } from "../../fonts";
+import { InterText } from "../../components/InterText";
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -33,13 +36,13 @@ const Post = ({ className: { post, source } }: fubarProps) => {
       <Stack>
         <Container maxWidth="lg">
           <Stack margin="1vh 0" spacing={2}>
-            <Typography color={SiteTheme.palette.primary.main} fontWeight="bold" variant="h2">
+            <PopText color={SiteTheme.palette.primary.main} fontWeight="bold" variant="h2">
               {post.title}
-            </Typography>
+            </PopText>
             {post.excerpt && (
-              <Typography color={SiteTheme.palette.misc.greyish} fontWeight={400} variant="h6">
+              <InterText color={SiteTheme.palette.misc.greyish} fontWeight={400} variant="h6">
                 {post.excerpt}
-              </Typography>
+              </InterText>
             )}
           </Stack>
         </Container>
@@ -80,32 +83,20 @@ const Post = ({ className: { post, source } }: fubarProps) => {
             {post.tags && <TagStrip tags={post.tags} />}
           </Stack>
         </Container>
-        <BlogPostContent maxWidth="lg">
+        <BlogPostContent className={inter.className} maxWidth="lg">
           <MDXRemote
             {...source}
             components={{
               Alert,
               OCCallout,
               a: (props) => <a {...props} target="_blank"></a>,
-              h1: (props) => (
-                <Typography fontWeight="bold" variant="h3">
-                  {props.children}
-                </Typography>
-              ),
-              h2: (props) => (
-                <Typography fontWeight="bold" variant="h4">
-                  {props.children}
-                </Typography>
-              ),
-              h3: (props) => (
-                <Typography fontWeight="bold" variant="h5">
-                  {props.children}
-                </Typography>
-              ),
+              h1: (props) => <PopText variant="h3">{props.children}</PopText>,
+              h2: (props) => <PopText variant="h4">{props.children}</PopText>,
+              h3: (props) => <PopText variant="h5">{props.children}</PopText>,
               h4: (props) => (
-                <Typography fontWeight="bold" variant="h6">
+                <InterText fontWeight="bold" variant="h6">
                   {props.children}
-                </Typography>
+                </InterText>
               ),
               h5: (props) => (
                 <Typography fontWeight="bold" variant="subtitle1">
@@ -172,22 +163,6 @@ export const getStaticProps = async ({ locale, params }: { locale: string; param
 const BlogPostContent = styled(Container)(
   ({ theme }) => css`
     line-height: 2em;
-
-    h2 {
-      font-family: ${theme.typography.h2.fontFamily};
-    }
-
-    h3 {
-      font-family: ${theme.typography.h3.fontFamily};
-    }
-
-    h4 {
-      font-family: ${theme.typography.h4.fontFamily};
-    }
-
-    h5 {
-      font-family: ${theme.typography.h4.fontFamily};
-    }
 
     .kg-card {
       margin-block-end: 2vh;

@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import type { CustomMetaProps } from "../components/CustomMeta";
 
 // Material UI Bits
-import { Box, Tab, Tabs, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Tab, Tabs, useMediaQuery, useTheme } from "@mui/material";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 
@@ -21,6 +21,9 @@ import { Uris } from "../constants";
 import { useState } from "react";
 import { SiteTheme } from "@buddiesofbudgie/ui";
 import { LightboxImage } from "../components/LightboxImage";
+import { poppins } from "../fonts";
+import { PopText } from "../components/pop/PopText";
+import { InterText } from "../components/InterText";
 
 type HomepageImageBannerContent = {
   AltImageText: string;
@@ -82,11 +85,11 @@ const Home: NextPage = () => {
           >
             {imageBannerContent.map((data) => (
               <Tab
+                className={poppins.className}
                 key={`HomeTabs-Tab-${data.TabText}`}
                 label={data.TabText}
                 sx={{
-                  fontFamily: "Poppins",
-                  fontSize: "1.2em",
+                  fontSize: "1.1em",
                   textTransform: "none",
                   ["&.Mui-selected"]: {
                     color: SiteTheme.palette.success.main,
@@ -123,18 +126,17 @@ const Home: NextPage = () => {
                       },
                     }}
                   >
-                    <Typography color="success.main" fontFamily="Poppins" variant="h5">
+                    <PopText color="success.main" variant="h5">
                       {Headline}
-                    </Typography>
-                    <Typography
+                    </PopText>
+                    <InterText
                       sx={{
-                        fontWeight: "normal",
                         lineHeight: 1.5,
                       }}
                       variant="h6"
                     >
                       {Subtext}
-                    </Typography>
+                    </InterText>
                   </Stack>
                 </Stack>
               </Box>

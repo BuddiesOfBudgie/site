@@ -9,7 +9,6 @@ import { SiteTheme } from "@buddiesofbudgie/ui";
 import { RoadmapItem } from "../../components/roadmap/RoadmapItem";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { ItemStatusSelector } from "../../components/roadmap/ItemStatusSelector";
-import { Button, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import type { RequiredMilestoneSummaryItems } from "../../components/roadmap/MilestoneItem";
 import { MilestoneItem } from "../../components/roadmap/MilestoneItem";
@@ -17,6 +16,9 @@ import NextLink from "../../components/Link";
 import { getRoadmapData } from "../../common/getRoadmapData";
 import type { GitHubMilestones, GitHubProject } from "../../types";
 import { GitHubProjectItemStatus } from "../../types";
+import { PopText } from "../../components/pop/PopText";
+import { PopButton } from "../../components/pop/PopButton";
+import { InterText } from "../../components/InterText";
 
 type fubarProps = {
   className: InferGetServerSidePropsType<typeof getServerSideProps>;
@@ -47,22 +49,22 @@ const Roadmap = ({ className: { milestones, projects } }: fubarProps) => {
     <PageBase meta={meta}>
       <Container maxWidth="fullhd">
         <Stack alignItems="center" spacing={4}>
-          <Typography alignSelf="center" sx={{ fontWeight: "bold" }} variant="h2">
+          <PopText alignSelf="center" variant="h2">
             {t("Roadmap")}
-          </Typography>
+          </PopText>
           <Stack>
             {t("RoadmapDescriptions")
               .split("\n")
               .map((line, idx) => (
-                <Typography
+                <InterText
                   alignSelf="center"
                   key={`RoadmapDescription-Line-${idx}`}
-                  sx={{ fontWeight: "bold" }}
+                  fontWeight="bold"
                   textAlign="center"
                   variant="subtitle1"
                 >
                   {line}
-                </Typography>
+                </InterText>
               ))}
           </Stack>
           {!!milestones.summary.current && !!milestones.summary.upcoming && (
@@ -82,19 +84,19 @@ const Roadmap = ({ className: { milestones, projects } }: fubarProps) => {
               })}
             </Grid2>
           )}
-          <Typography alignSelf="center" sx={{ fontWeight: "bold" }} variant="h3">
+          <PopText alignSelf="center" variant="h3">
             Budgie 10
-          </Typography>
-          <Typography
+          </PopText>
+          <InterText
             alignSelf="center"
+            fontWeight="bold"
             key="Budgie10RoadmapDescription"
             maxWidth={SiteTheme.breakpoints.values.lg}
-            sx={{ fontWeight: "bold" }}
             textAlign="center"
             variant="subtitle1"
           >
             {t("Budgie10RoadmapDescription")}
-          </Typography>
+          </InterText>
 
           {projects.map((p) => (
             <Paper
@@ -131,7 +133,7 @@ const Roadmap = ({ className: { milestones, projects } }: fubarProps) => {
                     })}
                 </Grid2>
                 <NextLink href={p.url}>
-                  <Button
+                  <PopButton
                     sx={{
                       fontWeight: "bold",
                       height: "60px",
@@ -140,7 +142,7 @@ const Roadmap = ({ className: { milestones, projects } }: fubarProps) => {
                     }}
                   >
                     {t("SeeMore")}
-                  </Button>
+                  </PopButton>
                 </NextLink>
               </Stack>
             </Paper>

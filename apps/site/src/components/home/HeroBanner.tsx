@@ -5,7 +5,6 @@
 import React from "react";
 
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 
 import Image from "next/image";
 
@@ -13,9 +12,11 @@ import { useTranslations } from "next-intl";
 import { Uris } from "../../constants";
 import { grey } from "@mui/material/colors";
 import NextLink from "../Link";
-import { Box, Button, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 
 import BudgieImage from "../../../public/images/Budgie.jpg";
+import { PopButton } from "../pop/PopButton";
+import { PopText } from "../pop/PopText";
 
 export const HeroBanner = () => {
   const t = useTranslations();
@@ -32,20 +33,19 @@ export const HeroBanner = () => {
       }}
     >
       <Stack alignItems="center" gap={4}>
-        <Typography
+        <PopText
           align="center"
           sx={{
             color: grey[800],
-            fontWeight: "bold",
             maxWidth: "22ch",
             textAlign: {},
           }}
           variant="h2"
         >
           {t("Home.HeroBanner")}
-        </Typography>
+        </PopText>
         <NextLink href={Uris.GET_BUDGIE}>
-          <Button
+          <PopButton
             color="success"
             size="large"
             sx={{
@@ -54,7 +54,7 @@ export const HeroBanner = () => {
             }}
           >
             {t("Get Budgie")}
-          </Button>
+          </PopButton>
         </NextLink>
       </Stack>
       <Box bgcolor="primary.dark" borderRadius={4} p={2} width={1}>

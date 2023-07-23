@@ -12,6 +12,7 @@ import { grey } from "@mui/material/colors";
 import { useTranslations } from "next-intl";
 import type { InferGetStaticPropsType } from "next";
 import NextLink from "../../components/Link";
+import { PopText } from "../../components/pop/PopText";
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -28,18 +29,17 @@ const FeedPage = ({ className: { tags } }: fubarProps) => {
   return (
     <PageBase meta={meta} navBgColor="misc.lightgrey">
       <Stack alignItems="center" spacing={4}>
-        <Typography
+        <PopText
           align="center"
           sx={{
             color: grey[800],
-            fontWeight: "bold",
             marginBlockStart: "2vh",
             textAlign: {},
           }}
           variant="h2"
         >
           {t("Feeds")}
-        </Typography>
+        </PopText>
         {tags.map((t) => (
           <Stack direction="row" key={`feed-tr-${t}`} justifyContent="space-between" width={400}>
             <Typography width={180} variant="body1">

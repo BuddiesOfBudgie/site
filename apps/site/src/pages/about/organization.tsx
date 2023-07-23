@@ -3,7 +3,6 @@ import type { CustomMetaProps } from "../../components/CustomMeta";
 import { Teams } from "../../data/teams";
 
 // Material UI Bits
-import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
@@ -22,6 +21,7 @@ import NextLink from "../../components/Link";
 import { StackDirectionColumnToRow } from "../../constants";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { BodyText } from "../../components/about/BodyText";
+import { PopButton } from "../../components/pop/PopButton";
 
 export const meta: CustomMetaProps = {
   title: "About",
@@ -148,7 +148,7 @@ const About: NextPage = () => {
                   >
                     <BodyText>{description}</BodyText>
                     <NextLink href={buttonHref}>
-                      <Button>{buttonText ?? t("LearnMore")}</Button>
+                      <PopButton>{buttonText ?? t("LearnMore")}</PopButton>
                     </NextLink>
                   </Stack>
                 </Stack>
