@@ -4,17 +4,16 @@
 
 import React from "react";
 
-// Material UI Goodies
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-// Images
+import Image from "next/image";
+
 import { useTranslations } from "next-intl";
 import { Uris } from "../../constants";
 import { grey } from "@mui/material/colors";
 import NextLink from "../Link";
 import { Box, Button, useTheme } from "@mui/material";
-import { LightboxImage } from "../LightboxImage";
 
 import BudgieImage from "../../../public/images/Budgie.jpg";
 
@@ -27,7 +26,7 @@ export const HeroBanner = () => {
       alignItems="center"
       justifyContent="center"
       my={6}
-      spacing={6}
+      rowGap={6}
       sx={{
         borderRadius: 12,
       }}
@@ -59,23 +58,22 @@ export const HeroBanner = () => {
         </NextLink>
       </Stack>
       <Box bgcolor="primary.dark" borderRadius={4} p={2} width={1}>
-        <Box borderRadius={2} height="max-content" maxWidth={1} width={1}>
-          <LightboxImage
-            altImageText="Budgie"
-            key={`herobanner-budgie-image`}
-            height={BudgieImage.height}
-            priority
-            image={BudgieImage}
-            imageSx={{
-              borderRadius: 6,
+        <Box
+          borderRadius={2}
+          position="relative"
+          sx={{
+            aspectRatio: 16 / 9,
+            width: "100%",
+          }}
+        >
+          <Image
+            alt="Budgie"
+            fill
+            sizes="(min-width: 1921px) 1920px, (max-width: 1920px) 90vw, (max-width: 900px) 95vw, 90vw"
+            src={BudgieImage}
+            style={{
+              objectFit: "contain",
             }}
-            sx={{
-              [theme.breakpoints.up("fullhd")]: {
-                maxWidth: "100%",
-                width: 1920,
-              },
-            }}
-            width={BudgieImage.width}
           />
         </Box>
       </Box>
