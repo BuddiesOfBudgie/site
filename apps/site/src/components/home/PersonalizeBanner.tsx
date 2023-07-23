@@ -147,10 +147,14 @@ export const PersonalizeBanner = () => {
             sx={{ backgroundColor: selectedImage.bgColor, color: selectedImage.textColor, width: "160px" }}
           />
           <Stack direction="row" spacing={4}>
-            <IconButton size="small" onClick={!onFirst ? handleBack : () => setCurrentIndex(maxSteps - 1)}>
+            <IconButton
+              aria-label="Previous image"
+              size="small"
+              onClick={!onFirst ? handleBack : () => setCurrentIndex(maxSteps - 1)}
+            >
               {theme.direction === "rtl" ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
             </IconButton>
-            <IconButton size="small" onClick={!onLast ? handleNext : () => setCurrentIndex(0)}>
+            <IconButton aria-label="Next image" size="small" onClick={!onLast ? handleNext : () => setCurrentIndex(0)}>
               {theme.direction === "rtl" ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
             </IconButton>
           </Stack>
