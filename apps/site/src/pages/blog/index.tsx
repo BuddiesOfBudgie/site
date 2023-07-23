@@ -7,7 +7,7 @@ import type { InferGetServerSidePropsType } from "next/types";
 
 // Material UI Components
 import Container from "@mui/material/Container";
-import { Pagination, Stack, Typography } from "@mui/material";
+import { Button, Pagination, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 // Our Components
 import type { CustomMetaProps } from "../../components/CustomMeta";
@@ -21,6 +21,8 @@ import type { BlogTagInfo } from "../../types";
 import { getPrettyTagName } from "../../common/getPrettyTagName";
 import { ORG } from "../../constants";
 import Head from "next/head";
+import { useTranslations } from "next-intl";
+import { RssFeed } from "@mui/icons-material";
 
 type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
@@ -29,6 +31,11 @@ type fubarProps = {
 };
 
 const BlogIndex = ({ className: { page, pagesLength, posts, tag } }: fubarProps) => {
+  const theme = useTheme();
+  const isOnMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const t = useTranslations();
+
   const location = useMemo(() => {
     try {
       const url = new URL(document.location as unknown as string);
@@ -60,20 +67,31 @@ const BlogIndex = ({ className: { page, pagesLength, posts, tag } }: fubarProps)
           href={`/feeds/${tag}.xml`}
         />
       </Head>
-      <Typography
-        align="center"
-        sx={{
-          color: grey[800],
-          fontWeight: "bold",
-          marginBlockStart: "2vh",
-          textAlign: {},
-        }}
-        variant="h2"
-      >
-        {PageTitle}
-      </Typography>
       <Container maxWidth="fullhd" sx={{ marginBlock: "2vh" }}>
         <Stack alignItems="center" rowGap={2}>
+          <Container maxWidth="subfullhd">
+            <Stack alignItems="center" direction="row" justifyContent="space-between" marginBottom={4} width={1}>
+              <Typography
+                sx={{
+                  color: grey[800],
+                  fontWeight: "bold",
+                  textAlign: "start",
+                }}
+                variant="h2"
+              >
+                {PageTitle}
+              </Typography>
+              <Button
+                color="success"
+                href="/feeds"
+                startIcon={!isOnMobile ? <RssFeed /> : undefined}
+                variant="outlined"
+              >
+                {!isOnMobile && t("Feeds")}
+                {isOnMobile && <RssFeed />}
+              </Button>
+            </Stack>
+          </Container>
           <BlogListing page={page} posts={posts} />
           {pagesLength > 1 && (
             <Pagination
