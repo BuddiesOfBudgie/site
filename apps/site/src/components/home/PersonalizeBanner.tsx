@@ -116,6 +116,9 @@ export const PersonalizeBanner = () => {
             index={currentIndex}
             onChangeIndex={handleStepChange}
             enableMouseEvents
+            style={{
+              maxWidth: "100vw",
+            }}
           >
             {images.map((imageObj, i) => (
               <Box
@@ -123,8 +126,9 @@ export const PersonalizeBanner = () => {
                 position="relative"
                 sx={{
                   aspectRatio: 16 / 9,
-                  height: 400,
-                  width: "100%",
+                  maxHeight: 400,
+                  maxWidth: "100vw",
+                  width: "100vw",
                 }}
               >
                 <Image
