@@ -1,0 +1,38 @@
+{
+  "cSpell.enabled": true,
+  "cSpell.enableFiletypes": ["!json", "!jsonc", "!plaintext", "!typescript", "!typescriptreact", "mdx"],
+  "[md]": {
+    "editor.wordWrap": "on"
+  },
+  "[mdx]": {
+    "editor.wordWrap": "on"
+  },
+  "cSpell.words": [
+    "Ayatana",
+    "bigpanel",
+    "dogfooding",
+    "ellipsize",
+    "flameshot",
+    "Gompa",
+    "hidpi",
+    "Kinoite",
+    "Kvantum",
+    "libwnck",
+    "libxfce",
+    "Maddock",
+    "Murrine",
+    "ngettext",
+    "polkit",
+    "sassc",
+    "serebit",
+    "Strobl",
+    "toolkits",
+    "unopinionated",
+    "Vala",
+    "vapi",
+    "wlroots",
+    "Wnck",
+    "XEMBED",
+    "XFCE"
+  ]
+}

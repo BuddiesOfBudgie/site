@@ -4,11 +4,19 @@
         <title>News | Buddies of Budgie</title>
         <link>https://buddiesofbudgie.org</link>
         <description>Buddies of Budgie posts in the category News</description>
-        <lastBuildDate>Fri, 07 Jul 2023 01:02:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 20 Aug 2023 11:36:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>Buddies of Budgie</copyright>
+        <item>
+            <title><![CDATA[Budgie 10.8 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10.8-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10.8-released</guid>
+            <pubDate>Sun, 20 Aug 2023 11:36:00 GMT</pubDate>
+            <description><![CDATA[Budgie 10.8 is a brand new release series for Budgie Desktop, featuring improvements to Budgie Menu, adoption of StatusNotifier support in System Tray, Magpie v0.x support, and more!]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2023/08/budgie-10.8/Budgie_10.8_Featured.jpg" length="0" type="image/jpg"/>
+        </item>
         <item>
             <title><![CDATA[Wayland.]]></title>
             <link>https://buddiesofbudgie.org/blog/wayland</link>

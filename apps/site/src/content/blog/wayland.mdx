@@ -76,17 +76,17 @@ wlroots was an obvious choice for us as it is the most vendor-neutral compositin
 
 A considerable set of Budgie Desktop features and functionality has historically relied on X11, whether that be through the toolkit used in Budgie 10 (Gtk3), libraries such as Wnck, or Mutter and its support for [Extended Window Manager Hints](https://specifications.freedesktop.org/wm-spec/wm-spec-1.3.html?ref=buddiesofbudgie.org). This has been used for our application grouping / state tracking built on top of Wnck, system tray support historically using the [XEmbed Specification](https://specifications.freedesktop.org/xembed-spec/xembed-spec-latest.html?ref=buddiesofbudgie.org), focus capturing for Raven, panel intersection for auto-hiding behavior, and more – not to mention all the functionality hidden behind Mutter that Budgie has not historically needed to be concerned of.
 
-So while the efforts described below do not encompass all the work required to move to Wayland, they do push us in the right direction towards this Wayland-only future. You will see these efforts across several Budgie 10.x series releases, as we incrementally work towads supporting Wayland.
+So while the efforts described below do not encompass all the work required to move to Wayland, they do push us in the right direction towards this Wayland-only future. You will see these efforts across several Budgie 10.x series releases, as we incrementally work towards supporting Wayland.
 
 #### System Tray
 
-While the system tray has been a foregone conclusion in some other desktop environments, we recognize the value it provides to our users, whether they rely on it to communicate the state of an application (e.g. unreads in a messenger, sync tools) or get quick access to functionality (Steam, OBS Studio, flameshot).
+While the system tray has been a foregone conclusion in some other desktop environments, we recognize the value it provides to our users, whether they rely on it to communicate the state of an application (e.g. unread messages in a messenger, sync tools) or get quick access to functionality (Steam, OBS Studio, flameshot).
 
-A move away from XEmbed has been a long time coming, with alternative standards / implementations such as Ubuntu's AppIndicator and [Status Notifier](https://www.freedesktop.org/wiki/Specifications/StatusNotifierItem/?ref=buddiesofbudgie.org) being around for a number of years. Up until Budgie 10.5.2 in December of 2020, we had been using an \`na-tray\` implementation also seen in desktop environments such as Cinnamon for the creation and management of system tray icons. In Budgie 10.5.2, this was replaced our own "carbon tray" implementation, still leveraging the XEmbed Protocol, to tackle numerous issues such as background icons not refreshing and oddities with inconsistent hiding.
+A move away from XEmbed has been a long time coming, with alternative standards / implementations such as Ubuntu's AppIndicator and [Status Notifier](https://www.freedesktop.org/wiki/Specifications/StatusNotifierItem/) being around for a number of years. Up until Budgie 10.5.2 in December of 2020, we had been using an \`na-tray\` implementation also seen in desktop environments such as Cinnamon for the creation and management of system tray icons. In Budgie 10.5.2, this was replaced our own "carbon tray" implementation, still leveraging the XEmbed Protocol, to tackle numerous issues such as background icons not refreshing and oddities with inconsistent hiding.
 
 Fundamentally though, this was still using XEmbed Protocol, since the goal was scoped at the time to fixing specific issues. As these embeds are X11 windows, they still have downsides.
 
-Exhibit A: Icons don't scale with panel side
+Exhibit A: Icons don't scale with panel size
 
 ![](/images/blog/2023/06/bigpanel.png)
 

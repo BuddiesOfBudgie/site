@@ -12,7 +12,7 @@ import { HeroBanner } from "../components/home/HeroBanner";
 import { PersonalizeBanner } from "../components/home/PersonalizeBanner";
 import PageBase from "../components/PageBase";
 
-import BudgieMenuImage from "../../public/images/BudgieMenu.png";
+import BudgieMenuImage from "../../public/images/BudgieMenu.jpg";
 import RavenImage from "../../public/images/Raven-WidgetView.jpg";
 
 import type { StaticImageData } from "next/image";

@@ -115,12 +115,17 @@ export const getRoadmapData = async (showOnlyB10: boolean): Promise<RoadmapData>
     `
   );
 
+  const cleanVer = (version: string) => {
+    const noV = version.startsWith("v") ? version.substring(1) : version;
+    return noV.length === 4 ? noV + ".0" : noV;
+  };
+
   const milestonesList = pipe(
     organization.repository?.milestones?.nodes,
     F.defaultTo([]),
     A.reduce<GitHubMilestone, GitHubMilestone[]>([], (list, m) => {
       if (!m) return list;
-      const version = coerce(m.title)?.version;
+      const version = coerce(cleanVer(m.title))?.version;
       return version
         ? [
             ...list,
@@ -140,12 +145,13 @@ export const getRoadmapData = async (showOnlyB10: boolean): Promise<RoadmapData>
   );
 
   const { nodes: latestReleaseNodes } = organization.repository?.releases ?? { nodes: null };
-  const latestReleaseTag =
-    (latestReleaseNodes ? latestReleaseNodes[0]?.tagName : milestonesList[0].title) ?? FALLBACK_BUDGIE_VERSION;
-  const latestRelease = parse(latestReleaseTag) as SemVer;
+  const latestReleaseTag = cleanVer(
+    (latestReleaseNodes ? latestReleaseNodes[0]?.tagName : milestonesList[0].title) ?? FALLBACK_BUDGIE_VERSION
+  );
+  const latestRelease = parse(latestReleaseTag, { loose: true }) as SemVer;
 
   const upcomingMilestones = milestonesList.reduce<GitHubMilestone[]>((list, m) => {
-    const parsedVersion = parse(m.version);
+    const parsedVersion = parse(m.version, { loose: true });
     return !!parsedVersion && gt(parsedVersion, latestRelease) ? [...list, m] : list;
   }, []);
 
