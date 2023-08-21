@@ -64,6 +64,10 @@ export const Nav = ({ navBgColor }: NavProps) => {
       {
         subMenu: [
           {
+            title: "Donate",
+            url: "https://opencollective.com/buddies-of-budgie",
+          },
+          {
             title: "GitHub",
             url: "https://github.com/BuddiesOfBudgie",
           },
