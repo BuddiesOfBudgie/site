@@ -74,7 +74,7 @@ export const Nav = ({ navBgColor }: NavProps) => {
           {
             rel: "me",
             title: "Mastodon",
-            url: "https://fosstodon.org/@BuddiesOfBudgie",
+            url: "https://floss.social/@BuddiesOfBudgie",
           },
           {
             title: "Matrix",

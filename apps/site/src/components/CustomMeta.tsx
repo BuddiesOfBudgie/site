@@ -15,7 +15,7 @@ export const CustomMeta = ({ icon, title }: CustomMetaProps) => {
       <title>{useTitle}</title>
       <meta charSet="utf-8" />
       <link rel="icon" href={icon ?? "/images/logo.svg"} />
-      <link rel="me" href="https://fosstodon.org/@BuddiesOfBudgie" />
+      <link rel="me" href="https://floss.social/@BuddiesOfBudgie" />
     </Head>
   );
 };
