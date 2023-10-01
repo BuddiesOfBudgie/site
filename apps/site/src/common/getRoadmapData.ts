@@ -155,7 +155,11 @@ export const getRoadmapData = async (showOnlyB10: boolean): Promise<RoadmapData>
     return !!parsedVersion && gt(parsedVersion, latestRelease) ? [...list, m] : list;
   }, []);
 
-  const upcomingVersion = upcomingMilestones[0];
+  const upcomingVersion = upcomingMilestones.filter((m) => {
+    const version = parse(m.version, { loose: true });
+    if (!version) return false;
+    return latestRelease.major === version.major && latestRelease.minor < version.minor;
+  })?.[0];
 
   const milestoneInfo: GitHubMilestones = {
     summary: {

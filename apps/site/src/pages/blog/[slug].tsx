@@ -19,6 +19,7 @@ import { PopText } from "../../components/pop/PopText";
 import { inter } from "../../fonts";
 import { InterText } from "../../components/InterText";
 import { SiteTheme } from "../../theme";
+import { getFullDomainPath } from "../../common/client";
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -26,9 +27,15 @@ type fubarProps = {
   className: PageProps;
 };
 
-const Post = ({ className: { post, source } }: fubarProps) => {
+const Post = ({ className: { post, slug, source } }: fubarProps) => {
   const pageMeta: CustomMetaProps = {
     title: post.title,
+    ogMeta: {
+      description: post.excerpt,
+      image: getFullDomainPath(post.featuredImage),
+      title: post.title,
+      url: getFullDomainPath(`/blog/${slug}`),
+    },
   };
 
   return (
@@ -155,6 +162,7 @@ export const getStaticProps = async ({ locale, params }: { locale: string; param
     props: {
       messages,
       post,
+      slug,
       source,
     },
   };

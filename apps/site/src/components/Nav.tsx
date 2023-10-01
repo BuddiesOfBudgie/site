@@ -81,6 +81,10 @@ export const Nav = ({ navBgColor }: NavProps) => {
             url: "https://matrix.to/#/#buddies-of-budgie:matrix.org",
           },
           {
+            title: "PeerTube",
+            url: "https://tilvids.com/c/buddiesofbudgie_channel/videos",
+          },
+          {
             title: "YouTube",
             url: "https://www.youtube.com/@buddiesofbudgie",
           },

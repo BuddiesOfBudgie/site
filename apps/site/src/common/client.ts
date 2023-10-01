@@ -12,3 +12,6 @@ export const githubClient = graphql.defaults({
     authorization: `token ${process.env.GITHUB_TOKEN}`,
   },
 });
+
+export const getFullDomainPath = (subPath: string) =>
+  `${process.env.DOMAIN ?? "https://buddiesofbudgie.org"}${subPath}`;
