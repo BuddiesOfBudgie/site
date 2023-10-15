@@ -64,6 +64,19 @@ export const Nav = ({ navBgColor }: NavProps) => {
       {
         subMenu: [
           {
+            title: "European Store",
+            url: "https://buddies-of-budgie.myspreadshop.net",
+          },
+          {
+            title: "North American Store",
+            url: "https://buddies-of-budgie.myspreadshop.com",
+          },
+        ],
+        title: t("Nav.Merch"),
+      },
+      {
+        subMenu: [
+          {
             title: "Donate",
             url: "https://opencollective.com/buddies-of-budgie",
           },
