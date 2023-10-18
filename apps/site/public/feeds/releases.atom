@@ -2,12 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://buddiesofbudgie.org</id>
     <title>Releases | Buddies of Budgie</title>
-    <updated>2023-10-01T16:46:00.000Z</updated>
+    <updated>2023-10-18T19:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://buddiesofbudgie.org"/>
     <subtitle>Buddies of Budgie posts in the category Releases</subtitle>
     <icon>https://buddiesofbudgie.org/favicon.ico</icon>
     <rights>Buddies of Budgie</rights>
+    <entry>
+        <title type="html"><![CDATA[Budgie 10.8.2 Released]]></title>
+        <id>https://buddiesofbudgie.org/blog/budgie-10-8-2-released</id>
+        <link href="https://buddiesofbudgie.org/blog/budgie-10-8-2-released"/>
+        <updated>2023-10-18T19:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Budgie 10.8.2 is the second minor release in the 10.8 series of our Budgie Desktop environment. This release features some bug fixes around the system tray, notifications, and Budgie Screenshot.]]></summary>
+        <author>
+            <name>Joshua Strobl</name>
+            <uri>https://joshuastrobl.com</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Budgie 10.8.1 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-8-1-released</id>

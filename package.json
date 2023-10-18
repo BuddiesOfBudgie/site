@@ -28,15 +28,15 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
-    "eslint": "^8.47.0",
-    "eslint-config-next": "^13.5.3",
+    "eslint": "^8.51.0",
+    "eslint-config-next": "^13.5.5",
     "eslint-config-prettier": "^8.10.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.3.0",
     "prettier": "^3.0.3",
     "prettier-eslint": "^15.0.1",
     "prettier-eslint-cli": "^7.1.0",
-    "turbo": "^1.10.14"
+    "turbo": "^1.10.15"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --cache --fix",
