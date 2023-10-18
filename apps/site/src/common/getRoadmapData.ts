@@ -95,7 +95,7 @@ export const getRoadmapData = async (showOnlyB10: boolean): Promise<RoadmapData>
                 }
               }
               repository(name:"budgie-desktop") {
-                milestones(first: 10) {
+                milestones(first: 50) {
                   nodes {
                       closed
                       closedAt
