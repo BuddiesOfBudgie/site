@@ -5,10 +5,10 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'report-sample' 'self'; style-src 'report-sample' 'self'; object-src 'none'; base-uri 'self'; connect-src 'self' https://vitals.vercel-insights.com; font-src 'self'; frame-src 'self' https://tilvids.com https://www.youtube.com; img-src 'self' data: https://avatars.githubusercontent.com; manifest-src 'self'; media-src 'self'; report-uri https://655bbbfdce75a73f0a403501.endpoint.csper.io/?v=1; worker-src 'none';"
+          "value": "default-src 'self'; script-src 'self' 'report-sample'; style-src 'self' 'unsafe-inline' 'report-sample'; img-src 'self' data: https://avatars.githubusercontent.com; font-src 'self'; connect-src 'self' vitals.vercel-insights.com; media-src 'self'; object-src 'none'; frame-src 'self' https://tilvids.com https://www.youtube.com; worker-src 'none'; base-uri 'self'; manifest-src 'self'"
         },
         {
-          "key": "Feature-Policy",
+          "key": "Permissions-Policy",
           "value": "camera=(), display-capture=(), fullscreen=(self https://www.youtube.com https://tilvids.com) geolocation=(), microphone=(), picture-in-picture=(self https://www.youtube.com https://tilvids.com)"
         },
         {
