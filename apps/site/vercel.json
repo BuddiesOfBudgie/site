@@ -1,0 +1,33 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'report-sample' 'self'; style-src 'report-sample' 'self'; object-src 'none'; base-uri 'self'; connect-src 'self' https://vitals.vercel-insights.com; font-src 'self'; frame-src 'self' https://tilvids.com https://www.youtube.com; img-src 'self' data: https://avatars.githubusercontent.com; manifest-src 'self'; media-src 'self'; report-uri https://655bbbfdce75a73f0a403501.endpoint.csper.io/?v=1; worker-src 'none';"
+        },
+        {
+          "key": "Feature-Policy",
+          "value": "camera=(), display-capture=(), fullscreen=(self https://www.youtube.com https://tilvids.com) geolocation=(), microphone=(), picture-in-picture=(self https://www.youtube.com https://tilvids.com)"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer-when-downgrade"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ]
+}

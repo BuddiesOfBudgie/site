@@ -36,7 +36,7 @@ export const getRoadmapData = async (showOnlyB10: boolean): Promise<RoadmapData>
               name
               projectsV2(first: 3, orderBy: {field: TITLE, direction: DESC}) {
                 nodes {
-                  items(first: 15) {
+                  items(first: 30) {
                     nodes {
                       content {
                         ... on DraftIssue {

@@ -55,8 +55,13 @@ const nextConfig = {
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     dangerouslyAllowSVG: true,
-    domains: ["avatars.githubusercontent.com", "blog.buddiesofbudgie.org"],
     formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+      },
+    ],
   },
   optimizeFonts: false, // Breaks Google Web Font loading
   output: "standalone",
