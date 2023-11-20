@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'report-sample'; style-src 'self' 'unsafe-inline' 'report-sample'; img-src 'self' data: https://avatars.githubusercontent.com; font-src 'self'; connect-src 'self' vitals.vercel-insights.com; media-src 'self'; object-src 'none'; frame-src 'self' https://tilvids.com https://www.youtube.com; worker-src 'none'; base-uri 'self'; manifest-src 'self'"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' 'unsafe-hashes'; style-src-elem 'self' 'unsafe-inline' 'unsafe-hashes'; style-src-attr 'self' 'unsafe-inline' 'unsafe-hashes'; img-src 'self' data: https://avatars.githubusercontent.com; font-src 'self'; connect-src *; media-src 'self'; object-src 'none'; frame-src 'self' https://tilvids.com https://www.youtube.com; worker-src 'none'; base-uri 'self'; manifest-src 'self'"
         },
         {
           "key": "Permissions-Policy",
