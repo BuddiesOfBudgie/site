@@ -5,11 +5,11 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' 'unsafe-hashes'; style-src-elem 'self' 'unsafe-inline' 'unsafe-hashes'; style-src-attr 'self' 'unsafe-inline' 'unsafe-hashes'; img-src 'self' data: https://avatars.githubusercontent.com; font-src 'self'; connect-src *; media-src 'self'; object-src 'none'; frame-src 'self' https://tilvids.com https://www.youtube.com; worker-src 'none'; base-uri 'self'; manifest-src 'self'"
+          "value": "default-src 'self' data:; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' 'unsafe-hashes'; style-src-elem 'self' 'unsafe-inline' 'unsafe-hashes'; style-src-attr 'self' 'unsafe-inline' 'unsafe-hashes'; img-src 'self' data: https://avatars.githubusercontent.com; font-src 'self'; connect-src *; media-src 'self'; object-src 'none'; frame-src 'self' https://tilvids.com https://www.youtube.com; worker-src 'none'; base-uri 'self'; manifest-src 'self'"
         },
         {
           "key": "Permissions-Policy",
-          "value": "camera=(), display-capture=(), fullscreen=(self \"https://www.youtube.com\" \"https://tilvids.com\") geolocation=(), microphone=(), picture-in-picture=(self \"https://www.youtube.com\" \"https://tilvids.com\")"
+          "value": "Permissions-Policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(\"https://www.youtube.com\" \"https://tilvids.com\"), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(self \"https://www.youtube.com\" \"https://tilvids.com\"), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(self \"https://www.youtube.com\" \"https://tilvids.com\"), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(), clipboard-write=(), gamepad=(), speaker-selection=(), conversion-measurement=(), focus-without-user-activation=(), hid=(), idle-detection=(), interest-cohort=(), serial=(), sync-script=(), trust-token-redemption=(), unload=(), window-placement=(), vertical-scroll=()"
         },
         {
           "key": "Referrer-Policy",
