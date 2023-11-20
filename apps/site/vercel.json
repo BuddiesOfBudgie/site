@@ -9,7 +9,7 @@
         },
         {
           "key": "Permissions-Policy",
-          "value": "camera=(), display-capture=(), fullscreen=(self https://www.youtube.com https://tilvids.com) geolocation=(), microphone=(), picture-in-picture=(self https://www.youtube.com https://tilvids.com)"
+          "value": "camera=(), display-capture=(), fullscreen=(self \"https://www.youtube.com\" \"https://tilvids.com\") geolocation=(), microphone=(), picture-in-picture=(self \"https://www.youtube.com\" \"https://tilvids.com\")"
         },
         {
           "key": "Referrer-Policy",
