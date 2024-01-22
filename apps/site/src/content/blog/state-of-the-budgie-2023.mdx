@@ -137,7 +137,7 @@ Budgie 10.7 introduced a new application indexer, replacing our use of libgnome-
 
 The System Tray applet was completely overhauled in Budgie 10.8. Historically we have used either `na-tray` or the XEmbed Protocol for the creation, management, and rendering of trays icons. In Budgie 10.8, our System Tray adopted the [Status Notifier](https://www.freedesktop.org/wiki/Specifications/StatusNotifierItem/) specification. This is a modern, vendor-agnostic solution that enables applications to communicate all relevant information for the rendering of their tray icon over DBus rather than being responsible for drawing tray icons and menus themselves, promoting the development of catered solutions by desktop environments and those developing panels for user experiences such as tiling window managers.
 
-The result of this on the Budgie Desktop side is that we can draw all menus and items in a manner that is visually consistent. Going into Budgie 11, we will have a similar solution and paired with multiple panels across multiple monitors (a requirement for Budgie 11), you will even be able to have multiple tray applet instances enabled, which was not otherwise possible with the XEmbed-based solutions.
+The result of this on the Budgie Desktop side is that we can draw all menus and items in a manner that is visually consistent. Going into Budgie 11, we will have a similar solution and paired with multiple panels across multiple monitors (a requirement for Budgie 11); you will even be able to have multiple tray applet instances enabled, which was not otherwise possible with the XEmbed-based solutions.
 
 #### Magpie v0.x
 
