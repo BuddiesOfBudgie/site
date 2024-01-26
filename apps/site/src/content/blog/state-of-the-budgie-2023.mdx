@@ -1,7 +1,7 @@
 ---
 title: "State of the Budgie: 2023 In Review and Goals for 2024"
 author: JoshuaStrobl
-publishDate: "2024-01-24T17:00:00.000+02:00"
+publishDate: "2024-01-26T19:00:00.000+02:00"
 featuredImage: /images/blog/2024/01/StateOfTheBudgieY23.png
 excerpt: >-
   2023 was an amazing year for the Budgie Desktop and our organization. Time to dive into our State of the Budgie to recap our efforts in 2023 and the goals for 2024.
@@ -25,7 +25,7 @@ Additionally, the team significantly shifted its development focus in mid 2023 t
 
 Budgie Desktop saw a total of 6 releases of Budgie 10.x throughout 2023. We kicked off the year with Budgie 10.7 in January, with bug fixes and QoL improvements in February and April. In August, we released Budgie 10.8 and followed up with two bug fix releases in 10.8 series in October. The rest of the year was focused on porting various components from using libwnck directly to libxfce4windowing for Wayland support and of course some much deserved rest for the holidays!
 
-While I will refrain from exhaustively go through all the amazing work that has gone into those releases (or else this will turn into the Odyssey by Homer), we will highlight some areas, with snippets from the respective blog posts.
+While I will refrain from exhaustively writing about all the amazing work that has gone into those releases(or else this will turn into the Odyssey by Homer), we will highlight some areas, with snippets from the respective blog posts.
 
 #### New Features
 
@@ -47,7 +47,7 @@ Budgie 10.8 saw a port of our fuzzy scoring function to C as Vala would mangle t
 
 ![](/images/blog/2023/01/BudgieScreenshot-2.jpg)
 
-We introduced a new Budgie Screenshot application built into the desktop that enables you to quickly take screenshots of windows, areas, or your entire screen. This eliminated a reliance on gnome-screenshot for its screenshotting capabilities while still ensuring users still have the option to use a different screenshotting solution (e.g. Flameshot) should they desire.
+We introduced a new Budgie Screenshot application built into the desktop that enables you to quickly take screenshots of windows, areas, or your entire screen. This eliminated a reliance on gnome-screenshot for its screengrab capabilities while still ensuring users still have the option to use a different screenshot solution (e.g. Flameshot) should they desire.
 
 #### Budgie Desktop Settings
 
@@ -76,7 +76,7 @@ Notifications were improved throughout the year in a couple areas:
 
 - Improvements were made in support of the FreeDesktop Notification spec, specifically support for notification sounds was introduced. As not all applications will be displayed currently in Budgie Control Center and some applications such as Element and Discord have separate capabilities to play notifications sounds, we do not have sounds enabled by default.
 - The "Show Message Content in Popups" option in Budgie Control Center's Notification panel is respected.
-- Some notifications set a timeout of 0, which the spec says means that it should never expire. Since persistence is done by Raven, not the notification server, we set a different minimum show time for the popups to ensure that one is actually shown when it should be.
+- We have refined how long notifications are displayed for those applications that don't set their expiry time. Since persistence is done by Raven, not the notification server, we set a different minimum show time for the popups to ensure that one is actually shown when it should be. This provides a more consistent notification display management.
 
 **General Fixes**
 
@@ -170,9 +170,9 @@ For the new year, our focus is on two "epics".
 
 ### Budgie 10 Epic
 
-Our main epic is delivering Budgie 10 on Wayland. This does not necessarily mean everything will be feature complete, as we still need to more concretely and granularly define remaining work and research around that, but it will mean that it can be daily driven and consumable in some form.
+Our main epic is delivering Budgie 10 on Wayland. This does not necessarily mean everything will be feature complete, as we still need to finesse, research and define what else needs to be done. Our aim though is to ensure our first release can be daily driven and consumed.
 
-For Q1, our focuses are on:
+For Q1, our focus will be:
 
 1. Delivering Budgie 10.9 (as early as this month) featuring our initial work with libxfce4windowing, as well as our new requirement for using budgie-session for launching Budgie Desktop. This will include the existing applets and Tab Switcher that have been ported and should provide plenty of time for distribution packagers to get Budgie Desktop into their respective releases without running up against any freeze deadlines.
 2. Expand on various definitions of work for the year related to Budgie 10 in the areas of: daemon and xdg / flatpak portal.
