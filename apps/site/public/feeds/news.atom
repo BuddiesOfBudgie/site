@@ -2,12 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://buddiesofbudgie.org</id>
     <title>News | Buddies of Budgie</title>
-    <updated>2023-10-18T19:00:00.000Z</updated>
+    <updated>2024-01-26T20:30:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://buddiesofbudgie.org"/>
     <subtitle>Buddies of Budgie posts in the category News</subtitle>
     <icon>https://buddiesofbudgie.org/favicon.ico</icon>
     <rights>Buddies of Budgie</rights>
+    <entry>
+        <title type="html"><![CDATA[State of the Budgie: 2023 In Review and Goals for 2024]]></title>
+        <id>https://buddiesofbudgie.org/blog/state-of-the-budgie-2023</id>
+        <link href="https://buddiesofbudgie.org/blog/state-of-the-budgie-2023"/>
+        <updated>2024-01-26T20:30:00.000Z</updated>
+        <summary type="html"><![CDATA[2023 was an amazing year for Budgie Desktop and our organization. Time to dive into our State of the Budgie to recap our efforts in 2023 and the goals for 2024.]]></summary>
+        <author>
+            <name>Joshua Strobl</name>
+            <uri>https://joshuastrobl.com</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Budgie 10.8.2 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-8-2-released</id>
