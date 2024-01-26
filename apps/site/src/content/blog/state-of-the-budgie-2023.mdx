@@ -1,0 +1,203 @@
+---
+title: "State of the Budgie: 2023 In Review and Goals for 2024"
+author: JoshuaStrobl
+publishDate: "2024-01-26T19:00:00.000+02:00"
+featuredImage: /images/blog/2024/01/StateOfTheBudgieY23.png
+excerpt: >-
+  2023 was an amazing year for the Budgie Desktop and our organization. Time to dive into our State of the Budgie to recap our efforts in 2023 and the goals for 2024.
+tags:
+  - state-of-the-budgie
+  - news
+---
+
+## 2023
+
+2023's theme was centered around our "User-centric" organization value. We focused on this value in a couple important ways:
+
+1. Delivering major new features and architectural improvements across Budgie 10.7 and 10.8 releases.
+2. Improving stability and UX consistency with bug fixes and new components such as Magpie (our fork of Mutter 43.x).
+
+Across 2023, we had a total of 15 releases spanning our microcosm of projects in our organization and the addition of 3 new projects (budgie-backgrounds, budgie-session, and magpie).
+
+Additionally, the team significantly shifted its development focus in mid 2023 towards moving Budgie 10 to being Wayland-only. While this did mean that some efforts on Budgie 11 were deferred to this year, it also accelerated other areas with a focus on tackling one of the biggest components (Wayland compositor) that could be used for both Budgie 10 and 11.
+
+### Budgie 10
+
+Budgie Desktop saw a total of 6 releases of Budgie 10.x throughout 2023. We kicked off the year with Budgie 10.7 in January, with bug fixes and QoL improvements in February and April. In August, we released Budgie 10.8 and followed up with two bug fix releases in 10.8 series in October. The rest of the year was focused on porting various components from using libwnck directly to libxfce4windowing for Wayland support and of course some much deserved rest for the holidays!
+
+While I will refrain from exhaustively writing about all the amazing work that has gone into those releases (or else this will turn into the Odyssey by Homer), we will highlight some areas, with snippets from the respective blog posts.
+
+#### New Features
+
+##### Budgie Menu
+
+![](/images/blog/2023/01/BudgieMenu.png)
+
+Budgie Menu got a lot of love in 2023. In Budgie 10.7, we introduced:
+
+1. Dual-GPU Support via switcheroo-control integration. Users with dual-GPU setups are able to launch their applications without necessarily having to worry about which GPU is in use and manually switching between them.
+2. Personal User Menu with quick XDG directory access. This feature enabled the ability to open up a file manager directly to folders like Home, Documents, Music, etc.
+3. Easier access to Budgie Desktop Settings and Budgie Control Center. This one is pretty self-explanatory, right?
+
+Some annoyances when using Budgie Menu like category and item reloading when adding new items (for example, installing software while having the menu open) were fixed and we started shipping a default menu icon for a more consistent experience across a wider range of icon themes.
+
+In Budgie 10.8, we rewrote our fuzzy menu searching algorithm to work with non-Latin based languages. Following up on some valuable feedback from users, we tidied up our menu categories to reduce confusion where applications might be placed.
+
+##### Budgie Screenshot
+
+![](/images/blog/2023/01/BudgieScreenshot-2.jpg)
+
+We introduced a new Budgie Screenshot application built into the desktop that enables you to quickly take screenshots of windows, areas, or your entire screen. This eliminated a reliance on gnome-screenshot for its screengrab capabilities while still ensuring users still have the option to use a different screenshot solution (e.g. Flameshot) should they desire.
+
+#### Budgie Desktop Settings
+
+![](/images/blog/2023/01/BudgieDesktopSettings.jpg)
+
+Budgie Desktop Settings started sporting a new design for widget selection, applying to both panel widgets and our new Raven widget system. This design shows relevant developer information such as the author, website, description, and copyright information. We also communicate if the widget plugin is "built-in" (ships with Budgie).
+
+#### Notifications
+
+![](/images/blog/2023/01/BudgieNotificationsBodyText.png)
+
+Notifications were improved throughout the year in a couple areas:
+
+1. Experience
+2. Spec Compliance & Control Center Integration
+3. General Fixes
+
+**Experience**
+
+- Notifications fade in and out upon showing / closing rather than just popping into view.
+- When a window leaves fullscreen mode, a notification popup will be shown to alert the user that there are notifications that they didn't see.
+- Refinement to body text in the form of width chars for consistent minimum and maximum size per line, so the entire popup body is filled by the label.
+- Improved text wrapping.
+
+**Spec Compliance & Control Center Integration**
+
+- Improvements were made in support of the FreeDesktop Notification spec, specifically support for notification sounds was introduced. As not all applications will be displayed currently in Budgie Control Center and some applications such as Element and Discord have separate capabilities to play notifications sounds, we do not have sounds enabled by default.
+- The "Show Message Content in Popups" option in Budgie Control Center's Notification panel is respected.
+- We have refined how long notifications are displayed for those applications that don't set their expiry time. Since persistence is done by Raven, not the notification server, we set a different minimum show time for the popups to ensure that one is actually shown when it should be. This provides a more consistent notification display management.
+
+**General Fixes**
+
+- Prevented notification popups from stealing input focus.
+- Notifications should no longer cause screen flickering when in a fullscreen application.
+
+#### Raven
+
+![](/images/blog/2023/01/Raven-WidgetView.jpg)
+
+Raven is a key pillar of the Budgie experience and 2023 was a big year for it. In Budgie 10.7, we introduced the largest set of changes and features to it since Budgie 10.5.
+
+1. It was re-architected with a brand new pluggable Raven widget API system, enabling third-party widget development.
+2. Updated design for existing widgets and widget ordering capability.
+3. New Usage Monitor widget for CPU, RAM, and Swap usage.
+
+##### Re-architecture & Widget API
+
+Similar to our Budgie Panel widget API, the Raven Widget API leverages libpeas to provide support for writing plugins in C, Python, and Vala. These widgets will automatically show up in Budgie Desktop Settings.
+
+As a result of this re-architecture around Raven and leveraging past work on the panel widget plugin API, Raven widgets can be positioned to your heart's content and you can even remove the ones you do not want. All of the widgets that ship with Budgie Desktop leverage the same plugin architecture as third-party ones will.
+
+##### Updated Design
+
+While we made these changes, we took the opportunity to refresh the widgets:
+
+- The Media Player widget has a more compact design.
+- Widget header icons for sound output and input are interactive and will mute the respective device.
+- Day names in the Calendar widget can be turned off.
+- Power strip, which was disabled clear back in 10.5, was finally removed in favor of our Power Dialog and more accessible power options in Budgie Menu.
+
+#### Power Dialog
+
+![](/images/blog/2023/01/BudgiePowerDialog.jpg)
+
+A new Power Dialog for common actions such as shutdown, reboot, suspend, and more was introduced. This functionality replaced the actions exposed through the User Indicator applet, no longer requiring it to be added to the panel.
+
+This new dialog enables third-party applet developers, such as those making their own menu implementations, to easily incorporate our power dialog options without much effort or requiring them to implement duplicate functionality. This was achieved by making the menu D-Bus invokable, and keyboard driver users can invoke the power dialog with our handy (Win/Super)+Shift+P keybind.
+
+#### Other
+
+Here are some other smaller improvements sprinkled across the year:
+
+1. IconTasklist scaling for icons was introduced, enabling dynamic scaling for smaller and larger panel sizes alike while retaining desirable icon sizes for panels in "Dock mode".
+2. The previously third-party Budgie Trash Applet, developed by Buddies of Budgie team member Evan Maddock (EbonJaeger), was merged into mainline Budgie in 10.8.
+3. Privilege Escalation Dialogs show the action description and ID so you know what is requesting access.
+4. power-profiles-daemon support was integrated into our battery indicator, so you can switch between Balanced, Power Saver, and Performance modes depending on device support.
+
+#### Architectural Improvements
+
+##### Application Indexer
+
+Budgie 10.7 introduced a new application indexer, replacing our use of libgnome-menus and unifying our logic used in both Budgie Menu and Budgie Run Dialog, for consistency in the applications we show. This indexer is more reliable across a wider variety of directories which are used to store desktop files.
+
+##### Status Notifier Support
+
+![](/images/blog/2023/08/budgie-10.8/system-tray.jpg)
+
+The System Tray applet was completely overhauled in Budgie 10.8. Historically we have used either `na-tray` or the XEmbed Protocol for the creation, management, and rendering of trays icons. In Budgie 10.8, our System Tray adopted the [Status Notifier](https://www.freedesktop.org/wiki/Specifications/StatusNotifierItem/) specification. This is a modern, vendor-agnostic solution that enables applications to communicate all relevant information for the rendering of their tray icon over DBus rather than being responsible for drawing tray icons and menus themselves, promoting the development of catered solutions by desktop environments and those developing panels for user experiences such as tiling window managers.
+
+The result of this on the Budgie Desktop side is that we can draw all menus and items in a manner that is visually consistent. Going into Budgie 11, we will have a similar solution and paired with multiple panels across multiple monitors (a requirement for Budgie 11); you will even be able to have multiple tray applet instances enabled, which was not otherwise possible with the XEmbed-based solutions.
+
+#### Magpie v0.x
+
+During our announcement post related to our Wayland plans, we further announced our Budgie-specific fork of Mutter as it was in GNOME 43. The goal of this was to address regressions that were, understandably, incrementally introduced into Mutter related to X11 support. These regressions created a wide-range of issues for users and it was determined that our engineering time would be best spent focusing on Wayland rather than fixing up X11-specific bugs and updating Budgie to support new Mutter ABI changes. Magpie v0.x provides us a stable ABI that can be leveraged across multiple GNOME Stack releases until Magpie 1.0 (built on wlroots) is released.
+
+Budgie 10.8 was the first release to start requiring Magpie v0.x and the result has been a more consistent and reliable experience for our users.
+
+## Wayland efforts
+
+While our goal in 2023 was only to start experimenting with Wayland compositors and to take the learnings from those experiments to apply to a "future Budgie WM compositor" built for Budgie 11, we made a significant shift in our development focus starting middle of last year to accelerate our Wayland plans and work towards Budgie 10 being Wayland-only (and continuing to be Wayland-only going into Budgie 11). This was in recognition of several major developments in the broader ecosystem that we covered in our [Wayland](/wayland) post.
+
+In that lengthy post, we covered our experiences at that point with wlroots as well as XFCE's libxfce4windowing library, which provides us a library which supports both X11 (via libwnck) and Wayland (various Wayland protocols) at the same time. This is especially useful as we iterate on making Budgie Wayland-compatible while using it at the same time.
+
+I am happy to report that progress on Wayland support has been steady on all fronts since our shift in development focus to it.
+
+In Budgie Desktop, several applets and UX components of Budgie Desktop have been ported over or are in the process of being ported:
+
+- Show Desktop Applet has been ported
+- Tab Switcher has been ported
+- Workspaces Applet has been ported
+- IconTasklist Applet is currently being ported.
+
+Keep in mind that not every part of the codebase needs to be touched, but some key areas in the codebase will need to be updated once some newer window tracking logic has been merged in from the IconTasklist conversion: MenuManager (right-click menus), Panel Manager (manages panels), the legacy Tasklist needs to be rewritten, and various uses of Gdk.X11 APIs.
+
+On the compositor front, the progress by Campbell Jones (aka serebit) has been fantastic as well. Budgie's Wayland compositor, codenamed Magpie v1, was started in the form of a separate project called Flyaway at the end of April 2023. Since then, Magpie v1 has been fleshed out into a reasonably functional window manager with support for things X11 could only dream of. It's still a ways from becoming ready to integrate into Budgie proper, but you can already use it to run Waydroid and games through Steam (though variable refresh rate and direct scanout support are still pending)!
+
+## 2024
+
+For the new year, our focus is on two "epics".
+
+### Budgie 10 Epic
+
+Our main epic is delivering Budgie 10 on Wayland. This does not necessarily mean everything will be feature complete, as we still need to finesse, research and define what else needs to be done. Our aim though is to ensure our first release can be daily driven and consumed.
+
+For Q1, our focus will be:
+
+1. Delivering Budgie 10.9 (as early as this month) featuring our initial work with libxfce4windowing, as well as our new requirement for using budgie-session for launching Budgie Desktop. This will include the existing applets and Tab Switcher that have been ported and should provide plenty of time for distribution packagers to get Budgie Desktop into their respective releases without running up against any freeze deadlines.
+2. Expand on various definitions of work for the year related to Budgie 10 in the areas of: daemon and xdg / flatpak portal.
+3. Getting Budgie Desktop running in a Wayland or XWayland session for better testing.
+4. Early daemon development work that was deferred last year. Some of this work will be done for the purposes of bridging the existing Budgie Control Center and Magpie v1.
+
+For Q2, our goals are:
+
+1. Round out any remaining Wayland work in Budgie Control Center and Budgie Desktop specifically so it should be usable under Magpie v1.
+2. Begin any portal work defined in Q1.
+
+For Q3 and Q4, our focus is to deliver a Budgie 10 series release that is Wayland-only. As we iterate on that series, we will continuously evaluate if it is ready to be daily driven by the wider community.
+
+When we have considered that to be the case, we will officially put Budgie 10 into maintenance mode. Maintenance mode for us means that only changes to facilitate Wayland support and bug fixes will be addressed. This maintenance would be performed by a dedicated Budgie 10 team, enabling those focused squarely on Budgie 11 to be able to dedicate more time towards its development.
+
+### Budgie 11 Epic
+
+Our secondary epic is Budgie 11 development, with focus on building out key components such as the daemon, early panel and applet functionality, and a new Budgie Control Center.
+
+This work will be spread out across the year, with most of the focus before putting Budgie 10 into maintenance mode being related to Magpie and the daemon. There may be porting work done on components in Budgie Desktop's microcosm like Budgie Desktop View, or even smaller components used in Budgie 10 itself depending on how cohesive an experience we can make it, but realistically most of the UX focus will gravitate towards the end of the year and center around early panel and Control Center developments so the team can start "dogfooding" Budgie 11 as soon as possible.
+
+## In Summary
+
+It has been really incredible to see all that we have accomplished in 2023, with new contributors, new users, and new operating systems delivering Budgie Desktop. Huge thanks to the team and community for constantly improving on Budgie.
+
+2024 is going to be a really exciting year for Budgie Desktop too! The first time we all experience Budgie running under Wayland is going to be a real highlight. We should be putting ourselves in a position where we can finally close the exceedingly long chapter of Budgie 10 development efforts and focus on the next chapter of Budgie Desktop. We are going to learn a lot on our journey developing Budgie 11. With your help, the Buddies of Budgie community will continue to grow and engage with other projects.
+
+<OCCallout />

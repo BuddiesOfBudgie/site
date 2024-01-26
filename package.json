@@ -42,7 +42,7 @@
     "*.{js,ts,tsx}": "eslint --cache --fix",
     "*.{js,css,md}": "prettier --write"
   },
-  "packageManager": "yarn@3.5.1",
+  "packageManager": "yarn@4.0.2",
   "resolutions": {
     "@rushstack/eslint-patch@^1.1.3": "patch:@rushstack/eslint-patch@npm%3A1.2.0#./.yarn/patches/@rushstack-eslint-patch-npm-1.2.0-917f402e4e.patch"
   }
