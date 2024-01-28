@@ -1,0 +1,67 @@
+---
+title: Budgie 10.9 Released
+author: JoshuaStrobl
+publishDate: "2024-01-28T20:00:00+03:00"
+featuredImage: /images/blog/2024/01/budgie-10-9-featured.jpg
+excerpt: >-
+  Budgie 10.9 is a brand new release series for Budgie Desktop, introducing a redesigned Bluetooth applet, early porting efforts towards supporting Wayland, and adopting budgie-session for session management.
+tags:
+  - news
+  - releases
+---
+
+Budgie 10.9 is a brand new release series for Budgie Desktop, introducing a redesigned Bluetooth applet, early porting efforts towards supporting Wayland, and adopting budgie-session for session management.
+
+## Redesigned Bluetooth applet
+
+Budgie 10.9 features a redesigned Bluetooth applet. This applet now provides direct (dis-)connect functionality for paired Bluetooth devices, battery life indicators, as well as functionality for sending files to Bluetooth devices.
+
+Architecturally, our Bluetooth applet eliminates the use of gnome-bluetooth (a helper library on top of bluez D-Bus APIs) and instead directly communicates to BlueZ and UPower over D-Bus. Previously, Budgie Desktop had been using an older version of gnome-bluetooth which did not require Libadwaita and GTK4. As we looked towards expanding our Bluetooth functionality and easing long-term maintenance, we decided to deprecate our use of this older library and similarly leverage BlueZ and UPower D-Bus APIs directly. As an added benefit, this will enable some distributions to completely drop that old gnome-bluetooth from their repositories!
+
+## Initial Wayland ports
+
+Budgie 10.9 features some initial ports of various applets and components of Budgie Desktop to a Wayland-compatible library: [libxfce4windowing](https://gitlab.xfce.org/xfce/libxfce4windowing).
+
+libxfce4windowing is an abstraction library developed by XFCE that "attempts to present windowing concepts (screens, toplevel windows, workspaces, etc.) in a windowing-system-independent manner". It aims to accomplish this by supporting X11 through [libwnck](https://gitlab.gnome.org/GNOME/libwnck) and support for various Wayland protocols (e.g. [wlr foreign toplevel management](https://wayland.app/protocols/wlr-foreign-toplevel-management-unstable-v1)).
+
+While libxfce4windowing is under active development and not yet ABI stable, we choose to already adopt it to make the transition from Budgie 10 under X11 to Budgie 10 under Wayland as seamless as possible. libxfce4windowing enables us to port functionality to support Wayland without negatively impacting use under X11, facilitate early "[dogfooding](https://en.wikipedia.org/wiki/Eating_your_own_dog_food)" when our porting work is complete, and more effortlessly "flip the switch" to support Wayland and fully drop X11.
+
+The following parts of Budgie have been ported to libxfce4windowing in this release:
+
+- Show Desktop applet
+- TabSwitcher (Alt+Tab window switcher)
+- Workspace applet
+
+While porting, we took the opportunity to rewrite most of the TabSwitcher. Its window list is no longer rebuilt every time it is invoked and we no longer pass around window IDs between the window manager and tab switcher to build the UX. All of the relevant state and functionality is now internal to the switcher.
+
+<Alert icon={false} severity="warning">
+  Note for packagers: You may wish to reference [Fedora's packaging
+  spec](https://src.fedoraproject.org/rpms/libxfce4windowing/blob/rawhide/f/libxfce4windowing.spec) when packaging
+  libxfce4windowing, if it is not already available in your repository. This provides a clear example of using the
+  "dist" tarballs as well as configuring the library **without** needing xfce-dev-tools 4.19.x. Do **not** use
+  xfce-dev-tools 4.19.x unless it is already available in your repository, as this may negatively impact XFCE packaging.
+</Alert>
+
+## Use of budgie-session
+
+Budgie 10.9 takes into use [budgie-session](https://github.com/BuddiesOfBudgie/budgie-session/), our "softish fork of gnome-session, designed to provide a stable session manager for Budgie 10.x". budgie-session v0.9.x is forked from GNOME Session 44.x, ensuring that we retain:
+
+1. X11-related session code up until we are ready to switch Budgie to being Wayland-only
+2. ConsoleKit support for our BSD friends.
+
+<Alert icon={false} severity="warning">
+  Note for packagers: budgie-session **is** co-installable with gnome-session. Budgie 10.9 **will not** launch without
+  budgie-session being available, so be sure to package it for your respective distributions and have it as a dependency
+  of budgie-desktop!
+</Alert>
+
+## Contributor List
+
+Budgie Desktop is developed by Buddies of Budgie, with contributors around the world. Alongside all of our amazing translators, here is a list of all the contributors that made this release possible:
+
+- [Campbell Jones](https://github.com/serebit?ref=buddiesofbudgie.org)
+- [David Mohammed](https://github.com/fossfreedom?ref=buddiesofbudgie.org)
+- [Evan Maddock](https://github.com/EbonJaeger?ref=buddiesofbudgie.org)
+- [Joshua Strobl](https://github.com/JoshStrobl?ref=buddiesofbudgie.org)
+
+<OCCallout />
