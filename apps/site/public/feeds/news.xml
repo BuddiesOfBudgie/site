@@ -4,16 +4,24 @@
         <title>News | Buddies of Budgie</title>
         <link>https://buddiesofbudgie.org</link>
         <description>Buddies of Budgie posts in the category News</description>
-        <lastBuildDate>Sun, 28 Jan 2024 17:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 02 Feb 2024 14:30:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>Buddies of Budgie</copyright>
         <item>
+            <title><![CDATA[Budgie 10.9.1 Released]]></title>
+            <link>https://buddiesofbudgie.org/blog/budgie-10-9-1-released</link>
+            <guid>https://buddiesofbudgie.org/blog/budgie-10-9-1-released</guid>
+            <pubDate>Fri, 02 Feb 2024 14:30:00 GMT</pubDate>
+            <description><![CDATA[Budgie 10.9.1 is the first minor release of Budgie 10.9 series of our Budgie Desktop environment. This release squashes some bugs in the TabSwitcher and Workspace applet.]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2024/02/budgie-10-9-1-featured.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
             <title><![CDATA[Budgie 10.9 Released]]></title>
             <link>https://buddiesofbudgie.org/blog/budgie-10-9-released</link>
             <guid>https://buddiesofbudgie.org/blog/budgie-10-9-released</guid>
-            <pubDate>Sun, 28 Jan 2024 17:00:00 GMT</pubDate>
+            <pubDate>Sun, 28 Jan 2024 15:00:00 GMT</pubDate>
             <description><![CDATA[Budgie 10.9 is a brand new release series for Budgie Desktop, introducing a redesigned Bluetooth applet, early porting efforts towards supporting Wayland, and adopting budgie-session for session management.]]></description>
             <enclosure url="https://buddiesofbudgie.org//images/blog/2024/01/budgie-10-9-featured.jpg" length="0" type="image/jpg"/>
         </item>
