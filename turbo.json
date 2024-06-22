@@ -1,7 +1,8 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "globalDependencies": ["package.json"],
-  "pipeline": {
+  "ui": "stream",
+  "tasks": {
     "lint": {},
     "build": {
       "dependsOn": ["^build"],
