@@ -3,7 +3,7 @@ export const DOMAIN_NO_PREFIX = "buddiesofbudgie.org";
 export const DOMAIN = `https://${DOMAIN_NO_PREFIX}`;
 export const ORG = "Buddies of Budgie";
 
-export const FALLBACK_BUDGIE_VERSION = "10.8.2";
+export const FALLBACK_BUDGIE_VERSION = "10.9.2";
 
 // HalvedWidthOnHighResolution is our Object that contains width attributes that encourage full-width on lower res and half on high
 export const HalvedWidthOnHighResolution = {
