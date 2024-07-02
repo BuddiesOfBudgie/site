@@ -6,7 +6,7 @@ This repository houses the [Next.js](https://nextjs.org/)-based website for Budd
 
 ### Getting Started
 
-We leverage [nvm](https://github.com/nvm-sh/nvm) (Node Volume Manager) to ensure user across all operating systems can actively contribute and avoid confusion with potentially too old of node versions. We stick to using the latest node.js LTS. To get nvm, follow [their steps](https://github.com/nvm-sh/nvm#installing-and-updating) then run `nvm use`. If you use nvm across multiple projects, you can do automatic switching in the shell following [this documentation](https://github.com/nvm-sh/nvm#deeper-shell-integration).
+We leverage [nvm](https://github.com/nvm-sh/nvm) (Node Volume Manager) to ensure users across all operating systems can actively contribute and avoid confusion with potentially too old of node versions. We stick to using the latest node.js LTS. To get nvm, follow [their steps](https://github.com/nvm-sh/nvm#installing-and-updating) then run `nvm use`. If you use nvm across multiple projects, you can do automatic switching in the shell following [this documentation](https://github.com/nvm-sh/nvm#deeper-shell-integration).
 
 To upgrade dependencies interactively, run `yarn upgrade-interactive`
 
