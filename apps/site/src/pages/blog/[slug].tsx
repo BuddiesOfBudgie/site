@@ -20,6 +20,9 @@ import { inter } from "../../fonts";
 import { InterText } from "../../components/InterText";
 import { SiteTheme } from "../../theme";
 import { getFullDomainPath } from "../../common/client";
+import { F } from "@mobily/ts-belt";
+import type { Person } from "../../data/people";
+import { People } from "../../data/people";
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -28,8 +31,17 @@ type fubarProps = {
 };
 
 const Post = ({ className: { post, slug, source } }: fubarProps) => {
+  const person = F.coerce<Person>(People[post.author]);
+
+  const miscMeta: Record<string, string> = person.Social?.Mastodon
+    ? {
+        "fediverse:creator": person.Social.Mastodon,
+      }
+    : {};
+
   const pageMeta: CustomMetaProps = {
     title: post.title,
+    miscMeta,
     ogMeta: {
       description: post.excerpt,
       image: getFullDomainPath(post.featuredImage),

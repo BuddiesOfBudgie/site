@@ -15,6 +15,7 @@ export type PersonName = {
 
 export type PersonSocial = {
   Github?: string;
+  Mastodon?: string;
   Matrix?: string;
   Website?: string;
 };
@@ -35,6 +36,7 @@ export const People: Record<string, Person> = {
     Picture: AvatarCampbellJones,
     Social: {
       Github: "serebit",
+      Mastodon: "@serebit@floss.social",
       Matrix: "@serebit:matrix.org",
       Website: "https://serebit.com/",
     },
@@ -58,6 +60,7 @@ export const People: Record<string, Person> = {
     Picture: AvatarEvanMaddock,
     Social: {
       Github: "EbonJaeger",
+      Mastodon: "@EbonJaeger@fosstodon.org",
       Matrix: "@ebonjaeger:matrix.org",
     },
   },
@@ -69,6 +72,7 @@ export const People: Record<string, Person> = {
     Picture: AvatarJoshuaStrobl,
     Social: {
       Github: "JoshStrobl",
+      Mastodon: "@me@joshuastrobl.social",
       Matrix: "@joshuastrobl:matrix.org",
       Website: "https://joshuastrobl.com",
     },
