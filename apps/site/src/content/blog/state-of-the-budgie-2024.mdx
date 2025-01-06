@@ -214,11 +214,11 @@ If we put it all into perspective though, we accomplished the massive goal of Bu
 
 - Log into a Budgie Desktop session on top of labwc from your login greeter of your choice
 - Launch applications with tasklist grouping as you would expect
-- Open up Budgie Menu, Raven, various popovers and they are correctly positioned.
-- Switch up your panel position.
-- Assuming you have the wlr and gtk xdg-desktop-portals installed, share your screen in applications.
+- Open up Budgie Menu, Raven, various popovers and they are correctly positioned
+- Switch up your panel position
+- Assuming you have the wlr and gtk xdg-desktop-portals installed, share your screen in applications
 - Livestream using OBS Studio with screen capture working as expected
-- Once the labwc bridge PR lands, change many settings in Budgie Control Center and have them change the behavior of the compositor.
+- Once the labwc bridge PR lands, change many settings in Budgie Control Center and have them change the behavior of the compositor
 
 At the start of the 2024, none of this was possible. All the code that leveraged libxfce4windowing was untested under Wayland.
 
@@ -244,7 +244,7 @@ Some applets need to be updated to reach complete or some degree of feature pari
 
 - Keyboard Layout applet: This currently uses IBus and `Gnome.Languages` and needs to be updated so keyboard layout changing via the applet works.
 - Night Light applet: This needs to be updated to leverage the [wlr gamma control protocol](https://wayland.app/protocols/wlr-gamma-control-unstable-v1). It will most likely do this by effectively being an indicator similar to gammastep-indicator, leveraging [gammastep](https://gitlab.com/chinstrap/gammastep) for starting / stopping gammastep and setting a specific temperature. Budgie Daemon v2 will eventually handle gamma setting for us.
-- Tasklist applet: Not to be confused with IconTasklist, this "legacy" tasklist provides a horizontal list of running apps, ungrouped, similar to `Wnck.Tasklist`. Evan has started rewriting this however some more work needs to be done on this front.
+- Tasklist applet: Not to be confused with IconTasklist, this "legacy" tasklist provides a horizontal list of running apps, ungrouped, similar to `Wnck.Tasklist`. This work has already been started, but it needs to be completed.
 - Workspaces applet: Lots of xid usage still which isn't available for obvious reasons under Wayland.
 
 **Display Configuration**
