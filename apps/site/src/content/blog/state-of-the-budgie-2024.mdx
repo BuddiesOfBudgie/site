@@ -44,7 +44,7 @@ Evan (EbonJaeger) was [focused on implementing our new windowing tracker as well
 
 Campbell worked on tearing control protocol callbacks in Magpie v1. For David and I, we were focused on distribution work with Ubuntu Budgie 24.04 and Fedora Budgie 40 respectively.
 
-Neal started an internal repo to centralize the Wayland session files of various compositors, starting off with a couple sessions (Magpie v1 and KWin) so I could start testing against them.
+Neal started an internal [repo](https://github.com/BuddiesOfBudgie/budgie-wayland-session) (now public) to centralize the Wayland session files of various compositors, starting off with a couple sessions (Magpie v1 and KWin) so I could start testing against them.
 
 ### April
 
@@ -99,7 +99,7 @@ My previously mentioned PR landed at the beginning on July. This properly marked
 
 Campbell [implemented fractional scaling support](https://github.com/BuddiesOfBudgie/magpie/commit/4375e717e648ef72eedc4f54c0fe0e7a11ee4780) in Magpie v1, improved handling of keyboard interactivity / focus, fixes for (sub-)surfaces, merged in his wlroots 0.18 work, and started implementing a new (currently) Budgie-specific [keyboard shortcuts Wayland protocol](https://github.com/BuddiesOfBudgie/magpie/commit/1317f60644f196d2dbf06b791e98339a082e5335).
 
-Neal added a [labwc](https://labwc.github.io/) session to our Wayland sessions and we began actively dogfooding under labwc instead of KWin, as it supports all the wlr Wayland protocols we need.
+Neal added a [labwc](https://labwc.github.io/) session to [our Wayland sessions](https://github.com/BuddiesOfBudgie/budgie-wayland-session/commit/3614227b8a706219216bd6c09163f399cfdec471) and we began actively dogfooding under labwc instead of KWin, as it supports all the wlr Wayland protocols we need.
 
 Surprisingly, IconTasklist _did_ work to some degree, despite this being the first time we ever tested it on a Wayland session that supported all the required protocols. Window grouping was busted however we were getting icons and apps would show up and get removed as they were opened and closed. So let's call it a draw?
 
@@ -119,7 +119,12 @@ I got end-to-end display configuration (TOML file parsing using [toml11](https:/
 
 Campbell [implemented the compositor-side](https://github.com/BuddiesOfBudgie/magpie/commit/d3255064afae24920221dd3a9a819c9c8da9d041) of the Budgie Keyboard Shortcuts protocol and started work on server side decorations.
 
-TODO: JOSH VIDEO HERE FROM CAMPBELL
+<iframe
+  src="https://www.youtube.com/embed/yTO7uQStun0?feature=oembed"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen=""
+></iframe>
 
 ### September
 
@@ -144,11 +149,21 @@ David <del>really cooked</del> did a lot of fantastic work in November. He submi
 
 Here is a video of him testing it with swaylock.
 
-TODO: JOSH VIDEO HERE FROM DAVID
+<iframe
+  src="https://www.youtube.com/embed/wl99tSzQ3rM?feature=oembed"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen=""
+></iframe>
 
 Campbell got server-side-decoration resizing working under Magpie v1. Previously the windows could only be moved around.
 
-TODO: JOSH VIDEO HERE FROM CAMPBELL
+<iframe
+  src="https://www.youtube.com/embed/AlKi_7YacI8?feature=oembed"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen=""
+></iframe>
 
 My focus continued on budgie-daemon v2 work. I wrapped up its move to CMake and [began my efforts of porting it over to Qt6](https://joshuastrobl.com/todays-dev/2). I decided to move it to Qt6 as I wanted to take advantage of:
 
@@ -163,7 +178,7 @@ Anyways, I went through a mountain of work moving everything over to QObjects, [
 
 ![](/images/blog/2025/01/budgie-daemon-v2-qtdbus.jpg)
 
-As a last bit of fun, I tested Budgie Desktop under [Miriway](https://github.com/Miriway/Miriway/) thanks to Neal putting a Miriway compositor session file in our internal sessions repo. Miriway doesn't support all the protocols we need but maybe one day it will and Budgie users will have yet another compositor they can choose from! The more the merrier.
+As a last bit of fun, I tested Budgie Desktop under [Miriway](https://github.com/Miriway/Miriway/) thanks to Neal [putting a Miriway compositor session file](https://github.com/BuddiesOfBudgie/budgie-wayland-session/commit/786189a5b6e11e72d99cbbb756e45a5e2c213364) in our [budgie-wayland-session](https://github.com/BuddiesOfBudgie/budgie-wayland-session) repo. Miriway doesn't support all the protocols we need but maybe one day it will and Budgie users will have yet another compositor they can choose from! The more the merrier.
 
 ![](/images/blog/2025/01/budgie-desktop-under-miriway.jpg)
 
