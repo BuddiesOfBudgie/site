@@ -186,9 +186,9 @@ As a last bit of fun, I tested Budgie Desktop under [Miriway](https://github.com
 
 The holidays weren't stopping us from at least getting some work done. The end of the year was nearing, and we were trying to jam pack as much Wayland goodness as possible.
 
-Evan [fixed window grouping](https://github.com/BuddiesOfBudgie/budgie-desktop/commit/8a25ad41a6f6dab205fe9d59150d7302597249b4) in the IconTasklist under Wayland. I lived with it for months but he couldn't tolerate it. Good on him honestly.
+Evan [fixed window grouping](https://github.com/BuddiesOfBudgie/budgie-desktop/commit/8a25ad41a6f6dab205fe9d59150d7302597249b4) in the IconTasklist under Wayland. I lived with it for months, but he couldn't tolerate it. Good on him honestly.
 
-David submitted a pull request that [implements a new settings bridge](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/643) between some of our settings key, gnome-settings-daemon, and labwc. Some of us have been using a cobbled together labwc `rc.xml` file to have functioning keyboard shortcuts (like pressing Meta for Budgie Menu, Meta+A for Raven applet view, etc.) but this one-way bridge eliminates all that manual work! Some examples of aspects of the experience that get bridged:
+David submitted a pull request that [implements a new settings bridge](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/643) between some of our settings key, gnome-settings-daemon, and labwc. Some of us have been using a cobbled together labwc `rc.xml` file to have functioning keyboard shortcuts (like pressing Meta for Budgie Menu, Meta+A for Raven applet view, etc.), but this one-way bridge eliminates all that manual work! Some examples of aspects of the experience that get bridged:
 
 - Lots of Budgie-specific and general keyboard shortcuts (media keys, window management, Raven, etc)
 - Mouse and touchpad configuration options
@@ -213,7 +213,7 @@ As you can see, there was a massive amount of work that happened over the course
 If we put it all into perspective though, we accomplished the massive goal of Budgie Desktop being daily-drivable on Wayland for a typical end user usecase. You are able to:
 
 - Log into a Budgie Desktop session on top of labwc from your login greeter of your choice
-- Launch applications and they're grouped as you would expect
+- Launch applications with tasklist grouping as you would expect
 - Open up Budgie Menu, Raven, various popovers and they are correctly positioned.
 - Switch up your panel position.
 - Assuming you have the wlr and gtk xdg-desktop-portals installed, share your screen in applications.
@@ -263,7 +263,7 @@ It will be too late for Fedora 42 and Ubuntu 25.04, so the current plan is:
 
 1. Ship it in Fedora rawhide once it is branched for Fedora 43 as well as have a COPR for Fedora 42. Budgie 10.10(.x) will ship in Fedora 43, with a self-contained change proposal planned to be submitted after the 10.10 release. While it won't be available immediately with Budgie 10.10, the plan is to also offer an ISO with the wayland session set up out-of-the-box too.
 2. Ubuntu Budgie folks will provide an on-ramp in the form of a PPA for interested testers with the plan on shipping for Ubuntu 25.10.
-3. Solus will have either a testing repo or make available eopkg downloads for testing. Since it is a rolling release, they have the luxury of being able to ship it whenever, so they will do it after would-be testers have put it through its paces and we have worked out any issues that'd be considered blockers.
+3. Solus will have either a testing repo, or otherwise make available eopkg downloads for testing. Since it is a rolling release, they have the luxury of being able to ship it whenever, so they will do it after would-be testers have put it through its paces and we have worked out any issues that'd be considered blockers.
 
 We will provide more details once we release and have documentation on it as well.
 
@@ -275,7 +275,7 @@ With the release of Budgie 10.10, we will bid it farewell and move it to being i
 
 After the dust has settled with Budgie 10.10, we will shift our focus towards Budgie 11. While we have already been working on some aspects of the experience that will already apply to Budgie 11, we have not yet started on "budgie-desktop" itself such as: porting some daemon v1 functionality to v2, windowing logic, panel, Raven, etc.
 
-I could list out all of the items we would need to get to but...it is a desktop environment. It is kind of everything! Make no mistake, we will show it off as we work on it and when we have something that you can start messing with, we will have a way for you to do that too. We are not going to say what toolkit we are using, we would rather just _show_ you, or better yet you see it yourself on your own system. You can put two and two together though I am sure :)
+I could list out all of the items we would need to get to but... it is a desktop environment. It is kind of everything! Make no mistake, we will show it off as we work on it and when we have something that you can start messing with, we will have a way for you to do that too. We are not going to say what toolkit we are using, we would rather just _show_ you, or better yet you see it yourself on your own system. You can put two and two together though I am sure. :)
 
 ---
 
