@@ -4,11 +4,19 @@
         <title>News | Buddies of Budgie</title>
         <link>https://buddiesofbudgie.org</link>
         <description>Buddies of Budgie posts in the category News</description>
-        <lastBuildDate>Sat, 22 Jun 2024 11:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 06 Jan 2025 20:30:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>Buddies of Budgie</copyright>
+        <item>
+            <title><![CDATA[State of the Budgie: 2024 In Review and Goals for 2025]]></title>
+            <link>https://buddiesofbudgie.org/blog/state-of-the-budgie-2024</link>
+            <guid>https://buddiesofbudgie.org/blog/state-of-the-budgie-2024</guid>
+            <pubDate>Mon, 06 Jan 2025 20:30:00 GMT</pubDate>
+            <description><![CDATA[2024 was a pivotal year for Budgie Desktop, with our Budgie 10.9 release series and our focus on our move to Wayland. Time to dive into our State of the Budgie to recap our efforts in 2024 and the goals for 2025.]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2025/01/StateOfTheBudgieY24.jpg" length="0" type="image/jpg"/>
+        </item>
         <item>
             <title><![CDATA[Budgie 10.9.2 Released]]></title>
             <link>https://buddiesofbudgie.org/blog/budgie-10-9-2-released</link>

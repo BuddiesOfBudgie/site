@@ -2,12 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://buddiesofbudgie.org</id>
     <title>State Of The Budgie | Buddies of Budgie</title>
-    <updated>2024-06-22T11:00:00.000Z</updated>
+    <updated>2025-01-06T20:30:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://buddiesofbudgie.org"/>
     <subtitle>Buddies of Budgie posts in the category State Of The Budgie</subtitle>
     <icon>https://buddiesofbudgie.org/favicon.ico</icon>
     <rights>Buddies of Budgie</rights>
+    <entry>
+        <title type="html"><![CDATA[State of the Budgie: 2024 In Review and Goals for 2025]]></title>
+        <id>https://buddiesofbudgie.org/blog/state-of-the-budgie-2024</id>
+        <link href="https://buddiesofbudgie.org/blog/state-of-the-budgie-2024"/>
+        <updated>2025-01-06T20:30:00.000Z</updated>
+        <summary type="html"><![CDATA[2024 was a pivotal year for Budgie Desktop, with our Budgie 10.9 release series and our focus on our move to Wayland. Time to dive into our State of the Budgie to recap our efforts in 2024 and the goals for 2025.]]></summary>
+        <author>
+            <name>Joshua Strobl</name>
+            <uri>https://joshuastrobl.com</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[State of the Budgie: 2023 In Review and Goals for 2024]]></title>
         <id>https://buddiesofbudgie.org/blog/state-of-the-budgie-2023</id>
