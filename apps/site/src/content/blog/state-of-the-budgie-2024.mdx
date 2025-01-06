@@ -144,7 +144,7 @@ Given all the bouncing between responsibilities and tasks, I didn't make much pr
 
 David <del>really cooked</del> did a lot of fantastic work in November. He submitted a couple pull requests that help considerably in the usability of our Wayland session, specifically:
 
-1. [Session management](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/638) changes that implement new DBus interfaces and moves some shims that were previously in budgie-wm into the v1 daemon. Our xsession is no more, being replaced with the Wayland session to launch using magpie-wm as the current default, with another session for labwc.
+1. [Session management](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/638) changes that implement new DBus interfaces, and moves some shims that were previously in budgie-wm into the v1 daemon. Our xsession is no more, being replaced with the Wayland session to launch using magpie-wm as the current default, with another session for labwc.
 2. [Wayland compatible screenlocker support](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/636) which **finally** allows us to dropkick the current budgie-screensaver (fork of gnome-screensaver), with all its issues. Instead, we use a wide range of existing open source tools (at least until daemon v2 supports the functionality natively) such as: swayidle for idle controlling, gtklock or swaylock depending on what is available, and wlopm for screen blanking. With all of this glue in place, you can now idle and have screen blanking working and automatic locking works.
 
 Here is a video of him testing it with swaylock.
