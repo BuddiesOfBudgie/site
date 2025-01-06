@@ -1,0 +1,273 @@
+---
+title: "State of the Budgie: 2024 In Review and Goals for 2025"
+author: JoshuaStrobl
+publishDate: "2025-01-06T22:30:00.000+02:00"
+featuredImage: /images/blog/2025/01/StateOfTheBudgieY24.jpg
+excerpt: >-
+  2024 was a pivotal year for Budgie Desktop, with our Budgie 10.9 release series and our focus on our move to Wayland. Time to dive into our State of the Budgie to recap our efforts in 2024 and the goals for 2025.
+tags:
+  - state-of-the-budgie
+  - news
+---
+
+## 2024
+
+Our main epic for 2024 was centered around the development of our Wayland support for Budgie Desktop 10.x. While it was not originally planned for the Budgie 10 series, we [made the decision](/blog/wayland) in late 2023 after evaluating the direction of the rest of the ecosystem and our expectations that X.org Server is on its way out sooner rather than later (quite possibly while we develop Budgie 11).
+
+A focus on delivering a Budgie 10 series on Wayland therefore would:
+
+1. Enable Budgie 10 series to continue to live in distribution repositories without concern on the part of distribution maintainers nor us on its longevity while those distributions reasonably pursue their goals of reducing dependents on X.Org Server and the resulting maintenance burdens. All of us on the team develop or package for distributions in one form of another, so this one is close to our hearts.
+2. Provide a known, functional codebase for the team to leverage in its learnings around Wayland.
+3. Provide the opportunity to jump-start work that would apply to Budgie 11, as well as Budgie 10.
+
+### January
+
+We released Budgie 10.9! This release series introduced a new redesigned Bluetooth applet and was the first release series that began integrating [libxfce4windowing](https://gitlab.xfce.org/xfce/libxfce4windowing), "an abstraction library that attempts to present windowing concepts (screens, toplevel windows, workspaces, etc.) in a windowing-system-independent manner."
+
+For Budgie 10.9, we ported over the following to libxfce4windowing, bearing in mind this was all still running under X11 and untested on a Wayland session:
+
+- Show Desktop applet
+- TabSwitcher (Alt+Tab window switcher)
+- Workspace applet
+
+Alongside this, Campbell (serebit) [implemented kiosk / fullscreen mode](https://github.com/BuddiesOfBudgie/magpie/issues/18) in Magpie v1 (Magpie v1 being our wlroots-based compositor). This support was introduced at the request of Neal Gompa to enable the compositor to function for login greeters and be able to run Anaconda Initial Setup (installer on Fedora). He updated Magpie to support wlroots 0.17.1 as well!
+
+### February
+
+We followed up on 10.9 with a [10.9.1](/blog/budgie-10-9-1-released) bug fixes release in February and continued to track new libxfce4windowing releases, adjusting Budgie Desktop to ABI changes.
+
+David (fossfreedom) released [Budgie Control Center 1.4.0](https://github.com/BuddiesOfBudgie/budgie-control-center/releases/tag/v1.4.0), which removed online account functionality due to upstream changes being incompatible with GTK3, fixed SSH remote login, etc.
+
+### March
+
+Evan (EbonJaeger) was [focused on implementing our new windowing tracker as well as a massive refactor of IconTasklist](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/553), our applet which displays currently running applications with their app icons. The new windowing module is intended to wrap and extend our use of libxfce4windowing, making the code more reusable and easier to maintain, alongside merging a couple older classes / modules. Effectively this meant IconTasklist _should_ support Wayland, however that remained untested until we got a functioning Wayland session running.
+
+Campbell worked on tearing control protocol callbacks in Magpie v1. For David and I, we were focused on distribution work with Ubuntu Budgie 24.04 and Fedora Budgie 40 respectively.
+
+Neal started an internal repo to centralize the Wayland session files of various compositors, starting off with a couple sessions (Magpie v1 and KWin) so I could start testing against them.
+
+### April
+
+The IconTasklist refactoring pull request landed and some bugs squashed related to that. Campbell focused on fixing some segfaults in Magpie v1. David focused on distro matters with the release of Ubuntu Budgie 24.04.
+
+I began working on getting [GTK Layer Shell](https://github.com/wmww/gtk-layer-shell/) integrated into budgie-panel so they would be real layer shell objects that could be positioned by the compositor. I started out by testing on top of the KWin-based session that Neal set up for me and while it looked hilarious, the initial bottom panel **did** get correctly positioned. If only the work ended there!
+
+![](/images/blog/2025/01/budgie-10-first-panel-layer-shell-image.jpg)
+
+Raven must have gained some weight from the winter months though.
+
+![](/images/blog/2025/01/budgie-10-first-raven-layer-shell-image.jpg)
+
+### May
+
+Campbell got a head start on supporting what would become wlroots 0.18 in Magpie v1.
+
+Evan squashed some [bugs related to windowing](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/566) and making sure [terminal-based applications show up again in Budgie Menu](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/581).
+
+I continued the development efforts related to layer shell support in the budgie panel code base. I spent a ton of time trying to get our existing `Budgie.Popover` code to work with layer shell, however as a result of _how_ we were positioning these faux popovers (which were their own GtkWindows), that wasn't a viable option. So I rewrote all of it to use GtkPopovers, which we could use under Wayland since Popovers did not have window constraints nor the seat issues we had under X11.
+
+I did some easy hacks to quickly get a usable session going, such as: disabling budgie-wm (the one that'd extend Magpie v0 / Mutter) and preventing budgie-session from creating the "fail whale" dialog which would sit on top of all our other windows (including the panel).
+
+### June
+
+I fixed a wide range of issues such as:
+
+- Raven being <del>dummy thicc</del> fullscreen
+- Popover positioning depending on the panel position
+
+![](/images/blog/2025/01/budgie-10-panel-position-with-popover.jpg)
+
+June 3rd marked the first full day of daily driving Budgie Desktop under Wayland. There was still some brokenness but the best way to get it all fixed quickly is to actively "dogfood" it!
+
+In mid-June, I finally submitted the pull request of [initial Wayland support](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/588) for budgie-panel, the panel manager, popovers, and Raven. There was (_and still is_) some caveats to the experience simply due to what information we have at our disposal under Wayland-based environments, but panels were able to be positioned on the edges correctly, Raven looked sensible and didn't overlap the panel, and popovers worked.
+
+Good enough for a first pass!
+
+![](/images/blog/2025/01/budgie-10-panel-state-in-588-pr.jpg)
+
+Evan fixed some bugs related to [iconography in the Power Dialog](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/584) and [fixing pinned launchers not updating](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/587).
+
+Campbell updated the main v1 branch to support wlroots 0.17.3 (with the wlroots 0.18 WIP being in a separate branch), investigated some segfaults I reported related to budgie-panel testing under Magpie v1, and [implemented security-context-v1 Wayland protocol support](https://github.com/BuddiesOfBudgie/magpie/commit/098bad04d72319d9ea4c8f13946406854300247e)
+
+David started working on a new branch for budgie-daemon (v1) to update our wallpaper-related code so they would get shown at login, leveraging [swaybg](https://github.com/swaywm/swaybg) as an easy means of achieving that. Apparently he didn't like staring at a blank screen at login.
+
+With a few fixes pending, we decided to release [Budgie 10.9.2](/blog/budgie-10-9-2-released).
+
+### July
+
+My previously mentioned PR landed at the beginning on July. This properly marked the starting point of Budgie Desktop being Wayland-only, as using Budgie Desktop `git` under X11 would effectively be broken due to all of the changes required for Wayland support.
+
+Campbell [implemented fractional scaling support](https://github.com/BuddiesOfBudgie/magpie/commit/4375e717e648ef72eedc4f54c0fe0e7a11ee4780) in Magpie v1, improved handling of keyboard interactivity / focus, fixes for (sub-)surfaces, merged in his wlroots 0.18 work, and started implementing a new (currently) Budgie-specific [keyboard shortcuts Wayland protocol](https://github.com/BuddiesOfBudgie/magpie/commit/1317f60644f196d2dbf06b791e98339a082e5335).
+
+Neal added a [labwc](https://labwc.github.io/) session to our Wayland sessions and we began actively dogfooding under labwc instead of KWin, as it supports all the wlr Wayland protocols we need.
+
+Surprisingly, IconTasklist _did_ work to some degree, despite this being the first time we ever tested it on a Wayland session that supported all the required protocols. Window grouping was busted however we were getting icons and apps would show up and get removed as they were opened and closed. So let's call it a draw?
+
+David and the Ubuntu Budgie folks started looking into the Waylandizing of their Budgie Extras repo to make sure they were already off to the races before any work on our side was finalized. Great stuff!
+
+### August
+
+I began working on budgie-daemon v2. Budgie Daemon v2 is intended to serve as effectively the beating heart of Budgie 11, with some features / functionality applying to Budgie 10 as well. For the "minimum viable product" (MVP) for Budgie 10 Wayland support, it needed to support display configuration / configuration apply.
+
+This meant all the wiring related to [wlr output management protocol](https://wayland.app/protocols/wlr-output-management-unstable-v1), logic for applying configurations, DBus support to enable eventual communication between Budgie Control Center, and all the TOML-based configuration.
+
+This has all been quite the journey so far (August 2024 to the time of writing), but in terms of just the efforts in August, it was even more so as a learning exercise and experimentation with the protocol itself, C++, and some dabbling in Rust. The end result implementation I ended up going with is written in C++.
+
+I got end-to-end display configuration (TOML file parsing using [toml11](https://github.com/ToruNiina/toml11), getting all the outputs, applying configuration) working [at the end of August](https://joshuastrobl.social/@me/113058333759816276).
+
+![](/images/blog/2025/01/budgie-daemon-v2-first-display-configuration.jpg)
+
+Campbell [implemented the compositor-side](https://github.com/BuddiesOfBudgie/magpie/commit/d3255064afae24920221dd3a9a819c9c8da9d041) of the Budgie Keyboard Shortcuts protocol and started work on server side decorations.
+
+TODO: JOSH VIDEO HERE FROM CAMPBELL
+
+### September
+
+I progressed on my budgie-daemon v2 work in September with a focus on the DBus Server implementation leveraging [sdbus-cpp](https://github.com/Kistler-Group/sdbus-cpp), a high-level C++ abstraction library on top of [sd-bus](https://www.freedesktop.org/software/systemd/man/latest/sd-bus.html).
+
+![](/images/blog/2025/01/budgie-daemon-v2-first-dbus-method.jpg)
+
+David released [Magpie 0.9.4](https://github.com/BuddiesOfBudgie/magpie/releases/tag/v0.9.4) which resolved scaling issues when using a new gnome-settings-daemon (GNOME 47).
+
+### October
+
+David [submitted a pull request](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/630) to update Budgie Desktop to libxfce4windowing 4.19.8. Took a bit of time for us to get around to reviewing it as most of us on the team had distro-related responsibilities or were attending events (Evan with some Solus stack updates, David with Ubuntu 24.10 and attending Ubuntu Summit, myself with Fedora 41).
+
+Given all the bouncing between responsibilities and tasks, I didn't make much progress functionality-wise on budgie-daemon v2. I spent a considerable amount of time refactoring / actually organizing the codebase, implementing some display-oriented utilities to perform display changes, and started working on porting it off Meson and onto CMake + extra-cmake-modules.
+
+### November
+
+David <del>really cooked</del> did a lot of fantastic work in November. He submitted a couple pull requests that help considerably in the usability of our Wayland session, specifically:
+
+1. [Session management](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/638) changes that implement new DBus interfaces and moves some shims that were previously in budgie-wm into the v1 daemon. Our xsession is no more, being replaced with the Wayland session to launch using magpie-wm as the current default, with another session for labwc.
+2. [Wayland compatible screenlocker support](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/636) which **finally** allows us to dropkick the current budgie-screensaver (fork of gnome-screensaver), with all its issues. Instead, we use a wide range of existing open source tools (at least until daemon v2 supports the functionality natively) such as: swayidle for idle controlling, gtklock or swaylock depending on what is available, and wlopm for screen blanking. With all of this glue in place, you can now idle and have screen blanking working and automatic locking works.
+
+Here is a video of him testing it with swaylock.
+
+TODO: JOSH VIDEO HERE FROM DAVID
+
+Campbell got server-side-decoration resizing working under Magpie v1. Previously the windows could only be moved around.
+
+TODO: JOSH VIDEO HERE FROM CAMPBELL
+
+My focus continued on budgie-daemon v2 work. I wrapped up its move to CMake and [began my efforts of porting it over to Qt6](https://joshuastrobl.com/todays-dev/2). I decided to move it to Qt6 as I wanted to take advantage of:
+
+1. Qt6's [signal / slot system](https://doc.qt.io/qt-6/signalsandslots.html). This provides an easy mechanism for me to have all the various classes to communicate with each other, for example the configuration system knowing when the output management is done initializing so it knows _when_ it can apply any existing display configuration defined by the user.
+2. Clearly defined and predictable Qtypes such as QList, QString, QHash, etc.
+3. Qt's DBus Server and Client implementations. Using sdbus-cpp, while fantastic, proved to be a problem due to varying distributions either having too new or too old of a release (Fedora's is notably old since it is used in dnf).
+4. QtWayland / QtWaylandScanner support for more ergonomic and C++-native Wayland client code
+
+No, this shouldn't signify anything to you besides "Qt was the right choice for this particular job" :P Get that idea out of your head, we're saying nothin'!
+
+Anyways, I went through a mountain of work moving everything over to QObjects, [porting](https://joshuastrobl.com/todays-dev/4) to QtWayland generated code for zwlr protocols, working on new head configuration, leveraging Qt logging functions, and DBus server code. By the end of the month I had signals connected up and firing and began figuring out the next phase of display configuration with a new batch system.
+
+![](/images/blog/2025/01/budgie-daemon-v2-qtdbus.jpg)
+
+As a last bit of fun, I tested Budgie Desktop under [Miriway](https://github.com/Miriway/Miriway/) thanks to Neal putting a Miriway compositor session file in our internal sessions repo. Miriway doesn't support all the protocols we need but maybe one day it will and Budgie users will have yet another compositor they can choose from! The more the merrier.
+
+![](/images/blog/2025/01/budgie-desktop-under-miriway.jpg)
+
+### December
+
+The holidays weren't stopping us from at least getting some work done. The end of the year was nearing and we were trying to jam pack as much Wayland goodness as possible.
+
+Evan [fixed window grouping](https://github.com/BuddiesOfBudgie/budgie-desktop/commit/8a25ad41a6f6dab205fe9d59150d7302597249b4) in the IconTasklist under Wayland. I lived with it for months but he couldn't tolerate it. Good on him honestly.
+
+David submitted a pull request that [implements a new settings bridge](https://github.com/BuddiesOfBudgie/budgie-desktop/pull/643) between some of our settings key, gnome-settings-daemon, and labwc. Some of us have been using a cobbled together labwc `rc.xml` file to have functioning keyboard shortcuts (like pressing Meta for Budgie Menu, Meta+A for Raven applet view, etc.) but this one-way bridge eliminates all that manual work! Some examples of aspects of the experience that get bridged:
+
+- Lots of Budgie-specific and general keyboard shortcuts (media keys, window management, Raven, etc)
+- Mouse and touchpad configuration options
+- Many settings that previously invoked Mutter-specific features
+
+I [ported](https://github.com/BuddiesOfBudgie/budgie-desktop-view/commit/6585841a3269dc84b28adab8f5e3963290e5521f) our desktop icons implementation, Budgie Desktop View, over to Wayland. Similar to previous porting efforts in Budgie Desktop, this leveraged gtk-layer-shell and libxfce4windowing. So Budgie Desktop View no longer has SSDs, is anchored to the top left of the primarily output, set to the background layer so other surfaces reliably render on top, and doesn't try demanding keyboard input.
+
+Of course, it wouldn't be a month for me without some work being done on budgie-daemon v2. I continued work on the upcoming new Display Configuration Batch system, which is intended to completely overhaul the configuration logic to enable many queued operations to be consolidated and performed at once. This isn't just important from an architectural point-of-view but a usability one for end users. To describe why this matters, below is an excerpt on my [Today's Dev #15](https://joshuastrobl.com/todays-dev/15) where I talk about it:
+
+>  I want you to imagine your typical display configuration graphical software. You have rectangles, typically with labels in them describing the displays. At first, this is based off the current state of those heads (their position, resolution, refresh rate, adaptive sync, enabled / disabled, etc.). If you want to change the resolution and position of your monitors all in one go, you'd probably set their resolution so the rectangles change size, then move them around, then click apply. You're not changing the resolution, clicking apply, moving one monitor, clicking apply, moving another monitor, clicking apply.
+
+It is this sort of user experience that the system is intended to support.
+
+With Evan and David now testing out the daemon, I spent some time squashing some bugs they identified. Still more to be done on that front related to built-in displays.
+
+---
+
+### 2024 In Retrospect
+
+As you can see, there was a massive amount of work that happened over the course of 2024 towards our goal of moving to Wayland. As you may have noticed, we did not end up delivering Budgie 10.10 before end of year. As is the classic case of software development, some aspects of the experience have been proven to be trickier than anticipated, others requiring more work, some originally unscoped / undefined items needing to be worked on (labwc bridge as an example) to improve usability, and more.
+
+If we put it all into perspective though, we accomplished the massive goal of Budgie Desktop being daily-drivable on Wayland for a typical end user usecase. You are able to:
+
+- Log into a Budgie Desktop session on top of labwc from your login greeter of your choice
+- Launch applications and they're grouped as you would expect
+- Open up Budgie Menu, Raven, various popovers and they are correctly positioned.
+- Switch up your panel position.
+- Assuming you have the wlr and gtk xdg-desktop-portals installed, share your screen in applications.
+- Livestream using OBS Studio with screen capture working as expected
+- Once the labwc bridge PR lands, change many settings in Budgie Control Center and have them change the behavior of the compositor.
+
+At the start of the 2024, none of this was possible. All the code that leveraged libxfce4windowing was untested under Wayland.
+
+There is still some work to be done to deliver Budgie 10.10, but let's dive into this year to find out about that!
+
+---
+
+## 2025
+
+Similar to our epics for last year, this year's are centered around Budgie 10 and 11.
+
+### First Epic: Ship Budgie 10.10
+
+There are still some key areas that need improving or fixing before we can ship Budgie 10.10 to end users.
+
+#### TODO
+
+For items within the budgie-desktop repo itself, we have updated our [10.10 milestone](https://github.com/BuddiesOfBudgie/budgie-desktop/milestone/13) with the related items.
+
+**Applets**
+
+Some applets need to be updated to reach complete or some degree of feature parity with their usage under the "legacy" X11 environment.
+
+- Keyboard Layout applet: This currently uses IBus and `Gnome.Languages` and needs to be updated so keyboard layout changing via the applet works.
+- Night Light applet: This needs to be updated to leverage the [wlr gamma control protocol](https://wayland.app/protocols/wlr-gamma-control-unstable-v1). It will most likely do this by effectively being an indicator similar to gammastep-indicator, leveraging [gammastep](https://gitlab.com/chinstrap/gammastep) for starting / stopping gammastep and setting a specific temperature. Budgie Daemon v2 will eventually handle gamma setting for us.
+- Tasklist applet: Not to be confused with IconTasklist, this "legacy" tasklist provides a horizontal list of running apps, ungrouped, similar to `Wnck.Tasklist`. Evan has started rewriting this however some more work needs to be done on this front.
+- Workspaces applet: Lots of xid usage still which isn't available for obvious reasons under Wayland.
+
+**Display Configuration**
+
+I need to complete my implementation of the Display Configuration Batch system in budgie-daemon v2, it needs to go through a bunch of testing, and we need to update Budgie Control Center to use it. Lots of work to be done here still.
+
+**Misc**
+
+MenuManager needs to be cleaned up / deprecated. This provides a right-click menu to show options for Budgie Desktop Settings and System Settings. Budgie Desktop View has its own implementation, however MenuManager handles it when desktop icons are turned off. This can be handled simply by updating our labwc rc.xml template.
+
+#### Shipping
+
+We are currently intent on shipping Budgie 10.10 within Q1 2025 (Jan-Mar), however as always we won't ship it unless we consider it ready (at least as ready as we can test). Budgie 10.10 will ship with the recommendation and default of using labwc, providing us more time to bake an excellent compositor that we can swap out at any time across Budgie 10 or 11!
+
+It will be too late for Fedora 42 and Ubuntu 25.04, so the current plan is:
+
+1. Ship it in Fedora rawhide once it is branched for Fedora 43 as well as have a COPR for Fedora 42. Budgie 10.10(.x) will ship in Fedora 43, with a self-contained change proposal planned to be submitted after the 10.10 release. While it won't be available immediately with Budgie 10.10, the plan is to also offer an ISO with the wayland session set up out-of-the-box too.
+2. Ubuntu Budgie folks will provide an on-ramp in the form of a PPA for interested testers with the plan on shipping for Ubuntu 25.10.
+3. Solus will have either a testing repo or make available eopkg downloads for testing. Since it is a rolling release, they have the luxury of being able to ship it whenever, so they will do it after would-be testers have put it through its paces and we have worked out any issues that'd be considered blockers.
+
+We will provide more details once we release and have documentation on it as well.
+
+#### Farewell, Budgie 10
+
+With the release of Budgie 10.10, we will bid it farewell and move it to being in maintenance mode. We are committed to fixing Budgie 10 series at least until Budgie 11 is ready, so don't fret.
+
+### Second Epic: Budgie 11
+
+After the dust has settled with Budgie 10.10, we will shift our focus towards Budgie 11. While we have already been working on some aspects of the experience that will already apply to Budgie 11, we have not yet started on "budgie-desktop" itself such as: porting some daemon v1 functionality to v2, windowing logic, panel, Raven, etc.
+
+I could list out all of the items we would need to get to but...it is a desktop environment. It is kind of everything! Make no mistake, we will show it off as we work on it and when we have something that you can start messing with, we will have a way for you to do that too. We are not going to say what toolkit we are using, we would rather just _show_ you, or better yet you see it yourself on your own system. You can put two and two together though I am sure :)
+
+---
+
+## In Summary
+
+Thank you to everyone that has contributed, in any form, to Budgie Desktop in 2024. Thank you to everyone that has contributed to Budgie 10 over the many years it has been around. It is time to wrap up this chapter and start writing a new one, with new projects we call friends and new opportunities for collaboration.
+
+All the best.
+
+<OCCallout />
