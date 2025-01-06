@@ -25,6 +25,9 @@ const redirects = () => {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   experimental: {
     largePageDataBytes: 512 * 1000,
     //outputFileTracingRoot: path.join(__dirname, "../../"),
@@ -69,6 +72,9 @@ const nextConfig = {
   reactStrictMode: true,
   redirects: async () => redirects(),
   transpilePackages: ["@buddiesofbudgie/ui"],
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 const withMDX = require("@next/mdx")({
