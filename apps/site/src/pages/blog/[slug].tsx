@@ -201,8 +201,7 @@ const BlogPostContent = styled(Container)(
     a:not(.MuiButton-root) {
       &,
       &:visited {
-        display: inline-flex;
-        width: max-content;
+        display: inline;
         // Visited or not
         color: ${theme.palette.success.main};
         text-decoration: none;
