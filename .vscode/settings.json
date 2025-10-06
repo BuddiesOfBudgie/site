@@ -1,6 +1,7 @@
 {
   "cSpell.enabled": true,
   "cSpell.enableFiletypes": ["!json", "!jsonc", "!plaintext", "!typescript", "!typescriptreact", "mdx"],
+  "editor.saveOnFormat": true,
   "[md]": {
     "editor.wordWrap": "on"
   },

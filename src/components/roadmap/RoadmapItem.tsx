@@ -3,7 +3,7 @@ import React from "react";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { Chip } from "@mui/material";
-import { Avatar } from "@buddiesofbudgie/ui";
+import { Avatar } from "@/components/Avatar";
 import { useTranslations } from "next-intl";
 import Color from "color";
 import { GoIssueOpened } from "react-icons/go";

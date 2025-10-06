@@ -6,7 +6,7 @@ import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { RoadmapItem } from "../../components/roadmap/RoadmapItem";
-import Grid2 from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid";
 import { ItemStatusSelector } from "../../components/roadmap/ItemStatusSelector";
 import { useTranslations } from "next-intl";
 import type { RequiredMilestoneSummaryItems } from "../../components/roadmap/MilestoneItem";
@@ -68,21 +68,21 @@ const Roadmap = ({ className: { milestones, projects } }: fubarProps) => {
               ))}
           </Stack>
           {!!milestones.summary.current && !!milestones.summary.upcoming && (
-            <Grid2 columns={{ xs: 4, sm: 4, md: 4, lg: 12, xl: 12 }} container minWidth={0.8} spacing={4}>
+            <Grid columns={{ xs: 4, sm: 4, md: 4, lg: 12, xl: 12 }} container minWidth={0.8} spacing={4}>
               {filteredMilestones.map((m) => {
                 const keyPrefix = `MilestoneItem-${m.version}`;
 
                 return (
-                  <Grid2 key={keyPrefix} xs={4}>
+                  <Grid key={keyPrefix} size={{ xs: 4 }}>
                     <MilestoneItem
                       key={`MilestoneItem-${m.version}`}
                       summary={milestones.summary as RequiredMilestoneSummaryItems}
                       version={m.version}
                     />
-                  </Grid2>
+                  </Grid>
                 );
               })}
-            </Grid2>
+            </Grid>
           )}
           <PopText alignSelf="center" variant="h3">
             Budgie 10
@@ -119,19 +119,19 @@ const Roadmap = ({ className: { milestones, projects } }: fubarProps) => {
                   ]}
                   setStatus={(status) => setItemStatus(status)}
                 />
-                <Grid2 columns={{ xs: 4, sm: 4, md: 4, lg: 12, xl: 12 }} container spacing={4}>
+                <Grid columns={{ xs: 4, sm: 4, md: 4, lg: 12, xl: 12 }} container spacing={4}>
                   {p.items
                     .filter((i) => i.status === itemStatus)
                     .map((i) => {
                       const keyPrefix = `${i.type}-${i.content.title}`;
 
                       return (
-                        <Grid2 key={keyPrefix} xs={4}>
+                        <Grid key={keyPrefix} size={{ xs: 4 }}>
                           <RoadmapItem item={i} key={`${keyPrefix}-RoadmapItem`} />
-                        </Grid2>
+                        </Grid>
                       );
                     })}
-                </Grid2>
+                </Grid>
                 <NextLink href={p.url}>
                   <PopButton
                     sx={{

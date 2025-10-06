@@ -1,50 +1,64 @@
 {
-  "name": "buddiesofbudgie",
-  "version": "1.0.0",
-  "description": "Buddies of Budgie documentation center and site",
-  "author": "BuddiesOfBudgie",
+  "name": "@buddiesofbudgie/site",
+  "version": "0.1.0",
+  "description": "Buddies of Budgie website",
   "license": "Apache-2.0",
   "private": true,
+  "author": "BuddiesOfBudgie",
   "bugs": {
     "url": "https://github.com/BuddiesOfBudgie/site/issues"
   },
-  "scripts": {
-    "start": "turbo run start",
-    "build": "turbo run build",
-    "deploy": "turbo run deploy",
-    "dev": "turbo run dev --parallel",
-    "format": "prettier-eslint --write --prettier-last \"**/*.{js,ts,tsx,md}\"",
-    "lint": "turbo run lint",
-    "prepare": "husky install",
-    "test": "turbo run test"
-  },
   "homepage": "https://github.com/BuddiesOfBudgie/site#readme",
-  "workspaces": [
-    "packages/types",
-    "packages/ui",
-    "packages/utils",
-    "apps/*"
-  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "start-standalone": "node .next/standalone/apps/site/server.js",
+    "check-types": "tsc --noemit",
+    "lint": "yarn run check-types && next lint --fix"
+  },
+  "dependencies": {
+    "@emotion/react": "11.14.0",
+    "@emotion/styled": "11.14.1",
+    "@mdx-js/loader": "3.1.1",
+    "@mdx-js/mdx": "3.1.1",
+    "@mdx-js/react": "3.1.1",
+    "@mobily/ts-belt": "3.13.1",
+    "@mui/icons-material": "7.3.4",
+    "@mui/material": "7.3.4",
+    "@mui/styled-engine": "7.3.3",
+    "@next/env": "^15.5.4",
+    "@next/mdx": "15.5.4",
+    "@octokit/graphql": "9.0.2",
+    "@octokit/graphql-schema": "15.26.0",
+    "@vercel/analytics": "1.5.0",
+    "color": "5.0.2",
+    "feed": "5.1.0",
+    "gray-matter": "4.0.3",
+    "luxon": "3.7.2",
+    "next": "15.5.4",
+    "next-intl": "4.3.9",
+    "next-mdx-remote": "5.0.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-icons": "5.5.0",
+    "react-swipeable-views": "0.14.1",
+    "semver": "7.7.2",
+    "sharp": "0.34.4"
+  },
   "devDependencies": {
-    "@types/semver": "7.5.8",
-    "@typescript-eslint/eslint-plugin": "7.13.1",
-    "@typescript-eslint/parser": "7.13.1",
-    "eslint": "8.57.0",
-    "eslint-config-next": "14.2.4",
-    "eslint-config-prettier": "8.10.0",
-    "husky": "8.0.3",
-    "lint-staged": "15.2.7",
-    "prettier": "3.3.2",
-    "prettier-eslint": "16.3.0",
-    "prettier-eslint-cli": "8.0.1",
-    "turbo": "2.0.4"
+    "@biomejs/biome": "2.2.5",
+    "@types/color": "4.2.0",
+    "@types/luxon": "3.7.1",
+    "@types/node": "24.7.0",
+    "@types/react": "19.2.0",
+    "@types/react-swipeable-views": "0.13.6",
+    "@types/semver": "7.7.1",
+    "typescript": "5.9.3"
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,ts,tsx}": "biome check --write",
+    "*.{js,css,md}": "biome check --write"
   },
-  "packageManager": "yarn@4.3.1",
-  "resolutions": {
-    "@rushstack/eslint-patch@1.1.3": "patch:@rushstack/eslint-patch@npm%3A1.2.0#./.yarn/patches/@rushstack-eslint-patch-npm-1.2.0-917f402e4e.patch"
-  }
+  "packageManager": "yarn@4.10.3"
 }

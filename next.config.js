@@ -16,6 +16,11 @@ const redirects = () => {
   return [
     ...blogRedirects,
     {
+      source: "/about/organization",
+      destination: "https://docs.buddiesofbudgie.org/organization/intro",
+      permanent: true,
+    },
+    {
       source: "/rss",
       destination: "/feeds/news.xml",
       permanent: true,
@@ -71,7 +76,6 @@ const nextConfig = {
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"], // Append the default value with md extensions
   reactStrictMode: true,
   redirects: async () => redirects(),
-  transpilePackages: ["@buddiesofbudgie/ui"],
   typescript: {
     ignoreBuildErrors: true,
   },

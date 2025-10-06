@@ -44,7 +44,7 @@ export const Nav = ({ navBgColor }: NavProps) => {
         subMenu: [
           {
             title: t("About.Organization"),
-            url: "/about/organization",
+            url: "https://docs.buddiesofbudgie.org/organization/intro",
           },
           {
             title: t("About.Roadmap"),
