@@ -27,7 +27,7 @@ At its core, the goal of Budgie 10.10 is to offer a similar, if not better, expe
 
 For display configuration, we recommend pairing Budgie 10.10 with [wdisplays](https://github.com/artizirk/wdisplays) to manage multiple monitors and resolutions. Our new [Budgie Desktop Services](https://forge.moderndesktop.dev/BuddiesOfBudgie/budgie-desktop-services) (written in Qt6 and C++) automatically saves your settings so they persist across sessions. This component will serve as the "beating heart" of Budgie 11; for Budgie 10.10, its primary focus is enabling persistent display configuration.
 
-#### Compositor Recommendation and Bridge
+### Compositor Recommendation and Bridge
 
 For Budgie 10.10, we recommend the use of a wlroots-based compositor. The team has put special effort into enabling a great experience with [labwc](https://labwc.github.io/), a modern, lightweight, and feature-rich Wayland compositor perfectly suited for Budgie Desktop.
 
@@ -39,7 +39,7 @@ We have achieved this by implementing a "labwc bridge" that automatically config
 - **Specific window rules** for the desktop, power dialog, and budgie-daemon.
 - **Window management features** like snapping and a window switcher with thumbnails.
 
-Beyond our recommendation default of `labwc`, the move to Wayland represents a fundamental architectural shift. This shift to a protocol-first architecture represents a major milestone: it decouples the desktop from a specific window manager (budgie-wm, which in turn relied on our Magpie fork of Mutter) and makes Budgie truly compositor-agnostic, opening the door for experimentation with alternative compositors beyond our primary recommendations.
+Beyond our recommended default of `labwc`, the move to Wayland represents a fundamental architectural shift. This shift to a protocol-first architecture represents a major milestone: it decouples the desktop from a specific window manager (`budgie-wm`, which in turn relied on our fork of Mutter called Magpie), and makes Budgie truly compositor-agnostic, opening the door for experimentation with alternative compositors beyond our primary recommendations.
 
 To support this flexibility, Budgie 10.10 relies on several Wayland protocols across its use of [budgie-desktop-services](https://forge.moderndesktop.dev/BuddiesOfBudgie/budgie-desktop-services), [gtk-layer-shell](https://github.com/wmww/gtk-layer-shell) and [libxfce4windowing](https://gitlab.xfce.org/xfce/libxfce4windowing). While other compositors remain less tested by the team, any compositor implementing the following protocols could, in principle, power a Budgie session:
 
@@ -73,7 +73,7 @@ Our `budgie-desktop` was not the only component that received updates to enable 
 
 #### Budgie Desktop View
 
-Budgie Desktop View supports Wayland, leveraging `layer-shell` to ensure it remains positioned behind windows, Raven, and the panel.
+Budgie Desktop View now supports Wayland, leveraging `layer-shell` to ensure it remains positioned behind windows, Raven, and the panel.
 
 #### Budgie Control Center
 
