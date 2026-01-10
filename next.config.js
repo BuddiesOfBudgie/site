@@ -71,7 +71,6 @@ const nextConfig = {
       },
     ],
   },
-  optimizeFonts: false, // Breaks Google Web Font loading
   output: "standalone",
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"], // Append the default value with md extensions
   reactStrictMode: true,
