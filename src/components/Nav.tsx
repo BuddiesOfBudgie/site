@@ -44,12 +44,8 @@ export const Nav = ({ navBgColor }: NavProps) => {
         subMenu: [
           {
             title: t("About.Organization"),
-            url: "https://docs.buddiesofbudgie.org/organization/intro",
-          },
-          {
-            title: t("About.Roadmap"),
-            url: "/about/roadmap",
-          },
+            url: "https://docs.buddiesofbudgie.org/10.10/organization/intro",
+          }
         ],
         title: t("About.Generic"),
       },
@@ -79,6 +75,10 @@ export const Nav = ({ navBgColor }: NavProps) => {
           {
             title: "Donate",
             url: "https://opencollective.com/buddies-of-budgie",
+          },
+          {
+            title: "Forge",
+            url: "https://forge.moderndesktop.dev",
           },
           {
             title: "GitHub",

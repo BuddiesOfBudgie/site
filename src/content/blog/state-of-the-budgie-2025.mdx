@@ -1,0 +1,195 @@
+---
+title: "State of the Budgie: 2025 In Review and Cranking Budgie Up To 11"
+author: JoshuaStrobl
+publishDate: "2026-01-11T17:00:00+03:00"
+featuredImage: /images/blog/2026/01/StateOfTheBudgie2025.jpg
+excerpt: >-
+    2025 was a year of significant progress for Budgie Desktop, as we finalized much of our efforts in our Wayland migration, to bring Budgie 10 to a close and enable us to focus our efforts on Budgie 11. Time to dive into our State of the Budgie to recap our efforts in 2025 and the goals for 2026.
+tags:
+  - state-of-the-budgie
+  - news
+---
+
+## 2025
+
+2025 was a year of significant progress for Budgie Desktop, particularly around our Wayland migration. Of course, we had planned to release Budgie 10.10 in 2025, but it ended up taking more time to bake than expected. This extra time provided the opportunity for more polish, testing, ports, and overhauls of older parts of the codebase that _really_ needed it. A lot more time was spent on gluing various well-known Wayland tools together to create a more cohesive experience, improving our integration with the labwc compositor, and Budgie Desktop Services.
+
+The experience we are shipping now with [Budgie 10.10](/blog/budgie-10-10-released) (at the time of writing, January 2026) is significantly improved over the start of 2025, so the delay was worth it.
+
+### Completing the Wayland Migration
+
+While we had achieved daily-drivable status by the end of 2024, there were still many areas of the desktop that needed work. Across 2025, we tackled the following:
+
+#### Applet Ports and Fixes
+
+Several applets required updates to reach feature parity with their X11 counterparts:
+
+- **Night Light Applet**: Updated to leverage the wlr gamma control protocol using gammastep.
+- **Workspace Applet**: Fixed for Wayland support, removing reliance on X11 window IDs and properly handling windows that may not yet have an application assigned.
+- **Keyboard Layout Applet**: Updated to support per-window keyboard layout changes as well as XKB_OPTIONS. We ended up turning off the Keyboard Layout for Budgie 10.10 to undergo more testing and fixes, but expect it to return in a 10.10.x.
+- **Icon Tasklist**: Fixed window grouping under Wayland and removed all X11-specific functionality.
+- **Tasklist**: An extremely late addition to the Budgie 10.10 release, the Tasklist applet was ported to use libxfce4windowing and was given a complete rewrite. This was a significant effort, as it was one of the last applets to be ported to Wayland and one of the most complex applets to port.
+
+#### Screenshot Functionality
+
+Budgie's screenshot functionality was rewritten for Wayland, moving from Mutter-specific code to using [grim](https://gitlab.freedesktop.org/emersion/grim) for capturing screenshots and [slurp](https://github.com/emersion/slurp) for region-based screenshots. The screenshot dialog was moved under the control of budgie-session and made more robust to handle cases where Wayland client details may not be immediately available on startup.
+
+#### Session Management
+
+Improved session management was introduced, including a start script to launch the Wayland compositor. This system sets environment variables, copies configuration files to the correct user directory, and starts the Wayland compositor (labwc by default), ensuring a smooth login experience.
+
+#### labwc Bridge
+
+Significant work went into the labwc bridge, which syncs settings between Budgie Desktop Settings and labwc. This one-way bridge eliminates manual configuration work and ensures that changes made in Budgie Control Center (keyboard shortcuts, mouse and touchpad configuration, and other settings) are automatically reflected in the compositor's behavior.
+
+#### Screen Locking and Idle Management
+
+Screen dimming and locking functionality was implemented using swayidle, gtklock (or swaylock), and wlopm, providing a complete idle management and screen locking solution that works seamlessly under Wayland. This finally allowed us to dropkick budgie-screensaver (a fork of gnome-screensaver) with all its issues.
+
+#### Port to girepository-2.0
+
+Budgie Desktop was ported to girepository-2.0. This was quite a wrench in our plans, requiring an ABI (Application Binary Interface) version + a Budgie 10.9.x release, as well as coordination with partners like Ubuntu Budgie to ensure their applets remained compatible.
+
+#### Budgie Desktop Services
+
+Work continued on Budgie Desktop Services (budgie-daemon v2), written in Qt6. For Budgie 10.10, it handles Wayland output management and persistent configuration through our "shim mode". Graphical configuration is handled through wdisplays, with Budgie Desktop Services storing the configuration state into a TOML-based configuration file, ensuring display settings persist across reboots and sessions.
+
+#### Notification and OSD Improvements
+
+Notifications were reworked to work with layer-shell positioning, ensuring they display correctly regardless of panel position. The OSD (On-Screen Display) for volume, brightness, and caps & numlock indicators was also reworked to work properly under Wayland.
+
+#### Theme and Polish
+
+Several improvements were made to the built-in theme and HighContrast theme, fixing color issues and ensuring proper contrast in various UI elements. Various bug fixes and robustness improvements were made throughout the codebase.
+
+### Shipping Budgie 10.10
+
+After months of development, testing, and polish, we shipped Budgie 10.10 _just_ yesterday (January 10, 2026). This release marks the culmination of over **two years** of work on Wayland support, bringing Budgie 10 to a close and moving it into maintenance mode as we focus our efforts on Budgie 11.
+
+## 2026
+
+### Budgie 11
+
+A little over a decade ago, Budgie 10 was released into the world. The landscape was quite different back then. GTK3 and Qt5 were only a few years old, Proton for Linux didn't even exist, and Wayland was not yet the default in popular distributions like Fedora and Ubuntu.
+
+Budgie Desktop itself matured significantly with that release. We rewrote most of it in Vala and introduced our handy widget and notification center, Raven (if you can believe it, back then the settings for Budgie itself were actually inside Raven), and we finally gained support for multiple panels.
+
+A lot has changed since that first release: we have seen new features, new toolkit iterations, and the creation of our Buddies of Budgie organization. With shipping Budgie 10.10, the tenth feature series of Budgie 10, closing out ten years of Budgie 10 development, we are also closing this chapter in Budgie's history. This release marks the transition of the Budgie 10 into maintenance mode. By shipping a Wayland-only version of our current desktop, we are delivering an experience that should serve our users well while we put our full focus, dedication, and passion into Budgie 11.
+
+Now, I know a lot of you have been wondering what the heck Budgie 11 is going to be written in. After all, that's certainly changed over the years, and keeping track of our toolkit choices has practically been a community pastime. Whether it was the move to Qt5 what feels like eons ago and was quickly abandoned in favor of just sticking with GTK3, the plans for GTK4 back in 2018 before GTK4 had even been released, or even EFL before we formed the new organization.
+
+Well, we have been teasing it a fair bit (if you call _actually_ writing code and shipping things "teasing"). It is going to be impossible to keep it under wraps while we talk shop and show it off in the open, so we might as well just get it out of the way...
+
+**It is Qt6.**
+
+Unlike _many_ previous instances where we announced a toolkit change, this time we actually have functional code running in **production**. This exists today as Budgie Desktop Services, the beating heart of Budgie 11. In our Budgie 10.10 release, it is already responsible for our Wayland output management and persistent configuration. In Budgie 11, we will pair this with our Budgie Display Configurator, in one form or another, which is also being written in Qt6 and Kirigami.
+
+But this choice of toolkit is _only_ one piece of the puzzle. With Budgie 11, our goal is not just to port the desktop to a new toolkit. This is our opportunity for a fundamental re-architecture. We are making Budgie more modular, not only to allow for better personalization for distributions and users, but to pave the way for new form factors, input devices, and workflows.
+
+Some of that work will live in a new organization, providing generic apps as well as more under-the-hood desktop components / infrastructure like an XDG portal, pluggable in nature. This gives us the opportunity to work more closely with the wider ecosystem and support more of it, not just by using fantastic libraries like those in KDE Frameworks (great community to collaborate with as well), but by contributing something we hope will be useful back to the community. We want to make it easier for others to bootstrap new desktop environments, ecosystems, or even port their existing ones to Qt and Wayland.
+
+For the first time in a long time, the path forward is not just a plan on a roadmap; our path forward is code in our repositories, hosted in [our own software forge](https://forge.moderndesktop.dev), being validated by [our own CI / CD](https://ci.moderndesktop.dev). We want to build this next era of Budgie together with the community, and we are looking for more folks to join us in shaping what a modern, modular desktop can be.   
+
+#### Technical Kickoff
+
+The team has already kicked off development for Budgie 11 this year, focusing on several key areas:
+
+1. Defining how we intend to version Budgie 11 and ABI stability.
+2. General repository structure.
+3. Defining key lessons learned from Budgie 10 development and pain points we want to avoid.
+4. Early definitions and design of our desired architecture for Budgie 11 and what our expectations are for Budgie 11 capabilities.
+
+Not everything has been decided yet, and once the team feels it has a good initial set of specifications we will document it on our [documentation center](https://docs.buddiesofbudgie.org). For now, let's take a high-level overview of _some_ of the technical decisions we are making for Budgie 11.
+
+#### Versioning and ABI Stability
+
+While we don't want to put the cart before the horse, we do want to ensure that as we built out Budgie 11, we are mindful of ABI stability guarantees that we want to provide, primarily to ensure distributions with long-term support are able to reliably target a given version of Budgie 11.
+
+We will be breaking up the versioning of Budgie X.Y.Z into three main parts:
+
+- X: This is viewed as the "major" version and will remain locked to a given Qt major version; this is similar to how KDE Frameworks & Plasma Desktop does their major versioning. Budgie 11 will be locked to Qt6, Budgie 12 will be Qt7, etc.
+- Y: This is viewed as the "feature" version and reflects a semi-annual increment of all Budgie components, ensuring all components are aligned with versioning. Across “feature” releases, we have the opportunity (though not the obligation) to perform ABI breakage, with a guarantee of supporting a range of N-3..N ABIs. This helps ensure that we regularly clear out technical debt while providing sufficient time for consumers of ABIs to update. The total lifetime of ABI should be roughly 2 years to align with Ubuntu LTS. We may have an extended first ABI stability for 3 years given it will be the first release of Budgie 11.
+- Z: This is viewed as the "patch" version and will typically be incremented for bug fixes and small improvements.
+
+#### Notable Pain-points from Budgie 10
+
+Without getting too far into the weeds (or diving into some historical issues with some ABI stability in libraries we have used), from a design and technical standpoint there are a number of pain-points we want to avoid in Budgie 11:
+
+1. Budgie Desktop (specifically the repo `budgie-desktop`, which provided the shell, panel, Raven, Budgie Desktop Settings, etc.) is fairly tightly coupled. At a high level, the panels are spawned by a `budgie-panel` process, and other background services are spawned by a `budgie-daemon`. The panel management code is understandably complex, especially given it was originally designed for an X11-era where we didn't have protocols like LayerShell to offload much of the complexity to the compositor. Panels are customized by an application that is a part of the panel process. This has the advantage of having direct access to the panel, but the disadvantage is that it requires the panel to be operational.
+2. Being able to leverage `libpeas` for plugin support has been fantastic for Budgie 10 series and we are **seriously** grateful to the GNOME community for developing it. This enabled easier pluggability into components like the Budgie panel and Raven. However, the downside of this architecture was that each distribution needed to independently package and maintain third-party applets, creating more burden for maintainers and making discoverability difficult (if not impossible).
+3. The process for starting Budgie Desktop itself (session and service management) is rather convoluted across both budgie-session and budgie-desktop. We have not been utilizing capabilities of systemd well, nor taken advantage of user-level services. Ideally going forward, we want to minimize custom session management code and prioritize leveraging more of systemd directly, while keeping the door open to adding support for alternative init systems.
+
+#### Early Thoughts and Design for Budgie 11
+
+Budgie 11 (and beyond) is intended to be an open architecture, providing a foundation and one or more _opinionated_ presentation layers to interact with respective computing devices, such as: desktops, laptops, TVs, VR/AR, phones, and tablets. It should be emphasized that we are not expecting to develop all of these presentation layers ourselves, but rather provide a foundation and a way to build upon it.
+
+The two key layers we want to focus on in this post are:
+
+1. "Budgie Core" / Budgie as a Platform
+2. "Budgie Desktop" / Budgie as...well...a Desktop
+
+##### Budgie Core
+
+The core of Budgie is the portion of the environment that is the same on all device targets. It consists of libraries that are shared across the entire platform, and handles the starting of components based on the type of device being used, since it does not make sense to have the same set of components on every device.
+
+Application and service lifecycles are managed by the Session Manager.
+
+Common feature sets are facilitated by Budgie Services (currently named Budgie Desktop Services). This includes services such as: notification, display output, and idle management. They are exposed over DBus (Budgie Desktop Services provides display info + configuration over DBus already) and potentially other forms of RPC or through other serialization formats.
+
+Budgie Core will also offer supplemental libraries that are useful for creating a targeted presentation and experience across different form factors. This includes power management, system language and locale, input, and configuration.
+
+##### Budgie Desktop
+
+Budgie Desktop is a graphical environment for desktop, laptops, and 2-in-1 computers that is approachable for most end users and extensible by end users and developers. It is _a_ presentation layer that will be developed by us and built on top of Budgie Core. We have some sets of expectations for what Budgie Desktop should be:
+
+1. Adaptable: Budgie Desktop should be able to provide complex multitasking capabilities when desired by the end user, such as sophisticated application and workspace management, multi-window tiling, and distinct modes of operating / workflows (focus mode, gaming mode, etc) that facilitate given workflows and/or use cases.
+
+2. Approachable: Like the 10.x series of Budgie Desktop, approachability is a crucial trait of our desktop computing experience. End users and newcomers in particular should be able to use the upstream desktop interface as quickly or intuitively as possible.
+
+3. Extensible: Similar to Budgie Desktop under 10.x, extensibility is an important aspect of our desktop computing experience. End users and curators of Budgie Desktop experiences should feel welcome to change their experience to best suit their needs.
+
+Budgie 11 must facilitate:
+
+- Component swapping (e.g. compositors, Raven for an alternative notification view)
+- Extension swapping (e.g. extensions within panels or Raven)
+- Themability (including support for cross-platform theming when possible)
+
+Ideally, we would like to have a more centralized method for distributing and discovering extensions (Budgie 11 terminology), so we need to properly assess and plan for this. This may be a mix of directly supporting more operating systems via CI/CD, simply supporting more ways to develop extensions (pure QML & JS), both, etc.
+
+### Software Forge, Continuous Integration, and Continuous Delivery
+
+Historically, Budgie Desktop has been developed on [GitHub](https://github.com/BuddiesOfBudgie), and it was a clear choice for Buddies of Budgie when we formed. However despite its notable network effect, as time has progressed GitHub has become less and less of a good fit for our needs. This is due to a number of factors, but most recently it has been GitHub's support for Copilot-generated issues as well as the growing amounts of AI slop that has been resulting in more work for the team than we would like. 
+
+Late last year, the decision was made to move all future Budgie Desktop development (for components used in Budgie 11) to our own software forge. [Forgejo](https://forgejo.org/) was the obvious choice for us, with past experiences on the team with using Gitea and Gogs, and we have been impressed with the work the Forgejo community has done. A new self-hosted instance of Forgejo was [fired up](https://forge.moderndesktop.dev) back in May, and we have been leveraging it since. GitHub will still be used for Budgie 10.10, but otherwise all other development will be done on the forge. Our documentation will be updated to reflect this soon (now that we have dedicated Budgie 11 versioned docs).
+
+Of course, that only solves the problem of where we host our code. We still needed a way to validate code changes. This is an evolving process, but so far we have set up our own CI / CD pipeline using [Woodpecker](https://woodpecker-ci.org/) at [ci.moderndesktop.dev](https://ci.moderndesktop.dev), with a dedicated ARM64 builder (this helps ensure we account for multi-arch from the start). We are also working on setting up dedicated hardware (first x86_64, hopefully later RVA23 RISC-V hardware when that is available) for future manual and automatic graphical testing (possibly taking OpenQA into use), to enable a clear pipeline of:
+
+Code Change -> CI for validation -> RPM generation -> ISO generation -> OpenQA ISO testing
+
+ISOs would regularly undergo manual testing by the team, provided early to our [OpenCollective](https://opencollective.com/buddies-of-budgie) backers, and then made available more broadly.
+
+### Improving Communication
+
+While internally, the organization has been lively, it is hard to ignore that we have fallen short in our communication with the wider community. This has been particularly noticeable in our lack of communication around Budgie 10.10, and as part of our efforts related to Budgie 11 we have been taking a broader look at how we can streamline communication going forward.
+
+Historically, the two biggest issues in my (Joshua) opinion we have been facing related communication centers around our larger form blog posts (like the one you are reading right now _cough cough_). Larger posts are, for obvious reasons, very time-consuming to write and edit. As a result, the frequency of them has decreased over time especially in busy moments where we are deep into development, which further compounds the issue as I have to effectively have a retrospective on everything that has changed / happened since the last post. Content ends up getting cut considerably (if you can believe it) to keep a _more_ cohesive and focused post, which makes it look like there has been less activity than there actually has been nor accurately reflects the multi-faceted nature of the project and our community.
+
+Conceptually, I (Joshua) have come up with a concept called "Chirps", which are intended to be shorter-form and regular updates on our website. These would not necessarily replace longer form content, but rather complement it. I don't want to commit to a particular cadence just yet, but internally we have targets. Please keep in mind that the details / execution are still subject to change, but I think it is important for us to be transparent about plans to address this going forward.
+
+These Chirps provide an avenue for us to present a myriad of development & organizational updates / changes. We could just as easily have a Chirp that covers Budgie 11 on a weekend, then midway through the next week feel like something we have done relating to CI / CD is cool enough to share immediately. These sorts of posts have historically been just on our social media, if we make them at all, but that as a result does not provide a complete picture of the state of the organization and its development.
+
+To streamline the process, we are currently discussing internally how we can proactively flag content that should be included in a Chirp, how we document issues / pull requests (as an example, potentially taking a more User Story-like approach that makes it easier to understand the intent and scope of given work), and more. This would help to alleviate the issue I mentioned earlier about needing to effectively have a retrospective, as well as the more involved collaboration required with others to get content together for a post.
+
+Chirps would ideally get automatically shared on our social media (linking to our website where the content lives) and to OpenCollective backers. This would help ensure that our community is aware of the latest developments and that they are able to stay up to date with the project; whether they are discovering it through social media or our website.
+
+**tl;dr:** We are working on streamlining our communication process and are exploring the concept of Chirps to help us share updates more regularly with the community. This will be helped by the fact that we are insanely excited to work on Budgie 11, so we have a lot to share!
+
+## Conclusion
+
+2025 was a year of significant progress for Budgie Desktop, as we finalized much of our efforts in our Wayland migration, to bring Budgie 10 to a close and enable us to focus our efforts on Budgie 11. Budgie 11 provides a tremendous opportunity to not just start building the next chapter of the Budgie Desktop, but to grow the community and the project itself.
+
+It has been an honor to work on Budgie 10 over the last decade, across its various homes and releases We have seen a lot of changes in the desktop space, and we have been fortunate to be a part of it. We are looking forward to the next 10 years of Budgie Desktop and the Budgie community.
+
+Now let's get to work.
+
+<OCCallout />
