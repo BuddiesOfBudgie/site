@@ -2,16 +2,16 @@
  * This is our simple "Not Found" 404 message box
  */
 
-import Image from "next/image";
+import Image from 'next/image';
 
 // Material UI Components
-import Paper from "@mui/material/Paper";
-import Stack from "@mui/material/Stack";
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
 
 // Assets
-import ThrowAwayComputer from "../../public/images/throw-away-computer.gif";
-import { PopText } from "./pop/PopText";
-import { InterText } from "./InterText";
+import ThrowAwayComputer from '../../public/images/throw-away-computer.gif';
+import { PopText } from './pop/PopText';
+import { InterText } from './InterText';
 
 const NotFound = () => {
   return (

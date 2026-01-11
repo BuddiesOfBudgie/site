@@ -1,9 +1,9 @@
 // This file contains our generic filled Button component
-import React from "react";
+import React from 'react';
 
 // Material UI Bits
-import type { ButtonProps } from "@mui/material";
-import { Button, useTheme } from "@mui/material";
+import type { ButtonProps } from '@mui/material';
+import { Button, useTheme } from '@mui/material';
 
 type BWButtonProps = {
   inverse?: boolean;

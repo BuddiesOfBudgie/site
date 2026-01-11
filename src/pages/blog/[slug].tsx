@@ -1,28 +1,29 @@
-import Image from "next/image";
-import type { InferGetStaticPropsType } from "next/types";
-import type { CustomMetaProps } from "../../components/CustomMeta";
+import Image from 'next/image';
+import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import type { CustomMetaProps } from '../../components/CustomMeta';
 
 // MaterialUI Bits
-import { Alert, Container, Stack, Typography, css, styled } from "@mui/material";
+import { Alert, Container, Stack, Typography, css, styled } from '@mui/material';
 
 // Our Components
-import PageBase from "../../components/PageBase";
-import { AuthorshipInfo } from "../../components/blog/AuthorshipInfo";
-import { TagStrip } from "../../components/blog/TagStrip";
-import type { ParsedUrlQuery } from "querystring";
-import { getPostBySlug, getPosts } from "../../common/getPosts";
-import { MDXRemote } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
-import { LightboxImage } from "../../components/LightboxImage";
-import { OCCallout } from "../../components/blog/OCCallout";
-import { PopText } from "../../components/pop/PopText";
-import { inter } from "../../fonts";
-import { InterText } from "../../components/InterText";
-import { SiteTheme } from "../../theme";
-import { getFullDomainPath } from "../../common/client";
-import { F } from "@mobily/ts-belt";
-import type { Person } from "../../data/people";
-import { People } from "../../data/people";
+import PageBase from '../../components/PageBase';
+import { AuthorshipInfo } from '../../components/blog/AuthorshipInfo';
+import { TagStrip } from '../../components/blog/TagStrip';
+import type { ParsedUrlQuery } from 'querystring';
+import { getPostBySlug, getPosts } from '../../common/getPosts';
+import { MDXRemote } from 'next-mdx-remote';
+import { serialize } from 'next-mdx-remote/serialize';
+import { LightboxImage } from '../../components/LightboxImage';
+import { OCCallout } from '../../components/blog/OCCallout';
+import { PopText } from '../../components/pop/PopText';
+import { inter } from '../../fonts';
+import { InterText } from '../../components/InterText';
+import { SiteTheme } from '../../theme';
+import { getFullDomainPath } from '../../common/client';
+import { F } from '@mobily/ts-belt';
+import type { Person } from '../../data/people';
+import { People } from '../../data/people';
+import { getLocale } from '../../common/getLocale';
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -35,7 +36,7 @@ const Post = ({ className: { post, slug, source } }: fubarProps) => {
 
   const miscMeta: Record<string, string> = person.Social?.Mastodon
     ? {
-        "fediverse:creator": person.Social.Mastodon,
+        'fediverse:creator': person.Social.Mastodon,
       }
     : {};
 
@@ -65,7 +66,7 @@ const Post = ({ className: { post, slug, source } }: fubarProps) => {
             )}
           </Stack>
         </Container>
-        {typeof post.featuredImage === "string" && (
+        {typeof post.featuredImage === 'string' && (
           <Container maxWidth="fullhd">
             <Image
               alt={post.title}
@@ -74,9 +75,9 @@ const Post = ({ className: { post, slug, source } }: fubarProps) => {
               priority={true}
               src={post.featuredImage}
               style={{
-                height: "auto",
-                maxWidth: "100%",
-                objectFit: "scale-down",
+                height: 'auto',
+                maxWidth: '100%',
+                objectFit: 'scale-down',
               }}
               width={1920}
             />
@@ -85,12 +86,12 @@ const Post = ({ className: { post, slug, source } }: fubarProps) => {
         <Container maxWidth="lg">
           <Stack
             alignItems={{
-              sm: "center",
+              sm: 'center',
             }}
             direction={{
-              xs: "column",
-              sm: "row",
-              md: "row",
+              xs: 'column',
+              sm: 'row',
+              md: 'row',
             }}
             justifyContent="space-between"
             margin="1vh 0"
@@ -127,12 +128,12 @@ const Post = ({ className: { post, slug, source } }: fubarProps) => {
                 if (!src) return null;
                 return (
                   <LightboxImage
-                    altImageText={alt ?? ""}
+                    altImageText={alt ?? ''}
                     image={src}
                     imageSx={{
-                      height: "auto",
-                      objectFit: "scale-down",
-                      width: "auto",
+                      height: 'auto',
+                      objectFit: 'scale-down',
+                      width: 'auto',
                     }}
                     useOnlySx
                   />
@@ -159,8 +160,12 @@ export const getStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps = async ({ locale, params }: { locale: string; params: IParams }) => {
-  const { slug } = params;
+export const getStaticProps = async (context: GetStaticPropsContext<IParams>) => {
+  if (!context.params) {
+    return { notFound: true };
+  }
+  const { slug } = context.params;
+  const locale = getLocale(context);
   const post = getPostBySlug(slug);
   const messages = (await import(`../../messages/${locale}.json`)).default as IntlMessages;
   if (!post)
@@ -172,6 +177,7 @@ export const getStaticProps = async ({ locale, params }: { locale: string; param
 
   return {
     props: {
+      locale,
       messages,
       post,
       slug,

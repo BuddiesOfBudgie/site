@@ -1,18 +1,18 @@
-import { existsSync, readFileSync, readdirSync } from "fs";
-import { join } from "path";
-import matter from "gray-matter";
-import type { BlogPostMeta, BlogTags } from "../types";
-import { type BlogPost } from "../types";
-import { F, G, N, pipe } from "@mobily/ts-belt";
-import { DateTime } from "luxon";
+import { existsSync, readFileSync, readdirSync } from 'fs';
+import { join } from 'path';
+import matter from 'gray-matter';
+import type { BlogPostMeta, BlogTags } from '../types';
+import { type BlogPost } from '../types';
+import { F, G, N, pipe } from '@mobily/ts-belt';
+import { DateTime } from 'luxon';
 
-const postsDirectory = join(process.cwd(), "src", "content", "blog");
+const postsDirectory = join(process.cwd(), 'src', 'content', 'blog');
 
 export const getPostBySlug = (slug: string): BlogPost | null => {
   const fullPath = join(postsDirectory, `${slug}.mdx`);
 
   if (!existsSync(fullPath)) return null;
-  const fileContent = readFileSync(fullPath, "utf-8");
+  const fileContent = readFileSync(fullPath, 'utf-8');
 
   const { content, data } = matter(fileContent);
   const meta = F.coerce<BlogPostMeta>(data);
@@ -28,7 +28,7 @@ export const getPosts = (): BlogPost[] => {
   const fileNames = readdirSync(postsDirectory);
   return fileNames
     .reduce<BlogPost[]>((list, name) => {
-      const info = getPostBySlug(name.replace(".mdx", ""));
+      const info = getPostBySlug(name.replace('.mdx', ''));
       if (!info) return list;
       return [...list, info];
     }, [])

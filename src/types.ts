@@ -1,25 +1,24 @@
-import type { ResponsiveStyleValue } from "@mui/system";
+import type { ResponsiveStyleValue } from '@mui/system';
 
 export type PartialBy<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
 export type RequiredBy<T, K extends keyof T> = Pick<Required<T>, K> & Omit<T, K>;
 export type Writeable<T> = { -readonly [P in keyof T]: T[P] };
 export type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> };
 
-
 export enum GitHubProjectItemStatus {
-  UNKNOWN = "UNKNOWN",
-  PROPOSAL_RFC = "PROPOSAL_RFC",
-  ACCEPTED_RFC = "ACCEPTED_RFC",
-  TODO = "TODO",
-  IN_PROGRESS = "IN_PROGRESS",
-  DONE = "DONE",
+  UNKNOWN = 'UNKNOWN',
+  PROPOSAL_RFC = 'PROPOSAL_RFC',
+  ACCEPTED_RFC = 'ACCEPTED_RFC',
+  TODO = 'TODO',
+  IN_PROGRESS = 'IN_PROGRESS',
+  DONE = 'DONE',
 }
 
 export enum GitHubProjectItemType {
-  DRAFT_ISSUE = "DRAFT_ISSUE",
-  ISSUE = "ISSUE",
-  PULL_REQUEST = "PULL_REQUEST",
-  REDACTED = "REDACTED",
+  DRAFT_ISSUE = 'DRAFT_ISSUE',
+  ISSUE = 'ISSUE',
+  PULL_REQUEST = 'PULL_REQUEST',
+  REDACTED = 'REDACTED',
 }
 
 export type BlogPostMeta = {
@@ -103,4 +102,4 @@ export type GitHubProjectLabel = {
   name: string;
 };
 
-export type StackDirectionMap = ResponsiveStyleValue<"column" | "row" | "row-reverse" | "column-reverse">;
+export type StackDirectionMap = ResponsiveStyleValue<'column' | 'row' | 'row-reverse' | 'column-reverse'>;

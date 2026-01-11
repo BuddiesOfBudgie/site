@@ -2,15 +2,15 @@
  * This file containers our text-oriented color banner
  */
 
-import React from "react";
-import { useTheme } from "@mui/material";
+import React from 'react';
+import { useTheme } from '@mui/material';
 
 // Material UI Bits
-import Stack from "@mui/material/Stack";
-import NextLink from "./Link";
-import { PopButton } from "./pop/PopButton";
-import { PopText } from "./pop/PopText";
-import { InterText } from "./InterText";
+import Stack from '@mui/material/Stack';
+import NextLink from './Link';
+import { PopButton } from './pop/PopButton';
+import { PopText } from './pop/PopText';
+import { InterText } from './InterText';
 
 // Our components
 
@@ -37,12 +37,12 @@ export const ColorBanner = ({
     <Stack
       className="ColorBanner"
       direction="column"
-      key={`colorbanner-${header.toLowerCase().replace(" ", "-")}`}
+      key={`colorbanner-${header.toLowerCase().replace(' ', '-')}`}
       padding={4}
       sx={{
         color: theme.palette.primary.light,
         background: backgroundColor,
-        borderRadius: "2em",
+        borderRadius: '2em',
       }}
     >
       <PopText color={theme.palette.primary.light} variant="h5">
@@ -54,15 +54,15 @@ export const ColorBanner = ({
       <NextLink
         href={buttonHref}
         sx={{
-          marginBlockStart: "auto",
+          marginBlockStart: 'auto',
         }}
-        target={!buttonHref.startsWith("/") ? "_target" : "_self"}
+        target={!buttonHref.startsWith('/') ? '_target' : '_self'}
       >
         <PopButton
           color="info"
           sx={{
             color: buttonTextColor,
-            maxWidth: "max-content",
+            maxWidth: 'max-content',
           }}
         >
           {buttonText}

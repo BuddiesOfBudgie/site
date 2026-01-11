@@ -3,17 +3,17 @@
  */
 
 // Material UI Components
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 
-import { AuthorshipInfo } from "./AuthorshipInfo";
-import { TagStrip } from "./TagStrip";
-import { useMediaQuery, useTheme } from "@mui/material";
-import NextLink from "../Link";
-import type { BlogPost } from "../../types";
-import { PopText } from "../pop/PopText";
-import { InterText } from "../InterText";
-import { SiteTheme } from "../../theme";
+import { AuthorshipInfo } from './AuthorshipInfo';
+import { TagStrip } from './TagStrip';
+import { useMediaQuery, useTheme } from '@mui/material';
+import NextLink from '../Link';
+import type { BlogPost } from '../../types';
+import { PopText } from '../pop/PopText';
+import { InterText } from '../InterText';
+import { SiteTheme } from '../../theme';
 
 type BlogListingPostInfoParams = {
   condensed?: boolean;
@@ -22,20 +22,20 @@ type BlogListingPostInfoParams = {
 
 const BlogListingPostInfo = ({ condensed = false, post }: BlogListingPostInfoParams) => {
   const theme = useTheme();
-  const stackDirection = condensed ? "row" : "column";
+  const stackDirection = condensed ? 'row' : 'column';
 
-  const largeBreakpointAndCondensed = useMediaQuery(theme.breakpoints.up("lg")) && condensed;
+  const largeBreakpointAndCondensed = useMediaQuery(theme.breakpoints.up('lg')) && condensed;
 
-  const showOnSmallView = largeBreakpointAndCondensed ? "none" : "inline-flex";
-  const imageSize = largeBreakpointAndCondensed ? "40%" : "auto";
+  const showOnSmallView = largeBreakpointAndCondensed ? 'none' : 'inline-flex';
+  const imageSize = largeBreakpointAndCondensed ? '40%' : 'auto';
 
   return (
     <Stack
       className="BlogListingPostInfo"
       direction={{
-        xs: "column",
-        sm: "column",
-        md: "column",
+        xs: 'column',
+        sm: 'column',
+        md: 'column',
         lg: stackDirection,
         xl: stackDirection,
       }}
@@ -53,13 +53,13 @@ const BlogListingPostInfo = ({ condensed = false, post }: BlogListingPostInfoPar
         >
           <Box
             sx={{
-              aspectRatio: "16/9",
+              aspectRatio: '16/9',
               backgroundImage: `url(${post.featuredImage})`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "100%",
-              borderRadius: "25px",
-              cursor: "pointer",
-              objectFit: "contain",
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: '100%',
+              borderRadius: '25px',
+              cursor: 'pointer',
+              objectFit: 'contain',
             }}
           />
         </NextLink>
@@ -71,15 +71,15 @@ const BlogListingPostInfo = ({ condensed = false, post }: BlogListingPostInfoPar
           prefetch={false}
           style={{
             color: SiteTheme.palette.primary.dark,
-            display: "inline-flex",
-            textDecoration: "none",
+            display: 'inline-flex',
+            textDecoration: 'none',
           }}
         >
           <PopText
             sx={{
-              cursor: "pointer",
+              cursor: 'pointer',
             }}
-            variant={condensed ? "h5" : "h4"}
+            variant={condensed ? 'h5' : 'h4'}
           >
             {post.title}
           </PopText>

@@ -2,15 +2,15 @@
  * This file contains our lightboxed image
  */
 
-import React from "react";
-import Image from "next/image";
-import type { StaticImageData } from "next/image";
+import React from 'react';
+import Image from 'next/image';
+import type { StaticImageData } from 'next/image';
 
 // Material UI Goodies
-import type { SxProps, Theme } from "@mui/material";
-import { useTheme } from "@mui/material";
-import Backdrop from "@mui/material/Backdrop";
-import Box from "@mui/material/Box";
+import type { SxProps, Theme } from '@mui/material';
+import { useTheme } from '@mui/material';
+import Backdrop from '@mui/material/Backdrop';
+import Box from '@mui/material/Box';
 
 export type LightboxImageProps = {
   altImageText: string;
@@ -46,18 +46,18 @@ export const LightboxImage = ({
   const boxStyling = !useOnlySx
     ? {
         [theme.breakpoints.down(width)]: {
-          maxHeight: "fit-content",
-          maxWidth: "100%",
+          maxHeight: 'fit-content',
+          maxWidth: '100%',
         },
         [theme.breakpoints.up(useWidth)]: {
           width: useWidth,
         },
-        [theme.breakpoints.between(useWidth, "fullhd")]: {
+        [theme.breakpoints.between(useWidth, 'fullhd')]: {
           height: useHeight,
           width: useWidth,
           maxHeight: useHeight,
         },
-        [theme.breakpoints.up("fullhd")]: {
+        [theme.breakpoints.up('fullhd')]: {
           height: useHeight,
           width: useWidth,
         },
@@ -72,13 +72,13 @@ export const LightboxImage = ({
           alt={altImageText}
           height={useHeight}
           onClick={() => setShowImageFull(true)}
-          placeholder={typeof image !== "string" ? "blur" : undefined}
+          placeholder={typeof image !== 'string' ? 'blur' : undefined}
           priority={priority}
           src={image}
           style={{
-            height: "auto",
-            maxWidth: "100%",
-            objectFit: "cover",
+            height: 'auto',
+            maxWidth: '100%',
+            objectFit: 'cover',
             ...(imageSx as Object),
           }}
           width={useWidth}
@@ -89,14 +89,14 @@ export const LightboxImage = ({
         onClick={() => setShowImageFull(false)}
         open={showImageFull}
         sx={{
-          backgroundColor: "rgba(0,0,0,0.7)",
-          height: "100%",
-          position: "fixed",
-          width: "100%",
+          backgroundColor: 'rgba(0,0,0,0.7)',
+          height: '100%',
+          position: 'fixed',
+          width: '100%',
           zIndex: 9999,
-          "& img": {
-            maxWidth: "100%",
-            objectFit: "scale-down",
+          '& img': {
+            maxWidth: '100%',
+            objectFit: 'scale-down',
           },
         }}
       >

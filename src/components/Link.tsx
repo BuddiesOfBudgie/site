@@ -1,7 +1,7 @@
-import Link from "next/link";
-import type { LinkProps } from "next/link";
+import Link from 'next/link';
+import type { LinkProps } from 'next/link';
 
-import { css, styled } from "@mui/material";
+import { css, styled } from '@mui/material';
 
 const NextLink = styled(Link)<LinkProps>(
   () => css`

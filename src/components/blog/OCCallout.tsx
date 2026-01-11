@@ -1,16 +1,16 @@
-import React from "react";
-import { Card, CardActions, CardContent, Stack } from "@mui/material";
-import { PopButton } from "../pop/PopButton";
-import { InterText } from "../InterText";
-import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
+import React from 'react';
+import { Card, CardActions, CardContent, Stack } from '@mui/material';
+import { PopButton } from '../pop/PopButton';
+import { InterText } from '../InterText';
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 
 export const OCCallout = () => {
   return (
     <Card
       sx={{
-        backgroundColor: "success.light",
+        backgroundColor: 'success.light',
         borderRadius: 4,
-        boxShadow: "none",
+        boxShadow: 'none',
         marginBlockEnd: 4,
         paddingBlockEnd: 2,
         paddingBlockStart: 1,
@@ -36,7 +36,7 @@ export const OCCallout = () => {
         <PopButton
           bw
           href="https://opencollective.com/buddies-of-budgie?ref=buddiesofbudgie.org"
-          sx={{ marginInlineEnd: 1, marginInlineStart: "auto" }}
+          sx={{ marginInlineEnd: 1, marginInlineStart: 'auto' }}
         >
           Support
         </PopButton>

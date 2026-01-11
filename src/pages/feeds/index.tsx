@@ -1,18 +1,19 @@
-import { getPosts, getPostsByTags } from "../../common/getPosts";
-import { Feed } from "feed";
-import { getPrettyTagName } from "../../common/getPrettyTagName";
-import { DOMAIN, ORG } from "../../constants";
-import { People } from "../../data/people";
-import { writeFileSync } from "fs";
-import { join } from "path";
-import PageBase from "../../components/PageBase";
-import type { CustomMetaProps } from "../../components/CustomMeta";
-import { Stack, Typography } from "@mui/material";
-import { grey } from "@mui/material/colors";
-import { useTranslations } from "next-intl";
-import type { InferGetStaticPropsType } from "next";
-import NextLink from "../../components/Link";
-import { PopText } from "../../components/pop/PopText";
+import { getPosts, getPostsByTags } from '../../common/getPosts';
+import { Feed } from 'feed';
+import { getPrettyTagName } from '../../common/getPrettyTagName';
+import { DOMAIN, ORG } from '../../constants';
+import { People } from '../../data/people';
+import { writeFileSync } from 'fs';
+import { join } from 'path';
+import PageBase from '../../components/PageBase';
+import type { CustomMetaProps } from '../../components/CustomMeta';
+import { Stack, Typography } from '@mui/material';
+import { grey } from '@mui/material/colors';
+import { useTranslations } from 'next-intl';
+import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import NextLink from '../../components/Link';
+import { PopText } from '../../components/pop/PopText';
+import { getLocale } from '../../common/getLocale';
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -23,7 +24,7 @@ type fubarProps = {
 const FeedPage = ({ className: { tags } }: fubarProps) => {
   const t = useTranslations();
   const meta: CustomMetaProps = {
-    title: t("Feeds"),
+    title: t('Feeds'),
   };
 
   return (
@@ -33,12 +34,12 @@ const FeedPage = ({ className: { tags } }: fubarProps) => {
           align="center"
           sx={{
             color: grey[800],
-            marginBlockStart: "2vh",
+            marginBlockStart: '2vh',
             textAlign: {},
           }}
           variant="h2"
         >
-          {t("Feeds")}
+          {t('Feeds')}
         </PopText>
         {tags.map((t) => (
           <Stack direction="row" key={`feed-tr-${t}`} justifyContent="space-between" width={400}>
@@ -62,7 +63,8 @@ const FeedPage = ({ className: { tags } }: fubarProps) => {
   );
 };
 
-export const getStaticProps = async ({ locale }: { locale: string }) => {
+export const getStaticProps = async (context: GetStaticPropsContext) => {
+  const locale = getLocale(context);
   const posts = getPosts();
   const postsByTags = getPostsByTags(posts);
   const tags = Object.keys(postsByTags);
@@ -75,7 +77,7 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
       description: `${ORG} posts in the category ${prettyTagName}`,
       id: DOMAIN,
       link: DOMAIN,
-      language: "en",
+      language: 'en',
       favicon: `${DOMAIN}/favicon.ico`,
       copyright: ORG,
       updated: new Date(posts[0].publishDate),
@@ -99,13 +101,14 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
       });
     });
 
-    writeFileSync(join(process.cwd(), "public", "feeds", `${t}.atom`), f.atom1());
-    writeFileSync(join(process.cwd(), "public", "feeds", `${t}.xml`), f.rss2());
+    writeFileSync(join(process.cwd(), 'public', 'feeds', `${t}.atom`), f.atom1());
+    writeFileSync(join(process.cwd(), 'public', 'feeds', `${t}.xml`), f.rss2());
   });
 
   const messages = (await import(`../../messages/${locale}.json`)).default as IntlMessages;
   return {
     props: {
+      locale,
       messages,
       tags,
     },

@@ -1,7 +1,7 @@
-import React from "react";
-import { Button, type ButtonProps } from "@mui/material";
-import { poppins } from "../../fonts";
-import { BWButton } from "@/components/Button";
+import React from 'react';
+import { Button, type ButtonProps } from '@mui/material';
+import { poppins } from '../../fonts';
+import { BWButton } from '@/components/Button';
 
 type PopButtonProps = {
   bw?: boolean;

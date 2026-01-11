@@ -1,11 +1,12 @@
-const path = require("path");
-const fs = require("fs");
+import path from 'path';
+import fs from 'fs';
+import createMDX from '@next/mdx';
 
-const blogs = fs.readdirSync(path.join(".", "src", "content", "blog"));
+const blogs = fs.readdirSync(path.join('.', 'src', 'content', 'blog'));
 
 const redirects = () => {
   const blogRedirects = blogs.map((b) => {
-    const uri = path.basename(b).replace(".mdx", "");
+    const uri = path.basename(b).replace('.mdx', '');
     return {
       source: `/${uri}`,
       destination: `/blog/${uri}`,
@@ -16,13 +17,13 @@ const redirects = () => {
   return [
     ...blogRedirects,
     {
-      source: "/about/organization",
-      destination: "https://docs.buddiesofbudgie.org/organization/intro",
+      source: '/about/organization',
+      destination: 'https://docs.buddiesofbudgie.org/organization/intro',
       permanent: true,
     },
     {
-      source: "/rss",
-      destination: "/feeds/news.xml",
+      source: '/rss',
+      destination: '/feeds/news.xml',
       permanent: true,
     },
   ];
@@ -30,9 +31,6 @@ const redirects = () => {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   experimental: {
     largePageDataBytes: 512 * 1000,
     //outputFileTracingRoot: path.join(__dirname, "../../"),
@@ -46,33 +44,29 @@ const nextConfig = {
   },
   headers: async () => [
     {
-      source: "/about/roadmap",
+      source: '/about/roadmap',
       headers: [
         {
-          key: "Cache-Control",
-          value: "s-maxage=3600, stale-while-revalidate=59",
+          key: 'Cache-Control',
+          value: 's-maxage=3600, stale-while-revalidate=59',
         },
       ],
     },
   ],
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  },
   images: {
-    contentDispositionType: "attachment",
+    contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     dangerouslyAllowSVG: true,
-    formats: ["image/avif", "image/webp"],
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "avatars.githubusercontent.com",
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
       },
     ],
   },
-  output: "standalone",
-  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"], // Append the default value with md extensions
+  output: 'standalone',
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'], // Append the default value with md extensions
   reactStrictMode: true,
   redirects: async () => redirects(),
   typescript: {
@@ -80,13 +74,13 @@ const nextConfig = {
   },
 };
 
-const withMDX = require("@next/mdx")({
+const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [],
     rehypePlugins: [],
-    providerImportSource: "@mdx-js/react",
+    providerImportSource: '@mdx-js/react',
   },
 });
 
-module.exports = withMDX(nextConfig);
+export default withMDX(nextConfig);

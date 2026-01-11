@@ -1,9 +1,9 @@
-import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
-import { grey } from "@mui/material/colors";
-import { inter, poppins } from "./fonts";
+import { grey } from '@mui/material/colors';
+import { inter, poppins } from './fonts';
 
-declare module "@mui/material/styles" {
+declare module '@mui/material/styles' {
   interface BreakpointOverrides {
     xs: true;
     sm: true;
@@ -47,25 +47,25 @@ const Theme = createTheme({
       defaultProps: {
         disableElevation: true,
         disableRipple: true,
-        variant: "contained",
+        variant: 'contained',
       },
       styleOverrides: {
         root: ({ ownerState, theme }) => ({
-          borderRadius: "2em",
+          borderRadius: '2em',
           fontFamily: poppins.style.fontFamily,
-          ...(ownerState.variant === "contained" &&
-            ownerState.color === "primary" && {
+          ...(ownerState.variant === 'contained' &&
+            ownerState.color === 'primary' && {
               border: `2px solid ${theme.palette[ownerState.color].main}`,
-              "&.MuiButton-root:hover": {
-                backgroundColor: "white",
-                color: "black",
+              '&.MuiButton-root:hover': {
+                backgroundColor: 'white',
+                color: 'black',
               },
             }),
-          ...(ownerState.variant === "contained" &&
-            ownerState.color === "info" && {
-              color: "black",
-              "&, &.MuiButton-root:hover": {
-                backgroundColor: "white",
+          ...(ownerState.variant === 'contained' &&
+            ownerState.color === 'info' && {
+              color: 'black',
+              '&, &.MuiButton-root:hover': {
+                backgroundColor: 'white',
               },
             }),
         }),
@@ -79,17 +79,17 @@ const Theme = createTheme({
       dark: grey[900],
     },
     misc: {
-      greyish: "#666666",
+      greyish: '#666666',
       lightgrey: grey[200],
-      purple: "#9f7beb",
-      white: "#ffffff",
+      purple: '#9f7beb',
+      white: '#ffffff',
     },
     secondary: {
-      main: "#ffffff",
+      main: '#ffffff',
     },
     success: {
-      light: "#d5ffda",
-      main: "#6bca81",
+      light: '#d5ffda',
+      main: '#6bca81',
     },
   },
   typography: {

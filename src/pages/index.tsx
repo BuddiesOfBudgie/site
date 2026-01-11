@@ -1,29 +1,30 @@
-import type { NextPage } from "next";
-import type { CustomMetaProps } from "../components/CustomMeta";
+import type { GetStaticPropsContext, NextPage } from 'next';
+import type { CustomMetaProps } from '../components/CustomMeta';
 
 // Material UI Bits
-import { Box, Tab, Tabs, useMediaQuery, useTheme } from "@mui/material";
-import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
+import { Box, Tab, Tabs, useMediaQuery, useTheme } from '@mui/material';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
 
 // Our components
-import { ColorBanner } from "../components/ColorBanner";
-import { HeroBanner } from "../components/home/HeroBanner";
-import { PersonalizeBanner } from "../components/home/PersonalizeBanner";
-import PageBase from "../components/PageBase";
+import { ColorBanner } from '../components/ColorBanner';
+import { HeroBanner } from '../components/home/HeroBanner';
+import { PersonalizeBanner } from '../components/home/PersonalizeBanner';
+import PageBase from '../components/PageBase';
 
-import BudgieMenuImage from "../../public/images/BudgieMenu.jpg";
-import RavenImage from "../../public/images/Raven-WidgetView.jpg";
+import BudgieMenuImage from '../../public/images/BudgieMenu.jpg';
+import RavenImage from '../../public/images/Raven-WidgetView.jpg';
 
-import type { StaticImageData } from "next/image";
-import { useTranslations } from "next-intl";
-import { Uris } from "../constants";
-import { useState } from "react";
-import { LightboxImage } from "../components/LightboxImage";
-import { poppins } from "../fonts";
-import { PopText } from "../components/pop/PopText";
-import { InterText } from "../components/InterText";
-import { SiteTheme } from "../theme";
+import type { StaticImageData } from 'next/image';
+import { useTranslations } from 'next-intl';
+import { Uris } from '../constants';
+import { useState } from 'react';
+import { LightboxImage } from '../components/LightboxImage';
+import { poppins } from '../fonts';
+import { PopText } from '../components/pop/PopText';
+import { InterText } from '../components/InterText';
+import { SiteTheme } from '../theme';
+import { getLocale } from '../common/getLocale';
 
 type HomepageImageBannerContent = {
   AltImageText: string;
@@ -34,7 +35,7 @@ type HomepageImageBannerContent = {
 };
 
 export const meta: CustomMetaProps = {
-  title: "Home",
+  title: 'Home',
 };
 
 const Home: NextPage = () => {
@@ -42,23 +43,23 @@ const Home: NextPage = () => {
   const t = useTranslations();
 
   const theme = useTheme();
-  const colorBannersStackDirection = useMediaQuery(theme.breakpoints.up("md")) ? "row" : "column";
-  const colorBannersComponentMaxWidth = useMediaQuery(theme.breakpoints.up("md")) ? "46%" : "100%";
+  const colorBannersStackDirection = useMediaQuery(theme.breakpoints.up('md')) ? 'row' : 'column';
+  const colorBannersComponentMaxWidth = useMediaQuery(theme.breakpoints.up('md')) ? '46%' : '100%';
 
   const imageBannerContent: HomepageImageBannerContent[] = [
     {
-      AltImageText: "Budgie Menu Image",
-      Headline: t("Home.Tabs.MenuHeader"),
+      AltImageText: 'Budgie Menu Image',
+      Headline: t('Home.Tabs.MenuHeader'),
       Image: BudgieMenuImage,
-      Subtext: t("Home.Tabs.MenuText"),
-      TabText: t("Home.Tabs.MenuTabText"),
+      Subtext: t('Home.Tabs.MenuText'),
+      TabText: t('Home.Tabs.MenuTabText'),
     },
     {
-      AltImageText: "Raven",
-      Headline: t("Home.Tabs.RavenHeader"),
+      AltImageText: 'Raven',
+      Headline: t('Home.Tabs.RavenHeader'),
       Image: RavenImage,
-      Subtext: t("Home.Tabs.RavenText"),
-      TabText: t("Home.Tabs.RavenTabText"),
+      Subtext: t('Home.Tabs.RavenText'),
+      TabText: t('Home.Tabs.RavenTabText'),
     },
   ];
 
@@ -76,7 +77,7 @@ const Home: NextPage = () => {
             allowScrollButtonsMobile
             onChange={(_, value: number) => setFeatureTab(value)}
             sx={{
-              ".MuiTabs-scrollButtons.Mui-disabled": {
+              '.MuiTabs-scrollButtons.Mui-disabled': {
                 opacity: 0.3,
               },
             }}
@@ -89,9 +90,9 @@ const Home: NextPage = () => {
                 key={`HomeTabs-Tab-${data.TabText}`}
                 label={data.TabText}
                 sx={{
-                  fontSize: "1.1em",
-                  textTransform: "none",
-                  ["&.Mui-selected"]: {
+                  fontSize: '1.1em',
+                  textTransform: 'none',
+                  ['&.Mui-selected']: {
                     color: SiteTheme.palette.success.main,
                   },
                 }}
@@ -120,8 +121,8 @@ const Home: NextPage = () => {
                     paddingTop={2}
                     paddingX={2}
                     sx={{
-                      [theme.breakpoints.up("md")]: {
-                        marginInlineStart: "2vh",
+                      [theme.breakpoints.up('md')]: {
+                        marginInlineStart: '2vh',
                         maxWidth: 800,
                       },
                     }}
@@ -150,27 +151,27 @@ const Home: NextPage = () => {
           direction={colorBannersStackDirection}
           justifyContent="space-between"
           sx={{
-            "& .ColorBanner": {
+            '& .ColorBanner': {
               maxWidth: colorBannersComponentMaxWidth,
-              marginBottom: "2vh",
+              marginBottom: '2vh',
             },
           }}
         >
           <ColorBanner
             backgroundColor="linear-gradient(to right, #9f7beb, #7b83eb)"
-            body={t("Home.ColorBanner.Built.Text")}
+            body={t('Home.ColorBanner.Built.Text')}
             buttonHref="/about/organization"
-            buttonText={t("LearnMore")}
+            buttonText={t('LearnMore')}
             buttonTextColor="#9E7BEB"
-            header={t("Home.ColorBanner.Built.Header")}
+            header={t('Home.ColorBanner.Built.Header')}
           />
           <ColorBanner
             backgroundColor="linear-gradient(to right, #1687C7, #4DB2EC)"
-            body={t("Home.ColorBanner.Get.Text")}
+            body={t('Home.ColorBanner.Get.Text')}
             buttonHref={Uris.GET_BUDGIE}
-            buttonText={t("Get Budgie")}
+            buttonText={t('Get Budgie')}
             buttonTextColor="#1687C7"
-            header={t("Home.ColorBanner.Get.Header")}
+            header={t('Home.ColorBanner.Get.Header')}
           />
         </Stack>
       </Container>
@@ -178,10 +179,14 @@ const Home: NextPage = () => {
   );
 };
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
-  props: {
-    messages: (await import(`../messages/${locale}.json`)).default,
-  },
-});
+export const getStaticProps = async (context: GetStaticPropsContext) => {
+  const locale = getLocale(context);
+  return {
+    props: {
+      locale,
+      messages: (await import(`../messages/${locale}.json`)).default,
+    },
+  };
+};
 
 export default Home;

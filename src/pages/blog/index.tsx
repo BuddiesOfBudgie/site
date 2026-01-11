@@ -2,29 +2,29 @@
  * This is our index page used for all blog listings, including tags (like Releases)
  */
 
-import React, { useMemo } from "react";
-import type { InferGetServerSidePropsType } from "next/types";
+import React, { useMemo } from 'react';
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 
 // Material UI Components
-import Container from "@mui/material/Container";
-import { Pagination, Stack, useMediaQuery, useTheme } from "@mui/material";
+import Container from '@mui/material/Container';
+import { Pagination, Stack, useMediaQuery, useTheme } from '@mui/material';
 
 // Our Components
-import type { CustomMetaProps } from "../../components/CustomMeta";
-import PageBase from "../../components/PageBase";
-import BlogListing from "../../components/blog/BlogListing";
-import type { ParsedUrlQuery } from "querystring";
-import { grey } from "@mui/material/colors";
-import { getPosts, getPostsByTags } from "../../common/getPosts";
-import { F, G, N, pipe } from "@mobily/ts-belt";
-import type { BlogTagInfo } from "../../types";
-import { getPrettyTagName } from "../../common/getPrettyTagName";
-import { ORG } from "../../constants";
-import Head from "next/head";
-import { useTranslations } from "next-intl";
-import { RssFeed } from "@mui/icons-material";
-import { PopButton } from "../../components/pop/PopButton";
-import { PopText } from "../../components/pop/PopText";
+import type { CustomMetaProps } from '../../components/CustomMeta';
+import PageBase from '../../components/PageBase';
+import BlogListing from '../../components/blog/BlogListing';
+import { grey } from '@mui/material/colors';
+import { getPosts, getPostsByTags } from '../../common/getPosts';
+import { F, G, N, pipe } from '@mobily/ts-belt';
+import type { BlogTagInfo } from '../../types';
+import { getPrettyTagName } from '../../common/getPrettyTagName';
+import { ORG } from '../../constants';
+import Head from 'next/head';
+import { useTranslations } from 'next-intl';
+import { RssFeed } from '@mui/icons-material';
+import { PopButton } from '../../components/pop/PopButton';
+import { PopText } from '../../components/pop/PopText';
+import { getLocale } from '../../common/getLocale';
 
 type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
@@ -34,7 +34,7 @@ type fubarProps = {
 
 const BlogIndex = ({ className: { page, pagesLength, posts, tag } }: fubarProps) => {
   const theme = useTheme();
-  const isOnMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isOnMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const t = useTranslations();
 
@@ -69,14 +69,14 @@ const BlogIndex = ({ className: { page, pagesLength, posts, tag } }: fubarProps)
           href={`/feeds/${tag}.xml`}
         />
       </Head>
-      <Container maxWidth="fullhd" sx={{ marginBlock: "2vh" }}>
+      <Container maxWidth="fullhd" sx={{ marginBlock: '2vh' }}>
         <Stack alignItems="center" rowGap={2}>
           <Container maxWidth="subfullhd">
             <Stack alignItems="center" direction="row" justifyContent="space-between" marginBottom={4} width={1}>
               <PopText
                 sx={{
                   color: grey[800],
-                  textAlign: "start",
+                  textAlign: 'start',
                 }}
                 variant="h2"
               >
@@ -88,7 +88,7 @@ const BlogIndex = ({ className: { page, pagesLength, posts, tag } }: fubarProps)
                 startIcon={!isOnMobile ? <RssFeed /> : undefined}
                 variant="outlined"
               >
-                {!isOnMobile && t("Feeds")}
+                {!isOnMobile && t('Feeds')}
                 {isOnMobile && <RssFeed />}
               </PopButton>
             </Stack>
@@ -102,9 +102,9 @@ const BlogIndex = ({ className: { page, pagesLength, posts, tag } }: fubarProps)
                 if (!location || !searchParams) return;
                 if (page === navPage) return;
                 if (navPage === 1) {
-                  searchParams.delete("page");
+                  searchParams.delete('page');
                 } else {
-                  searchParams.set("page", navPage.toString());
+                  searchParams.set('page', navPage.toString());
                 }
                 document.location.search = searchParams.toString();
               }}
@@ -117,15 +117,17 @@ const BlogIndex = ({ className: { page, pagesLength, posts, tag } }: fubarProps)
   );
 };
 
-export const getServerSideProps = async ({ locale, query }: { locale: string; query: ParsedUrlQuery }) => {
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+  const { query } = context;
+  const locale = getLocale(context);
   const { tag: tagInQuery, page: pageInQuery } = query;
 
   type QueryP = typeof tagInQuery;
   const convArr = (v: QueryP, d: string) =>
     pipe(v, F.defaultTo<QueryP, NonNullable<QueryP>>(d), (a) => (G.isArray(a) ? a[0] : a));
 
-  const tag = convArr(tagInQuery, "news");
-  const page = pipe(convArr(pageInQuery, "1"), Number, N.clamp(1, Infinity));
+  const tag = convArr(tagInQuery, 'news');
+  const page = pipe(convArr(pageInQuery, '1'), Number, N.clamp(1, Infinity));
 
   const posts = getPosts();
   const postsByTags = getPostsByTags(posts);
@@ -148,6 +150,7 @@ export const getServerSideProps = async ({ locale, query }: { locale: string; qu
 
   return {
     props: {
+      locale,
       messages: (await import(`../../messages/${locale}.json`)).default,
       page,
       pagesLength: postsByTag.pages,

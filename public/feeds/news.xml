@@ -4,7 +4,7 @@
         <title>News | Buddies of Budgie</title>
         <link>https://buddiesofbudgie.org</link>
         <description>Buddies of Budgie posts in the category News</description>
-        <lastBuildDate>Sun, 11 Jan 2026 15:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 11 Jan 2026 14:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[State of the Budgie: 2025 In Review and Cranking Budgie Up To 11]]></title>
             <link>https://buddiesofbudgie.org/blog/state-of-the-budgie-2025</link>
             <guid isPermaLink="false">https://buddiesofbudgie.org/blog/state-of-the-budgie-2025</guid>
-            <pubDate>Sun, 11 Jan 2026 15:00:00 GMT</pubDate>
+            <pubDate>Sun, 11 Jan 2026 14:00:00 GMT</pubDate>
             <description><![CDATA[2025 was a year of significant progress for Budgie Desktop, as we finalized much of our efforts in our Wayland migration, to bring Budgie 10 to a close and enable us to focus our efforts on Budgie 11. Time to dive into our State of the Budgie to recap our efforts in 2025 and the goals for 2026.]]></description>
             <enclosure url="https://buddiesofbudgie.org//images/blog/2026/01/StateOfTheBudgie2025.jpg" length="0" type="image/jpg"/>
         </item>

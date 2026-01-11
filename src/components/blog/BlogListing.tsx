@@ -3,15 +3,15 @@
  */
 
 // Material UI Components
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 
 // Our Components
-import BlogListingPostInfo from "./BlogListingPostInfo";
-import { HalvedWidthOnHighResolution, StackDirectionColumnToRow } from "../../constants";
-import type { BlogPost } from "../../types";
-import { PopText } from "../pop/PopText";
+import BlogListingPostInfo from './BlogListingPostInfo';
+import { HalvedWidthOnHighResolution, StackDirectionColumnToRow } from '../../constants';
+import type { BlogPost } from '../../types';
+import { PopText } from '../pop/PopText';
 
 type BlogListingParams = {
   page: number;
@@ -27,7 +27,7 @@ const BlogListing: React.FC<BlogListingParams> = ({ page, posts }: BlogListingPa
   const mastSelection = posts.slice(1, 4); // Get posts 1-4 to display for featured section
   const restOfSelection = hasExcessOrFirstPage ? posts.slice(4) : posts; // Get the 5th item and all items after
 
-  const keyPrefix = "BlogListingPostInfo-toplevel";
+  const keyPrefix = 'BlogListingPostInfo-toplevel';
 
   return (
     <Container maxWidth="subfullhd">

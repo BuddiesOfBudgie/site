@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://buddiesofbudgie.org</id>
     <title>News | Buddies of Budgie</title>
-    <updated>2026-01-11T15:00:00.000Z</updated>
+    <updated>2026-01-11T14:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://buddiesofbudgie.org"/>
     <subtitle>Buddies of Budgie posts in the category News</subtitle>
@@ -13,7 +13,7 @@
         <id>https://buddiesofbudgie.org/blog/state-of-the-budgie-2025</id>
         <link href="https://buddiesofbudgie.org/blog/state-of-the-budgie-2025"/>
         <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2026/01/StateOfTheBudgie2025.jpg" type="image/jpg"/>
-        <updated>2026-01-11T15:00:00.000Z</updated>
+        <updated>2026-01-11T14:00:00.000Z</updated>
         <summary type="html"><![CDATA[2025 was a year of significant progress for Budgie Desktop, as we finalized much of our efforts in our Wayland migration, to bring Budgie 10 to a close and enable us to focus our efforts on Budgie 11. Time to dive into our State of the Budgie to recap our efforts in 2025 and the goals for 2026.]]></summary>
         <author>
             <name>Joshua Strobl</name>

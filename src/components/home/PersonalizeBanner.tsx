@@ -2,26 +2,26 @@
  * This is our banner for "making budgie your own" / personalize
  */
 
-import React, { useState } from "react";
-import type { StaticImageData } from "next/image";
-import Image from "next/image";
+import React, { useState } from 'react';
+import type { StaticImageData } from 'next/image';
+import Image from 'next/image';
 
-import { Box, useTheme } from "@mui/material";
-import Backdrop from "@mui/material/Backdrop";
-import Chip from "@mui/material/Chip";
-import Container from "@mui/material/Container";
-import IconButton from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
+import { Box, useTheme } from '@mui/material';
+import Backdrop from '@mui/material/Backdrop';
+import Chip from '@mui/material/Chip';
+import Container from '@mui/material/Container';
+import IconButton from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
-import MacLike from "../../../public/images/personalize/macLike.jpg";
-import Traditional from "../../../public/images/personalize/traditional.jpg";
-import UnityLike from "../../../public/images/personalize/unityLike.jpg";
-import { useTranslations } from "next-intl";
+import MacLike from '../../../public/images/personalize/macLike.jpg';
+import Traditional from '../../../public/images/personalize/traditional.jpg';
+import UnityLike from '../../../public/images/personalize/unityLike.jpg';
+import { useTranslations } from 'next-intl';
 
-import SwipeableViews from "react-swipeable-views";
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
-import { PopText } from "../pop/PopText";
-import { InterText } from "../InterText";
+import SwipeableViews from 'react-swipeable-views';
+import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
+import { PopText } from '../pop/PopText';
+import { InterText } from '../InterText';
 
 interface ImageInfo {
   bgColor: string;
@@ -40,19 +40,19 @@ export const PersonalizeBanner = () => {
     {
       bgColor: theme.palette.success.main,
       image: MacLike,
-      text: t("Home.Personalize.macOS"),
+      text: t('Home.Personalize.macOS'),
       textColor: theme.palette.primary.light,
     },
     {
       bgColor: theme.palette.misc.purple,
       image: Traditional,
-      text: t("Home.Personalize.Traditional"),
+      text: t('Home.Personalize.Traditional'),
       textColor: theme.palette.primary.light,
     },
     {
-      bgColor: "#0099ff",
+      bgColor: '#0099ff',
       image: UnityLike,
-      text: t("Home.Personalize.Unity"),
+      text: t('Home.Personalize.Unity'),
       textColor: theme.palette.primary.light,
     },
   ];
@@ -82,22 +82,22 @@ export const PersonalizeBanner = () => {
       maxWidth={false}
       sx={{
         backgroundColor: theme.palette.primary.light,
-        margin: "2vh 0",
-        padding: "1vh 0",
+        margin: '2vh 0',
+        padding: '1vh 0',
       }}
     >
       <Backdrop
         onClick={() => setShowBackdrop(false)}
         open={showBackdrop}
         sx={{
-          backgroundColor: "rgba(0,0,0,0.7)",
-          height: "100%",
-          position: "fixed",
-          width: "100%",
+          backgroundColor: 'rgba(0,0,0,0.7)',
+          height: '100%',
+          position: 'fixed',
+          width: '100%',
           zIndex: 9999,
-          "& img": {
-            maxWidth: "100%",
-            objectFit: "scale-down",
+          '& img': {
+            maxWidth: '100%',
+            objectFit: 'scale-down',
           },
         }}
       >
@@ -106,18 +106,18 @@ export const PersonalizeBanner = () => {
       <Container maxWidth="md">
         <Stack alignItems="center" spacing={4}>
           <PopText align="center" variant="h3">
-            {t("Home.Personalize.Header")}
+            {t('Home.Personalize.Header')}
           </PopText>
           <InterText align="center" variant="h6">
-            {t("Home.Personalize.Description")}
+            {t('Home.Personalize.Description')}
           </InterText>
           <SwipeableViews
-            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
             index={currentIndex}
             onChangeIndex={handleStepChange}
             enableMouseEvents
             style={{
-              maxWidth: "100vw",
+              maxWidth: '100vw',
             }}
           >
             {images.map((imageObj, i) => (
@@ -127,8 +127,8 @@ export const PersonalizeBanner = () => {
                 sx={{
                   aspectRatio: 16 / 9,
                   maxHeight: 400,
-                  maxWidth: "100vw",
-                  width: "100vw",
+                  maxWidth: '100vw',
+                  width: '100vw',
                 }}
               >
                 <Image
@@ -140,7 +140,7 @@ export const PersonalizeBanner = () => {
                   key={`personalize-banner-${imageObj.text}`}
                   src={imageObj.image}
                   style={{
-                    objectFit: "scale-down",
+                    objectFit: 'scale-down',
                   }}
                 />
               </Box>
@@ -148,7 +148,7 @@ export const PersonalizeBanner = () => {
           </SwipeableViews>
           <Chip
             label={selectedImage.text}
-            sx={{ backgroundColor: selectedImage.bgColor, color: selectedImage.textColor, width: "160px" }}
+            sx={{ backgroundColor: selectedImage.bgColor, color: selectedImage.textColor, width: '160px' }}
           />
           <Stack direction="row" spacing={4}>
             <IconButton
@@ -156,10 +156,10 @@ export const PersonalizeBanner = () => {
               size="small"
               onClick={!onFirst ? handleBack : () => setCurrentIndex(maxSteps - 1)}
             >
-              {theme.direction === "rtl" ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+              {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
             </IconButton>
             <IconButton aria-label="Next image" size="small" onClick={!onLast ? handleNext : () => setCurrentIndex(0)}>
-              {theme.direction === "rtl" ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+              {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
             </IconButton>
           </Stack>
         </Stack>
