@@ -4,15 +4,23 @@
         <title>State Of The Budgie | Buddies of Budgie</title>
         <link>https://buddiesofbudgie.org</link>
         <description>Buddies of Budgie posts in the category State Of The Budgie</description>
-        <lastBuildDate>Mon, 06 Jan 2025 20:30:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 11 Jan 2026 15:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>Buddies of Budgie</copyright>
         <item>
+            <title><![CDATA[State of the Budgie: 2025 In Review and Cranking Budgie Up To 11]]></title>
+            <link>https://buddiesofbudgie.org/blog/state-of-the-budgie-2025</link>
+            <guid isPermaLink="false">https://buddiesofbudgie.org/blog/state-of-the-budgie-2025</guid>
+            <pubDate>Sun, 11 Jan 2026 15:00:00 GMT</pubDate>
+            <description><![CDATA[2025 was a year of significant progress for Budgie Desktop, as we finalized much of our efforts in our Wayland migration, to bring Budgie 10 to a close and enable us to focus our efforts on Budgie 11. Time to dive into our State of the Budgie to recap our efforts in 2025 and the goals for 2026.]]></description>
+            <enclosure url="https://buddiesofbudgie.org//images/blog/2026/01/StateOfTheBudgie2025.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
             <title><![CDATA[State of the Budgie: 2024 In Review and Goals for 2025]]></title>
             <link>https://buddiesofbudgie.org/blog/state-of-the-budgie-2024</link>
-            <guid>https://buddiesofbudgie.org/blog/state-of-the-budgie-2024</guid>
+            <guid isPermaLink="false">https://buddiesofbudgie.org/blog/state-of-the-budgie-2024</guid>
             <pubDate>Mon, 06 Jan 2025 20:30:00 GMT</pubDate>
             <description><![CDATA[2024 was a pivotal year for Budgie Desktop, with our Budgie 10.9 release series and our focus on our move to Wayland. Time to dive into our State of the Budgie to recap our efforts in 2024 and the goals for 2025.]]></description>
             <enclosure url="https://buddiesofbudgie.org//images/blog/2025/01/StateOfTheBudgieY24.jpg" length="0" type="image/jpg"/>
@@ -20,7 +28,7 @@
         <item>
             <title><![CDATA[State of the Budgie: 2023 In Review and Goals for 2024]]></title>
             <link>https://buddiesofbudgie.org/blog/state-of-the-budgie-2023</link>
-            <guid>https://buddiesofbudgie.org/blog/state-of-the-budgie-2023</guid>
+            <guid isPermaLink="false">https://buddiesofbudgie.org/blog/state-of-the-budgie-2023</guid>
             <pubDate>Fri, 26 Jan 2024 20:30:00 GMT</pubDate>
             <description><![CDATA[2023 was an amazing year for Budgie Desktop and our organization. Time to dive into our State of the Budgie to recap our efforts in 2023 and the goals for 2024.]]></description>
             <enclosure url="https://buddiesofbudgie.org//images/blog/2024/01/StateOfTheBudgieY23.png" length="0" type="image/png"/>
@@ -28,7 +36,7 @@
         <item>
             <title><![CDATA[State of the Budgie: 2022 In Review and Goals for 2023]]></title>
             <link>https://buddiesofbudgie.org/blog/state-of-the-budgie-2022</link>
-            <guid>https://buddiesofbudgie.org/blog/state-of-the-budgie-2022</guid>
+            <guid isPermaLink="false">https://buddiesofbudgie.org/blog/state-of-the-budgie-2022</guid>
             <pubDate>Sun, 01 Jan 2023 23:50:18 GMT</pubDate>
             <description><![CDATA[2022 was an incredible year for the Budgie Desktop and the Buddies of Budgie organization, with 2023 set to be even better. Let us dive into it in this special State of the Budgie to recap the happenings of 2022 and the goals for 2023.]]></description>
             <enclosure url="https://buddiesofbudgie.org//images/blog/2023/01/StateOfTheBudgieY22.png" length="0" type="image/png"/>
@@ -36,7 +44,7 @@
         <item>
             <title><![CDATA[State of the Budgie: July 2022]]></title>
             <link>https://buddiesofbudgie.org/blog/state-of-the-budgie-july-2022</link>
-            <guid>https://buddiesofbudgie.org/blog/state-of-the-budgie-july-2022</guid>
+            <guid isPermaLink="false">https://buddiesofbudgie.org/blog/state-of-the-budgie-july-2022</guid>
             <pubDate>Mon, 01 Aug 2022 17:23:40 GMT</pubDate>
             <description><![CDATA[This is the State of the Budgie for July 2022, covering the latest happenings in the month of July!]]></description>
             <enclosure url="https://buddiesofbudgie.org//images/blog/2022/08/StateOfTheBudgie_July2022.jpg" length="0" type="image/jpg"/>
@@ -44,7 +52,7 @@
         <item>
             <title><![CDATA[State of the Budgie: May 2022]]></title>
             <link>https://buddiesofbudgie.org/blog/state-of-the-budgie-may-2022</link>
-            <guid>https://buddiesofbudgie.org/blog/state-of-the-budgie-may-2022</guid>
+            <guid isPermaLink="false">https://buddiesofbudgie.org/blog/state-of-the-budgie-may-2022</guid>
             <pubDate>Sun, 22 May 2022 20:12:48 GMT</pubDate>
             <description><![CDATA[This is the State of the Budgie for May 2022, covering the latest happenings this month!]]></description>
             <enclosure url="https://buddiesofbudgie.org//images/blog/2022/05/budgie-on-silverblue-3.jpg" length="0" type="image/jpg"/>
@@ -52,7 +60,7 @@
         <item>
             <title><![CDATA[State of the Budgie: April 2022]]></title>
             <link>https://buddiesofbudgie.org/blog/state-of-the-budgie-april-2022</link>
-            <guid>https://buddiesofbudgie.org/blog/state-of-the-budgie-april-2022</guid>
+            <guid isPermaLink="false">https://buddiesofbudgie.org/blog/state-of-the-budgie-april-2022</guid>
             <pubDate>Fri, 15 Apr 2022 14:01:55 GMT</pubDate>
             <description><![CDATA[As a mini "State of the Budgie" for April 2022, here is what has been done so far and what is coming up in the near future!]]></description>
             <enclosure url="https://buddiesofbudgie.org//images/blog/2022/04/StateOfTheBudgie_April2022.jpg" length="0" type="image/jpg"/>

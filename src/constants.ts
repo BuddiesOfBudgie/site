@@ -27,5 +27,5 @@ export const StackDirectionColumnToRow: StackDirectionMap = {
 
 export enum Uris {
   DOCUMENTATION = "https://docs.buddiesofbudgie.org",
-  GET_BUDGIE = "https://docs.buddiesofbudgie.org/user/getting-budgie/",
+  GET_BUDGIE = "https://docs.buddiesofbudgie.org/10.10/user/getting-budgie",
 }

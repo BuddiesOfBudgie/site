@@ -2,16 +2,41 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://buddiesofbudgie.org</id>
     <title>News | Buddies of Budgie</title>
-    <updated>2025-01-06T20:30:00.000Z</updated>
+    <updated>2026-01-11T15:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://buddiesofbudgie.org"/>
     <subtitle>Buddies of Budgie posts in the category News</subtitle>
     <icon>https://buddiesofbudgie.org/favicon.ico</icon>
     <rights>Buddies of Budgie</rights>
     <entry>
+        <title type="html"><![CDATA[State of the Budgie: 2025 In Review and Cranking Budgie Up To 11]]></title>
+        <id>https://buddiesofbudgie.org/blog/state-of-the-budgie-2025</id>
+        <link href="https://buddiesofbudgie.org/blog/state-of-the-budgie-2025"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2026/01/StateOfTheBudgie2025.jpg" type="image/jpg"/>
+        <updated>2026-01-11T15:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2025 was a year of significant progress for Budgie Desktop, as we finalized much of our efforts in our Wayland migration, to bring Budgie 10 to a close and enable us to focus our efforts on Budgie 11. Time to dive into our State of the Budgie to recap our efforts in 2025 and the goals for 2026.]]></summary>
+        <author>
+            <name>Joshua Strobl</name>
+            <uri>https://joshuastrobl.com</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Budgie 10.10 Released]]></title>
+        <id>https://buddiesofbudgie.org/blog/budgie-10-10-released</id>
+        <link href="https://buddiesofbudgie.org/blog/budgie-10-10-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2026/01/budgie-10-10-featured.jpg" type="image/jpg"/>
+        <updated>2026-01-10T20:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Budgie 10.10 is a brand new release series for Budgie Desktop, marking our first release to migrate Budgie from X11 to Wayland. This release series brings to a close just over a decade of Budgie 10 development; we are formally putting Budgie 10 into maintenance mode to focus our efforts on Budgie 11.]]></summary>
+        <author>
+            <name>Joshua Strobl</name>
+            <uri>https://joshuastrobl.com</uri>
+        </author>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[State of the Budgie: 2024 In Review and Goals for 2025]]></title>
         <id>https://buddiesofbudgie.org/blog/state-of-the-budgie-2024</id>
         <link href="https://buddiesofbudgie.org/blog/state-of-the-budgie-2024"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2025/01/StateOfTheBudgieY24.jpg" type="image/jpg"/>
         <updated>2025-01-06T20:30:00.000Z</updated>
         <summary type="html"><![CDATA[2024 was a pivotal year for Budgie Desktop, with our Budgie 10.9 release series and our focus on our move to Wayland. Time to dive into our State of the Budgie to recap our efforts in 2024 and the goals for 2025.]]></summary>
         <author>
@@ -23,6 +48,7 @@
         <title type="html"><![CDATA[Budgie 10.9.2 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-9-2-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-9-2-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2024/06/budgie-10-9-2-featured.jpg" type="image/jpg"/>
         <updated>2024-06-22T11:00:00.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.9.2 is the second minor release of Budgie 10.9 series of our Budgie Desktop environment. This release fixes some bugs related to notifications, workspace applet, TabSwitcher and more.]]></summary>
         <author>
@@ -34,6 +60,7 @@
         <title type="html"><![CDATA[Budgie 10.9.1 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-9-1-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-9-1-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2024/02/budgie-10-9-1-featured.jpg" type="image/jpg"/>
         <updated>2024-02-02T14:30:00.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.9.1 is the first minor release of Budgie 10.9 series of our Budgie Desktop environment. This release squashes some bugs in the TabSwitcher and Workspace applet.]]></summary>
         <author>
@@ -45,6 +72,7 @@
         <title type="html"><![CDATA[Budgie 10.9 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-9-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-9-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2024/01/budgie-10-9-featured.jpg" type="image/jpg"/>
         <updated>2024-01-28T15:00:00.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.9 is a brand new release series for Budgie Desktop, introducing a redesigned Bluetooth applet, early porting efforts towards supporting Wayland, and adopting budgie-session for session management.]]></summary>
         <author>
@@ -56,6 +84,7 @@
         <title type="html"><![CDATA[State of the Budgie: 2023 In Review and Goals for 2024]]></title>
         <id>https://buddiesofbudgie.org/blog/state-of-the-budgie-2023</id>
         <link href="https://buddiesofbudgie.org/blog/state-of-the-budgie-2023"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2024/01/StateOfTheBudgieY23.png" type="image/png"/>
         <updated>2024-01-26T20:30:00.000Z</updated>
         <summary type="html"><![CDATA[2023 was an amazing year for Budgie Desktop and our organization. Time to dive into our State of the Budgie to recap our efforts in 2023 and the goals for 2024.]]></summary>
         <author>
@@ -67,6 +96,7 @@
         <title type="html"><![CDATA[Budgie 10.8.2 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-8-2-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-8-2-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2023/10/budgie-10-8-2-featured.jpg" type="image/jpg"/>
         <updated>2023-10-18T19:00:00.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.8.2 is the second minor release in the 10.8 series of our Budgie Desktop environment. This release features some bug fixes around the system tray, notifications, and a small improvement to Budgie Screenshot.]]></summary>
         <author>
@@ -78,6 +108,7 @@
         <title type="html"><![CDATA[Budgie 10.8.1 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-8-1-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-8-1-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2023/10/budgie-10-8-1-featured.jpg" type="image/jpg"/>
         <updated>2023-10-01T16:46:00.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.8.1 is the first minor release in the 10.8 series of our Budgie Desktop environment. This release adds dark style preference support, squashes some bugs around our new StatusNotifierItem implementation, adds keyword support for search, and more!]]></summary>
         <author>
@@ -89,6 +120,7 @@
         <title type="html"><![CDATA[Budgie 10.8 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10.8-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10.8-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2023/08/budgie-10.8/Budgie_10.8_Featured.jpg" type="image/jpg"/>
         <updated>2023-08-20T11:36:00.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.8 is a brand new release series for Budgie Desktop, featuring improvements to Budgie Menu, adoption of StatusNotifier support in System Tray, Magpie v0.x support, and more!]]></summary>
         <author>
@@ -100,6 +132,7 @@
         <title type="html"><![CDATA[Wayland.]]></title>
         <id>https://buddiesofbudgie.org/blog/wayland</id>
         <link href="https://buddiesofbudgie.org/blog/wayland"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2023/07/Wayland.jpg" type="image/jpg"/>
         <updated>2023-07-07T01:02:00.000Z</updated>
         <summary type="html"><![CDATA[Let's talk about our plans for Wayland support for Budgie Desktop and the work we are doing to make it a reality.]]></summary>
         <author>
@@ -111,6 +144,7 @@
         <title type="html"><![CDATA[Budgie 10.7.2 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-7-2</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-7-2"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2023/04/Budgie_10.7.2_Featured.jpg" type="image/jpg"/>
         <updated>2023-04-26T19:56:17.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.7.2 is the second minor release in the 10.7 series of our Budgie Desktop environment, primarily focused on bug fixes, additional compatibility with GNOME 44 stack, and various quality-of-life improvements.]]></summary>
         <author>
@@ -122,6 +156,7 @@
         <title type="html"><![CDATA[Budgie 10.7.1 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-7-1-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-7-1-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2023/02/Budgie_10.7.1_Featured.jpg" type="image/jpg"/>
         <updated>2023-02-19T17:10:23.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.7.1 is the first minor release in the 10.7 series of our Budgie Desktop environment, introducing some improvements, bug fixes, and updated translations.]]></summary>
         <author>
@@ -133,6 +168,7 @@
         <title type="html"><![CDATA[Budgie 10.7 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-7-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-7-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2023/01/MainDesktop.jpg" type="image/jpg"/>
         <updated>2023-01-29T16:04:54.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.7 is a brand new release series for Budgie Desktop, featuring major re-architectures, new APIs for extensibility, and polish to the user experience.]]></summary>
         <author>
@@ -144,6 +180,7 @@
         <title type="html"><![CDATA[State of the Budgie: 2022 In Review and Goals for 2023]]></title>
         <id>https://buddiesofbudgie.org/blog/state-of-the-budgie-2022</id>
         <link href="https://buddiesofbudgie.org/blog/state-of-the-budgie-2022"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2023/01/StateOfTheBudgieY22.png" type="image/png"/>
         <updated>2023-01-01T23:50:18.000Z</updated>
         <summary type="html"><![CDATA[2022 was an incredible year for the Budgie Desktop and the Buddies of Budgie organization, with 2023 set to be even better. Let us dive into it in this special State of the Budgie to recap the happenings of 2022 and the goals for 2023.]]></summary>
         <author>
@@ -155,6 +192,7 @@
         <title type="html"><![CDATA[Budgie 10.6.4 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-6-4-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-6-4-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2022/08/Budgie-10.6.4-Featured.jpg" type="image/jpg"/>
         <updated>2022-08-30T17:18:06.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.6.4 is the fourth minor release in the 10.6 series of our Budgie Desktop environment. This release contains bug fixes and build system improvements.]]></summary>
         <author>
@@ -166,6 +204,7 @@
         <title type="html"><![CDATA[Budgie 10.6.3 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-6-3-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-6-3-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2022/08/Budgie-10.6.3-Featured.jpg" type="image/jpg"/>
         <updated>2022-08-21T13:30:03.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.6.3 is the third minor release in the 10.6 series of our Budgie Desktop environment, introducing improvements to our Workspace Applet and initial support for GNOME 43!]]></summary>
         <author>
@@ -177,6 +216,7 @@
         <title type="html"><![CDATA[State of the Budgie: July 2022]]></title>
         <id>https://buddiesofbudgie.org/blog/state-of-the-budgie-july-2022</id>
         <link href="https://buddiesofbudgie.org/blog/state-of-the-budgie-july-2022"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2022/08/StateOfTheBudgie_July2022.jpg" type="image/jpg"/>
         <updated>2022-08-01T17:23:40.000Z</updated>
         <summary type="html"><![CDATA[This is the State of the Budgie for July 2022, covering the latest happenings in the month of July!]]></summary>
         <author>
@@ -188,6 +228,7 @@
         <title type="html"><![CDATA[Budgie 10.6.2 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-6-2-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-6-2-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2022/07/Budgie_10.6.2_Featured_Image.jpg" type="image/jpg"/>
         <updated>2022-07-12T16:00:32.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.6.2 is the second minor release in the 10.6 series of our Budgie Desktop environment, introducing fixes for bugs and improving code quality!]]></summary>
         <author>
@@ -199,6 +240,7 @@
         <title type="html"><![CDATA[State of the Budgie: May 2022]]></title>
         <id>https://buddiesofbudgie.org/blog/state-of-the-budgie-may-2022</id>
         <link href="https://buddiesofbudgie.org/blog/state-of-the-budgie-may-2022"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2022/05/budgie-on-silverblue-3.jpg" type="image/jpg"/>
         <updated>2022-05-22T20:12:48.000Z</updated>
         <summary type="html"><![CDATA[This is the State of the Budgie for May 2022, covering the latest happenings this month!]]></summary>
         <author>
@@ -210,6 +252,7 @@
         <title type="html"><![CDATA[State of the Budgie: April 2022]]></title>
         <id>https://buddiesofbudgie.org/blog/state-of-the-budgie-april-2022</id>
         <link href="https://buddiesofbudgie.org/blog/state-of-the-budgie-april-2022"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2022/04/StateOfTheBudgie_April2022.jpg" type="image/jpg"/>
         <updated>2022-04-15T14:01:55.000Z</updated>
         <summary type="html"><![CDATA[As a mini "State of the Budgie" for April 2022, here is what has been done so far and what is coming up in the near future!]]></summary>
         <author>
@@ -221,6 +264,7 @@
         <title type="html"><![CDATA[Budgie 10.6.1 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-6-1-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-6-1-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2022/04/Budgie_10.6.1_Featured_Image.jpg" type="image/jpg"/>
         <updated>2022-04-02T12:04:00.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.6.1 is the first minor release that introduces fixes for bugs in the 10.6 series of our Budgie Desktop environment.]]></summary>
         <author>
@@ -232,6 +276,7 @@
         <title type="html"><![CDATA[Budgie 10.6 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-6-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-6-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2022/03/budgie-10-6.jpg" type="image/jpg"/>
         <updated>2022-03-06T16:53:00.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.6 is the first release of Budgie under the new Buddies Of Budgie organization! 🚀🚀🚀]]></summary>
         <author>
@@ -243,6 +288,7 @@
         <title type="html"><![CDATA[Budgie 10.5.3 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-5-3-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-5-3-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2021/04/budgie-desktop-settings.jpg" type="image/jpg"/>
         <updated>2021-04-27T11:42:00.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.5.3 is a minor release that introduces fixes for bugs, various quality-of-life improvements, and support for the GNOME 40 stack.]]></summary>
         <author>
@@ -254,6 +300,7 @@
         <title type="html"><![CDATA[Budgie 10.5.2 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-5-2-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-5-2-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2020/12/Budgie-10.5.2.jpg" type="image/jpg"/>
         <updated>2020-12-02T11:57:00.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.5.2 introduces new goodies to make your Budgie experience even better!]]></summary>
         <author>
@@ -265,6 +312,7 @@
         <title type="html"><![CDATA[Budgie Desktop View: First Development Release!]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-desktop-view-first-development-release</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-desktop-view-first-development-release"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2022/03/budgie-desktop-settings-with-view.jpg" type="image/jpg"/>
         <updated>2020-11-26T12:02:00.000Z</updated>
         <summary type="html"><![CDATA[Today we are thrilled to announce the first generally public development release of Budgie Desktop View!]]></summary>
         <author>
@@ -276,6 +324,7 @@
         <title type="html"><![CDATA[Budgie 10.5.1 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-5-1-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-5-1-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2019/10/Budgie-10.5.1.jpg" type="image/jpg"/>
         <updated>2019-10-03T14:55:00.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.5.1 is the first minor release of the Budgie 10.5 series, introducing a multitude of quality-of-life changes, bug fixes, and support for new GNOME Stacks.]]></summary>
         <author>
@@ -287,6 +336,7 @@
         <title type="html"><![CDATA[Budgie 10.5 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-5-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-5-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2019/03/Budgie-10.5.jpg" type="image/jpg"/>
         <updated>2019-03-17T21:06:00.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.5 is the first release in our series 5 updates for Budgie 10!]]></summary>
         <author>
@@ -298,6 +348,7 @@
         <title type="html"><![CDATA[Budgie 10.4 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-4-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-4-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2017/08/Budgie-10.4.jpg" type="image/jpg"/>
         <updated>2017-08-15T20:02:00.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.4 is the first release in our series 4 updates for Budgie 10!]]></summary>
         <author>
@@ -309,6 +360,7 @@
         <title type="html"><![CDATA[Budgie 10.3 Released]]></title>
         <id>https://buddiesofbudgie.org/blog/budgie-10-3-released</id>
         <link href="https://buddiesofbudgie.org/blog/budgie-10-3-released"/>
+        <link rel="enclosure" href="https://buddiesofbudgie.org//images/blog/2017/04/Budgie-10.3.jpg" type="image/jpg"/>
         <updated>2017-04-18T17:41:00.000Z</updated>
         <summary type="html"><![CDATA[Budgie 10.3 is the first release in our series 3 updates for Budgie 10!]]></summary>
         <author>
